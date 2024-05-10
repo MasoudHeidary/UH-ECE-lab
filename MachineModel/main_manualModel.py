@@ -113,12 +113,12 @@ def infer(network):
 
 
 ########################################################################## MAIN
-from manualModel import darknet
+from manualModel import resnet18
 TRAIN_FLAG = False
-model_path = './modeloutput/darknet.pt'
+model_path = './modeloutput/resnet18.pt'
 
 def main():
-    network = darknet() # change this based on which model you want
+    network = resnet18() # change this based on which model you want
     network = network.to(device)
 
     if TRAIN_FLAG:
