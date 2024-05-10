@@ -113,12 +113,12 @@ def infer(network):
 
 
 ########################################################################## MAIN
-from manualModel import resnet18
+from manualModel import squeezenet
 TRAIN_FLAG = False
-model_path = './modeloutput/resnet18.pt'
+model_path = './modeloutput/squeezenet.pt'
 
 def main():
-    network = resnet18() # change this based on which model you want
+    network = squeezenet() # change this based on which model you want
     network = network.to(device)
 
     if TRAIN_FLAG:
