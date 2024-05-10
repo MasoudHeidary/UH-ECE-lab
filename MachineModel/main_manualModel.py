@@ -9,7 +9,7 @@ from copy import deepcopy
 
 
 
-device = torch.device('cuda')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.set_printoptions(linewidth=100)
 torch.set_grad_enabled(True)
 torch.manual_seed(1)
@@ -33,10 +33,12 @@ test_set = torchvision.datasets.CIFAR10(
     transform=transforms.Compose([transforms.ToTensor(), normalize])
 )
 
+
 def get_num_correct(pred, labels):
     return pred.argmax(dim=1).eq(labels).sum().item()
 
-def train(network,save=True):
+
+def train(network, save=False, save_path = ""):
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=128, shuffle=True, pin_memory=True)
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=128, shuffle=False, pin_memory=True)
     optimizer = optim.SGD(network.parameters(), lr=0.1,  weight_decay=0.0005)
@@ -88,9 +90,10 @@ def train(network,save=True):
         scheduler.step()
     
     if save:
-        torch.save(network.state_dict(), './modeloutput/vgg11.pt') # Add you path where you want to save
+        torch.save(network.state_dict(), save_path) # Add you path where you want to save
     
     print('best accuracy: ', max(acc_test))
+
 
 def infer(network):
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=128, shuffle=False, pin_memory=True)
@@ -109,21 +112,23 @@ def infer(network):
 
 
 
-
-from manualModel import vgg11
+########################################################################## MAIN
+from manualModel import darknet
 TRAIN_FLAG = False
+model_path = './modeloutput/darknet.pt'
 
 def main():
-    network = vgg11() # change this based on which model you want
+    network = darknet() # change this based on which model you want
     network = network.to(device)
 
     if TRAIN_FLAG:
-        train(network) # use this line if you want to train
+        train(network, save=True, save_path=model_path) # use this line if you want to train
     else:
-        network.load_state_dict(torch.load('./modeloutput/vgg11.pt')) # load the model you want
+        network.load_state_dict(torch.load(model_path)) # load the model you want
         infer(network)
 
 
     
 if __name__ == "__main__":
     main()
+########################################################################## END MAIN
