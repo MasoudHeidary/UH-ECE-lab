@@ -113,19 +113,31 @@ def infer(network):
 
 
 ########################################################################## MAIN
-from manualModel import squeezenet
-TRAIN_FLAG = False
-model_path = './modeloutput/squeezenet.pt'
+from manualModel import *
+network_list = [
+    {'network': vgg19(), 'path': './modeloutput/vgg19.pt', 'train_flag': True}
+]
 
 def main():
-    network = squeezenet() # change this based on which model you want
-    network = network.to(device)
+    # network = squeezenet() # change this based on which model you want
+    # network = network.to(device)
 
-    if TRAIN_FLAG:
-        train(network, save=True, save_path=model_path) # use this line if you want to train
-    else:
-        network.load_state_dict(torch.load(model_path)) # load the model you want
-        infer(network)
+    # if TRAIN_FLAG:
+    #     train(network, save=True, save_path=model_path) # use this line if you want to train
+    # else:
+    #     network.load_state_dict(torch.load(model_path)) # load the model you want
+    #     infer(network)
+
+    for i in network_list:
+        print(f"network: {i}")
+        network = i.get('network')
+        network = network.to(device)
+
+        if i.get('train_flag'):
+            train(network, save=True, save_path=i.get('path'))
+        else:
+            network.load_state_dict(torch.load(i.get('path')))
+            infer(network)
 
 
     
