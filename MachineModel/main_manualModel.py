@@ -110,30 +110,28 @@ def infer(network):
     print("testing accuracy: ", correct_test / len(test_set))
 
 
-
-
 ########################################################################## MAIN
 from manualModel import *
+TRAIN_FLAG = False
 network_list = [
-    {'network': vgg19(), 'path': './modeloutput/vgg19.pt', 'train_flag': True}
+    {'network': darknet(), 'path': './modeloutput/darknet.pt', 'train_flag': TRAIN_FLAG},
+    # {'network': resnet18(), 'path': './modeloutput/resnet18.pt', 'train_flag': TRAIN_FLAG},
+    # {'network': squeezenet(), 'path': './modeloutput/squeezenet.pt', 'train_flag': TRAIN_FLAG},
+    # {'network': vgg11(), 'path': './modeloutput/vgg11.pt', 'train_flag': TRAIN_FLAG},
+    # {'network': vgg19(), 'path': './modeloutput/vgg19.pt', 'train_flag': TRAIN_FLAG},
 ]
 
 def main():
-    # network = squeezenet() # change this based on which model you want
-    # network = network.to(device)
-
-    # if TRAIN_FLAG:
-    #     train(network, save=True, save_path=model_path) # use this line if you want to train
-    # else:
-    #     network.load_state_dict(torch.load(model_path)) # load the model you want
-    #     infer(network)
-
     for i in network_list:
-        print(f"network: {i}")
+
+        print(f"#################### \
+              network: {i.get('network').__class__.__name__}\t\
+              TRAIN: {str(i['train_flag']).upper()}")
+        
         network = i.get('network')
         network = network.to(device)
 
-        if i.get('train_flag'):
+        if i['train_flag']:
             train(network, save=True, save_path=i.get('path'))
         else:
             network.load_state_dict(torch.load(i.get('path')))
@@ -142,5 +140,7 @@ def main():
 
     
 if __name__ == "__main__":
-    main()
+    for i in range(0, 10, 1):
+        set_manipualte_percenrage(100/100)
+        main()
 ########################################################################## END MAIN

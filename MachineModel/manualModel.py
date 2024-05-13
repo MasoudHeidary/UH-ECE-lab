@@ -3,6 +3,28 @@ import torch.optim as optim
 import torch.nn as nn
 import torch.nn.functional as F
 
+MANIPULATE_PERCENTAGE = 0.01
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+delta = torch.tensor(
+    [1, 0.5, 0.25, 0.125, 0.0675,
+     -1, -0.5, -0.25, -0.125, -0.0675]
+).to(device)
+
+def set_manipualte_percenrage(per):
+    global MANIPULATE_PERCENTAGE
+    MANIPULATE_PERCENTAGE = per
+
+def manipulate(f):
+    # Change of 1%
+    random_changes = torch.rand_like(f) < MANIPULATE_PERCENTAGE
+    random_indices = torch.randint(0, len(delta), f.size()).to(device)
+    random_deltas = delta[random_indices]
+    f[random_changes] += random_deltas[random_changes]
+    return f
+
+
 class darknet(nn.Module):
     def __init__(self):
         super(darknet,self).__init__()
@@ -53,34 +75,34 @@ class darknet(nn.Module):
 
     def forward(self,x):
 
-        x = F.relu(self.bn1(self.conv1(x)))
+        x = F.relu(self.bn1(manipulate(self.conv1(x))))
         x = F.max_pool2d(x, 2)
 
-        x = F.relu(self.bn2(self.conv2(x)))
+        x = F.relu(self.bn2(manipulate(self.conv2(x))))
         x = F.max_pool2d(x, 2)
 
-        x = F.relu(self.bn3_1(self.conv3_1(x)))
-        x = F.relu(self.bn3_2(self.conv3_2(x)))
-        x = F.relu(self.bn3_3(self.conv3_3(x)))
+        x = F.relu(self.bn3_1(manipulate(self.conv3_1(x))))
+        x = F.relu(self.bn3_2(manipulate(self.conv3_2(x))))
+        x = F.relu(self.bn3_3(manipulate(self.conv3_3(x))))
         x = F.max_pool2d(x, 2)
 
-        x = F.relu(self.bn4_1(self.conv4_1(x)))
-        x = F.relu(self.bn4_2(self.conv4_2(x)))
-        x = F.relu(self.bn4_3(self.conv4_3(x)))
+        x = F.relu(self.bn4_1(manipulate(self.conv4_1(x))))
+        x = F.relu(self.bn4_2(manipulate(self.conv4_2(x))))
+        x = F.relu(self.bn4_3(manipulate(self.conv4_3(x))))
         x = F.max_pool2d(x, 2)
 
-        x = F.relu(self.bn5_1(self.conv5_1(x)))
-        x = F.relu(self.bn5_2(self.conv5_2(x)))
-        x = F.relu(self.bn5_3(self.conv5_3(x)))
-        x = F.relu(self.bn5_4(self.conv5_4(x)))
-        x = F.relu(self.bn5_5(self.conv5_5(x)))
+        x = F.relu(self.bn5_1(manipulate(self.conv5_1(x))))
+        x = F.relu(self.bn5_2(manipulate(self.conv5_2(x))))
+        x = F.relu(self.bn5_3(manipulate(self.conv5_3(x))))
+        x = F.relu(self.bn5_4(manipulate(self.conv5_4(x))))
+        x = F.relu(self.bn5_5(manipulate(self.conv5_5(x))))
         x = F.max_pool2d(x, 2)
 
-        x = F.relu(self.bn6_1(self.conv6_1(x)))
-        x = F.relu(self.bn6_2(self.conv6_2(x)))
-        x = F.relu(self.bn6_3(self.conv6_3(x)))
-        x = F.relu(self.bn6_4(self.conv6_4(x)))
-        x = F.relu(self.bn6_5(self.conv6_5(x)))
+        x = F.relu(self.bn6_1(manipulate(self.conv6_1(x))))
+        x = F.relu(self.bn6_2(manipulate(self.conv6_2(x))))
+        x = F.relu(self.bn6_3(manipulate(self.conv6_3(x))))
+        x = F.relu(self.bn6_4(manipulate(self.conv6_4(x))))
+        x = F.relu(self.bn6_5(manipulate(self.conv6_5(x))))
 
         x = self.avgpool(x).view(-1, 1024)
         x = self.fc(x)
