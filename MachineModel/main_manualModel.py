@@ -1,7 +1,7 @@
 import torch
 import torch.optim as optim
-import torch.nn as nn
-import torch.nn.functional as F
+# import torch.nn as nn
+# import torch.nn.functional as F
 
 import torchvision
 import torchvision.transforms as transforms
@@ -122,13 +122,6 @@ from manualModel import *
 from darknet import *
 from vgg11 import *
 TRAIN_FLAG = False
-# network_list = [
-#     {'network': darknet(), 'path': './modeloutput/darknet.pt', 'train_flag': TRAIN_FLAG},
-#     # {'network': resnet18(), 'path': './modeloutput/resnet18.pt', 'train_flag': TRAIN_FLAG},
-#     # {'network': squeezenet(), 'path': './modeloutput/squeezenet.pt', 'train_flag': TRAIN_FLAG},
-#     # {'network': vgg11(), 'path': './modeloutput/vgg11.pt', 'train_flag': TRAIN_FLAG},
-#     # {'network': vgg19(), 'path': './modeloutput/vgg19.pt', 'train_flag': TRAIN_FLAG},
-# ]
 
 training_lst = [
     {'network': darknetNoBn(), 'path': './modeloutput/darknetNoBn.pt', 'lr': 0.05, 'weight_decay': 0.0001},
@@ -139,24 +132,6 @@ inference_lst =  [
     # {'network': vgg11NoBnManipulated(), 'path': './modeloutput/vgg11NoBn.pt'},
     {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
 ]
-
-
-# def main():
-#     for i in network_list:
-
-#         print(f"#################### \
-#               network: {i.get('network').__class__.__name__}\t\
-#               TRAIN: {str(i['train_flag']).upper()}")
-        
-#         network = i.get('network')
-#         network = network.to(device)
-
-#         if i['train_flag']:
-#             train(network, save=True, save_path=i.get('path'))
-#         else:
-#             network.load_state_dict(torch.load(i.get('path')))
-#             infer(network)
-
 
 def main_train():
     for i in training_lst:
