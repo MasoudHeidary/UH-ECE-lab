@@ -40,7 +40,7 @@ def get_num_correct(pred, labels):
     return pred.argmax(dim=1).eq(labels).sum().item()
 
 
-def train(network, save, lr=default_lr, weight_decay=default_weight_decay):
+def train(network, save, lr=default_lr, weight_decay=default_weight_decay, epoch_range=epoch_range):
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=128, shuffle=True, pin_memory=True)
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=128, shuffle=False, pin_memory=True)
     optimizer = optim.SGD(network.parameters(), lr=lr,  weight_decay=weight_decay)
@@ -50,7 +50,7 @@ def train(network, save, lr=default_lr, weight_decay=default_weight_decay):
     acc_train = []
     acc_test = []
 
-    for epoch in range(50):
+    for epoch in range(epoch_range):
         total_loss = 0
         total_correct = 0
         network.train()
@@ -114,18 +114,23 @@ def infer(network):
 #####################################################
 
 ##################################################### MAIN
+from tool import manipualte_percentage
 from darknet import *
 from squeezenet import *
-from tool import manipualte_percentage
+from resnet18 import *
+from vgg11 import *
+from vgg19 import *
 
 training_lst = [
     {'network': darknetCipher10(), 'path': './modeloutput/darknetCipher10.pt', },
-    # {'network': vgg11NoBn(), 'path': './modeloutput/vgg11NoBn.pt', },
+    {'network': squeezenetCipher10(), 'path': './modeloutput/squeezenetCipher10.pt', },
+    {'network': resnet18Cipher10(), 'path': './modeloutput/resnet18Cipher10.pt', },
+    {'network': vgg11Cipher10(), 'path': './modeloutput/vgg11Cipher10.pt', },
+    {'network': vgg19Cipher10(), 'path': './modeloutput/vgg19Cipher10.pt', },
 ]
 
 inference_lst =  [
     # {'network': darknetManiCipher10(), 'path': './modeloutput/darknet.pt'},
-    # {'network': vgg11NoBnManipulated(), 'path': './modeloutput/vgg11NoBn.pt'},
     # {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
     {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenet.pt'},
 ]
