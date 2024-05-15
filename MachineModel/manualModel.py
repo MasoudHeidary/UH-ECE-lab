@@ -17,7 +17,6 @@ def set_manipualte_percenrage(per):
     MANIPULATE_PERCENTAGE = per
 
 def manipulate(f):
-    # Change of 1%
     random_changes = torch.rand_like(f) < MANIPULATE_PERCENTAGE
     random_indices = torch.randint(0, len(delta), f.size()).to(device)
     random_deltas = delta[random_indices]
@@ -25,89 +24,6 @@ def manipulate(f):
     return f
 
 
-class darknet(nn.Module):
-    def __init__(self):
-        super(darknet,self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=3,out_channels=32,kernel_size=3, padding=1)
-        self.bn1 = nn.BatchNorm2d(32)
-        
-        self.conv2 = nn.Conv2d(in_channels=32,out_channels=64,kernel_size=3, padding=1)
-        self.bn2 = nn.BatchNorm2d(64)
-        
-        self.conv3_1 = nn.Conv2d(in_channels=64,out_channels=128,kernel_size=3, padding=1)
-        self.bn3_1 = nn.BatchNorm2d(128)
-        self.conv3_2 = nn.Conv2d(in_channels=128,out_channels=64,kernel_size=1, padding=0)
-        self.bn3_2 = nn.BatchNorm2d(64)
-        self.conv3_3 = nn.Conv2d(in_channels=64,out_channels=128,kernel_size=3, padding=1)
-        self.bn3_3 = nn.BatchNorm2d(128)
-        
-        self.conv4_1 = nn.Conv2d(in_channels=128,out_channels=256,kernel_size=3, padding=1)
-        self.bn4_1 = nn.BatchNorm2d(256)
-        self.conv4_2 = nn.Conv2d(in_channels=256,out_channels=128,kernel_size=1, padding=0)
-        self.bn4_2 = nn.BatchNorm2d(128)
-        self.conv4_3 = nn.Conv2d(in_channels=128,out_channels=256,kernel_size=3, padding=1)
-        self.bn4_3 = nn.BatchNorm2d(256)
-        
-        self.conv5_1 = nn.Conv2d(in_channels=256,out_channels=512,kernel_size=3, padding=1)
-        self.bn5_1 = nn.BatchNorm2d(512)
-        self.conv5_2 = nn.Conv2d(in_channels=512,out_channels=256,kernel_size=1, padding=0)
-        self.bn5_2 = nn.BatchNorm2d(256)
-        self.conv5_3 = nn.Conv2d(in_channels=256,out_channels=512,kernel_size=3, padding=1)
-        self.bn5_3 = nn.BatchNorm2d(512)
-        self.conv5_4 = nn.Conv2d(in_channels=512,out_channels=256,kernel_size=1, padding=1)
-        self.bn5_4 = nn.BatchNorm2d(256)
-        self.conv5_5 = nn.Conv2d(in_channels=256,out_channels=512,kernel_size=3, padding=1)
-        self.bn5_5 = nn.BatchNorm2d(512)
-
-        self.conv6_1 = nn.Conv2d(in_channels=512,out_channels=1024,kernel_size=3, padding=1)
-        self.bn6_1 = nn.BatchNorm2d(1024)
-        self.conv6_2 = nn.Conv2d(in_channels=1024,out_channels=512,kernel_size=1, padding=0)
-        self.bn6_2 = nn.BatchNorm2d(512)
-        self.conv6_3 = nn.Conv2d(in_channels=512,out_channels=1024,kernel_size=3, padding=1)
-        self.bn6_3 = nn.BatchNorm2d(1024)
-        self.conv6_4 = nn.Conv2d(in_channels=1024,out_channels=512,kernel_size=1, padding=1)
-        self.bn6_4 = nn.BatchNorm2d(512)
-        self.conv6_5 = nn.Conv2d(in_channels=512,out_channels=1024,kernel_size=3, padding=1)
-        self.bn6_5 = nn.BatchNorm2d(1024)
-
-        self.avgpool = nn.AdaptiveAvgPool2d(output_size=(1,1))
-        self.fc = nn.Linear(in_features=1024, out_features=10)
-
-    def forward(self,x):
-
-        x = F.relu(self.bn1(manipulate(self.conv1(x))))
-        x = F.max_pool2d(x, 2)
-
-        x = F.relu(self.bn2(manipulate(self.conv2(x))))
-        x = F.max_pool2d(x, 2)
-
-        x = F.relu(self.bn3_1(manipulate(self.conv3_1(x))))
-        x = F.relu(self.bn3_2(manipulate(self.conv3_2(x))))
-        x = F.relu(self.bn3_3(manipulate(self.conv3_3(x))))
-        x = F.max_pool2d(x, 2)
-
-        x = F.relu(self.bn4_1(manipulate(self.conv4_1(x))))
-        x = F.relu(self.bn4_2(manipulate(self.conv4_2(x))))
-        x = F.relu(self.bn4_3(manipulate(self.conv4_3(x))))
-        x = F.max_pool2d(x, 2)
-
-        x = F.relu(self.bn5_1(manipulate(self.conv5_1(x))))
-        x = F.relu(self.bn5_2(manipulate(self.conv5_2(x))))
-        x = F.relu(self.bn5_3(manipulate(self.conv5_3(x))))
-        x = F.relu(self.bn5_4(manipulate(self.conv5_4(x))))
-        x = F.relu(self.bn5_5(manipulate(self.conv5_5(x))))
-        x = F.max_pool2d(x, 2)
-
-        x = F.relu(self.bn6_1(manipulate(self.conv6_1(x))))
-        x = F.relu(self.bn6_2(manipulate(self.conv6_2(x))))
-        x = F.relu(self.bn6_3(manipulate(self.conv6_3(x))))
-        x = F.relu(self.bn6_4(manipulate(self.conv6_4(x))))
-        x = F.relu(self.bn6_5(manipulate(self.conv6_5(x))))
-
-        x = self.avgpool(x).view(-1, 1024)
-        x = self.fc(x)
-
-        return F.log_softmax(x, dim=1)
 
 class resnet18(nn.Module):
     def __init__(self):
@@ -155,42 +71,42 @@ class resnet18(nn.Module):
         self.fc2 = nn.Linear(in_features=100, out_features=10)
         
     def forward(self,x):
-        x = F.relu(self.bn1(self.conv1(x)))  
+        x = F.relu(self.bn1(manipulate(self.conv1(x)))) 
 
-        x1 = F.relu(self.bn2_1(self.conv2_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn2_2(self.conv2_2(x1)))
+        x1 = F.relu(self.bn2_1(manipulate(self.conv2_1(F.max_pool2d(x, 2)))))
+        x = F.relu(self.bn2_2(manipulate(self.conv2_2(x1))))
         x = torch.add(x1, x)
 
-        x1 = F.relu(self.bn2_3(self.conv2_3(x)))
-        x = F.relu(self.bn2_4(self.conv2_4(x1)))
+        x1 = F.relu(self.bn2_3(manipulate(self.conv2_3(x))))
+        x = F.relu(self.bn2_4(manipulate(self.conv2_4(x1))))
         x=torch.add(x1, x)
 
-        x1 = F.relu(self.bn3_1(self.conv3_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn3_2(self.conv3_2(x1)))
+        x1 = F.relu(self.bn3_1(manipulate(self.conv3_1(F.max_pool2d(x, 2)))))
+        x = F.relu(self.bn3_2(manipulate(self.conv3_2(x1))))
         x = torch.add(x1, x)
 
-        x1 = F.relu(self.bn3_3(self.conv3_3(x)))
-        x = F.relu(self.bn3_4(self.conv3_4(x1)))
+        x1 = F.relu(self.bn3_3(manipulate(self.conv3_3(x))))
+        x = F.relu(self.bn3_4(manipulate(self.conv3_4(x1))))
         x = torch.add(x1, x)
 
-        x1 = F.relu(self.bn4_1(self.conv4_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn4_2(self.conv4_2(x1)))
+        x1 = F.relu(self.bn4_1(manipulate(self.conv4_1(F.max_pool2d(x, 2)))))
+        x = F.relu(self.bn4_2(manipulate(self.conv4_2(x1))))
         x = torch.add(x1, x)
 
-        x1 = F.relu(self.bn4_3(self.conv4_3(x)))
-        x = F.relu(self.bn4_4(self.conv4_4(x1)))
+        x1 = F.relu(self.bn4_3(manipulate(self.conv4_3(x))))
+        x = F.relu(self.bn4_4(manipulate(self.conv4_4(x1))))
         x = torch.add(x1, x)
 
-        x1 = F.relu(self.bn5_1(self.conv5_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn5_2(self.conv5_2(x1)))
+        x1 = F.relu(self.bn5_1(manipulate(self.conv5_1(F.max_pool2d(x, 2)))))
+        x = F.relu(self.bn5_2(manipulate(self.conv5_2(x1))))
         x = torch.add(x1, x)
 
-        x1 = F.relu(self.bn5_3(self.conv5_3(x)))
-        x = F.relu(self.bn5_4(self.conv5_4(x1)))
+        x1 = F.relu(self.bn5_3(manipulate(self.conv5_3(x))))
+        x = F.relu(self.bn5_4(manipulate(self.conv5_4(x1))))
         x = torch.add(x1, x)
         
-        x = F.relu((self.fc1(F.avg_pool2d(x,2).view(-1, 512))))
-        x = F.relu(self.fc2(x))
+        x = F.relu((manipulate(self.fc1(F.avg_pool2d(x,2).view(-1, 512)))))
+        x = F.relu(manipulate(self.fc2(x)))
         
         return F.log_softmax(x, dim=1)
 
@@ -313,46 +229,6 @@ class squeezenet(nn.Module):
 
         return F.log_softmax(x, dim=1)
 
-class vgg11(nn.Module):
-    def __init__(self):
-        super(vgg11,self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
-        self.bn1 = nn.BatchNorm2d(64)
-        self.conv2 = nn.Conv2d(in_channels=64,out_channels=128,kernel_size=3, padding=1)
-        self.bn2 = nn.BatchNorm2d(128)
-        self.conv3_1 = nn.Conv2d(in_channels=128,out_channels=256,kernel_size=3, padding=1)
-        self.bn3_1 = nn.BatchNorm2d(256)
-        self.conv3_2 = nn.Conv2d(in_channels=256,out_channels=256,kernel_size=3, padding=1)
-        self.bn3_2 = nn.BatchNorm2d(256)
-        self.conv4_1 = nn.Conv2d(in_channels=256,out_channels=512,kernel_size=3, padding=1)
-        self.bn4_1 = nn.BatchNorm2d(512)
-        self.conv4_2 = nn.Conv2d(in_channels=512,out_channels=512,kernel_size=3, padding=1)
-        self.bn4_2 = nn.BatchNorm2d(512)
-        self.conv5_1 = nn.Conv2d(in_channels=512,out_channels=512,kernel_size=3, padding=1)
-        self.bn5_1 = nn.BatchNorm2d(512)
-        self.conv5_2 = nn.Conv2d(in_channels=512,out_channels=512,kernel_size=3, padding=1)
-        self.bn5_2 = nn.BatchNorm2d(512)
-
-        self.fc1 = nn.Linear(in_features=512, out_features=512)
-        self.fc2 = nn.Linear(in_features=512, out_features=512)
-        self.fc3 = nn.Linear(in_features=512, out_features=100)
-
-    def forward(self,x):
-        x = F.relu(self.bn1(self.conv1(x)))
-        x = F.relu(self.bn2(self.conv2(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn3_1(self.conv3_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn3_2(self.conv3_2(x)))
-        x = F.relu(self.bn4_1(self.conv4_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn4_2(self.conv4_2(x)))
-        #print(x.shape)
-        #uit(0)
-        x = F.relu(self.bn5_1(self.conv5_1(F.max_pool2d(x, 2))))
-        x = F.relu(self.bn5_2(self.conv5_2(x)))
-        x = F.relu(self.fc1(F.dropout(F.max_pool2d(x, 2).view(-1, 512))))
-        x = F.relu(self.fc2(F.dropout(x)))
-        x = self.fc3(x)
-
-        return F.log_softmax(x, dim=1)
 
 class vgg19(nn.Module):
     def __init__(self):
