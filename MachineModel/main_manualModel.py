@@ -1,17 +1,15 @@
 import torch
 import torch.optim as optim
-# import torch.nn as nn
-# import torch.nn.functional as F
-
 import torchvision
 import torchvision.transforms as transforms
 from copy import deepcopy
 
+from globalVariable import *
+from log import Log
 
-################################################################################### data set
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-if torch.cuda.is_available():
-    torch.cuda.set_device(0)
+l = Log("log.txt", terminal=False)
+
+##################################################### data set
 torch.set_printoptions(linewidth=100)
 torch.set_grad_enabled(True)
 torch.manual_seed(1)
@@ -34,15 +32,15 @@ test_set = torchvision.datasets.CIFAR10(
     download=True,
     transform=transforms.Compose([transforms.ToTensor(), normalize])
 )
-###################################################################################
+#####################################################
 
 
-################################################################################### training
+##################################################### training
 def get_num_correct(pred, labels):
     return pred.argmax(dim=1).eq(labels).sum().item()
 
 
-def train(network, save, lr, weight_decay):
+def train(network, save, lr=default_lr, weight_decay=default_weight_decay):
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=128, shuffle=True, pin_memory=True)
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=128, shuffle=False, pin_memory=True)
     optimizer = optim.SGD(network.parameters(), lr=lr,  weight_decay=weight_decay)
@@ -77,8 +75,7 @@ def train(network, save, lr, weight_decay):
             total_loss += loss.item()
             total_correct += correct
 
-        print(f"#network: {network.__class__.__name__}", "epoch: ", epoch, "total_correct: ", total_correct, " total loss: ", total_loss)
-        print("training accuracy: ", total_correct / len(train_set))
+        l.println(f"training [{epoch:03}]: {total_correct/len(train_set)}")
         acc_train.append(float(total_correct) / len(train_set))
 
         ### Testing ###
@@ -89,18 +86,18 @@ def train(network, save, lr, weight_decay):
 
             preds_test = network(images_test)  # pass batch to network
             correct_test += get_num_correct(preds_test, labels_test)
-        print("testing accuracy: ", correct_test / len(test_set))
+        # l.println(f"testing accuracy: {correct_test / len(test_set)}")
         acc_test.append(deepcopy(float(correct_test) / len(test_set)))
         scheduler.step()
     
     if save:
         torch.save(network.state_dict(), save) # Add you path where you want to save
-        print(f"SAVED on: {save}")
+        l.println(f"TRAINING RESULT SAVED: {save}")
     
-    print('best accuracy: ', max(acc_test))
-###################################################################################
+    # print('best accuracy: ', max(acc_test))
+#####################################################
 
-################################################################################### Infer
+##################################################### Infer
 def infer(network):
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=128, shuffle=False, pin_memory=True)
     correct_test = 0
@@ -113,30 +110,27 @@ def infer(network):
         preds_test = network(images_test)  # pass batch to network
         correct_test += get_num_correct(preds_test, labels_test)
     #print("time: ", time.time() - start)
-    print("testing accuracy: ", correct_test / len(test_set))
-###################################################################################
+    l.println(f"testing accuracy: {correct_test / len(test_set)}")
+#####################################################
 
-
-########################################################################## MAIN
-from manualModel import *
+##################################################### MAIN
 from darknet import *
-from vgg11 import *
-TRAIN_FLAG = False
+from tool import manipualte_percentage
 
 training_lst = [
-    {'network': darknetNoBn(), 'path': './modeloutput/darknetNoBn.pt', 'lr': 0.05, 'weight_decay': 0.0001},
+    {'network': darknetCipher10(), 'path': './modeloutput/darknetCipher10.pt'},
     # {'network': vgg11NoBn(), 'path': './modeloutput/vgg11NoBn.pt', 'lr': 0.3, 'weight_decay': 0.0002},
 ]
 
 inference_lst =  [
+    {'network': darknetManiCipher10(), 'path': './modeloutput/darknet.pt'},
     # {'network': vgg11NoBnManipulated(), 'path': './modeloutput/vgg11NoBn.pt'},
-    {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
+    # {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
 ]
 
 def main_train():
     for i in training_lst:
-
-        print(f"####################\n# network: {i['network'].__class__.__name__}")
+        l.println(f"network: {i['network'].__class__.__name__}")
 
         network = i['network']
         network = network.to(device)
@@ -147,23 +141,26 @@ def main_train():
               weight_decay=i.get('weight_decay')
               )
 
+
 def main_inference():
     for i in inference_lst:
-        print(f"####################\n # network: {i['network'].__class__.__name__}\t")
+        l.println(f"network: {i['network'].__class__.__name__}")
         
         network = i['network']
         network = network.to(device)
 
         network.load_state_dict(torch.load(i['path']))
         infer(network)
-    
+
+
 if __name__ == "__main__":
     if TRAIN_FLAG:
         main_train()
         main_inference()
     else:
-        # for i in range(1, 5):
-            # set_manipualte_percenrage(i/100)
-            # print(f"==> {i}/100 %")
-        main_inference()
-########################################################################## END MAIN
+        for i in range(0, 5):
+            manipualte_percentage.set(i/100)
+            l.println(f"set manipulate percentage: {i}/100%")
+            main_inference()
+            l.println()
+##################################################### END MAIN
