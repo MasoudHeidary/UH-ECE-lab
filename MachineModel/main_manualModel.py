@@ -40,7 +40,7 @@ def get_num_correct(pred, labels):
     return pred.argmax(dim=1).eq(labels).sum().item()
 
 
-def train(network, save, lr=default_lr, weight_decay=default_weight_decay, epoch_range=epoch_range):
+def train(network, save, lr=default_lr, weight_decay=default_weight_decay, epoch_range=default_epoch_range):
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=128, shuffle=True, pin_memory=True)
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=128, shuffle=False, pin_memory=True)
     optimizer = optim.SGD(network.parameters(), lr=lr,  weight_decay=weight_decay)
@@ -132,10 +132,11 @@ training_lst = [
 inference_lst =  [
     # {'network': darknetManiCipher10(), 'path': './modeloutput/darknet.pt'},
     # {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
-    {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenet.pt'},
+    # {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenet.pt'},
 ]
 
 def main_train():
+    l.println("---MAIN TRAINING---")
     for i in training_lst:
         l.println(f"network: {i['network'].__class__.__name__}")
 
@@ -144,12 +145,15 @@ def main_train():
 
         train(network, 
               save=i.get('path') or False, 
-              lr=i.get('lr'), 
-              weight_decay=i.get('weight_decay')
+              lr=i.get('lr') or default_lr, 
+              weight_decay=i.get('weight_decay') or default_weight_decay,
+              epoch_range=i.get('epoch_range') or default_epoch_range
               )
+        l.println()
 
 
 def main_inference():
+    l.println("---MAIN INFERENCE---")
     for i in inference_lst:
         l.println(f"network: {i['network'].__class__.__name__}")
         
@@ -158,16 +162,19 @@ def main_inference():
 
         network.load_state_dict(torch.load(i['path']))
         infer(network)
+        l.println()
 
 
 if __name__ == "__main__":
+    l.println("PROGRAM START")
     if TRAIN_FLAG:
         main_train()
-        main_inference()
     else:
         for i in range(0, 5):
             manipualte_percentage.set(i/100)
             l.println(f"set manipulate percentage: {i}/100%")
             main_inference()
             l.println()
+    
+    l.println("PROGRAM FINISHED")
 ##################################################### END MAIN

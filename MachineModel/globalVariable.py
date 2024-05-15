@@ -1,10 +1,10 @@
 import torch
 
-epoch_range = 100
+default_epoch_range = 1
 default_lr = 0.1
 default_weight_decay = 0.0005
 
-TRAIN_FLAG = False
+TRAIN_FLAG = True
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.is_available():
