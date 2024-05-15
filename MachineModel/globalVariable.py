@@ -1,6 +1,6 @@
 import torch
 
-default_epoch_range = 1
+default_epoch_range = 100
 default_lr = 0.1
 default_weight_decay = 0.0005
 
