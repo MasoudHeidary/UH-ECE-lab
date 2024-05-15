@@ -115,17 +115,19 @@ def infer(network):
 
 ##################################################### MAIN
 from darknet import *
+from squeezenet import *
 from tool import manipualte_percentage
 
 training_lst = [
-    {'network': darknetCipher10(), 'path': './modeloutput/darknetCipher10.pt'},
-    # {'network': vgg11NoBn(), 'path': './modeloutput/vgg11NoBn.pt', 'lr': 0.3, 'weight_decay': 0.0002},
+    {'network': darknetCipher10(), 'path': './modeloutput/darknetCipher10.pt', },
+    # {'network': vgg11NoBn(), 'path': './modeloutput/vgg11NoBn.pt', },
 ]
 
 inference_lst =  [
-    {'network': darknetManiCipher10(), 'path': './modeloutput/darknet.pt'},
+    # {'network': darknetManiCipher10(), 'path': './modeloutput/darknet.pt'},
     # {'network': vgg11NoBnManipulated(), 'path': './modeloutput/vgg11NoBn.pt'},
     # {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
+    {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenet.pt'},
 ]
 
 def main_train():
