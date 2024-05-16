@@ -7,7 +7,7 @@ from copy import deepcopy
 from globalVariable import *
 from log import Log
 
-l = Log("log.txt", terminal=False)
+l = Log("log.txt", terminal=True)
 
 ##################################################### data set
 torch.set_printoptions(linewidth=100)

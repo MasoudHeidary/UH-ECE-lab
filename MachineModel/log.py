@@ -7,9 +7,9 @@ class Log:
         self.terminal = terminal
 
     def __lshift__(self, txt):
+        txt = f"[{time.asctime()}] >> " + txt
         if self.terminal:
             print(txt, end='')
-        self.f.write(f"[{time.asctime()}] >> ")
         self.f.write(txt)
         self.f.flush()
 
