@@ -130,9 +130,11 @@ training_lst = [
 ]
 
 inference_lst =  [
-    # {'network': darknetManiCipher10(), 'path': './modeloutput/darknet.pt'},
-    # {'network': vgg11Manipulated(), 'path': './modeloutput/vgg11.pt'},
-    # {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenet.pt'},
+    {'network': darknetManiCipher10(), 'path': './modeloutput/darknetCipher10.pt', },
+    {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenetCipher10.pt', },
+    {'network': resnet18ManiCipher10(), 'path': './modeloutput/resnet18Cipher10.pt', },
+    {'network': vgg11ManiCiphar10(), 'path': './modeloutput/vgg11Cipher10.pt', },
+    {'network': vgg19ManiCipher10(), 'path': './modeloutput/vgg19Cipher10.pt', },
 ]
 
 def main_train():
@@ -161,20 +163,25 @@ def main_inference():
         network = network.to(device)
 
         network.load_state_dict(torch.load(i['path']))
-        infer(network)
+
+        for i in range(0, default_manipulate_range+1, default_manipulate_step):
+            manipualte_percentage.set(i/default_manipulate_divider/100)
+            l.println(f"set manipulate percentage: {i/default_manipulate_divider}/100%")
+            infer(network)
+            # l.println()
+        
         l.println()
 
 
 if __name__ == "__main__":
+    l.println()
     l.println("PROGRAM START")
+    l.println(f"TRAIN FLAG: {TRAIN_FLAG}")
+
     if TRAIN_FLAG:
         main_train()
     else:
-        for i in range(0, 5):
-            manipualte_percentage.set(i/100)
-            l.println(f"set manipulate percentage: {i}/100%")
-            main_inference()
-            l.println()
+        main_inference()
     
     l.println("PROGRAM FINISHED")
 ##################################################### END MAIN

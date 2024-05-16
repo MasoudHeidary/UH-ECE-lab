@@ -6,6 +6,8 @@ class ManipulatePercentage:
     def __init__(self) -> None:
         self.percentage = 0.00
     def set(self, per):
+        if not (0 <= per <= 1):
+            raise RuntimeError("per should be in [0:1] range")
         self.percentage = per
 
 manipualte_percentage = ManipulatePercentage()

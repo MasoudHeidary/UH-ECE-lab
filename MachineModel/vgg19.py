@@ -87,7 +87,7 @@ class vgg19Cipher10(nn.Module):
 
 class vgg19ManiCipher10(nn.Module):
     def __init__(self):
-        super(vgg19Cipher10,self).__init__()
+        super(vgg19ManiCipher10,self).__init__()
 
         # 1
         self.conv1_1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
