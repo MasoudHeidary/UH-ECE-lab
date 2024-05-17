@@ -529,3 +529,8 @@ class squeezenetManiCifar100(nn.Module):
 
         return F.log_softmax(x, dim=1)
 
+#########################################
+################ SVHN ###################
+#########################################
+squeezenetSVHN = squeezenetCifar10
+squeezenetManiSVHN = squeezenetManiCifar10

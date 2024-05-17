@@ -372,3 +372,10 @@ class darknetManiCifar100(nn.Module):
         x = manipulate(self.fc(x))
 
         return F.log_softmax(x, dim=1)
+
+
+#########################################
+################ SVHN ###################
+#########################################
+darknetSVHN = darknetCifar10
+darknetManiSVHN = darknetManiCifar10

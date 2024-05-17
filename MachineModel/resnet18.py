@@ -375,3 +375,9 @@ class resnet18ManiCifar100(nn.Module):
         return F.log_softmax(x, dim=1)
 
 
+
+#########################################
+################ SVHN ###################
+#########################################
+resnet18SVHN = resnet18Cifar10
+resnet18ManiSVHN = resnet18ManiCifar10

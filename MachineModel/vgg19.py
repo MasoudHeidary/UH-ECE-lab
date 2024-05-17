@@ -324,3 +324,9 @@ class vgg19ManiCifar100(nn.Module):
 
         return F.log_softmax(x, dim=1)
 
+
+#########################################
+################ SVHN ###################
+#########################################
+vgg19SVHN = vgg19Cifar10
+vgg19ManiSVHN = vgg19ManiCifar10

@@ -220,3 +220,9 @@ class vgg11ManiCifar100(nn.Module):
         x = manipulate(self.fc3(x))
 
         return F.log_softmax(x, dim=1)
+
+#########################################
+################ SVHN ###################
+#########################################
+vgg11SVHN = vgg11Cifar10
+vgg11ManiSVHN = vgg11ManiCifar10
