@@ -23,32 +23,32 @@ test_set = None
 
 if DATA_SET == 'Cifar10':
     train_set = torchvision.datasets.CIFAR10(
-    root='./data/cifar10', #add your path here
-    train=True,
-    download=True,
-    transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
-                                  transforms.ToTensor(), normalize, transforms.RandomErasing(),])
+        root='./data/cifar10', #add your path here
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
+                                    transforms.ToTensor(), normalize, transforms.RandomErasing(),])
     )
     test_set = torchvision.datasets.CIFAR10(
-    root='./data/cifar10', #add your path here
-    train=False,
-    download=True,
-    transform=transforms.Compose([transforms.ToTensor(), normalize])
+        root='./data/cifar10', #add your path here
+        train=False,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), normalize])
     )
 
 elif DATA_SET == "Cifar100":
     train_set = torchvision.datasets.CIFAR100(
-    root='./data/cifar100', #add your path here
-    train=True,
-    download=True,
-    transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
-                                  transforms.ToTensor(), normalize, transforms.RandomErasing(),])
+        root='./data/cifar100', #add your path here
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
+                                    transforms.ToTensor(), normalize, transforms.RandomErasing(),])
     )
     test_set = torchvision.datasets.CIFAR100(
-    root='./data/cifar100', #add your path here
-    train=False,
-    download=True,
-    transform=transforms.Compose([transforms.ToTensor(), normalize])
+        root='./data/cifar100', #add your path here
+        train=False,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), normalize])
     )
 
 elif DATA_SET == 'SVHN':
@@ -180,9 +180,17 @@ if DATA_SET == 'Cifar10':
 elif DATA_SET == 'Cifar100':
     training_lst = [
         {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
+        {'network': squeezenetCifar100(), 'path': './modeloutput/squeezenetCifar100.pt', },
+        {'network': resnet18Cifar100(), 'path': './modeloutput/resnet18Cifar100.pt', },
+        {'network': vgg11Cifar100(), 'path': './modeloutput/vgg11Cifar100.pt', },
+        {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
     ]
     inference_lst = [
         {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
+        {'network': squeezenetCifar100(), 'path': './modeloutput/squeezenetCifar100.pt', },
+        {'network': resnet18Cifar100(), 'path': './modeloutput/resnet18Cifar100.pt', },
+        {'network': vgg11Cifar100(), 'path': './modeloutput/vgg11Cifar100.pt', },
+        {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
     ]
 
 elif DATA_SET == 'SVHN':
