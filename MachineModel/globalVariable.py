@@ -7,7 +7,7 @@ default_weight_decay = 0.0005
 'Cifar10'
 'Cifar100'
 'SVHN'
-DATA_SET = 'Cifar100'
+DATA_SET = 'SVHN'
 
 TRAIN_FLAG = True
 
