@@ -1,0 +1,70 @@
+[Fri May 17 12:15:54 2024] >> 
+[Fri May 17 12:15:54 2024] >> PROGRAM START
+[Fri May 17 12:15:54 2024] >> TRAIN FLAG: True
+[Fri May 17 12:15:54 2024] >> ---MAIN TRAINING---
+[Fri May 17 12:15:54 2024] >> network: darknetCifar100
+[Fri May 17 12:16:13 2024] >> training [000]: 0.07676
+[Fri May 17 12:16:32 2024] >> training [001]: 0.14034
+[Fri May 17 12:16:52 2024] >> training [002]: 0.18206
+[Fri May 17 12:17:13 2024] >> training [003]: 0.2205
+[Fri May 17 12:17:33 2024] >> training [004]: 0.25392
+[Fri May 17 12:17:54 2024] >> training [005]: 0.28452
+[Fri May 17 12:18:15 2024] >> training [006]: 0.30356
+[Fri May 17 12:18:35 2024] >> training [007]: 0.32498
+[Fri May 17 12:18:55 2024] >> training [008]: 0.34386
+[Fri May 17 12:19:15 2024] >> training [009]: 0.3571
+[Fri May 17 12:19:17 2024] >> TRAINING RESULT SAVED: ./modeloutput/darknetCifar100.pt
+[Fri May 17 12:19:17 2024] >> 
+[Fri May 17 12:19:17 2024] >> network: squeezenetCifar100
+[Fri May 17 12:19:37 2024] >> training [000]: 0.07562
+[Fri May 17 12:19:58 2024] >> training [001]: 0.14114
+[Fri May 17 12:20:20 2024] >> training [002]: 0.18938
+[Fri May 17 12:20:42 2024] >> training [003]: 0.22482
+[Fri May 17 12:21:04 2024] >> training [004]: 0.26308
+[Fri May 17 12:21:25 2024] >> training [005]: 0.29014
+[Fri May 17 12:21:46 2024] >> training [006]: 0.31504
+[Fri May 17 12:22:06 2024] >> training [007]: 0.33664
+[Fri May 17 12:22:28 2024] >> training [008]: 0.35642
+[Fri May 17 12:22:49 2024] >> training [009]: 0.3751
+[Fri May 17 12:22:51 2024] >> TRAINING RESULT SAVED: ./modeloutput/squeezenetCifar100.pt
+[Fri May 17 12:22:51 2024] >> 
+[Fri May 17 12:22:51 2024] >> network: resnet18Cifar100
+[Fri May 17 12:23:10 2024] >> training [000]: 0.07824
+[Fri May 17 12:23:31 2024] >> training [001]: 0.15094
+[Fri May 17 12:23:51 2024] >> training [002]: 0.21202
+[Fri May 17 12:24:11 2024] >> training [003]: 0.25802
+[Fri May 17 12:24:32 2024] >> training [004]: 0.2959
+[Fri May 17 12:24:51 2024] >> training [005]: 0.3281
+[Fri May 17 12:25:12 2024] >> training [006]: 0.3577
+[Fri May 17 12:25:33 2024] >> training [007]: 0.37984
+[Fri May 17 12:25:54 2024] >> training [008]: 0.40296
+[Fri May 17 12:26:15 2024] >> training [009]: 0.42258
+[Fri May 17 12:26:17 2024] >> TRAINING RESULT SAVED: ./modeloutput/resnet18Cifar100.pt
+[Fri May 17 12:26:17 2024] >> 
+[Fri May 17 12:26:17 2024] >> network: vgg11Cifar100
+[Fri May 17 12:26:35 2024] >> training [000]: 0.06088
+[Fri May 17 12:26:55 2024] >> training [001]: 0.11756
+[Fri May 17 12:27:14 2024] >> training [002]: 0.16746
+[Fri May 17 12:27:33 2024] >> training [003]: 0.21118
+[Fri May 17 12:27:53 2024] >> training [004]: 0.24964
+[Fri May 17 12:28:12 2024] >> training [005]: 0.277
+[Fri May 17 12:28:32 2024] >> training [006]: 0.30232
+[Fri May 17 12:28:51 2024] >> training [007]: 0.32318
+[Fri May 17 12:29:11 2024] >> training [008]: 0.3481
+[Fri May 17 12:29:31 2024] >> training [009]: 0.36472
+[Fri May 17 12:29:33 2024] >> TRAINING RESULT SAVED: ./modeloutput/vgg11Cifar100.pt
+[Fri May 17 12:29:33 2024] >> 
+[Fri May 17 12:29:33 2024] >> network: vgg19Cifar100
+[Fri May 17 12:29:55 2024] >> training [000]: 0.05832
+[Fri May 17 12:30:18 2024] >> training [001]: 0.12336
+[Fri May 17 12:30:41 2024] >> training [002]: 0.1817
+[Fri May 17 12:31:04 2024] >> training [003]: 0.23366
+[Fri May 17 12:31:27 2024] >> training [004]: 0.274
+[Fri May 17 12:31:51 2024] >> training [005]: 0.31294
+[Fri May 17 12:32:14 2024] >> training [006]: 0.34218
+[Fri May 17 12:32:37 2024] >> training [007]: 0.37038
+[Fri May 17 12:33:00 2024] >> training [008]: 0.39408
+[Fri May 17 12:33:22 2024] >> training [009]: 0.41436
+[Fri May 17 12:33:24 2024] >> TRAINING RESULT SAVED: ./modeloutput/vgg19Cifar100.pt
+[Fri May 17 12:33:24 2024] >> 
+[Fri May 17 12:33:24 2024] >> PROGRAM FINISHED
