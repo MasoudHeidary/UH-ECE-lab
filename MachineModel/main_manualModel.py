@@ -224,7 +224,7 @@ def main_inference():
 
         network.load_state_dict(torch.load(i['path']))
 
-        for i in range(0, default_manipulate_range+1, default_manipulate_step):
+        for i in default_manipulate_range:
             manipualte_percentage.set(i/default_manipulate_divider/100)
             l.println(f"set manipulate percentage: {i/default_manipulate_divider}/100%")
             infer(network)

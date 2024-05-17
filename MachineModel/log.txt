@@ -214,3 +214,38 @@
 [Fri May 17 11:18:34 2024] >> TRAIN FLAG: True
 [Fri May 17 11:18:34 2024] >> ---MAIN TRAINING---
 [Fri May 17 11:18:34 2024] >> network: darknetCipher100
+[Fri May 17 11:54:09 2024] >> 
+[Fri May 17 11:54:09 2024] >> PROGRAM START
+[Fri May 17 11:54:09 2024] >> TRAIN FLAG: True
+[Fri May 17 11:54:09 2024] >> ---MAIN TRAINING---
+[Fri May 17 11:54:09 2024] >> network: darknetCifar10
+[Fri May 17 11:54:24 2024] >> 
+[Fri May 17 11:54:24 2024] >> PROGRAM START
+[Fri May 17 11:54:24 2024] >> TRAIN FLAG: False
+[Fri May 17 11:54:24 2024] >> ---MAIN INFERENCE---
+[Fri May 17 11:54:24 2024] >> network: darknetManiCifar10
+[Fri May 17 11:56:31 2024] >> 
+[Fri May 17 11:56:31 2024] >> PROGRAM START
+[Fri May 17 11:56:31 2024] >> TRAIN FLAG: False
+[Fri May 17 11:56:31 2024] >> ---MAIN INFERENCE---
+[Fri May 17 11:56:31 2024] >> network: darknetManiCifar10
+[Fri May 17 11:56:31 2024] >> set manipulate percentage: 0.0/100%
+[Fri May 17 11:56:49 2024] >> testing accuracy: 0.8358
+[Fri May 17 11:56:49 2024] >> 
+[Fri May 17 11:56:49 2024] >> network: squeezenetManiCifar10
+[Fri May 17 11:56:49 2024] >> set manipulate percentage: 0.0/100%
+[Fri May 17 11:57:36 2024] >> testing accuracy: 0.8397
+[Fri May 17 11:57:36 2024] >> 
+[Fri May 17 11:57:36 2024] >> network: resnet18ManiCifar10
+[Fri May 17 11:57:36 2024] >> set manipulate percentage: 0.0/100%
+[Fri May 17 11:58:01 2024] >> testing accuracy: 0.8666
+[Fri May 17 11:58:01 2024] >> 
+[Fri May 17 11:58:01 2024] >> network: vgg11ManiCifar10
+[Fri May 17 11:58:01 2024] >> set manipulate percentage: 0.0/100%
+[Fri May 17 11:58:22 2024] >> testing accuracy: 0.8606
+[Fri May 17 11:58:22 2024] >> 
+[Fri May 17 11:58:22 2024] >> network: vgg19ManiCifar10
+[Fri May 17 11:58:22 2024] >> set manipulate percentage: 0.0/100%
+[Fri May 17 11:59:03 2024] >> testing accuracy: 0.8891
+[Fri May 17 11:59:03 2024] >> 
+[Fri May 17 11:59:03 2024] >> PROGRAM FINISHED

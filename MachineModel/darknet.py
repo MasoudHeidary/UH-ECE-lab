@@ -279,7 +279,7 @@ class darknetCifar100(nn.Module):
 
         return F.log_softmax(x, dim=1)
 
-class darknetManiCifar10(nn.Module):
+class darknetManiCifar100(nn.Module):
     def __init__(self):
         super(darknetManiCifar10,self).__init__()
 
