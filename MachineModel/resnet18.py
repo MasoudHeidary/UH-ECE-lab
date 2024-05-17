@@ -7,9 +7,9 @@ from tool import manipulate
 
 
 
-class resnet18Cipher10(nn.Module):
+class resnet18Cifar10(nn.Module):
     def __init__(self):
-        super(resnet18Cipher10,self).__init__()
+        super(resnet18Cifar10,self).__init__()
 
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
@@ -100,9 +100,9 @@ class resnet18Cipher10(nn.Module):
 
 
 
-class resnet18ManiCipher10(nn.Module):
+class resnet18ManiCifar10(nn.Module):
     def __init__(self):
-        super(resnet18ManiCipher10,self).__init__()
+        super(resnet18ManiCifar10,self).__init__()
 
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
@@ -187,3 +187,5 @@ class resnet18ManiCipher10(nn.Module):
         x = F.relu(manipulate(self.fc2(x)))
         
         return F.log_softmax(x, dim=1)
+
+

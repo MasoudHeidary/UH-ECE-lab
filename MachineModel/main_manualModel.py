@@ -18,20 +18,57 @@ normalize = transforms.Normalize(
     mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
 )
 
-train_set = torchvision.datasets.CIFAR10(
+train_set = None
+test_set = None
+
+if DATA_SET == 'Cifar10':
+    train_set = torchvision.datasets.CIFAR10(
     root='./data/cifar10', #add your path here
     train=True,
     download=True,
     transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
                                   transforms.ToTensor(), normalize, transforms.RandomErasing(),])
-)
-
-test_set = torchvision.datasets.CIFAR10(
+    )
+    test_set = torchvision.datasets.CIFAR10(
     root='./data/cifar10', #add your path here
     train=False,
     download=True,
     transform=transforms.Compose([transforms.ToTensor(), normalize])
-)
+    )
+
+elif DATA_SET == "Cifar100":
+    train_set = torchvision.datasets.CIFAR100(
+    root='./data/cifar100', #add your path here
+    train=True,
+    download=True,
+    transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
+                                  transforms.ToTensor(), normalize, transforms.RandomErasing(),])
+    )
+    test_set = torchvision.datasets.CIFAR100(
+    root='./data/cifar100', #add your path here
+    train=False,
+    download=True,
+    transform=transforms.Compose([transforms.ToTensor(), normalize])
+    )
+
+elif DATA_SET == 'SVHN':
+    train_set = torchvision.datasets.SVHN(
+        root='./data/SVHN', #add your path here
+        # train=True,
+        download=True,
+        transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
+                                    transforms.ToTensor(), normalize, transforms.RandomErasing(),])
+    )
+    test_set = torchvision.datasets.SVHN(
+        root='./data/SVHN', #add your path here
+        # train=False,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), normalize])
+    )
+else:
+    raise ValueError("DATASET INVALID")
+
+
 #####################################################
 
 
@@ -121,21 +158,44 @@ from resnet18 import *
 from vgg11 import *
 from vgg19 import *
 
-training_lst = [
-    {'network': darknetCipher10(), 'path': './modeloutput/darknetCipher10.pt', },
-    {'network': squeezenetCipher10(), 'path': './modeloutput/squeezenetCipher10.pt', },
-    {'network': resnet18Cipher10(), 'path': './modeloutput/resnet18Cipher10.pt', },
-    {'network': vgg11Cipher10(), 'path': './modeloutput/vgg11Cipher10.pt', },
-    {'network': vgg19Cipher10(), 'path': './modeloutput/vgg19Cipher10.pt', },
-]
 
-inference_lst =  [
-    {'network': darknetManiCipher10(), 'path': './modeloutput/darknetCipher10.pt', },
-    {'network': squeezenetManiCipher10(), 'path': './modeloutput/squeezenetCipher10.pt', },
-    {'network': resnet18ManiCipher10(), 'path': './modeloutput/resnet18Cipher10.pt', },
-    {'network': vgg11ManiCiphar10(), 'path': './modeloutput/vgg11Cipher10.pt', },
-    {'network': vgg19ManiCipher10(), 'path': './modeloutput/vgg19Cipher10.pt', },
-]
+training_lst = []
+inference_lst = []
+if DATA_SET == 'Cifar10':
+    training_lst = [
+        {'network': darknetCifar10(), 'path': './modeloutput/darknetCifar10.pt', },
+        {'network': squeezenetCifar10(), 'path': './modeloutput/squeezenetCifar10.pt', },
+        {'network': resnet18Cifar10(), 'path': './modeloutput/resnet18Cifar10.pt', },
+        {'network': vgg11Cifar10(), 'path': './modeloutput/vgg11Cifar10.pt', },
+        {'network': vgg19Cifar10(), 'path': './modeloutput/vgg19Cifar10.pt', },
+    ]
+    inference_lst =  [
+        {'network': darknetManiCifar10(), 'path': './modeloutput/darknetCifar10.pt', },
+        {'network': squeezenetManiCifar10(), 'path': './modeloutput/squeezenetCifar10.pt', },
+        {'network': resnet18ManiCifar10(), 'path': './modeloutput/resnet18Cifar10.pt', },
+        {'network': vgg11ManiCifar10(), 'path': './modeloutput/vgg11Cifar10.pt', },
+        {'network': vgg19ManiCifar10(), 'path': './modeloutput/vgg19Cifar10.pt', },
+    ]
+
+elif DATA_SET == 'Cifar100':
+    training_lst = [
+        {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
+    ]
+    inference_lst = [
+        {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
+    ]
+
+elif DATA_SET == 'SVHN':
+    training_lst = [
+        # {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
+    ]
+    inference_lst = [
+        # {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
+    ]
+
+else:
+    raise ValueError("DATASET INVALID")
+
 
 def main_train():
     l.println("---MAIN TRAINING---")

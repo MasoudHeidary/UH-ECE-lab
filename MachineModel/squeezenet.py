@@ -7,9 +7,9 @@ from tool import manipulate
 
 
 
-class squeezenetCipher10(nn.Module):
+class squeezenetCifar10(nn.Module):
     def __init__(self):
-        super(squeezenetCipher10,self).__init__()
+        super(squeezenetCifar10,self).__init__()
 
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=96,kernel_size=3, padding=1)
@@ -137,9 +137,9 @@ class squeezenetCipher10(nn.Module):
         return F.log_softmax(x, dim=1)
 
 
-class squeezenetManiCipher10(nn.Module):
+class squeezenetManiCifar10(nn.Module):
     def __init__(self):
-        super(squeezenetManiCipher10,self).__init__()
+        super(squeezenetManiCifar10,self).__init__()
 
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=96,kernel_size=3, padding=1)
@@ -265,3 +265,4 @@ class squeezenetManiCipher10(nn.Module):
         x = manipulate(self.fc(x))
 
         return F.log_softmax(x, dim=1)
+

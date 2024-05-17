@@ -6,9 +6,9 @@ import torch.nn.functional as F
 from tool import *
 
 
-class vgg11Cipher10(nn.Module):
+class vgg11Cifar10(nn.Module):
     def __init__(self):
-        super(vgg11Cipher10,self).__init__()
+        super(vgg11Cifar10,self).__init__()
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(64)
@@ -58,9 +58,9 @@ class vgg11Cipher10(nn.Module):
 
 
 
-class vgg11ManiCiphar10(nn.Module):
+class vgg11ManiCifar10(nn.Module):
     def __init__(self):
-        super(vgg11ManiCiphar10,self).__init__()
+        super(vgg11ManiCifar10,self).__init__()
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(64)
