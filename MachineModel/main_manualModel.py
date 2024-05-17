@@ -65,6 +65,7 @@ elif DATA_SET == 'SVHN':
         download=True,
         transform=transforms.Compose([transforms.ToTensor(), normalize])
     )
+
 else:
     raise ValueError("DATASET INVALID")
 
@@ -112,7 +113,7 @@ def train(network, save, lr=default_lr, weight_decay=default_weight_decay, epoch
             total_loss += loss.item()
             total_correct += correct
 
-        l.println(f"training [{epoch:03}]: {total_correct/len(train_set)}")
+        l.println(f"training [{epoch:03}]: {total_correct/len(train_set) :.4f}")
         acc_train.append(float(total_correct) / len(train_set))
 
         ### Testing ###
@@ -186,16 +187,20 @@ elif DATA_SET == 'Cifar100':
         {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
     ]
     inference_lst = [
-        {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
-        {'network': squeezenetCifar100(), 'path': './modeloutput/squeezenetCifar100.pt', },
-        {'network': resnet18Cifar100(), 'path': './modeloutput/resnet18Cifar100.pt', },
-        {'network': vgg11Cifar100(), 'path': './modeloutput/vgg11Cifar100.pt', },
-        {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
+        # {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
+        # {'network': squeezenetCifar100(), 'path': './modeloutput/squeezenetCifar100.pt', },
+        # {'network': resnet18Cifar100(), 'path': './modeloutput/resnet18Cifar100.pt', },
+        # {'network': vgg11Cifar100(), 'path': './modeloutput/vgg11Cifar100.pt', },
+        # {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
     ]
 
 elif DATA_SET == 'SVHN':
     training_lst = [
-        # {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
+        {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
+        {'network': squeezenetSVHN(), 'path': './modeloutput/squeezenetSVHN.pt', },
+        {'network': resnet18SVHN(), 'path': './modeloutput/resnet18SVHN.pt', },
+        {'network': vgg11SVHN(), 'path': './modeloutput/vgg11SVHN.pt', },
+        {'network': vgg19SVHN(), 'path': './modeloutput/vgg19SVHN.pt', },
     ]
     inference_lst = [
         # {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
@@ -245,6 +250,7 @@ if __name__ == "__main__":
     l.println()
     l.println("PROGRAM START")
     l.println(f"TRAIN FLAG: {TRAIN_FLAG}")
+    l.println(f"DATA SET: {DATA_SET}")
 
     if TRAIN_FLAG:
         main_train()
