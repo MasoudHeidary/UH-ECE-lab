@@ -379,5 +379,7 @@ class resnet18ManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
-resnet18SVHN = resnet18Cifar10
-resnet18ManiSVHN = resnet18ManiCifar10
+class resnet18SVHN(resnet18Cifar10):
+    pass
+class resnet18ManiSVHN(resnet18ManiCifar10):
+    pass

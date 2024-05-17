@@ -224,5 +224,7 @@ class vgg11ManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
-vgg11SVHN = vgg11Cifar10
-vgg11ManiSVHN = vgg11ManiCifar10
+class vgg11SVHN(vgg11Cifar10):
+    pass
+class vgg11ManiSVHN(vgg11ManiCifar10):
+    pass

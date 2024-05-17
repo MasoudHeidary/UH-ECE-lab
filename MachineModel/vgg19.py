@@ -328,5 +328,7 @@ class vgg19ManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
-vgg19SVHN = vgg19Cifar10
-vgg19ManiSVHN = vgg19ManiCifar10
+class vgg19SVHN(vgg19Cifar10):
+    pass
+class vgg19ManiSVHN(vgg19ManiCifar10):
+    pass

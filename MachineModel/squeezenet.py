@@ -532,5 +532,7 @@ class squeezenetManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
-squeezenetSVHN = squeezenetCifar10
-squeezenetManiSVHN = squeezenetManiCifar10
+class squeezenetSVHN(squeezenetCifar10):
+    pass
+class squeezenetManiSVHN(squeezenetManiCifar10):
+    pass

@@ -377,5 +377,7 @@ class darknetManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
-darknetSVHN = darknetCifar10
-darknetManiSVHN = darknetManiCifar10
+class darknetSVHN(darknetCifar10):
+    pass
+class darknetManiSVHN(darknetManiCifar10):
+    pass
