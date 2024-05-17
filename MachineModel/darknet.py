@@ -284,7 +284,7 @@ class darknetCifar100(nn.Module):
 
 class darknetManiCifar100(nn.Module):
     def __init__(self):
-        super(darknetManiCifar10,self).__init__()
+        super(darknetManiCifar100,self).__init__()
 
         ### 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=32,kernel_size=3, padding=1)

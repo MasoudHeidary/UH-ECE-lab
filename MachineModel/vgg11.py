@@ -118,7 +118,7 @@ class vgg11ManiCifar10(nn.Module):
 #########################################
 class vgg11Cifar100(nn.Module):
     def __init__(self):
-        super(vgg11Cifar10,self).__init__()
+        super(vgg11Cifar100,self).__init__()
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(64)
@@ -169,7 +169,7 @@ class vgg11Cifar100(nn.Module):
 
 class vgg11ManiCifar100(nn.Module):
     def __init__(self):
-        super(vgg11ManiCifar10,self).__init__()
+        super(vgg11ManiCifar100,self).__init__()
         # 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=64,kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(64)
