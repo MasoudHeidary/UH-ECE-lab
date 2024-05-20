@@ -55,6 +55,7 @@ elif DATA_SET == 'SVHN':
     train_set = torchvision.datasets.SVHN(
         root='./data/SVHN', #add your path here
         # train=True,
+        # split='train',
         download=True,
         transform=transforms.Compose([transforms.RandomHorizontalFlip(), torchvision.transforms.RandomVerticalFlip(),
                                     transforms.ToTensor(), normalize, transforms.RandomErasing(),])
@@ -62,6 +63,7 @@ elif DATA_SET == 'SVHN':
     test_set = torchvision.datasets.SVHN(
         root='./data/SVHN', #add your path here
         # train=False,
+        split='test',
         download=True,
         transform=transforms.Compose([transforms.ToTensor(), normalize])
     )
@@ -148,7 +150,7 @@ def infer(network):
         preds_test = network(images_test)  # pass batch to network
         correct_test += get_num_correct(preds_test, labels_test)
     #print("time: ", time.time() - start)
-    l.println(f"testing accuracy: {correct_test / len(test_set)}")
+    l.println(f"testing accuracy: {correct_test / len(test_set) :.4f}")
 #####################################################
 
 ##################################################### MAIN
@@ -187,11 +189,11 @@ elif DATA_SET == 'Cifar100':
         {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
     ]
     inference_lst = [
-        # {'network': darknetCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
-        # {'network': squeezenetCifar100(), 'path': './modeloutput/squeezenetCifar100.pt', },
-        # {'network': resnet18Cifar100(), 'path': './modeloutput/resnet18Cifar100.pt', },
-        # {'network': vgg11Cifar100(), 'path': './modeloutput/vgg11Cifar100.pt', },
-        # {'network': vgg19Cifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
+        {'network': darknetManiCifar100(), 'path': './modeloutput/darknetCifar100.pt', },
+        {'network': squeezenetManiCifar100(), 'path': './modeloutput/squeezenetCifar100.pt', },
+        {'network': resnet18ManiCifar100(), 'path': './modeloutput/resnet18Cifar100.pt', },
+        {'network': vgg11ManiCifar100(), 'path': './modeloutput/vgg11Cifar100.pt', },
+        {'network': vgg19ManiCifar100(), 'path': './modeloutput/vgg19Cifar100.pt', },
     ]
 
 elif DATA_SET == 'SVHN':
@@ -203,7 +205,11 @@ elif DATA_SET == 'SVHN':
         {'network': vgg19SVHN(), 'path': './modeloutput/vgg19SVHN.pt', },
     ]
     inference_lst = [
-        # {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
+        {'network': darknetSVHN(), 'path': './modeloutput/darknetSVHN.pt', },
+        {'network': squeezenetManiSVHN(), 'path': './modeloutput/squeezenetSVHN.pt', },
+        {'network': resnet18ManiSVHN(), 'path': './modeloutput/resnet18SVHN.pt', },
+        {'network': vgg11ManiSVHN(), 'path': './modeloutput/vgg11SVHN.pt', },
+        {'network': vgg19ManiSVHN(), 'path': './modeloutput/vgg19SVHN.pt', },
     ]
 
 else:
