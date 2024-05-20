@@ -9,7 +9,8 @@ default_weight_decay = 0.0005
 'SVHN'
 DATA_SET = 'SVHN'
 
-TRAIN_FLAG = True
+TRAIN_FLAG = False
+CONFIRM_TO_TRAIN = True
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.is_available():

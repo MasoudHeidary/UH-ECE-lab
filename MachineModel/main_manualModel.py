@@ -253,6 +253,11 @@ if __name__ == "__main__":
     l.println(f"DATA SET: {DATA_SET}")
 
     if TRAIN_FLAG:
+        if CONFIRM_TO_TRAIN:
+            if(input("Confirm to train (y/n): ").lower() in ['y', 'yes']):
+                pass
+            else:
+                exit("train cancelled")
         main_train()
     else:
         main_inference()
