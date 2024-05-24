@@ -39,14 +39,19 @@ for i in range(1, 100, 1):
 
 
 
-plt.plot(x, normal_delay, label="Normal Multiplier", linewidth=2.5)
-plt.plot(x, modified_delay, label="Modified", linewidth=2.5)
-plt.plot(x, M2_delay, label="M2", linewidth=2.5)
-plt.plot(x, M3_delay, label="M3", linewidth=2.5)
-plt.xlabel('time(weeks)', fontsize=16)
-plt.ylabel('delay(ps)', fontsize=16)
-plt.title('Delay', fontsize=16)
-plt.tick_params(axis='both', labelsize=16)
-plt.legend()
+plt.plot(x, normal_delay, label="0%  modified", linewidth=3)
+plt.plot(x, modified_delay, label="100% modified", linewidth=3)
+plt.plot(x, M2_delay, label="33% modified", linewidth=3)
+plt.plot(x, M3_delay, label="50% modified", linewidth=3)
+
+plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
+plt.xticks(fontsize=14, fontweight='bold')
+
+plt.ylabel('delay(ps)', fontsize=14, fontweight='bold')
+plt.yticks(fontsize=14, fontweight='bold')
+
+# plt.title('Delay', fontsize=16)
+# plt.tick_params(axis='both', labelsize=16)
+plt.legend(fontsize=14)
 plt.grid(True)
 plt.show()
