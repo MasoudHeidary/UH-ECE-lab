@@ -288,8 +288,8 @@ plot(getData("/step") getData("/M<0>") getData("/M<1>") getData("/M<2>") getData
 
 
 
-import lib.NBTI_formula as NBTI 
-import lib.vth_body_map as VTH
+import tool.NBTI_formula as NBTI 
+import tool.vth_body_map as VTH
 
 for t_week in range(1, 100, 1):
     t_sec = t_week * 30 * 24 * 60 * 60
