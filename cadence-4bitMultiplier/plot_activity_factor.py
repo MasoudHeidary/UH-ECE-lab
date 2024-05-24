@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
-import tool.NBTI_formula as NBTI
-
+# import tool.NBTI_formula as NBTI
+import matplotlib.ticker as mticker
 
 categories = [f"FA-{i}" for i in range(12)]
 normal_alpha = [160, 160, 160, 192, 144, 160, 164, 192, 136, 148, 164, 192]
 modified_alpha = [192, 208, 160, 192, 192, 232, 164, 192, 192, 196, 198, 202]
 
-normal_alpha = [i/256 for i in normal_alpha]
-modified_alpha = [i/256 for i in modified_alpha]
+normal_alpha = [i/256*100 for i in normal_alpha]
+modified_alpha = [i/256*100 for i in modified_alpha]
 
 # Define the width of the bars
 bar_width = 0.35
@@ -29,7 +29,7 @@ plt.xticks(fontsize=14, fontweight='bold')
 
 plt.ylabel('activity factor (%)', fontweight='bold', fontsize=16)
 plt.yticks(fontsize=14, fontweight='bold')
-
+plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
 
 # Add a legend
 plt.legend(fontsize=14)
