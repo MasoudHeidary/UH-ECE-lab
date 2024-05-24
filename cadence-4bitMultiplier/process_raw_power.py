@@ -34,6 +34,9 @@ for i in range(1, 100, 1):
     modified_power += [_modified]
 
 
+# expand time
+x = [i*2 for i in x]
+
 plt.title('Power', fontsize=16)
 plt.plot(x, normal_power, label="normal", linewidth=2.5)
 plt.plot(x, modified_power, label="modified", linewidth=2.5)

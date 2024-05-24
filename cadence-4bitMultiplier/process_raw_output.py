@@ -37,7 +37,8 @@ for i in range(1, 100, 1):
     # print(f"{_modified}, ")
     
 
-
+# expand time
+x = [i*2 for i in x]
 
 plt.plot(x, normal_delay, label="0%  modified", linewidth=3)
 plt.plot(x, modified_delay, label="100% modified", linewidth=3)
