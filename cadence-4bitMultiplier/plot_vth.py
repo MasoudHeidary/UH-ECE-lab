@@ -58,6 +58,9 @@ if True:
         ]
 
     
+    # expand time
+    time = [i*2 for i in time]
+
     plt.plot(time, worst_modified_vth, label="modified vth", color='red', linewidth=3)
     plt.plot(time, best_normal_vth, label="normal vth", linewidth=3)
 
