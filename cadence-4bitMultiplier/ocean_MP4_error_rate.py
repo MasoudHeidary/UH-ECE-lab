@@ -224,7 +224,7 @@ resultsDir( "/home/mheidary/simulation/main_MP4/spectre/schematic" )
 modelFile( 
     '("$SPECTRE_MODEL_PATH/design_wrapper.lib.scs" "tt_pre")
 )
-analysis('tran ?stop "5n"  ?errpreset "conservative"  )
+analysis('tran ?stop "2.5n"  ?errpreset "conservative"  )
 desVar(	  "wireopt" 19	)
 envOption(
 	'analysisOrder  list("tran") 
@@ -298,10 +298,10 @@ log = Log("python-log.txt")
 log.println()
 log.println("--PROGRAM START--")
 
-for t_week in [20, 40, 60, 80, 100]:
+
+for t_week in range(10, 100+1, 10):
     t_sec = t_week * 30 * 24 * 60 * 60
     
-
     for VA in VA_lst:
         for VB in VB_lst:
 
@@ -322,7 +322,7 @@ for t_week in [20, 40, 60, 80, 100]:
             # rewired aging
             alpha = [192, 208, 160, 192, 192, 232, 164, 192, 192, 196, 198, 202]
             vth = [(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, a/256, NBTI.Tclk, t_sec)) for a in alpha]
-            pfa = [VTH.get_body_voltage(v) for v in vth]
+            VBfa = [VTH.get_body_voltage(v) for v in vth]
     
             modify_log_name = f"./log/error-rate-modified-week{t_week:03}-A{''.join(map(str, VA))}-B{''.join(map(str, VB))}"
             update_netlist("/home/mheidary/simulation/main_MP4/spectre/schematic/netlist/netlist", VA, VB, VBand, VBfa)
