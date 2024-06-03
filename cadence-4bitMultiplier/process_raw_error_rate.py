@@ -1,5 +1,12 @@
 import re
 import matplotlib.pyplot as plt 
+import matplotlib.ticker as mticker
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter, FuncFormatter
+
+
+# just modify plot fig
+EXPAND_TIME_FACTOR = 2
+
 
 def filter_data(data):
     pattern = r"(\d+)\s+([\d.]+)p"
@@ -24,9 +31,9 @@ VB_lst = generate_input(4)
 
 
 time = []
+error_rate_percent = []
 
-
-for t_week in [20, 40, 60, 80, 100]:
+for t_week in range(10, 100+1, 10):
 
     time += [t_week]
 
@@ -61,32 +68,21 @@ for t_week in [20, 40, 60, 80, 100]:
     
     print(f"time: {t_week} weeks, max modify delay {max_modify_delay}")
     print(f"time: {t_week} weeks, error counter: {error_counter}, error_rate: {error_counter/256}")
-            
-            
-
-
-    # _normal = max(filter_data(normal_file.read()))
-    # _modified = max(filter_data(modified_file.read()))
-    # _m2 = max(filter_data(M2_file.read()))
-    # _m3 = max(filter_data(M3_file.read()))
-    # normal_delay += [_normal]
-    # modified_delay += [_modified]
-    # M2_delay += [_m2]
-    # M3_delay += [_m3]
-
-    # print(f"{_modified}, ")
+    
+    error_rate_percent.append(error_counter/256 * 100)
     
 
+time = [t*EXPAND_TIME_FACTOR for t in time]
 
+plt.plot(time, error_rate_percent, label="", linewidth=3)
+plt.xlabel("time(weeks)", fontsize=14, fontweight='bold')
+plt.xticks(fontsize=14, fontweight='bold')
 
-# plt.plot(x, normal_delay, label="Normal Multiplier", linewidth=2.5)
-# plt.plot(x, modified_delay, label="Modified", linewidth=2.5)
-# plt.plot(x, M2_delay, label="M2", linewidth=2.5)
-# plt.plot(x, M3_delay, label="M3", linewidth=2.5)
-# plt.xlabel('time(weeks)', fontsize=16)
-# plt.ylabel('delay(ps)', fontsize=16)
-# plt.title('Delay', fontsize=16)
-# plt.tick_params(axis='both', labelsize=16)
-# plt.legend()
-# plt.grid(True)
-# plt.show()
+plt.ylabel('error rate percentage', fontsize=14, fontweight='bold')
+plt.yticks(fontsize=14, fontweight='bold')
+# plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
+# plt.gca().yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
+plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x}%"))
+
+plt.grid(True)
+plt.show()
