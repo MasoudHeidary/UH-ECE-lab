@@ -5,7 +5,7 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter, FuncFormatter
 
 
 # just modify plot fig
-EXPAND_TIME_FACTOR = 2
+EXPAND_TIME_FACTOR = 1
 
 
 def filter_data(data):
@@ -75,11 +75,12 @@ for t_week in range(10, 100+1, 10):
 time = [t*EXPAND_TIME_FACTOR for t in time]
 
 plt.plot(time, error_rate_percent, label="", linewidth=3)
-plt.xlabel("time(weeks)", fontsize=14, fontweight='bold')
-plt.xticks(fontsize=14, fontweight='bold')
 
-plt.ylabel('error rate percentage', fontsize=14, fontweight='bold')
-plt.yticks(fontsize=14, fontweight='bold')
+plt.xlabel("time(weeks)", fontsize=16, fontweight='bold')
+plt.xticks(fontsize=16, fontweight='bold')
+
+plt.ylabel('error rate percentage', fontsize=16, fontweight='bold')
+plt.yticks(fontsize=16, fontweight='bold')
 # plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
 # plt.gca().yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
 plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x}%"))
