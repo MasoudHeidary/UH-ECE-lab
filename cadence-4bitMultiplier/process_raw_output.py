@@ -40,10 +40,10 @@ for i in range(1, 100, 1):
 # expand time
 x = [i*2 for i in x]
 
-plt.plot(x, normal_delay, label="0%  modified", linewidth=3)
 plt.plot(x, modified_delay, label="100% modified", linewidth=3)
-plt.plot(x, M2_delay, label="33% modified", linewidth=3)
 plt.plot(x, M3_delay, label="50% modified", linewidth=3)
+plt.plot(x, M2_delay, label="33% modified", linewidth=3)
+plt.plot(x, normal_delay, label="0%  modified", linewidth=3)
 
 plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
 plt.xticks(fontsize=14, fontweight='bold')
