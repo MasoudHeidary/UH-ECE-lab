@@ -7,9 +7,9 @@ default_weight_decay = 0.0005
 'Cifar10'
 'Cifar100'
 'SVHN'
-DATA_SET = 'SVHN'
+DATA_SET = 'Cifar100'
 
-TRAIN_FLAG = False
+TRAIN_FLAG = True
 CONFIRM_TO_TRAIN = True
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -17,7 +17,7 @@ if torch.cuda.is_available():
     torch.cuda.set_device(1)
 
 
-default_manipulate_range = range(0, 0+2, 1)
+default_manipulate_range = range(0, 5+1, 1)
 default_manipulate_divider = 1
 delta = torch.tensor(
     [1, 0.5, 0.25, 0.125, 0.0675,

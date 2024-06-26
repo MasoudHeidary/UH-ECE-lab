@@ -126,7 +126,7 @@ def train(network, save, lr=default_lr, weight_decay=default_weight_decay, epoch
 
             preds_test = network(images_test)  # pass batch to network
             correct_test += get_num_correct(preds_test, labels_test)
-        # l.println(f"testing accuracy: {correct_test / len(test_set)}")
+        l.println(f"testing accuracy: {correct_test / len(test_set)}")
         acc_test.append(deepcopy(float(correct_test) / len(test_set)))
         scheduler.step()
     

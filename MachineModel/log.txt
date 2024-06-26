@@ -1,73 +1,1103 @@
-[Mon May 20 11:19:54 2024] >> 
-[Mon May 20 11:19:54 2024] >> PROGRAM START
-[Mon May 20 11:19:54 2024] >> TRAIN FLAG: False
-[Mon May 20 11:19:54 2024] >> DATA SET: Cifar100
-[Mon May 20 11:19:54 2024] >> ---MAIN INFERENCE---
-[Mon May 20 11:19:54 2024] >> network: darknetManiCifar100
-[Mon May 20 11:19:54 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:20:13 2024] >> testing accuracy: 0.5313
-[Mon May 20 11:20:13 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:20:31 2024] >> testing accuracy: 0.1933
-[Mon May 20 11:20:31 2024] >> 
-[Mon May 20 11:20:31 2024] >> network: squeezenetManiCifar100
-[Mon May 20 11:20:31 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:21:20 2024] >> testing accuracy: 0.5868
-[Mon May 20 11:21:20 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:22:08 2024] >> testing accuracy: 0.0884
-[Mon May 20 11:22:08 2024] >> 
-[Mon May 20 11:22:08 2024] >> network: resnet18ManiCifar100
-[Mon May 20 11:22:08 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:22:34 2024] >> testing accuracy: 0.6025
-[Mon May 20 11:22:34 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:22:59 2024] >> testing accuracy: 0.4564
-[Mon May 20 11:22:59 2024] >> 
-[Mon May 20 11:22:59 2024] >> network: vgg11ManiCifar100
-[Mon May 20 11:22:59 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:23:21 2024] >> testing accuracy: 0.5845
-[Mon May 20 11:23:21 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:23:44 2024] >> testing accuracy: 0.2542
-[Mon May 20 11:23:44 2024] >> 
-[Mon May 20 11:23:44 2024] >> network: vgg19ManiCifar100
-[Mon May 20 11:23:44 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:24:26 2024] >> testing accuracy: 0.6356
-[Mon May 20 11:24:26 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:25:07 2024] >> testing accuracy: 0.4386
-[Mon May 20 11:25:07 2024] >> 
-[Mon May 20 11:25:07 2024] >> PROGRAM FINISHED
-[Mon May 20 11:29:02 2024] >> 
-[Mon May 20 11:32:02 2024] >> 
-[Mon May 20 11:32:02 2024] >> PROGRAM START
-[Mon May 20 11:32:02 2024] >> TRAIN FLAG: False
-[Mon May 20 11:32:02 2024] >> DATA SET: SVHN
-[Mon May 20 11:32:02 2024] >> ---MAIN INFERENCE---
-[Mon May 20 11:32:02 2024] >> network: darknetSVHN
-[Mon May 20 11:32:02 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:32:07 2024] >> testing accuracy: 0.8574830977258758
-[Mon May 20 11:32:07 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:32:12 2024] >> testing accuracy: 0.8574830977258758
-[Mon May 20 11:32:12 2024] >> 
-[Mon May 20 11:32:12 2024] >> network: squeezenetManiSVHN
-[Mon May 20 11:32:12 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:34:17 2024] >> testing accuracy: 0.8726183159188691
-[Mon May 20 11:34:17 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:36:24 2024] >> testing accuracy: 0.1413260602335587
-[Mon May 20 11:36:24 2024] >> 
-[Mon May 20 11:36:24 2024] >> network: resnet18ManiSVHN
-[Mon May 20 11:36:24 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:37:29 2024] >> testing accuracy: 0.8452289489858635
-[Mon May 20 11:37:29 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:38:35 2024] >> testing accuracy: 0.22099723417332515
-[Mon May 20 11:38:35 2024] >> 
-[Mon May 20 11:38:35 2024] >> network: vgg11ManiSVHN
-[Mon May 20 11:38:35 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:39:32 2024] >> testing accuracy: 0.854141057160418
-[Mon May 20 11:39:32 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:40:29 2024] >> testing accuracy: 0.16402888752304856
-[Mon May 20 11:40:29 2024] >> 
-[Mon May 20 11:40:29 2024] >> network: vgg19ManiSVHN
-[Mon May 20 11:40:29 2024] >> set manipulate percentage: 0.0/100%
-[Mon May 20 11:42:15 2024] >> testing accuracy: 0.863821450522434
-[Mon May 20 11:42:15 2024] >> set manipulate percentage: 1.0/100%
-[Mon May 20 11:44:03 2024] >> testing accuracy: 0.15027658266748617
-[Mon May 20 11:44:03 2024] >> 
-[Mon May 20 11:44:03 2024] >> PROGRAM FINISHED
+[Tue Jun 25 11:54:14 2024] >> 
+[Tue Jun 25 11:54:14 2024] >> PROGRAM START
+[Tue Jun 25 11:54:14 2024] >> TRAIN FLAG: True
+[Tue Jun 25 11:54:14 2024] >> DATA SET: Cifar100
+[Tue Jun 25 11:54:26 2024] >> ---MAIN TRAINING---
+[Tue Jun 25 11:54:26 2024] >> network: darknetCifar100
+[Tue Jun 25 11:54:46 2024] >> training [000]: 0.0716
+[Tue Jun 25 11:54:48 2024] >> testing accuracy: 0.1136
+[Tue Jun 25 11:55:06 2024] >> training [001]: 0.1354
+[Tue Jun 25 11:55:08 2024] >> testing accuracy: 0.1542
+[Tue Jun 25 11:55:27 2024] >> training [002]: 0.1810
+[Tue Jun 25 11:55:29 2024] >> testing accuracy: 0.1819
+[Tue Jun 25 11:55:48 2024] >> training [003]: 0.2159
+[Tue Jun 25 11:55:50 2024] >> testing accuracy: 0.2245
+[Tue Jun 25 11:56:09 2024] >> training [004]: 0.2477
+[Tue Jun 25 11:56:11 2024] >> testing accuracy: 0.2451
+[Tue Jun 25 11:56:30 2024] >> training [005]: 0.2771
+[Tue Jun 25 11:56:32 2024] >> testing accuracy: 0.2788
+[Tue Jun 25 11:56:52 2024] >> training [006]: 0.2978
+[Tue Jun 25 11:56:54 2024] >> testing accuracy: 0.3042
+[Tue Jun 25 11:57:13 2024] >> training [007]: 0.3203
+[Tue Jun 25 11:57:14 2024] >> testing accuracy: 0.3164
+[Tue Jun 25 11:57:33 2024] >> training [008]: 0.3376
+[Tue Jun 25 11:57:35 2024] >> testing accuracy: 0.3267
+[Tue Jun 25 11:57:54 2024] >> training [009]: 0.3539
+[Tue Jun 25 11:57:56 2024] >> testing accuracy: 0.3619
+[Tue Jun 25 11:58:15 2024] >> training [010]: 0.3688
+[Tue Jun 25 11:58:17 2024] >> testing accuracy: 0.3653
+[Tue Jun 25 11:58:36 2024] >> training [011]: 0.3816
+[Tue Jun 25 11:58:38 2024] >> testing accuracy: 0.3789
+[Tue Jun 25 11:58:56 2024] >> training [012]: 0.3950
+[Tue Jun 25 11:58:58 2024] >> testing accuracy: 0.3874
+[Tue Jun 25 11:59:17 2024] >> training [013]: 0.4066
+[Tue Jun 25 11:59:19 2024] >> testing accuracy: 0.3907
+[Tue Jun 25 11:59:38 2024] >> training [014]: 0.4146
+[Tue Jun 25 11:59:40 2024] >> testing accuracy: 0.4007
+[Tue Jun 25 11:59:59 2024] >> training [015]: 0.4302
+[Tue Jun 25 12:00:01 2024] >> testing accuracy: 0.41
+[Tue Jun 25 12:00:19 2024] >> training [016]: 0.4395
+[Tue Jun 25 12:00:21 2024] >> testing accuracy: 0.3936
+[Tue Jun 25 12:00:40 2024] >> training [017]: 0.4466
+[Tue Jun 25 12:00:42 2024] >> testing accuracy: 0.422
+[Tue Jun 25 12:01:00 2024] >> training [018]: 0.4582
+[Tue Jun 25 12:01:02 2024] >> testing accuracy: 0.4286
+[Tue Jun 25 12:01:21 2024] >> training [019]: 0.4679
+[Tue Jun 25 12:01:23 2024] >> testing accuracy: 0.4254
+[Tue Jun 25 12:01:41 2024] >> training [020]: 0.4742
+[Tue Jun 25 12:01:43 2024] >> testing accuracy: 0.4359
+[Tue Jun 25 12:02:02 2024] >> training [021]: 0.4823
+[Tue Jun 25 12:02:04 2024] >> testing accuracy: 0.4374
+[Tue Jun 25 12:02:23 2024] >> training [022]: 0.4896
+[Tue Jun 25 12:02:25 2024] >> testing accuracy: 0.4298
+[Tue Jun 25 12:02:44 2024] >> training [023]: 0.4979
+[Tue Jun 25 12:02:45 2024] >> testing accuracy: 0.4562
+[Tue Jun 25 12:03:04 2024] >> training [024]: 0.5056
+[Tue Jun 25 12:03:06 2024] >> testing accuracy: 0.4551
+[Tue Jun 25 12:03:25 2024] >> training [025]: 0.5125
+[Tue Jun 25 12:03:27 2024] >> testing accuracy: 0.4625
+[Tue Jun 25 12:03:46 2024] >> training [026]: 0.5187
+[Tue Jun 25 12:03:48 2024] >> testing accuracy: 0.451
+[Tue Jun 25 12:04:06 2024] >> training [027]: 0.5219
+[Tue Jun 25 12:04:08 2024] >> testing accuracy: 0.4506
+[Tue Jun 25 12:04:27 2024] >> training [028]: 0.5318
+[Tue Jun 25 12:04:29 2024] >> testing accuracy: 0.4671
+[Tue Jun 25 12:04:48 2024] >> training [029]: 0.5367
+[Tue Jun 25 12:04:50 2024] >> testing accuracy: 0.4775
+[Tue Jun 25 12:05:08 2024] >> training [030]: 0.5462
+[Tue Jun 25 12:05:10 2024] >> testing accuracy: 0.4787
+[Tue Jun 25 12:05:29 2024] >> training [031]: 0.5484
+[Tue Jun 25 12:05:31 2024] >> testing accuracy: 0.4709
+[Tue Jun 25 12:05:49 2024] >> training [032]: 0.5578
+[Tue Jun 25 12:05:51 2024] >> testing accuracy: 0.4715
+[Tue Jun 25 12:06:10 2024] >> training [033]: 0.5579
+[Tue Jun 25 12:06:12 2024] >> testing accuracy: 0.4817
+[Tue Jun 25 12:06:31 2024] >> training [034]: 0.5651
+[Tue Jun 25 12:06:33 2024] >> testing accuracy: 0.4833
+[Tue Jun 25 12:06:52 2024] >> training [035]: 0.5731
+[Tue Jun 25 12:06:53 2024] >> testing accuracy: 0.4955
+[Tue Jun 25 12:07:12 2024] >> training [036]: 0.5791
+[Tue Jun 25 12:07:14 2024] >> testing accuracy: 0.4803
+[Tue Jun 25 12:07:33 2024] >> training [037]: 0.5806
+[Tue Jun 25 12:07:35 2024] >> testing accuracy: 0.4891
+[Tue Jun 25 12:07:54 2024] >> training [038]: 0.5916
+[Tue Jun 25 12:07:55 2024] >> testing accuracy: 0.4856
+[Tue Jun 25 12:08:14 2024] >> training [039]: 0.5942
+[Tue Jun 25 12:08:16 2024] >> testing accuracy: 0.4886
+[Tue Jun 25 12:08:34 2024] >> training [040]: 0.5962
+[Tue Jun 25 12:08:36 2024] >> testing accuracy: 0.4977
+[Tue Jun 25 12:08:55 2024] >> training [041]: 0.6049
+[Tue Jun 25 12:08:57 2024] >> testing accuracy: 0.5043
+[Tue Jun 25 12:09:15 2024] >> training [042]: 0.6076
+[Tue Jun 25 12:09:17 2024] >> testing accuracy: 0.4881
+[Tue Jun 25 12:09:36 2024] >> training [043]: 0.6147
+[Tue Jun 25 12:09:38 2024] >> testing accuracy: 0.494
+[Tue Jun 25 12:09:57 2024] >> training [044]: 0.6169
+[Tue Jun 25 12:09:59 2024] >> testing accuracy: 0.5041
+[Tue Jun 25 12:10:17 2024] >> training [045]: 0.6244
+[Tue Jun 25 12:10:19 2024] >> testing accuracy: 0.5033
+[Tue Jun 25 12:10:38 2024] >> training [046]: 0.6295
+[Tue Jun 25 12:10:40 2024] >> testing accuracy: 0.5113
+[Tue Jun 25 12:10:59 2024] >> training [047]: 0.6334
+[Tue Jun 25 12:11:00 2024] >> testing accuracy: 0.5066
+[Tue Jun 25 12:11:19 2024] >> training [048]: 0.6394
+[Tue Jun 25 12:11:21 2024] >> testing accuracy: 0.5055
+[Tue Jun 25 12:11:40 2024] >> training [049]: 0.6449
+[Tue Jun 25 12:11:42 2024] >> testing accuracy: 0.5078
+[Tue Jun 25 12:12:01 2024] >> training [050]: 0.6484
+[Tue Jun 25 12:12:03 2024] >> testing accuracy: 0.515
+[Tue Jun 25 12:12:22 2024] >> training [051]: 0.6556
+[Tue Jun 25 12:12:23 2024] >> testing accuracy: 0.5162
+[Tue Jun 25 12:12:42 2024] >> training [052]: 0.6590
+[Tue Jun 25 12:12:44 2024] >> testing accuracy: 0.5109
+[Tue Jun 25 12:13:03 2024] >> training [053]: 0.6647
+[Tue Jun 25 12:13:05 2024] >> testing accuracy: 0.5196
+[Tue Jun 25 12:13:24 2024] >> training [054]: 0.6679
+[Tue Jun 25 12:13:26 2024] >> testing accuracy: 0.5195
+[Tue Jun 25 12:13:44 2024] >> training [055]: 0.6713
+[Tue Jun 25 12:13:46 2024] >> testing accuracy: 0.5102
+[Tue Jun 25 12:14:05 2024] >> training [056]: 0.6754
+[Tue Jun 25 12:14:07 2024] >> testing accuracy: 0.522
+[Tue Jun 25 12:14:25 2024] >> training [057]: 0.6803
+[Tue Jun 25 12:14:27 2024] >> testing accuracy: 0.514
+[Tue Jun 25 12:14:46 2024] >> training [058]: 0.6900
+[Tue Jun 25 12:14:48 2024] >> testing accuracy: 0.5172
+[Tue Jun 25 12:15:06 2024] >> training [059]: 0.6900
+[Tue Jun 25 12:15:08 2024] >> testing accuracy: 0.5244
+[Tue Jun 25 12:15:27 2024] >> training [060]: 0.6981
+[Tue Jun 25 12:15:29 2024] >> testing accuracy: 0.5153
+[Tue Jun 25 12:15:48 2024] >> training [061]: 0.7014
+[Tue Jun 25 12:15:50 2024] >> testing accuracy: 0.5137
+[Tue Jun 25 12:16:08 2024] >> training [062]: 0.7062
+[Tue Jun 25 12:16:10 2024] >> testing accuracy: 0.5137
+[Tue Jun 25 12:16:29 2024] >> training [063]: 0.7122
+[Tue Jun 25 12:16:31 2024] >> testing accuracy: 0.5231
+[Tue Jun 25 12:16:50 2024] >> training [064]: 0.7119
+[Tue Jun 25 12:16:52 2024] >> testing accuracy: 0.5228
+[Tue Jun 25 12:17:11 2024] >> training [065]: 0.7165
+[Tue Jun 25 12:17:13 2024] >> testing accuracy: 0.5192
+[Tue Jun 25 12:17:31 2024] >> training [066]: 0.7224
+[Tue Jun 25 12:17:33 2024] >> testing accuracy: 0.5246
+[Tue Jun 25 12:17:52 2024] >> training [067]: 0.7278
+[Tue Jun 25 12:17:54 2024] >> testing accuracy: 0.5153
+[Tue Jun 25 12:18:13 2024] >> training [068]: 0.7333
+[Tue Jun 25 12:18:15 2024] >> testing accuracy: 0.5142
+[Tue Jun 25 12:18:34 2024] >> training [069]: 0.7352
+[Tue Jun 25 12:18:36 2024] >> testing accuracy: 0.5258
+[Tue Jun 25 12:18:54 2024] >> training [070]: 0.7431
+[Tue Jun 25 12:18:56 2024] >> testing accuracy: 0.5257
+[Tue Jun 25 12:19:15 2024] >> training [071]: 0.7436
+[Tue Jun 25 12:19:17 2024] >> testing accuracy: 0.5228
+[Tue Jun 25 12:19:36 2024] >> training [072]: 0.7506
+[Tue Jun 25 12:19:38 2024] >> testing accuracy: 0.5263
+[Tue Jun 25 12:19:57 2024] >> training [073]: 0.7528
+[Tue Jun 25 12:19:59 2024] >> testing accuracy: 0.5266
+[Tue Jun 25 12:20:17 2024] >> training [074]: 0.7582
+[Tue Jun 25 12:20:19 2024] >> testing accuracy: 0.5235
+[Tue Jun 25 12:20:38 2024] >> training [075]: 0.7613
+[Tue Jun 25 12:20:40 2024] >> testing accuracy: 0.5189
+[Tue Jun 25 12:20:59 2024] >> training [076]: 0.7650
+[Tue Jun 25 12:21:01 2024] >> testing accuracy: 0.525
+[Tue Jun 25 12:21:20 2024] >> training [077]: 0.7726
+[Tue Jun 25 12:21:22 2024] >> testing accuracy: 0.5277
+[Tue Jun 25 12:21:41 2024] >> training [078]: 0.7747
+[Tue Jun 25 12:21:43 2024] >> testing accuracy: 0.5305
+[Tue Jun 25 12:22:01 2024] >> training [079]: 0.7760
+[Tue Jun 25 12:22:03 2024] >> testing accuracy: 0.5334
+[Tue Jun 25 12:22:22 2024] >> training [080]: 0.7806
+[Tue Jun 25 12:22:24 2024] >> testing accuracy: 0.5256
+[Tue Jun 25 12:22:43 2024] >> training [081]: 0.7872
+[Tue Jun 25 12:22:45 2024] >> testing accuracy: 0.534
+[Tue Jun 25 12:23:04 2024] >> training [082]: 0.7885
+[Tue Jun 25 12:23:05 2024] >> testing accuracy: 0.5301
+[Tue Jun 25 12:23:24 2024] >> training [083]: 0.7976
+[Tue Jun 25 12:23:26 2024] >> testing accuracy: 0.5293
+[Tue Jun 25 12:23:45 2024] >> training [084]: 0.8002
+[Tue Jun 25 12:23:47 2024] >> testing accuracy: 0.5256
+[Tue Jun 25 12:24:05 2024] >> training [085]: 0.8022
+[Tue Jun 25 12:24:07 2024] >> testing accuracy: 0.5341
+[Tue Jun 25 12:24:26 2024] >> training [086]: 0.8070
+[Tue Jun 25 12:24:28 2024] >> testing accuracy: 0.5352
+[Tue Jun 25 12:24:47 2024] >> training [087]: 0.8128
+[Tue Jun 25 12:24:48 2024] >> testing accuracy: 0.5318
+[Tue Jun 25 12:25:07 2024] >> training [088]: 0.8113
+[Tue Jun 25 12:25:09 2024] >> testing accuracy: 0.5333
+[Tue Jun 25 12:25:28 2024] >> training [089]: 0.8177
+[Tue Jun 25 12:25:30 2024] >> testing accuracy: 0.5365
+[Tue Jun 25 12:25:48 2024] >> training [090]: 0.8217
+[Tue Jun 25 12:25:50 2024] >> testing accuracy: 0.53
+[Tue Jun 25 12:26:09 2024] >> training [091]: 0.8258
+[Tue Jun 25 12:26:11 2024] >> testing accuracy: 0.5309
+[Tue Jun 25 12:26:30 2024] >> training [092]: 0.8264
+[Tue Jun 25 12:26:32 2024] >> testing accuracy: 0.5323
+[Tue Jun 25 12:26:50 2024] >> training [093]: 0.8298
+[Tue Jun 25 12:26:52 2024] >> testing accuracy: 0.5334
+[Tue Jun 25 12:27:11 2024] >> training [094]: 0.8300
+[Tue Jun 25 12:27:13 2024] >> testing accuracy: 0.5297
+[Tue Jun 25 12:27:31 2024] >> training [095]: 0.8391
+[Tue Jun 25 12:27:33 2024] >> testing accuracy: 0.5316
+[Tue Jun 25 12:27:51 2024] >> training [096]: 0.8427
+[Tue Jun 25 12:27:53 2024] >> testing accuracy: 0.529
+[Tue Jun 25 12:28:12 2024] >> training [097]: 0.8406
+[Tue Jun 25 12:28:14 2024] >> testing accuracy: 0.5382
+[Tue Jun 25 12:28:33 2024] >> training [098]: 0.8476
+[Tue Jun 25 12:28:34 2024] >> testing accuracy: 0.5354
+[Tue Jun 25 12:28:53 2024] >> training [099]: 0.8475
+[Tue Jun 25 12:28:55 2024] >> testing accuracy: 0.5309
+[Tue Jun 25 12:28:55 2024] >> TRAINING RESULT SAVED: ./modeloutput/darknetCifar100.pt
+[Tue Jun 25 12:28:55 2024] >> 
+[Tue Jun 25 12:28:55 2024] >> network: squeezenetCifar100
+[Tue Jun 25 12:29:15 2024] >> training [000]: 0.0762
+[Tue Jun 25 12:29:17 2024] >> testing accuracy: 0.1157
+[Tue Jun 25 12:29:36 2024] >> training [001]: 0.1434
+[Tue Jun 25 12:29:38 2024] >> testing accuracy: 0.1792
+[Tue Jun 25 12:29:58 2024] >> training [002]: 0.1957
+[Tue Jun 25 12:30:00 2024] >> testing accuracy: 0.2069
+[Tue Jun 25 12:30:19 2024] >> training [003]: 0.2322
+[Tue Jun 25 12:30:21 2024] >> testing accuracy: 0.2284
+[Tue Jun 25 12:30:41 2024] >> training [004]: 0.2625
+[Tue Jun 25 12:30:43 2024] >> testing accuracy: 0.2802
+[Tue Jun 25 12:31:03 2024] >> training [005]: 0.2938
+[Tue Jun 25 12:31:04 2024] >> testing accuracy: 0.2984
+[Tue Jun 25 12:31:24 2024] >> training [006]: 0.3174
+[Tue Jun 25 12:31:26 2024] >> testing accuracy: 0.3288
+[Tue Jun 25 12:31:46 2024] >> training [007]: 0.3387
+[Tue Jun 25 12:31:48 2024] >> testing accuracy: 0.3295
+[Tue Jun 25 12:32:07 2024] >> training [008]: 0.3566
+[Tue Jun 25 12:32:09 2024] >> testing accuracy: 0.368
+[Tue Jun 25 12:32:29 2024] >> training [009]: 0.3769
+[Tue Jun 25 12:32:31 2024] >> testing accuracy: 0.3723
+[Tue Jun 25 12:32:50 2024] >> training [010]: 0.3929
+[Tue Jun 25 12:32:52 2024] >> testing accuracy: 0.3692
+[Tue Jun 25 12:33:12 2024] >> training [011]: 0.4032
+[Tue Jun 25 12:33:14 2024] >> testing accuracy: 0.3969
+[Tue Jun 25 12:33:34 2024] >> training [012]: 0.4182
+[Tue Jun 25 12:33:36 2024] >> testing accuracy: 0.3962
+[Tue Jun 25 12:33:55 2024] >> training [013]: 0.4294
+[Tue Jun 25 12:33:57 2024] >> testing accuracy: 0.4209
+[Tue Jun 25 12:34:17 2024] >> training [014]: 0.4420
+[Tue Jun 25 12:34:19 2024] >> testing accuracy: 0.409
+[Tue Jun 25 12:34:38 2024] >> training [015]: 0.4512
+[Tue Jun 25 12:34:40 2024] >> testing accuracy: 0.4303
+[Tue Jun 25 12:35:00 2024] >> training [016]: 0.4611
+[Tue Jun 25 12:35:02 2024] >> testing accuracy: 0.4421
+[Tue Jun 25 12:35:22 2024] >> training [017]: 0.4727
+[Tue Jun 25 12:35:24 2024] >> testing accuracy: 0.4613
+[Tue Jun 25 12:35:44 2024] >> training [018]: 0.4826
+[Tue Jun 25 12:35:46 2024] >> testing accuracy: 0.4525
+[Tue Jun 25 12:36:06 2024] >> training [019]: 0.4896
+[Tue Jun 25 12:36:08 2024] >> testing accuracy: 0.471
+[Tue Jun 25 12:36:28 2024] >> training [020]: 0.4985
+[Tue Jun 25 12:36:30 2024] >> testing accuracy: 0.4788
+[Tue Jun 25 12:36:50 2024] >> training [021]: 0.5042
+[Tue Jun 25 12:36:52 2024] >> testing accuracy: 0.4821
+[Tue Jun 25 12:37:12 2024] >> training [022]: 0.5143
+[Tue Jun 25 12:37:14 2024] >> testing accuracy: 0.4802
+[Tue Jun 25 12:37:34 2024] >> training [023]: 0.5188
+[Tue Jun 25 12:37:36 2024] >> testing accuracy: 0.49
+[Tue Jun 25 12:37:56 2024] >> training [024]: 0.5254
+[Tue Jun 25 12:37:58 2024] >> testing accuracy: 0.4916
+[Tue Jun 25 12:38:18 2024] >> training [025]: 0.5325
+[Tue Jun 25 12:38:20 2024] >> testing accuracy: 0.5029
+[Tue Jun 25 12:38:40 2024] >> training [026]: 0.5363
+[Tue Jun 25 12:38:42 2024] >> testing accuracy: 0.5031
+[Tue Jun 25 12:39:02 2024] >> training [027]: 0.5469
+[Tue Jun 25 12:39:04 2024] >> testing accuracy: 0.5043
+[Tue Jun 25 12:39:24 2024] >> training [028]: 0.5491
+[Tue Jun 25 12:39:26 2024] >> testing accuracy: 0.5064
+[Tue Jun 25 12:39:46 2024] >> training [029]: 0.5555
+[Tue Jun 25 12:39:48 2024] >> testing accuracy: 0.5052
+[Tue Jun 25 12:40:08 2024] >> training [030]: 0.5620
+[Tue Jun 25 12:40:10 2024] >> testing accuracy: 0.5128
+[Tue Jun 25 12:40:30 2024] >> training [031]: 0.5626
+[Tue Jun 25 12:40:33 2024] >> testing accuracy: 0.5167
+[Tue Jun 25 12:40:53 2024] >> training [032]: 0.5705
+[Tue Jun 25 12:40:55 2024] >> testing accuracy: 0.5188
+[Tue Jun 25 12:41:15 2024] >> training [033]: 0.5750
+[Tue Jun 25 12:41:16 2024] >> testing accuracy: 0.5205
+[Tue Jun 25 12:41:36 2024] >> training [034]: 0.5800
+[Tue Jun 25 12:41:38 2024] >> testing accuracy: 0.5232
+[Tue Jun 25 12:41:58 2024] >> training [035]: 0.5859
+[Tue Jun 25 12:42:00 2024] >> testing accuracy: 0.5291
+[Tue Jun 25 12:42:20 2024] >> training [036]: 0.5897
+[Tue Jun 25 12:42:22 2024] >> testing accuracy: 0.5295
+[Tue Jun 25 12:42:42 2024] >> training [037]: 0.5953
+[Tue Jun 25 12:42:44 2024] >> testing accuracy: 0.5362
+[Tue Jun 25 12:43:04 2024] >> training [038]: 0.5979
+[Tue Jun 25 12:43:06 2024] >> testing accuracy: 0.5369
+[Tue Jun 25 12:43:26 2024] >> training [039]: 0.6059
+[Tue Jun 25 12:43:28 2024] >> testing accuracy: 0.5319
+[Tue Jun 25 12:43:48 2024] >> training [040]: 0.6075
+[Tue Jun 25 12:43:50 2024] >> testing accuracy: 0.5403
+[Tue Jun 25 12:44:10 2024] >> training [041]: 0.6156
+[Tue Jun 25 12:44:12 2024] >> testing accuracy: 0.5378
+[Tue Jun 25 12:44:32 2024] >> training [042]: 0.6157
+[Tue Jun 25 12:44:34 2024] >> testing accuracy: 0.5478
+[Tue Jun 25 12:44:54 2024] >> training [043]: 0.6250
+[Tue Jun 25 12:44:56 2024] >> testing accuracy: 0.5462
+[Tue Jun 25 12:45:16 2024] >> training [044]: 0.6252
+[Tue Jun 25 12:45:18 2024] >> testing accuracy: 0.5494
+[Tue Jun 25 12:45:38 2024] >> training [045]: 0.6322
+[Tue Jun 25 12:45:40 2024] >> testing accuracy: 0.547
+[Tue Jun 25 12:46:00 2024] >> training [046]: 0.6328
+[Tue Jun 25 12:46:02 2024] >> testing accuracy: 0.5459
+[Tue Jun 25 12:46:22 2024] >> training [047]: 0.6386
+[Tue Jun 25 12:46:24 2024] >> testing accuracy: 0.5538
+[Tue Jun 25 12:46:44 2024] >> training [048]: 0.6388
+[Tue Jun 25 12:46:46 2024] >> testing accuracy: 0.5469
+[Tue Jun 25 12:47:06 2024] >> training [049]: 0.6427
+[Tue Jun 25 12:47:08 2024] >> testing accuracy: 0.5587
+[Tue Jun 25 12:47:28 2024] >> training [050]: 0.6467
+[Tue Jun 25 12:47:30 2024] >> testing accuracy: 0.5584
+[Tue Jun 25 12:47:50 2024] >> training [051]: 0.6524
+[Tue Jun 25 12:47:52 2024] >> testing accuracy: 0.5595
+[Tue Jun 25 12:48:11 2024] >> training [052]: 0.6575
+[Tue Jun 25 12:48:13 2024] >> testing accuracy: 0.5563
+[Tue Jun 25 12:48:33 2024] >> training [053]: 0.6594
+[Tue Jun 25 12:48:35 2024] >> testing accuracy: 0.5598
+[Tue Jun 25 12:48:55 2024] >> training [054]: 0.6621
+[Tue Jun 25 12:48:57 2024] >> testing accuracy: 0.5563
+[Tue Jun 25 12:49:16 2024] >> training [055]: 0.6680
+[Tue Jun 25 12:49:18 2024] >> testing accuracy: 0.5537
+[Tue Jun 25 12:49:38 2024] >> training [056]: 0.6710
+[Tue Jun 25 12:49:40 2024] >> testing accuracy: 0.5593
+[Tue Jun 25 12:50:00 2024] >> training [057]: 0.6731
+[Tue Jun 25 12:50:02 2024] >> testing accuracy: 0.5591
+[Tue Jun 25 12:50:22 2024] >> training [058]: 0.6766
+[Tue Jun 25 12:50:24 2024] >> testing accuracy: 0.5618
+[Tue Jun 25 12:50:43 2024] >> training [059]: 0.6774
+[Tue Jun 25 12:50:45 2024] >> testing accuracy: 0.5638
+[Tue Jun 25 12:51:05 2024] >> training [060]: 0.6853
+[Tue Jun 25 12:51:07 2024] >> testing accuracy: 0.567
+[Tue Jun 25 12:51:27 2024] >> training [061]: 0.6884
+[Tue Jun 25 12:51:29 2024] >> testing accuracy: 0.5601
+[Tue Jun 25 12:51:48 2024] >> training [062]: 0.6871
+[Tue Jun 25 12:51:50 2024] >> testing accuracy: 0.5645
+[Tue Jun 25 12:52:10 2024] >> training [063]: 0.6941
+[Tue Jun 25 12:52:12 2024] >> testing accuracy: 0.5519
+[Tue Jun 25 12:52:31 2024] >> training [064]: 0.6927
+[Tue Jun 25 12:52:33 2024] >> testing accuracy: 0.5654
+[Tue Jun 25 12:52:52 2024] >> training [065]: 0.6972
+[Tue Jun 25 12:52:54 2024] >> testing accuracy: 0.5707
+[Tue Jun 25 12:53:14 2024] >> training [066]: 0.7033
+[Tue Jun 25 12:53:16 2024] >> testing accuracy: 0.5654
+[Tue Jun 25 12:53:36 2024] >> training [067]: 0.7027
+[Tue Jun 25 12:53:38 2024] >> testing accuracy: 0.5674
+[Tue Jun 25 12:53:57 2024] >> training [068]: 0.7080
+[Tue Jun 25 12:53:59 2024] >> testing accuracy: 0.5692
+[Tue Jun 25 12:54:20 2024] >> training [069]: 0.7098
+[Tue Jun 25 12:54:22 2024] >> testing accuracy: 0.5698
+[Tue Jun 25 12:54:42 2024] >> training [070]: 0.7174
+[Tue Jun 25 12:54:44 2024] >> testing accuracy: 0.5726
+[Tue Jun 25 12:55:04 2024] >> training [071]: 0.7163
+[Tue Jun 25 12:55:06 2024] >> testing accuracy: 0.5753
+[Tue Jun 25 12:55:26 2024] >> training [072]: 0.7191
+[Tue Jun 25 12:55:28 2024] >> testing accuracy: 0.5719
+[Tue Jun 25 12:55:47 2024] >> training [073]: 0.7241
+[Tue Jun 25 12:55:49 2024] >> testing accuracy: 0.5612
+[Tue Jun 25 12:56:09 2024] >> training [074]: 0.7264
+[Tue Jun 25 12:56:11 2024] >> testing accuracy: 0.5785
+[Tue Jun 25 12:56:30 2024] >> training [075]: 0.7266
+[Tue Jun 25 12:56:32 2024] >> testing accuracy: 0.574
+[Tue Jun 25 12:56:51 2024] >> training [076]: 0.7270
+[Tue Jun 25 12:56:53 2024] >> testing accuracy: 0.5787
+[Tue Jun 25 12:57:13 2024] >> training [077]: 0.7334
+[Tue Jun 25 12:57:15 2024] >> testing accuracy: 0.5719
+[Tue Jun 25 12:57:35 2024] >> training [078]: 0.7354
+[Tue Jun 25 12:57:37 2024] >> testing accuracy: 0.5759
+[Tue Jun 25 12:57:57 2024] >> training [079]: 0.7419
+[Tue Jun 25 12:57:59 2024] >> testing accuracy: 0.5714
+[Tue Jun 25 12:58:19 2024] >> training [080]: 0.7406
+[Tue Jun 25 12:58:21 2024] >> testing accuracy: 0.5722
+[Tue Jun 25 12:58:41 2024] >> training [081]: 0.7432
+[Tue Jun 25 12:58:43 2024] >> testing accuracy: 0.57
+[Tue Jun 25 12:59:04 2024] >> training [082]: 0.7485
+[Tue Jun 25 12:59:06 2024] >> testing accuracy: 0.5758
+[Tue Jun 25 12:59:28 2024] >> training [083]: 0.7492
+[Tue Jun 25 12:59:30 2024] >> testing accuracy: 0.5737
+[Tue Jun 25 12:59:51 2024] >> training [084]: 0.7524
+[Tue Jun 25 12:59:53 2024] >> testing accuracy: 0.5738
+[Tue Jun 25 13:00:13 2024] >> training [085]: 0.7550
+[Tue Jun 25 13:00:15 2024] >> testing accuracy: 0.5781
+[Tue Jun 25 13:00:36 2024] >> training [086]: 0.7570
+[Tue Jun 25 13:00:38 2024] >> testing accuracy: 0.5785
+[Tue Jun 25 13:00:58 2024] >> training [087]: 0.7595
+[Tue Jun 25 13:01:00 2024] >> testing accuracy: 0.5779
+[Tue Jun 25 13:01:21 2024] >> training [088]: 0.7606
+[Tue Jun 25 13:01:23 2024] >> testing accuracy: 0.5715
+[Tue Jun 25 13:01:43 2024] >> training [089]: 0.7645
+[Tue Jun 25 13:01:45 2024] >> testing accuracy: 0.5792
+[Tue Jun 25 13:02:05 2024] >> training [090]: 0.7682
+[Tue Jun 25 13:02:07 2024] >> testing accuracy: 0.5734
+[Tue Jun 25 13:02:27 2024] >> training [091]: 0.7681
+[Tue Jun 25 13:02:29 2024] >> testing accuracy: 0.5781
+[Tue Jun 25 13:02:48 2024] >> training [092]: 0.7715
+[Tue Jun 25 13:02:50 2024] >> testing accuracy: 0.5757
+[Tue Jun 25 13:03:10 2024] >> training [093]: 0.7752
+[Tue Jun 25 13:03:12 2024] >> testing accuracy: 0.5688
+[Tue Jun 25 13:03:31 2024] >> training [094]: 0.7756
+[Tue Jun 25 13:03:33 2024] >> testing accuracy: 0.5782
+[Tue Jun 25 13:03:53 2024] >> training [095]: 0.7795
+[Tue Jun 25 13:03:55 2024] >> testing accuracy: 0.5773
+[Tue Jun 25 13:04:15 2024] >> training [096]: 0.7829
+[Tue Jun 25 13:04:17 2024] >> testing accuracy: 0.5763
+[Tue Jun 25 13:04:37 2024] >> training [097]: 0.7818
+[Tue Jun 25 13:04:39 2024] >> testing accuracy: 0.5849
+[Tue Jun 25 13:04:59 2024] >> training [098]: 0.7844
+[Tue Jun 25 13:05:01 2024] >> testing accuracy: 0.5832
+[Tue Jun 25 13:05:21 2024] >> training [099]: 0.7869
+[Tue Jun 25 13:05:23 2024] >> testing accuracy: 0.5785
+[Tue Jun 25 13:05:23 2024] >> TRAINING RESULT SAVED: ./modeloutput/squeezenetCifar100.pt
+[Tue Jun 25 13:05:23 2024] >> 
+[Tue Jun 25 13:05:23 2024] >> network: resnet18Cifar100
+[Tue Jun 25 13:05:42 2024] >> training [000]: 0.0733
+[Tue Jun 25 13:05:44 2024] >> testing accuracy: 0.1119
+[Tue Jun 25 13:06:02 2024] >> training [001]: 0.1528
+[Tue Jun 25 13:06:04 2024] >> testing accuracy: 0.1827
+[Tue Jun 25 13:06:23 2024] >> training [002]: 0.2080
+[Tue Jun 25 13:06:25 2024] >> testing accuracy: 0.2168
+[Tue Jun 25 13:06:44 2024] >> training [003]: 0.2562
+[Tue Jun 25 13:06:46 2024] >> testing accuracy: 0.2707
+[Tue Jun 25 13:07:04 2024] >> training [004]: 0.2938
+[Tue Jun 25 13:07:06 2024] >> testing accuracy: 0.304
+[Tue Jun 25 13:07:25 2024] >> training [005]: 0.3255
+[Tue Jun 25 13:07:27 2024] >> testing accuracy: 0.3431
+[Tue Jun 25 13:07:46 2024] >> training [006]: 0.3551
+[Tue Jun 25 13:07:48 2024] >> testing accuracy: 0.3507
+[Tue Jun 25 13:08:06 2024] >> training [007]: 0.3795
+[Tue Jun 25 13:08:08 2024] >> testing accuracy: 0.353
+[Tue Jun 25 13:08:27 2024] >> training [008]: 0.4014
+[Tue Jun 25 13:08:29 2024] >> testing accuracy: 0.3844
+[Tue Jun 25 13:08:48 2024] >> training [009]: 0.4173
+[Tue Jun 25 13:08:50 2024] >> testing accuracy: 0.4144
+[Tue Jun 25 13:09:08 2024] >> training [010]: 0.4358
+[Tue Jun 25 13:09:10 2024] >> testing accuracy: 0.4222
+[Tue Jun 25 13:09:29 2024] >> training [011]: 0.4497
+[Tue Jun 25 13:09:31 2024] >> testing accuracy: 0.4371
+[Tue Jun 25 13:09:50 2024] >> training [012]: 0.4662
+[Tue Jun 25 13:09:52 2024] >> testing accuracy: 0.4496
+[Tue Jun 25 13:10:11 2024] >> training [013]: 0.4776
+[Tue Jun 25 13:10:13 2024] >> testing accuracy: 0.463
+[Tue Jun 25 13:10:32 2024] >> training [014]: 0.4936
+[Tue Jun 25 13:10:34 2024] >> testing accuracy: 0.4753
+[Tue Jun 25 13:10:53 2024] >> training [015]: 0.5067
+[Tue Jun 25 13:10:55 2024] >> testing accuracy: 0.4654
+[Tue Jun 25 13:11:14 2024] >> training [016]: 0.5185
+[Tue Jun 25 13:11:16 2024] >> testing accuracy: 0.4802
+[Tue Jun 25 13:11:34 2024] >> training [017]: 0.5274
+[Tue Jun 25 13:11:36 2024] >> testing accuracy: 0.4779
+[Tue Jun 25 13:11:55 2024] >> training [018]: 0.5410
+[Tue Jun 25 13:11:57 2024] >> testing accuracy: 0.5024
+[Tue Jun 25 13:12:16 2024] >> training [019]: 0.5508
+[Tue Jun 25 13:12:18 2024] >> testing accuracy: 0.506
+[Tue Jun 25 13:12:37 2024] >> training [020]: 0.5614
+[Tue Jun 25 13:12:39 2024] >> testing accuracy: 0.508
+[Tue Jun 25 13:12:57 2024] >> training [021]: 0.5695
+[Tue Jun 25 13:12:59 2024] >> testing accuracy: 0.511
+[Tue Jun 25 13:13:18 2024] >> training [022]: 0.5761
+[Tue Jun 25 13:13:20 2024] >> testing accuracy: 0.5221
+[Tue Jun 25 13:13:39 2024] >> training [023]: 0.5880
+[Tue Jun 25 13:13:41 2024] >> testing accuracy: 0.5207
+[Tue Jun 25 13:14:00 2024] >> training [024]: 0.5967
+[Tue Jun 25 13:14:01 2024] >> testing accuracy: 0.5261
+[Tue Jun 25 13:14:20 2024] >> training [025]: 0.6023
+[Tue Jun 25 13:14:22 2024] >> testing accuracy: 0.5266
+[Tue Jun 25 13:14:41 2024] >> training [026]: 0.6127
+[Tue Jun 25 13:14:43 2024] >> testing accuracy: 0.5411
+[Tue Jun 25 13:15:02 2024] >> training [027]: 0.6212
+[Tue Jun 25 13:15:04 2024] >> testing accuracy: 0.5316
+[Tue Jun 25 13:15:24 2024] >> training [028]: 0.6269
+[Tue Jun 25 13:15:26 2024] >> testing accuracy: 0.5328
+[Tue Jun 25 13:15:45 2024] >> training [029]: 0.6377
+[Tue Jun 25 13:15:47 2024] >> testing accuracy: 0.5431
+[Tue Jun 25 13:16:07 2024] >> training [030]: 0.6427
+[Tue Jun 25 13:16:09 2024] >> testing accuracy: 0.5553
+[Tue Jun 25 13:16:28 2024] >> training [031]: 0.6484
+[Tue Jun 25 13:16:30 2024] >> testing accuracy: 0.5477
+[Tue Jun 25 13:16:50 2024] >> training [032]: 0.6584
+[Tue Jun 25 13:16:52 2024] >> testing accuracy: 0.5533
+[Tue Jun 25 13:17:12 2024] >> training [033]: 0.6652
+[Tue Jun 25 13:17:14 2024] >> testing accuracy: 0.5485
+[Tue Jun 25 13:17:33 2024] >> training [034]: 0.6733
+[Tue Jun 25 13:17:35 2024] >> testing accuracy: 0.5638
+[Tue Jun 25 13:17:55 2024] >> training [035]: 0.6795
+[Tue Jun 25 13:17:57 2024] >> testing accuracy: 0.5522
+[Tue Jun 25 13:18:16 2024] >> training [036]: 0.6852
+[Tue Jun 25 13:18:18 2024] >> testing accuracy: 0.5639
+[Tue Jun 25 13:18:37 2024] >> training [037]: 0.6948
+[Tue Jun 25 13:18:39 2024] >> testing accuracy: 0.5522
+[Tue Jun 25 13:18:59 2024] >> training [038]: 0.7019
+[Tue Jun 25 13:19:01 2024] >> testing accuracy: 0.5622
+[Tue Jun 25 13:19:20 2024] >> training [039]: 0.7081
+[Tue Jun 25 13:19:22 2024] >> testing accuracy: 0.5548
+[Tue Jun 25 13:19:41 2024] >> training [040]: 0.7137
+[Tue Jun 25 13:19:43 2024] >> testing accuracy: 0.5594
+[Tue Jun 25 13:20:02 2024] >> training [041]: 0.7185
+[Tue Jun 25 13:20:04 2024] >> testing accuracy: 0.551
+[Tue Jun 25 13:20:24 2024] >> training [042]: 0.7236
+[Tue Jun 25 13:20:26 2024] >> testing accuracy: 0.5619
+[Tue Jun 25 13:20:45 2024] >> training [043]: 0.7343
+[Tue Jun 25 13:20:47 2024] >> testing accuracy: 0.5613
+[Tue Jun 25 13:21:07 2024] >> training [044]: 0.7402
+[Tue Jun 25 13:21:09 2024] >> testing accuracy: 0.5648
+[Tue Jun 25 13:21:29 2024] >> training [045]: 0.7456
+[Tue Jun 25 13:21:31 2024] >> testing accuracy: 0.5678
+[Tue Jun 25 13:21:50 2024] >> training [046]: 0.7539
+[Tue Jun 25 13:21:52 2024] >> testing accuracy: 0.573
+[Tue Jun 25 13:22:12 2024] >> training [047]: 0.7589
+[Tue Jun 25 13:22:14 2024] >> testing accuracy: 0.5717
+[Tue Jun 25 13:22:34 2024] >> training [048]: 0.7635
+[Tue Jun 25 13:22:36 2024] >> testing accuracy: 0.574
+[Tue Jun 25 13:22:55 2024] >> training [049]: 0.7721
+[Tue Jun 25 13:22:57 2024] >> testing accuracy: 0.5746
+[Tue Jun 25 13:23:17 2024] >> training [050]: 0.7730
+[Tue Jun 25 13:23:19 2024] >> testing accuracy: 0.5736
+[Tue Jun 25 13:23:38 2024] >> training [051]: 0.7768
+[Tue Jun 25 13:23:40 2024] >> testing accuracy: 0.5719
+[Tue Jun 25 13:24:00 2024] >> training [052]: 0.7851
+[Tue Jun 25 13:24:02 2024] >> testing accuracy: 0.576
+[Tue Jun 25 13:24:21 2024] >> training [053]: 0.7925
+[Tue Jun 25 13:24:23 2024] >> testing accuracy: 0.5795
+[Tue Jun 25 13:24:43 2024] >> training [054]: 0.7958
+[Tue Jun 25 13:24:45 2024] >> testing accuracy: 0.5829
+[Tue Jun 25 13:25:04 2024] >> training [055]: 0.8020
+[Tue Jun 25 13:25:06 2024] >> testing accuracy: 0.5794
+[Tue Jun 25 13:25:26 2024] >> training [056]: 0.8085
+[Tue Jun 25 13:25:28 2024] >> testing accuracy: 0.5767
+[Tue Jun 25 13:25:47 2024] >> training [057]: 0.8141
+[Tue Jun 25 13:25:49 2024] >> testing accuracy: 0.5776
+[Tue Jun 25 13:26:08 2024] >> training [058]: 0.8167
+[Tue Jun 25 13:26:10 2024] >> testing accuracy: 0.586
+[Tue Jun 25 13:26:30 2024] >> training [059]: 0.8220
+[Tue Jun 25 13:26:32 2024] >> testing accuracy: 0.5838
+[Tue Jun 25 13:26:51 2024] >> training [060]: 0.8277
+[Tue Jun 25 13:26:53 2024] >> testing accuracy: 0.5839
+[Tue Jun 25 13:27:12 2024] >> training [061]: 0.8315
+[Tue Jun 25 13:27:14 2024] >> testing accuracy: 0.5876
+[Tue Jun 25 13:27:32 2024] >> training [062]: 0.8371
+[Tue Jun 25 13:27:34 2024] >> testing accuracy: 0.5876
+[Tue Jun 25 13:27:53 2024] >> training [063]: 0.8399
+[Tue Jun 25 13:27:55 2024] >> testing accuracy: 0.5815
+[Tue Jun 25 13:28:14 2024] >> training [064]: 0.8440
+[Tue Jun 25 13:28:16 2024] >> testing accuracy: 0.5808
+[Tue Jun 25 13:28:35 2024] >> training [065]: 0.8495
+[Tue Jun 25 13:28:37 2024] >> testing accuracy: 0.5846
+[Tue Jun 25 13:28:57 2024] >> training [066]: 0.8522
+[Tue Jun 25 13:28:59 2024] >> testing accuracy: 0.5893
+[Tue Jun 25 13:29:18 2024] >> training [067]: 0.8563
+[Tue Jun 25 13:29:20 2024] >> testing accuracy: 0.5883
+[Tue Jun 25 13:29:40 2024] >> training [068]: 0.8622
+[Tue Jun 25 13:29:42 2024] >> testing accuracy: 0.5907
+[Tue Jun 25 13:30:01 2024] >> training [069]: 0.8660
+[Tue Jun 25 13:30:03 2024] >> testing accuracy: 0.5971
+[Tue Jun 25 13:30:22 2024] >> training [070]: 0.8692
+[Tue Jun 25 13:30:24 2024] >> testing accuracy: 0.5869
+[Tue Jun 25 13:30:43 2024] >> training [071]: 0.8709
+[Tue Jun 25 13:30:45 2024] >> testing accuracy: 0.5896
+[Tue Jun 25 13:31:04 2024] >> training [072]: 0.8766
+[Tue Jun 25 13:31:06 2024] >> testing accuracy: 0.5916
+[Tue Jun 25 13:31:25 2024] >> training [073]: 0.8791
+[Tue Jun 25 13:31:27 2024] >> testing accuracy: 0.5929
+[Tue Jun 25 13:31:46 2024] >> training [074]: 0.8839
+[Tue Jun 25 13:31:48 2024] >> testing accuracy: 0.585
+[Tue Jun 25 13:32:08 2024] >> training [075]: 0.8875
+[Tue Jun 25 13:32:10 2024] >> testing accuracy: 0.5933
+[Tue Jun 25 13:32:29 2024] >> training [076]: 0.8888
+[Tue Jun 25 13:32:31 2024] >> testing accuracy: 0.5863
+[Tue Jun 25 13:32:51 2024] >> training [077]: 0.8905
+[Tue Jun 25 13:32:52 2024] >> testing accuracy: 0.59
+[Tue Jun 25 13:33:12 2024] >> training [078]: 0.8939
+[Tue Jun 25 13:33:14 2024] >> testing accuracy: 0.5872
+[Tue Jun 25 13:33:34 2024] >> training [079]: 0.8954
+[Tue Jun 25 13:33:36 2024] >> testing accuracy: 0.591
+[Tue Jun 25 13:33:55 2024] >> training [080]: 0.8992
+[Tue Jun 25 13:33:57 2024] >> testing accuracy: 0.5929
+[Tue Jun 25 13:34:17 2024] >> training [081]: 0.9027
+[Tue Jun 25 13:34:19 2024] >> testing accuracy: 0.5972
+[Tue Jun 25 13:34:38 2024] >> training [082]: 0.9081
+[Tue Jun 25 13:34:40 2024] >> testing accuracy: 0.5926
+[Tue Jun 25 13:35:00 2024] >> training [083]: 0.9077
+[Tue Jun 25 13:35:02 2024] >> testing accuracy: 0.5951
+[Tue Jun 25 13:35:21 2024] >> training [084]: 0.9098
+[Tue Jun 25 13:35:23 2024] >> testing accuracy: 0.5995
+[Tue Jun 25 13:35:42 2024] >> training [085]: 0.9127
+[Tue Jun 25 13:35:44 2024] >> testing accuracy: 0.6006
+[Tue Jun 25 13:36:03 2024] >> training [086]: 0.9152
+[Tue Jun 25 13:36:05 2024] >> testing accuracy: 0.595
+[Tue Jun 25 13:36:24 2024] >> training [087]: 0.9159
+[Tue Jun 25 13:36:26 2024] >> testing accuracy: 0.5996
+[Tue Jun 25 13:36:44 2024] >> training [088]: 0.9186
+[Tue Jun 25 13:36:46 2024] >> testing accuracy: 0.5964
+[Tue Jun 25 13:37:05 2024] >> training [089]: 0.9200
+[Tue Jun 25 13:37:07 2024] >> testing accuracy: 0.5971
+[Tue Jun 25 13:37:26 2024] >> training [090]: 0.9211
+[Tue Jun 25 13:37:27 2024] >> testing accuracy: 0.5993
+[Tue Jun 25 13:37:46 2024] >> training [091]: 0.9246
+[Tue Jun 25 13:37:48 2024] >> testing accuracy: 0.6021
+[Tue Jun 25 13:38:07 2024] >> training [092]: 0.9252
+[Tue Jun 25 13:38:09 2024] >> testing accuracy: 0.6023
+[Tue Jun 25 13:38:27 2024] >> training [093]: 0.9283
+[Tue Jun 25 13:38:29 2024] >> testing accuracy: 0.5969
+[Tue Jun 25 13:38:48 2024] >> training [094]: 0.9267
+[Tue Jun 25 13:38:50 2024] >> testing accuracy: 0.6017
+[Tue Jun 25 13:39:08 2024] >> training [095]: 0.9298
+[Tue Jun 25 13:39:10 2024] >> testing accuracy: 0.5997
+[Tue Jun 25 13:39:29 2024] >> training [096]: 0.9313
+[Tue Jun 25 13:39:31 2024] >> testing accuracy: 0.6037
+[Tue Jun 25 13:39:49 2024] >> training [097]: 0.9315
+[Tue Jun 25 13:39:51 2024] >> testing accuracy: 0.6012
+[Tue Jun 25 13:40:10 2024] >> training [098]: 0.9349
+[Tue Jun 25 13:40:12 2024] >> testing accuracy: 0.6002
+[Tue Jun 25 13:40:31 2024] >> training [099]: 0.9352
+[Tue Jun 25 13:40:33 2024] >> testing accuracy: 0.6014
+[Tue Jun 25 13:40:33 2024] >> TRAINING RESULT SAVED: ./modeloutput/resnet18Cifar100.pt
+[Tue Jun 25 13:40:33 2024] >> 
+[Tue Jun 25 13:40:33 2024] >> network: vgg11Cifar100
+[Tue Jun 25 13:40:52 2024] >> training [000]: 0.0559
+[Tue Jun 25 13:40:54 2024] >> testing accuracy: 0.0849
+[Tue Jun 25 13:41:12 2024] >> training [001]: 0.1172
+[Tue Jun 25 13:41:14 2024] >> testing accuracy: 0.1477
+[Tue Jun 25 13:41:32 2024] >> training [002]: 0.1653
+[Tue Jun 25 13:41:34 2024] >> testing accuracy: 0.1985
+[Tue Jun 25 13:41:51 2024] >> training [003]: 0.2100
+[Tue Jun 25 13:41:53 2024] >> testing accuracy: 0.21
+[Tue Jun 25 13:42:11 2024] >> training [004]: 0.2437
+[Tue Jun 25 13:42:13 2024] >> testing accuracy: 0.2594
+[Tue Jun 25 13:42:31 2024] >> training [005]: 0.2744
+[Tue Jun 25 13:42:33 2024] >> testing accuracy: 0.294
+[Tue Jun 25 13:42:51 2024] >> training [006]: 0.3009
+[Tue Jun 25 13:42:52 2024] >> testing accuracy: 0.3055
+[Tue Jun 25 13:43:10 2024] >> training [007]: 0.3240
+[Tue Jun 25 13:43:12 2024] >> testing accuracy: 0.3386
+[Tue Jun 25 13:43:30 2024] >> training [008]: 0.3456
+[Tue Jun 25 13:43:32 2024] >> testing accuracy: 0.3543
+[Tue Jun 25 13:43:50 2024] >> training [009]: 0.3640
+[Tue Jun 25 13:43:52 2024] >> testing accuracy: 0.3674
+[Tue Jun 25 13:44:10 2024] >> training [010]: 0.3834
+[Tue Jun 25 13:44:12 2024] >> testing accuracy: 0.368
+[Tue Jun 25 13:44:30 2024] >> training [011]: 0.3972
+[Tue Jun 25 13:44:32 2024] >> testing accuracy: 0.3946
+[Tue Jun 25 13:44:50 2024] >> training [012]: 0.4107
+[Tue Jun 25 13:44:52 2024] >> testing accuracy: 0.4106
+[Tue Jun 25 13:45:10 2024] >> training [013]: 0.4259
+[Tue Jun 25 13:45:12 2024] >> testing accuracy: 0.4208
+[Tue Jun 25 13:45:30 2024] >> training [014]: 0.4359
+[Tue Jun 25 13:45:32 2024] >> testing accuracy: 0.4226
+[Tue Jun 25 13:45:50 2024] >> training [015]: 0.4459
+[Tue Jun 25 13:45:52 2024] >> testing accuracy: 0.4332
+[Tue Jun 25 13:46:10 2024] >> training [016]: 0.4628
+[Tue Jun 25 13:46:11 2024] >> testing accuracy: 0.441
+[Tue Jun 25 13:46:30 2024] >> training [017]: 0.4679
+[Tue Jun 25 13:46:32 2024] >> testing accuracy: 0.4413
+[Tue Jun 25 13:46:50 2024] >> training [018]: 0.4840
+[Tue Jun 25 13:46:51 2024] >> testing accuracy: 0.453
+[Tue Jun 25 13:47:09 2024] >> training [019]: 0.4919
+[Tue Jun 25 13:47:11 2024] >> testing accuracy: 0.4618
+[Tue Jun 25 13:47:29 2024] >> training [020]: 0.5038
+[Tue Jun 25 13:47:31 2024] >> testing accuracy: 0.4751
+[Tue Jun 25 13:47:49 2024] >> training [021]: 0.5149
+[Tue Jun 25 13:47:51 2024] >> testing accuracy: 0.4718
+[Tue Jun 25 13:48:11 2024] >> training [022]: 0.5191
+[Tue Jun 25 13:48:13 2024] >> testing accuracy: 0.4788
+[Tue Jun 25 13:48:32 2024] >> training [023]: 0.5287
+[Tue Jun 25 13:48:34 2024] >> testing accuracy: 0.4817
+[Tue Jun 25 13:48:53 2024] >> training [024]: 0.5403
+[Tue Jun 25 13:48:54 2024] >> testing accuracy: 0.4917
+[Tue Jun 25 13:49:13 2024] >> training [025]: 0.5482
+[Tue Jun 25 13:49:15 2024] >> testing accuracy: 0.4949
+[Tue Jun 25 13:49:33 2024] >> training [026]: 0.5539
+[Tue Jun 25 13:49:35 2024] >> testing accuracy: 0.495
+[Tue Jun 25 13:49:54 2024] >> training [027]: 0.5631
+[Tue Jun 25 13:49:56 2024] >> testing accuracy: 0.502
+[Tue Jun 25 13:50:14 2024] >> training [028]: 0.5688
+[Tue Jun 25 13:50:16 2024] >> testing accuracy: 0.5087
+[Tue Jun 25 13:50:34 2024] >> training [029]: 0.5805
+[Tue Jun 25 13:50:36 2024] >> testing accuracy: 0.5114
+[Tue Jun 25 13:50:54 2024] >> training [030]: 0.5854
+[Tue Jun 25 13:50:56 2024] >> testing accuracy: 0.5138
+[Tue Jun 25 13:51:15 2024] >> training [031]: 0.5964
+[Tue Jun 25 13:51:17 2024] >> testing accuracy: 0.5182
+[Tue Jun 25 13:51:35 2024] >> training [032]: 0.6012
+[Tue Jun 25 13:51:37 2024] >> testing accuracy: 0.5209
+[Tue Jun 25 13:51:55 2024] >> training [033]: 0.6090
+[Tue Jun 25 13:51:57 2024] >> testing accuracy: 0.5247
+[Tue Jun 25 13:52:16 2024] >> training [034]: 0.6159
+[Tue Jun 25 13:52:18 2024] >> testing accuracy: 0.5165
+[Tue Jun 25 13:52:36 2024] >> training [035]: 0.6217
+[Tue Jun 25 13:52:38 2024] >> testing accuracy: 0.5336
+[Tue Jun 25 13:52:56 2024] >> training [036]: 0.6288
+[Tue Jun 25 13:52:58 2024] >> testing accuracy: 0.5311
+[Tue Jun 25 13:53:17 2024] >> training [037]: 0.6388
+[Tue Jun 25 13:53:19 2024] >> testing accuracy: 0.5333
+[Tue Jun 25 13:53:38 2024] >> training [038]: 0.6481
+[Tue Jun 25 13:53:40 2024] >> testing accuracy: 0.529
+[Tue Jun 25 13:53:58 2024] >> training [039]: 0.6509
+[Tue Jun 25 13:54:00 2024] >> testing accuracy: 0.5267
+[Tue Jun 25 13:54:19 2024] >> training [040]: 0.6615
+[Tue Jun 25 13:54:21 2024] >> testing accuracy: 0.5382
+[Tue Jun 25 13:54:39 2024] >> training [041]: 0.6675
+[Tue Jun 25 13:54:41 2024] >> testing accuracy: 0.5397
+[Tue Jun 25 13:54:59 2024] >> training [042]: 0.6694
+[Tue Jun 25 13:55:01 2024] >> testing accuracy: 0.5403
+[Tue Jun 25 13:55:19 2024] >> training [043]: 0.6796
+[Tue Jun 25 13:55:21 2024] >> testing accuracy: 0.5456
+[Tue Jun 25 13:55:40 2024] >> training [044]: 0.6847
+[Tue Jun 25 13:55:42 2024] >> testing accuracy: 0.5395
+[Tue Jun 25 13:56:00 2024] >> training [045]: 0.6912
+[Tue Jun 25 13:56:02 2024] >> testing accuracy: 0.5399
+[Tue Jun 25 13:56:21 2024] >> training [046]: 0.6994
+[Tue Jun 25 13:56:22 2024] >> testing accuracy: 0.5369
+[Tue Jun 25 13:56:41 2024] >> training [047]: 0.7050
+[Tue Jun 25 13:56:43 2024] >> testing accuracy: 0.5471
+[Tue Jun 25 13:57:02 2024] >> training [048]: 0.7090
+[Tue Jun 25 13:57:03 2024] >> testing accuracy: 0.5562
+[Tue Jun 25 13:57:22 2024] >> training [049]: 0.7193
+[Tue Jun 25 13:57:24 2024] >> testing accuracy: 0.5421
+[Tue Jun 25 13:57:43 2024] >> training [050]: 0.7247
+[Tue Jun 25 13:57:45 2024] >> testing accuracy: 0.5412
+[Tue Jun 25 13:58:04 2024] >> training [051]: 0.7276
+[Tue Jun 25 13:58:06 2024] >> testing accuracy: 0.5526
+[Tue Jun 25 13:58:24 2024] >> training [052]: 0.7363
+[Tue Jun 25 13:58:26 2024] >> testing accuracy: 0.55
+[Tue Jun 25 13:58:44 2024] >> training [053]: 0.7420
+[Tue Jun 25 13:58:46 2024] >> testing accuracy: 0.5624
+[Tue Jun 25 13:59:05 2024] >> training [054]: 0.7482
+[Tue Jun 25 13:59:07 2024] >> testing accuracy: 0.5606
+[Tue Jun 25 13:59:25 2024] >> training [055]: 0.7534
+[Tue Jun 25 13:59:27 2024] >> testing accuracy: 0.5522
+[Tue Jun 25 13:59:45 2024] >> training [056]: 0.7542
+[Tue Jun 25 13:59:47 2024] >> testing accuracy: 0.5559
+[Tue Jun 25 14:00:06 2024] >> training [057]: 0.7626
+[Tue Jun 25 14:00:08 2024] >> testing accuracy: 0.5551
+[Tue Jun 25 14:00:26 2024] >> training [058]: 0.7702
+[Tue Jun 25 14:00:28 2024] >> testing accuracy: 0.5608
+[Tue Jun 25 14:00:46 2024] >> training [059]: 0.7740
+[Tue Jun 25 14:00:48 2024] >> testing accuracy: 0.559
+[Tue Jun 25 14:01:07 2024] >> training [060]: 0.7797
+[Tue Jun 25 14:01:08 2024] >> testing accuracy: 0.5527
+[Tue Jun 25 14:01:27 2024] >> training [061]: 0.7873
+[Tue Jun 25 14:01:29 2024] >> testing accuracy: 0.5544
+[Tue Jun 25 14:01:48 2024] >> training [062]: 0.7870
+[Tue Jun 25 14:01:50 2024] >> testing accuracy: 0.5524
+[Tue Jun 25 14:02:09 2024] >> training [063]: 0.7929
+[Tue Jun 25 14:02:11 2024] >> testing accuracy: 0.5653
+[Tue Jun 25 14:02:29 2024] >> training [064]: 0.7957
+[Tue Jun 25 14:02:31 2024] >> testing accuracy: 0.5659
+[Tue Jun 25 14:02:50 2024] >> training [065]: 0.8028
+[Tue Jun 25 14:02:51 2024] >> testing accuracy: 0.5731
+[Tue Jun 25 14:03:11 2024] >> training [066]: 0.8035
+[Tue Jun 25 14:03:13 2024] >> testing accuracy: 0.5672
+[Tue Jun 25 14:03:31 2024] >> training [067]: 0.8110
+[Tue Jun 25 14:03:33 2024] >> testing accuracy: 0.5677
+[Tue Jun 25 14:03:51 2024] >> training [068]: 0.8139
+[Tue Jun 25 14:03:53 2024] >> testing accuracy: 0.5706
+[Tue Jun 25 14:04:11 2024] >> training [069]: 0.8176
+[Tue Jun 25 14:04:13 2024] >> testing accuracy: 0.5589
+[Tue Jun 25 14:04:32 2024] >> training [070]: 0.8237
+[Tue Jun 25 14:04:33 2024] >> testing accuracy: 0.5675
+[Tue Jun 25 14:04:52 2024] >> training [071]: 0.8286
+[Tue Jun 25 14:04:54 2024] >> testing accuracy: 0.5668
+[Tue Jun 25 14:05:11 2024] >> training [072]: 0.8339
+[Tue Jun 25 14:05:13 2024] >> testing accuracy: 0.5754
+[Tue Jun 25 14:05:32 2024] >> training [073]: 0.8362
+[Tue Jun 25 14:05:34 2024] >> testing accuracy: 0.5715
+[Tue Jun 25 14:05:52 2024] >> training [074]: 0.8410
+[Tue Jun 25 14:05:54 2024] >> testing accuracy: 0.5753
+[Tue Jun 25 14:06:12 2024] >> training [075]: 0.8418
+[Tue Jun 25 14:06:14 2024] >> testing accuracy: 0.5692
+[Tue Jun 25 14:06:32 2024] >> training [076]: 0.8493
+[Tue Jun 25 14:06:34 2024] >> testing accuracy: 0.5792
+[Tue Jun 25 14:06:52 2024] >> training [077]: 0.8505
+[Tue Jun 25 14:06:54 2024] >> testing accuracy: 0.567
+[Tue Jun 25 14:07:12 2024] >> training [078]: 0.8525
+[Tue Jun 25 14:07:14 2024] >> testing accuracy: 0.5802
+[Tue Jun 25 14:07:32 2024] >> training [079]: 0.8577
+[Tue Jun 25 14:07:34 2024] >> testing accuracy: 0.5776
+[Tue Jun 25 14:07:52 2024] >> training [080]: 0.8608
+[Tue Jun 25 14:07:54 2024] >> testing accuracy: 0.5737
+[Tue Jun 25 14:08:12 2024] >> training [081]: 0.8598
+[Tue Jun 25 14:08:14 2024] >> testing accuracy: 0.5704
+[Tue Jun 25 14:08:33 2024] >> training [082]: 0.8621
+[Tue Jun 25 14:08:35 2024] >> testing accuracy: 0.5674
+[Tue Jun 25 14:08:53 2024] >> training [083]: 0.8684
+[Tue Jun 25 14:08:55 2024] >> testing accuracy: 0.5713
+[Tue Jun 25 14:09:13 2024] >> training [084]: 0.8719
+[Tue Jun 25 14:09:15 2024] >> testing accuracy: 0.5661
+[Tue Jun 25 14:09:33 2024] >> training [085]: 0.8715
+[Tue Jun 25 14:09:35 2024] >> testing accuracy: 0.574
+[Tue Jun 25 14:09:54 2024] >> training [086]: 0.8781
+[Tue Jun 25 14:09:55 2024] >> testing accuracy: 0.5723
+[Tue Jun 25 14:10:14 2024] >> training [087]: 0.8817
+[Tue Jun 25 14:10:16 2024] >> testing accuracy: 0.5661
+[Tue Jun 25 14:10:34 2024] >> training [088]: 0.8806
+[Tue Jun 25 14:10:36 2024] >> testing accuracy: 0.5772
+[Tue Jun 25 14:10:54 2024] >> training [089]: 0.8824
+[Tue Jun 25 14:10:56 2024] >> testing accuracy: 0.5737
+[Tue Jun 25 14:11:14 2024] >> training [090]: 0.8853
+[Tue Jun 25 14:11:16 2024] >> testing accuracy: 0.5729
+[Tue Jun 25 14:11:34 2024] >> training [091]: 0.8864
+[Tue Jun 25 14:11:36 2024] >> testing accuracy: 0.5769
+[Tue Jun 25 14:11:55 2024] >> training [092]: 0.8930
+[Tue Jun 25 14:11:57 2024] >> testing accuracy: 0.5775
+[Tue Jun 25 14:12:15 2024] >> training [093]: 0.8922
+[Tue Jun 25 14:12:17 2024] >> testing accuracy: 0.58
+[Tue Jun 25 14:12:35 2024] >> training [094]: 0.8992
+[Tue Jun 25 14:12:37 2024] >> testing accuracy: 0.5843
+[Tue Jun 25 14:12:55 2024] >> training [095]: 0.8993
+[Tue Jun 25 14:12:57 2024] >> testing accuracy: 0.5765
+[Tue Jun 25 14:13:16 2024] >> training [096]: 0.8982
+[Tue Jun 25 14:13:17 2024] >> testing accuracy: 0.5781
+[Tue Jun 25 14:13:35 2024] >> training [097]: 0.9014
+[Tue Jun 25 14:13:37 2024] >> testing accuracy: 0.5771
+[Tue Jun 25 14:13:55 2024] >> training [098]: 0.9015
+[Tue Jun 25 14:13:57 2024] >> testing accuracy: 0.5683
+[Tue Jun 25 14:14:15 2024] >> training [099]: 0.9055
+[Tue Jun 25 14:14:17 2024] >> testing accuracy: 0.5777
+[Tue Jun 25 14:14:17 2024] >> TRAINING RESULT SAVED: ./modeloutput/vgg11Cifar100.pt
+[Tue Jun 25 14:14:17 2024] >> 
+[Tue Jun 25 14:14:17 2024] >> network: vgg19Cifar100
+[Tue Jun 25 14:14:38 2024] >> training [000]: 0.0616
+[Tue Jun 25 14:14:40 2024] >> testing accuracy: 0.0796
+[Tue Jun 25 14:15:02 2024] >> training [001]: 0.1315
+[Tue Jun 25 14:15:04 2024] >> testing accuracy: 0.1515
+[Tue Jun 25 14:15:26 2024] >> training [002]: 0.1840
+[Tue Jun 25 14:15:28 2024] >> testing accuracy: 0.2085
+[Tue Jun 25 14:15:49 2024] >> training [003]: 0.2360
+[Tue Jun 25 14:15:51 2024] >> testing accuracy: 0.2384
+[Tue Jun 25 14:16:12 2024] >> training [004]: 0.2778
+[Tue Jun 25 14:16:14 2024] >> testing accuracy: 0.2838
+[Tue Jun 25 14:16:36 2024] >> training [005]: 0.3115
+[Tue Jun 25 14:16:38 2024] >> testing accuracy: 0.3027
+[Tue Jun 25 14:16:59 2024] >> training [006]: 0.3402
+[Tue Jun 25 14:17:01 2024] >> testing accuracy: 0.3539
+[Tue Jun 25 14:17:22 2024] >> training [007]: 0.3701
+[Tue Jun 25 14:17:24 2024] >> testing accuracy: 0.3786
+[Tue Jun 25 14:17:45 2024] >> training [008]: 0.3960
+[Tue Jun 25 14:17:47 2024] >> testing accuracy: 0.3824
+[Tue Jun 25 14:18:09 2024] >> training [009]: 0.4187
+[Tue Jun 25 14:18:11 2024] >> testing accuracy: 0.4041
+[Tue Jun 25 14:18:32 2024] >> training [010]: 0.4347
+[Tue Jun 25 14:18:34 2024] >> testing accuracy: 0.4381
+[Tue Jun 25 14:18:56 2024] >> training [011]: 0.4529
+[Tue Jun 25 14:18:58 2024] >> testing accuracy: 0.4366
+[Tue Jun 25 14:19:20 2024] >> training [012]: 0.4707
+[Tue Jun 25 14:19:22 2024] >> testing accuracy: 0.4631
+[Tue Jun 25 14:19:44 2024] >> training [013]: 0.4839
+[Tue Jun 25 14:19:46 2024] >> testing accuracy: 0.4621
+[Tue Jun 25 14:20:07 2024] >> training [014]: 0.4988
+[Tue Jun 25 14:20:09 2024] >> testing accuracy: 0.4806
+[Tue Jun 25 14:20:31 2024] >> training [015]: 0.5090
+[Tue Jun 25 14:20:33 2024] >> testing accuracy: 0.4749
+[Tue Jun 25 14:20:55 2024] >> training [016]: 0.5229
+[Tue Jun 25 14:20:57 2024] >> testing accuracy: 0.4928
+[Tue Jun 25 14:21:19 2024] >> training [017]: 0.5368
+[Tue Jun 25 14:21:21 2024] >> testing accuracy: 0.5102
+[Tue Jun 25 14:21:43 2024] >> training [018]: 0.5478
+[Tue Jun 25 14:21:45 2024] >> testing accuracy: 0.5145
+[Tue Jun 25 14:22:06 2024] >> training [019]: 0.5597
+[Tue Jun 25 14:22:08 2024] >> testing accuracy: 0.5198
+[Tue Jun 25 14:22:30 2024] >> training [020]: 0.5724
+[Tue Jun 25 14:22:32 2024] >> testing accuracy: 0.5249
+[Tue Jun 25 14:22:53 2024] >> training [021]: 0.5799
+[Tue Jun 25 14:22:55 2024] >> testing accuracy: 0.5328
+[Tue Jun 25 14:23:17 2024] >> training [022]: 0.5894
+[Tue Jun 25 14:23:19 2024] >> testing accuracy: 0.5424
+[Tue Jun 25 14:23:40 2024] >> training [023]: 0.6007
+[Tue Jun 25 14:23:43 2024] >> testing accuracy: 0.5413
+[Tue Jun 25 14:24:04 2024] >> training [024]: 0.6102
+[Tue Jun 25 14:24:06 2024] >> testing accuracy: 0.5302
+[Tue Jun 25 14:24:28 2024] >> training [025]: 0.6211
+[Tue Jun 25 14:24:30 2024] >> testing accuracy: 0.5443
+[Tue Jun 25 14:24:52 2024] >> training [026]: 0.6285
+[Tue Jun 25 14:24:54 2024] >> testing accuracy: 0.5528
+[Tue Jun 25 14:25:15 2024] >> training [027]: 0.6340
+[Tue Jun 25 14:25:17 2024] >> testing accuracy: 0.5585
+[Tue Jun 25 14:25:39 2024] >> training [028]: 0.6431
+[Tue Jun 25 14:25:41 2024] >> testing accuracy: 0.5596
+[Tue Jun 25 14:26:03 2024] >> training [029]: 0.6527
+[Tue Jun 25 14:26:05 2024] >> testing accuracy: 0.557
+[Tue Jun 25 14:26:26 2024] >> training [030]: 0.6609
+[Tue Jun 25 14:26:28 2024] >> testing accuracy: 0.5685
+[Tue Jun 25 14:26:50 2024] >> training [031]: 0.6713
+[Tue Jun 25 14:26:52 2024] >> testing accuracy: 0.5681
+[Tue Jun 25 14:27:13 2024] >> training [032]: 0.6790
+[Tue Jun 25 14:27:15 2024] >> testing accuracy: 0.5633
+[Tue Jun 25 14:27:37 2024] >> training [033]: 0.6841
+[Tue Jun 25 14:27:39 2024] >> testing accuracy: 0.5788
+[Tue Jun 25 14:28:01 2024] >> training [034]: 0.6914
+[Tue Jun 25 14:28:03 2024] >> testing accuracy: 0.5707
+[Tue Jun 25 14:28:25 2024] >> training [035]: 0.6962
+[Tue Jun 25 14:28:27 2024] >> testing accuracy: 0.5817
+[Tue Jun 25 14:28:48 2024] >> training [036]: 0.7060
+[Tue Jun 25 14:28:50 2024] >> testing accuracy: 0.579
+[Tue Jun 25 14:29:12 2024] >> training [037]: 0.7135
+[Tue Jun 25 14:29:14 2024] >> testing accuracy: 0.5903
+[Tue Jun 25 14:29:36 2024] >> training [038]: 0.7205
+[Tue Jun 25 14:29:38 2024] >> testing accuracy: 0.5751
+[Tue Jun 25 14:29:59 2024] >> training [039]: 0.7281
+[Tue Jun 25 14:30:01 2024] >> testing accuracy: 0.5895
+[Tue Jun 25 14:30:23 2024] >> training [040]: 0.7346
+[Tue Jun 25 14:30:25 2024] >> testing accuracy: 0.58
+[Tue Jun 25 14:30:47 2024] >> training [041]: 0.7414
+[Tue Jun 25 14:30:49 2024] >> testing accuracy: 0.5929
+[Tue Jun 25 14:31:11 2024] >> training [042]: 0.7500
+[Tue Jun 25 14:31:13 2024] >> testing accuracy: 0.5992
+[Tue Jun 25 14:31:34 2024] >> training [043]: 0.7549
+[Tue Jun 25 14:31:36 2024] >> testing accuracy: 0.5958
+[Tue Jun 25 14:31:58 2024] >> training [044]: 0.7604
+[Tue Jun 25 14:32:00 2024] >> testing accuracy: 0.5961
+[Tue Jun 25 14:32:21 2024] >> training [045]: 0.7646
+[Tue Jun 25 14:32:24 2024] >> testing accuracy: 0.5907
+[Tue Jun 25 14:32:45 2024] >> training [046]: 0.7721
+[Tue Jun 25 14:32:47 2024] >> testing accuracy: 0.5857
+[Tue Jun 25 14:33:09 2024] >> training [047]: 0.7767
+[Tue Jun 25 14:33:11 2024] >> testing accuracy: 0.598
+[Tue Jun 25 14:33:33 2024] >> training [048]: 0.7817
+[Tue Jun 25 14:33:35 2024] >> testing accuracy: 0.6074
+[Tue Jun 25 14:33:57 2024] >> training [049]: 0.7909
+[Tue Jun 25 14:33:59 2024] >> testing accuracy: 0.6023
+[Tue Jun 25 14:34:20 2024] >> training [050]: 0.7955
+[Tue Jun 25 14:34:22 2024] >> testing accuracy: 0.5955
+[Tue Jun 25 14:34:44 2024] >> training [051]: 0.8018
+[Tue Jun 25 14:34:46 2024] >> testing accuracy: 0.6016
+[Tue Jun 25 14:35:08 2024] >> training [052]: 0.8086
+[Tue Jun 25 14:35:10 2024] >> testing accuracy: 0.6023
+[Tue Jun 25 14:35:32 2024] >> training [053]: 0.8115
+[Tue Jun 25 14:35:34 2024] >> testing accuracy: 0.5981
+[Tue Jun 25 14:35:56 2024] >> training [054]: 0.8170
+[Tue Jun 25 14:35:58 2024] >> testing accuracy: 0.6142
+[Tue Jun 25 14:36:20 2024] >> training [055]: 0.8228
+[Tue Jun 25 14:36:22 2024] >> testing accuracy: 0.601
+[Tue Jun 25 14:36:43 2024] >> training [056]: 0.8257
+[Tue Jun 25 14:36:45 2024] >> testing accuracy: 0.6051
+[Tue Jun 25 14:37:07 2024] >> training [057]: 0.8334
+[Tue Jun 25 14:37:09 2024] >> testing accuracy: 0.604
+[Tue Jun 25 14:37:31 2024] >> training [058]: 0.8369
+[Tue Jun 25 14:37:33 2024] >> testing accuracy: 0.6139
+[Tue Jun 25 14:37:55 2024] >> training [059]: 0.8407
+[Tue Jun 25 14:37:58 2024] >> testing accuracy: 0.6156
+[Tue Jun 25 14:38:20 2024] >> training [060]: 0.8451
+[Tue Jun 25 14:38:22 2024] >> testing accuracy: 0.6169
+[Tue Jun 25 14:38:44 2024] >> training [061]: 0.8502
+[Tue Jun 25 14:38:46 2024] >> testing accuracy: 0.6173
+[Tue Jun 25 14:39:08 2024] >> training [062]: 0.8568
+[Tue Jun 25 14:39:10 2024] >> testing accuracy: 0.6204
+[Tue Jun 25 14:39:32 2024] >> training [063]: 0.8614
+[Tue Jun 25 14:39:35 2024] >> testing accuracy: 0.6121
+[Tue Jun 25 14:39:57 2024] >> training [064]: 0.8630
+[Tue Jun 25 14:39:59 2024] >> testing accuracy: 0.6122
+[Tue Jun 25 14:40:21 2024] >> training [065]: 0.8669
+[Tue Jun 25 14:40:23 2024] >> testing accuracy: 0.6197
+[Tue Jun 25 14:40:45 2024] >> training [066]: 0.8702
+[Tue Jun 25 14:40:47 2024] >> testing accuracy: 0.6171
+[Tue Jun 25 14:41:08 2024] >> training [067]: 0.8745
+[Tue Jun 25 14:41:10 2024] >> testing accuracy: 0.6128
+[Tue Jun 25 14:41:32 2024] >> training [068]: 0.8750
+[Tue Jun 25 14:41:34 2024] >> testing accuracy: 0.622
+[Tue Jun 25 14:41:55 2024] >> training [069]: 0.8859
+[Tue Jun 25 14:41:57 2024] >> testing accuracy: 0.6134
+[Tue Jun 25 14:42:18 2024] >> training [070]: 0.8881
+[Tue Jun 25 14:42:20 2024] >> testing accuracy: 0.6203
+[Tue Jun 25 14:42:41 2024] >> training [071]: 0.8874
+[Tue Jun 25 14:42:43 2024] >> testing accuracy: 0.6209
+[Tue Jun 25 14:43:04 2024] >> training [072]: 0.8925
+[Tue Jun 25 14:43:06 2024] >> testing accuracy: 0.6246
+[Tue Jun 25 14:43:27 2024] >> training [073]: 0.8923
+[Tue Jun 25 14:43:29 2024] >> testing accuracy: 0.6262
+[Tue Jun 25 14:43:50 2024] >> training [074]: 0.8987
+[Tue Jun 25 14:43:52 2024] >> testing accuracy: 0.6271
+[Tue Jun 25 14:44:14 2024] >> training [075]: 0.9026
+[Tue Jun 25 14:44:16 2024] >> testing accuracy: 0.622
+[Tue Jun 25 14:44:38 2024] >> training [076]: 0.9019
+[Tue Jun 25 14:44:40 2024] >> testing accuracy: 0.6267
+[Tue Jun 25 14:45:02 2024] >> training [077]: 0.9065
+[Tue Jun 25 14:45:04 2024] >> testing accuracy: 0.623
+[Tue Jun 25 14:45:26 2024] >> training [078]: 0.9077
+[Tue Jun 25 14:45:28 2024] >> testing accuracy: 0.6251
+[Tue Jun 25 14:45:50 2024] >> training [079]: 0.9122
+[Tue Jun 25 14:45:52 2024] >> testing accuracy: 0.6241
+[Tue Jun 25 14:46:13 2024] >> training [080]: 0.9123
+[Tue Jun 25 14:46:15 2024] >> testing accuracy: 0.6303
+[Tue Jun 25 14:46:36 2024] >> training [081]: 0.9153
+[Tue Jun 25 14:46:38 2024] >> testing accuracy: 0.6256
+[Tue Jun 25 14:47:00 2024] >> training [082]: 0.9162
+[Tue Jun 25 14:47:02 2024] >> testing accuracy: 0.625
+[Tue Jun 25 14:47:23 2024] >> training [083]: 0.9229
+[Tue Jun 25 14:47:26 2024] >> testing accuracy: 0.6279
+[Tue Jun 25 14:47:47 2024] >> training [084]: 0.9239
+[Tue Jun 25 14:47:49 2024] >> testing accuracy: 0.6282
+[Tue Jun 25 14:48:11 2024] >> training [085]: 0.9265
+[Tue Jun 25 14:48:13 2024] >> testing accuracy: 0.6314
+[Tue Jun 25 14:48:35 2024] >> training [086]: 0.9261
+[Tue Jun 25 14:48:37 2024] >> testing accuracy: 0.6354
+[Tue Jun 25 14:48:58 2024] >> training [087]: 0.9255
+[Tue Jun 25 14:49:00 2024] >> testing accuracy: 0.6367
+[Tue Jun 25 14:49:22 2024] >> training [088]: 0.9315
+[Tue Jun 25 14:49:24 2024] >> testing accuracy: 0.6294
+[Tue Jun 25 14:49:46 2024] >> training [089]: 0.9313
+[Tue Jun 25 14:49:48 2024] >> testing accuracy: 0.6257
+[Tue Jun 25 14:50:09 2024] >> training [090]: 0.9339
+[Tue Jun 25 14:50:11 2024] >> testing accuracy: 0.6379
+[Tue Jun 25 14:50:33 2024] >> training [091]: 0.9353
+[Tue Jun 25 14:50:35 2024] >> testing accuracy: 0.6283
+[Tue Jun 25 14:50:56 2024] >> training [092]: 0.9360
+[Tue Jun 25 14:50:58 2024] >> testing accuracy: 0.6312
+[Tue Jun 25 14:51:20 2024] >> training [093]: 0.9403
+[Tue Jun 25 14:51:22 2024] >> testing accuracy: 0.6317
+[Tue Jun 25 14:51:43 2024] >> training [094]: 0.9406
+[Tue Jun 25 14:51:45 2024] >> testing accuracy: 0.6322
+[Tue Jun 25 14:52:07 2024] >> training [095]: 0.9423
+[Tue Jun 25 14:52:09 2024] >> testing accuracy: 0.6366
+[Tue Jun 25 14:52:31 2024] >> training [096]: 0.9417
+[Tue Jun 25 14:52:33 2024] >> testing accuracy: 0.6379
+[Tue Jun 25 14:52:54 2024] >> training [097]: 0.9432
+[Tue Jun 25 14:52:57 2024] >> testing accuracy: 0.6384
+[Tue Jun 25 14:53:18 2024] >> training [098]: 0.9439
+[Tue Jun 25 14:53:20 2024] >> testing accuracy: 0.6355
+[Tue Jun 25 14:53:42 2024] >> training [099]: 0.9453
+[Tue Jun 25 14:53:44 2024] >> testing accuracy: 0.637
+[Tue Jun 25 14:53:44 2024] >> TRAINING RESULT SAVED: ./modeloutput/vgg19Cifar100.pt
+[Tue Jun 25 14:53:44 2024] >> 
+[Tue Jun 25 14:53:44 2024] >> PROGRAM FINISHED
+[Wed Jun 26 10:20:43 2024] >> 
+[Wed Jun 26 10:20:43 2024] >> PROGRAM START
+[Wed Jun 26 10:20:43 2024] >> TRAIN FLAG: False
+[Wed Jun 26 10:20:43 2024] >> DATA SET: SVHN
+[Wed Jun 26 10:20:43 2024] >> ---MAIN INFERENCE---
+[Wed Jun 26 10:20:43 2024] >> network: darknetSVHN
+[Wed Jun 26 10:20:43 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:20:48 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:20:48 2024] >> set manipulate percentage: 1.0/100%
+[Wed Jun 26 10:20:54 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:20:54 2024] >> 
+[Wed Jun 26 10:20:54 2024] >> network: squeezenetManiSVHN
+[Wed Jun 26 10:20:54 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:21:49 2024] >> 
+[Wed Jun 26 10:21:49 2024] >> PROGRAM START
+[Wed Jun 26 10:21:49 2024] >> TRAIN FLAG: False
+[Wed Jun 26 10:21:49 2024] >> DATA SET: SVHN
+[Wed Jun 26 10:21:49 2024] >> ---MAIN INFERENCE---
+[Wed Jun 26 10:21:49 2024] >> network: darknetSVHN
+[Wed Jun 26 10:21:49 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:21:54 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:21:54 2024] >> set manipulate percentage: 1.0/100%
+[Wed Jun 26 10:21:59 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:21:59 2024] >> set manipulate percentage: 2.0/100%
+[Wed Jun 26 10:22:04 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:22:04 2024] >> set manipulate percentage: 3.0/100%
+[Wed Jun 26 10:22:09 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:22:09 2024] >> set manipulate percentage: 4.0/100%
+[Wed Jun 26 10:22:14 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:22:14 2024] >> set manipulate percentage: 5.0/100%
+[Wed Jun 26 10:22:23 2024] >> 
+[Wed Jun 26 10:22:23 2024] >> PROGRAM START
+[Wed Jun 26 10:22:23 2024] >> TRAIN FLAG: False
+[Wed Jun 26 10:22:23 2024] >> DATA SET: Cifar10
+[Wed Jun 26 10:22:23 2024] >> ---MAIN INFERENCE---
+[Wed Jun 26 10:22:23 2024] >> network: darknetManiCifar10
+[Wed Jun 26 10:22:23 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:22:42 2024] >> testing accuracy: 0.8358
+[Wed Jun 26 10:22:42 2024] >> set manipulate percentage: 1.0/100%
+[Wed Jun 26 10:23:01 2024] >> testing accuracy: 0.5617
+[Wed Jun 26 10:23:01 2024] >> set manipulate percentage: 2.0/100%
+[Wed Jun 26 10:23:28 2024] >> 
+[Wed Jun 26 10:23:28 2024] >> PROGRAM START
+[Wed Jun 26 10:23:28 2024] >> TRAIN FLAG: False
+[Wed Jun 26 10:23:28 2024] >> DATA SET: SVHN
+[Wed Jun 26 10:23:28 2024] >> ---MAIN INFERENCE---
+[Wed Jun 26 10:23:28 2024] >> network: darknetSVHN
+[Wed Jun 26 10:23:28 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:23:33 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:23:33 2024] >> set manipulate percentage: 20.0/100%
+[Wed Jun 26 10:23:38 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:23:38 2024] >> 
+[Wed Jun 26 10:23:38 2024] >> network: squeezenetManiSVHN
+[Wed Jun 26 10:23:38 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:24:32 2024] >> 
+[Wed Jun 26 10:24:32 2024] >> PROGRAM START
+[Wed Jun 26 10:24:32 2024] >> TRAIN FLAG: False
+[Wed Jun 26 10:24:32 2024] >> DATA SET: SVHN
+[Wed Jun 26 10:24:32 2024] >> ---MAIN INFERENCE---
+[Wed Jun 26 10:24:32 2024] >> network: darknetSVHN
+[Wed Jun 26 10:24:32 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:24:38 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:24:38 2024] >> set manipulate percentage: 20.0/100%
+[Wed Jun 26 10:24:43 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:24:43 2024] >> 
+[Wed Jun 26 10:24:43 2024] >> network: squeezenetManiSVHN
+[Wed Jun 26 10:24:43 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:24:59 2024] >> 
+[Wed Jun 26 10:24:59 2024] >> PROGRAM START
+[Wed Jun 26 10:24:59 2024] >> TRAIN FLAG: False
+[Wed Jun 26 10:24:59 2024] >> DATA SET: SVHN
+[Wed Jun 26 10:24:59 2024] >> ---MAIN INFERENCE---
+[Wed Jun 26 10:24:59 2024] >> network: darknetSVHN
+[Wed Jun 26 10:24:59 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:25:05 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:25:05 2024] >> set manipulate percentage: 20.0/100%
+[Wed Jun 26 10:25:10 2024] >> testing accuracy: 0.8575
+[Wed Jun 26 10:25:10 2024] >> 
+[Wed Jun 26 10:25:10 2024] >> network: squeezenetManiSVHN
+[Wed Jun 26 10:25:10 2024] >> set manipulate percentage: 0.0/100%
+[Wed Jun 26 10:27:20 2024] >> testing accuracy: 0.8726
+[Wed Jun 26 10:27:20 2024] >> set manipulate percentage: 20.0/100%
