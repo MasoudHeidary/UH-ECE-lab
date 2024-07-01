@@ -1,8 +1,10 @@
 import time
+from globalVariable import LOG_FILE_NAME
 
 class Log:
 
     def __init__(self, name, terminal=True) -> None:
+        name = LOG_FILE_NAME or name
         self.f = open(name, "a")
         self.terminal = terminal
 

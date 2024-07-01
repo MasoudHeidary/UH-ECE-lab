@@ -195,13 +195,17 @@ class darknetCifar100(nn.Module):
     def __init__(self):
         super(darknetCifar100,self).__init__()
 
+        d_rate = 0.25
+
         ### 1
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=32,kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(32)
+        self.dropout1 = nn.Dropout(d_rate)
         
         ### 2
         self.conv2 = nn.Conv2d(in_channels=32,out_channels=64,kernel_size=3, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
+        self.dropout2 = nn.Dropout(d_rate)
         
         ### 3
         self.conv3_1 = nn.Conv2d(in_channels=64,out_channels=128,kernel_size=3, padding=1)
@@ -210,6 +214,7 @@ class darknetCifar100(nn.Module):
         self.bn3_1 = nn.BatchNorm2d(128)
         self.bn3_2 = nn.BatchNorm2d(64)
         self.bn3_3 = nn.BatchNorm2d(128)
+        self.dropout3 = nn.Dropout(d_rate)
 
         ### 4
         self.conv4_1 = nn.Conv2d(in_channels=128,out_channels=256,kernel_size=3, padding=1)
@@ -218,6 +223,7 @@ class darknetCifar100(nn.Module):
         self.bn4_1 = nn.BatchNorm2d(256)
         self.bn4_2 = nn.BatchNorm2d(128)
         self.bn4_3 = nn.BatchNorm2d(256)
+        self.dropout4 = nn.Dropout(d_rate)
         
         ### 5
         self.conv5_1 = nn.Conv2d(in_channels=256,out_channels=512,kernel_size=3, padding=1)
@@ -230,6 +236,7 @@ class darknetCifar100(nn.Module):
         self.bn5_3 = nn.BatchNorm2d(512)
         self.bn5_4 = nn.BatchNorm2d(256)
         self.bn5_5 = nn.BatchNorm2d(512)
+        self.dropout5 = nn.Dropout(d_rate)
 
         ### 6
         self.conv6_1 = nn.Conv2d(in_channels=512,out_channels=1024,kernel_size=3, padding=1)
@@ -242,6 +249,7 @@ class darknetCifar100(nn.Module):
         self.bn6_3 = nn.BatchNorm2d(1024)
         self.bn6_4 = nn.BatchNorm2d(512)
         self.bn6_5 = nn.BatchNorm2d(1024)
+        self.dropout6 = nn.Dropout(d_rate)
 
         self.avgpool = nn.AdaptiveAvgPool2d(output_size=(1,1))
         self.fc = nn.Linear(in_features=1024, out_features=100)
@@ -249,19 +257,23 @@ class darknetCifar100(nn.Module):
     def forward(self,x):
 
         x = F.relu(self.bn1(self.conv1(x)))
+        x = self.dropout1(x)
         x = F.max_pool2d(x, 2)
 
         x = F.relu(self.bn2(self.conv2(x)))
+        x = self.dropout2(x)
         x = F.max_pool2d(x, 2)
 
         x = F.relu(self.bn3_1(self.conv3_1(x)))
         x = F.relu(self.bn3_2(self.conv3_2(x)))
         x = F.relu(self.bn3_3(self.conv3_3(x)))
+        x = self.dropout3(x)
         x = F.max_pool2d(x, 2)
 
         x = F.relu(self.bn4_1(self.conv4_1(x)))
         x = F.relu(self.bn4_2(self.conv4_2(x)))
         x = F.relu(self.bn4_3(self.conv4_3(x)))
+        x = self.dropout4(x)
         x = F.max_pool2d(x, 2)
 
         x = F.relu(self.bn5_1(self.conv5_1(x)))
@@ -269,6 +281,7 @@ class darknetCifar100(nn.Module):
         x = F.relu(self.bn5_3(self.conv5_3(x)))
         x = F.relu(self.bn5_4(self.conv5_4(x)))
         x = F.relu(self.bn5_5(self.conv5_5(x)))
+        x = self.dropout5(x)
         x = F.max_pool2d(x, 2)
 
         x = F.relu(self.bn6_1(self.conv6_1(x)))
@@ -276,6 +289,7 @@ class darknetCifar100(nn.Module):
         x = F.relu(self.bn6_3(self.conv6_3(x)))
         x = F.relu(self.bn6_4(self.conv6_4(x)))
         x = F.relu(self.bn6_5(self.conv6_5(x)))
+        x = self.dropout6(x)
 
         x = self.avgpool(x).view(-1, 1024)
         x = self.fc(x)
