@@ -4,6 +4,11 @@ default_epoch_range = 200
 default_lr = 0.5
 default_weight_decay = 0.0005
 
+spc_epoch_range = 200
+spc_lr = [0.1]*1 + [0.05]*1 + [0.02]*60 + [0.004]*40 + [0.0008]*40
+spc_weight_decay = 5e-4
+spc_momentum = 0.9
+
 'Cifar10'
 'Cifar100'
 'SVHN'
@@ -12,7 +17,7 @@ DATA_SET = 'Cifar100'
 TRAIN_FLAG = True
 CONFIRM_TO_TRAIN = True
 
-LOG_FILE_NAME = False or "CIFAR100-LR-0.5.txt"
+LOG_FILE_NAME = False 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.is_available():

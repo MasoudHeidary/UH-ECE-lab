@@ -443,7 +443,7 @@ counter_t = 0
 for vdd in [i/100 for i in range(60, 90+5, 10)]:
     # vb_base = int(vdd*100)
     vb_base = 200
-    vb_max = 350+1
+    vb_max = 250+1
     for pb0 in [i/100 for i in range(vb_base, vb_max, 50)]:
         for pb1 in [i/100 for i in range(vb_base, vb_max, 50)]:
             for pb2 in [i/100 for i in range(vb_base, vb_max, 50)]:
@@ -460,6 +460,7 @@ for vdd in [i/100 for i in range(60, 90+5, 10)]:
                                     script = generate_ocean_script(f"./log/{counter}", pb, vdd)
                                     update_ocean_script_file("./multibody.ocn", script)
                                     run_ocean_script("./multibody.ocn")
+                                    # pass
 
                                 counter += 1
                                 print(counter)
