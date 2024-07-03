@@ -71,5 +71,5 @@ if __name__ == "__main__":
     
 
     print(
-        delta_vth(Vdef, T, 160/256, Tclk, t)
+        delta_vth(Vdef, T, alpha, Tclk, t)
     )

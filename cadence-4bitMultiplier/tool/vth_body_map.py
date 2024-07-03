@@ -430,4 +430,4 @@ def get_body_voltage(vth: float) -> float:
         if (v_value >= vth):
             return vbody_list[v_index]
         
-print(get_body_voltage(0.740))
+print(get_body_voltage(0.6))
