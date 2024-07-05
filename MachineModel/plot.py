@@ -60,7 +60,7 @@ if True:
     plt.plot(manipulate_percentage, vgg19_SVHN, linewidth=3, label="vgg19")
 
 
-plt.xlabel('manipulate percentage', fontsize=14, fontweight='bold')
+plt.xlabel('error rate percentage', fontsize=14, fontweight='bold')
 plt.xticks(fontsize=14, fontweight='bold')
 
 plt.ylabel('network accuracy', fontsize=14, fontweight='bold')
