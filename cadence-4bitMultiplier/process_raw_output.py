@@ -57,7 +57,7 @@ plt.plot(x, normal_delay, label="0%  modified", linewidth=3)
 plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
 plt.xticks(fontsize=14, fontweight='bold')
 
-plt.ylabel('delay(ps)', fontsize=14, fontweight='bold')
+plt.ylabel('normalized delay', fontsize=14, fontweight='bold')
 plt.yticks(fontsize=14, fontweight='bold')
 
 # plt.title('Delay', fontsize=16)

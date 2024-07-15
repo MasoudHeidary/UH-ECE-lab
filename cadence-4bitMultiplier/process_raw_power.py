@@ -69,7 +69,7 @@ plt.plot(x, modified_energy, label="modified", linewidth=3)
 plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
 plt.xticks(fontsize=14, fontweight='bold')
 
-plt.ylabel('energy(fJ)', fontsize=14, fontweight='bold')
+plt.ylabel('normalized energy', fontsize=14, fontweight='bold')
 plt.yticks(fontsize=14, fontweight='bold')
 
 # plt.tick_params(axis='both', labelsize=14)
