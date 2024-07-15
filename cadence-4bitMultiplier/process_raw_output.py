@@ -40,6 +40,15 @@ for i in range(1, 100, 1):
 # expand time
 x = [i*2 for i in x]
 
+# normalize delay plot
+normalize_scale = normal_delay[0]
+def normalize(x):
+    return x/normalize_scale
+modified_delay = list(map(normalize, modified_delay))
+M3_delay = list(map(normalize, M3_delay))
+M2_delay = list(map(normalize, M2_delay))
+normal_delay = list(map(normalize, normal_delay))
+
 plt.plot(x, modified_delay, label="100% modified", linewidth=3)
 plt.plot(x, M3_delay, label="50% modified", linewidth=3)
 plt.plot(x, M2_delay, label="33% modified", linewidth=3)
