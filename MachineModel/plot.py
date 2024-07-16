@@ -30,7 +30,7 @@ resnet18Mani_delta2 = [0.8666, 0.7486, 0.5593, 0.3686, 0.2440]
 vgg11Mani_delta2 = [0.8614, 0.7226, 0.4991, 0.3071, 0.2055]
 vgg19Mani_delta2 = [0.8891, 0.776, 0.4828, 0.1949, 0.1184]
 
-if True:
+if False:
     plt.plot(manipulate_percentage, darknetMani_delta2, linewidth=3, label="darknet")
     plt.plot(manipulate_percentage, squeezenetMani_delta2, linewidth=3, label="squeeze")
     plt.plot(manipulate_percentage, resnet18Mani_delta2, linewidth=3, label="resnet")
@@ -56,15 +56,19 @@ if True:
 # plt.text(manipulate_percentage[-1], vgg19Mani_delta2[-1], "vgg19 d[2]", fontsize=14, fontweight='bold', ha='right', va='bottom') 
 
 
-# SVHN, using regular (x1) delta
-manipulate_percentage = [0, 1, 2, 3, 4, 5]
-darknet_SVHN = [0.8575, 0.6707, 0.3628, 0.1934, 0.1696, 0.1660]
-squeezenet_SVHN = [0.8726, 0.4841, 0.2041, 0.1520, 0.1504, 0.1500]
-resnet18_SVHN = [0.8452, 0.7469, 0.5632, 0.3660, 0.2454, 0.1908]
-vgg11_SVHN = [0.8541, 0.6541, 0.3893, 0.2393, 0.1759, 0.1535]
-vgg19_SVHN = [0.8638, 0.7722, 0.5138, 0.2406, 0.1543, 0.1423]
 
-if False:
+
+
+
+# SVHN, using regular (x1) delta
+manipulate_percentage = [0, 1, 2, 3, 4]
+darknet_SVHN = [0.8575, 0.6707, 0.3628, 0.1934, 0.1696]
+squeezenet_SVHN = [0.8726, 0.4841, 0.2041, 0.1520, 0.1504]
+resnet18_SVHN = [0.8452, 0.7469, 0.5632, 0.3660, 0.2454]
+vgg11_SVHN = [0.8541, 0.6541, 0.3893, 0.2393, 0.1759]
+vgg19_SVHN = [0.8638, 0.7722, 0.5138, 0.2406, 0.1543]
+
+if True:
     plt.plot(manipulate_percentage, darknet_SVHN, linewidth=3, label="darknet")
     plt.plot(manipulate_percentage, squeezenet_SVHN, linewidth=3, label="squeeze")
     plt.plot(manipulate_percentage, resnet18_SVHN, linewidth=3, label="resnet")
