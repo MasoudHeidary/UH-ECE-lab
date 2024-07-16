@@ -455,7 +455,7 @@ for vdd in [i/100 for i in range(80, 90+5, 10)]:
                         for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
                             for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
 
-                                if 0 <= counter:
+                                if (0 <= counter) and False:
                                     pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
                                     netlist = generate_netlist(pb, vdd)
                                     update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
