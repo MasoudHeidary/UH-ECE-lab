@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
 
-manipulate_percentage = [0, 1, 2, 3]
+manipulate_percentage = [0, 1, 2, 3, 4]
 
 # network Cipher10 [epoch:100], using original delta 
 darknetMani_delta1 = [0.8358, 0.7917, 0.7393, 0.6705]
@@ -37,6 +37,18 @@ if True:
     plt.plot(manipulate_percentage, vgg11Mani_delta2, linewidth=3, label="vgg11")
     plt.plot(manipulate_percentage, vgg19Mani_delta2, linewidth=3, label="vgg19")
 
+
+    plt.xlabel('error rate percentage', fontsize=14, fontweight='bold')
+    plt.xticks(fontsize=14, fontweight='bold')
+
+    plt.ylabel('network accuracy', fontsize=14, fontweight='bold')
+    plt.yticks(fontsize=14, fontweight='bold')
+
+    plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
+    plt.grid(True)
+    plt.legend(fontsize=14)
+    plt.show()
+
 # plt.text(manipulate_percentage[-1], darknetMani_delta2[-1], "darknet d[2]", fontsize=14, fontweight='bold', ha='right', va='bottom') 
 # plt.text(manipulate_percentage[-1], squeezenetMani_delta2[-1], "squeeze d[2]", fontsize=14, fontweight='bold', ha='right', va='bottom') 
 # plt.text(manipulate_percentage[-1], resnet18Mani_delta2[-1], "resnet d[2]", fontsize=14, fontweight='bold', ha='right', va='bottom') 
@@ -52,7 +64,7 @@ resnet18_SVHN = [0.8452, 0.7469, 0.5632, 0.3660, 0.2454, 0.1908]
 vgg11_SVHN = [0.8541, 0.6541, 0.3893, 0.2393, 0.1759, 0.1535]
 vgg19_SVHN = [0.8638, 0.7722, 0.5138, 0.2406, 0.1543, 0.1423]
 
-if True:
+if False:
     plt.plot(manipulate_percentage, darknet_SVHN, linewidth=3, label="darknet")
     plt.plot(manipulate_percentage, squeezenet_SVHN, linewidth=3, label="squeeze")
     plt.plot(manipulate_percentage, resnet18_SVHN, linewidth=3, label="resnet")
@@ -60,15 +72,15 @@ if True:
     plt.plot(manipulate_percentage, vgg19_SVHN, linewidth=3, label="vgg19")
 
 
-plt.xlabel('error rate percentage', fontsize=14, fontweight='bold')
-plt.xticks(fontsize=14, fontweight='bold')
+    plt.xlabel('error rate percentage', fontsize=14, fontweight='bold')
+    plt.xticks(fontsize=14, fontweight='bold')
 
-plt.ylabel('network accuracy', fontsize=14, fontweight='bold')
-plt.yticks(fontsize=14, fontweight='bold')
+    plt.ylabel('network accuracy', fontsize=14, fontweight='bold')
+    plt.yticks(fontsize=14, fontweight='bold')
 
-# plt.title('Title', fontsize=16, fontweight='bold')
-# plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
-plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
-plt.grid(True)
-plt.legend(fontsize=14)
-plt.show()
+    # plt.title('Title', fontsize=16, fontweight='bold')
+    # plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
+    plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
+    plt.grid(True)
+    plt.legend(fontsize=14)
+    plt.show()
