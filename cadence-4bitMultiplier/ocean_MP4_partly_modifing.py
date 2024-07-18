@@ -286,8 +286,8 @@ def get_rewired_alpha(rewire_list):
 
 
 
-import lib.NBTI_formula as NBTI 
-import lib.vth_body_map as VTH
+import tool.NBTI_formula as NBTI 
+import tool.vth_body_map as VTH
 
 rewiring_list = [5, 8, 4, 1]
 

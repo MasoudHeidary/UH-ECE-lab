@@ -1,5 +1,17 @@
 import subprocess
 
+original_normal_alpha = [160, 160, 160, 192, 144, 160, 164, 192, 136, 148, 164, 192]
+original_modified_alpha = [192, 208, 160, 192, 192, 232, 164, 192, 192, 196, 198, 202]
+
+def get_rewired_alpha(rewire_list):
+    _q = []
+    for index in range(len(original_normal_alpha)):
+        if index in rewire_list:
+            _q += [original_modified_alpha[index]]
+        else:
+            _q += [original_normal_alpha[index]]
+    return _q
+
 
 def update_netlist(file_name: str, pand, pfa):
     _netlist = \
@@ -220,6 +232,8 @@ selectResult( 'tran )
 _power = average(abs(VT("/vdd") *  IT("/V0/PLUS")))
 plot(getData("/step") getData("/M<0>") getData("/M<1>") getData("/M<2>") getData("/M<3>") getData("/M<4>") getData("/M<5>") getData("/M<6>") getData("/M<7>") )
 
+ocnPrint("### OCEAN DATA OUTPUT ###")
+ocnPrint("power" _power)
 reportFile = outfile("{log_file}")
 ocnPrint(?output reportFile _power)
 close(reportFile)
@@ -240,35 +254,59 @@ def run_ocean_script(script_address):
 
 
 
-import lib.NBTI_formula as NBTI 
-import lib.vth_body_map as VTH
+import tool.NBTI_formula as NBTI 
+import tool.vth_body_map as VTH
+
 
 for t_week in range(1, 100, 1):
     t_sec = t_week * 30 * 24 * 60 * 60
     
-
     # normal aging
     pand = 0.8
 
-    alpha = [160, 160, 160, 192, 144, 160, 164, 192, 136, 148, 164, 192]
+    # alpha = [160, 160, 160, 192, 144, 160, 164, 192, 136, 148, 164, 192]
+    # vth = [(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, a/256, NBTI.Tclk, t_sec)) for a in alpha]
+    # pfa = [VTH.get_body_voltage(v) for v in vth]
+    
+    
+    # update_netlist("/home/mheidary/simulation/main_MP4/spectre/schematic/netlist/netlist", pand, pfa)
+    # update_ocean("./tmp_main_MP4.ocn", f"./log/power_N-{t_week}.txt")
+    # run_ocean_script("./tmp_main_MP4.ocn")
+    
+    
+    # # rewired aging
+    # alpha = [192, 208, 160, 192, 192, 232, 164, 192, 192, 196, 198, 202]
+    # vth = [(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, a/256, NBTI.Tclk, t_sec)) for a in alpha]
+    # pfa = [VTH.get_body_voltage(v) for v in vth]
+
+
+    # update_netlist("/home/mheidary/simulation/main_MP4/spectre/schematic/netlist/netlist", pand, pfa)
+    # update_ocean("./tmp_main_MP4.ocn", f"./log/power_M-{t_week}.txt")
+    # run_ocean_script("./tmp_main_MP4.ocn")
+
+    # 50%
+    rewiring_list = [5, 8, 4]
+
+    alpha = get_rewired_alpha(rewiring_list)
     vth = [(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, a/256, NBTI.Tclk, t_sec)) for a in alpha]
     pfa = [VTH.get_body_voltage(v) for v in vth]
-    
-    
+
     update_netlist("/home/mheidary/simulation/main_MP4/spectre/schematic/netlist/netlist", pand, pfa)
-    update_ocean("./tmp_main_MP4.ocn", f"./log/power_N-{t_week}.txt")
-    run_ocean_script("./tmp_main_MP4.ocn")
-    
-    
-    # rewired aging
-    alpha = [192, 208, 160, 192, 192, 232, 164, 192, 192, 196, 198, 202]
+    update_ocean("./tmp_energy.ocn", f"./logPower/power50%-{t_week}.txt")
+    run_ocean_script("./tmp_energy.ocn")
+
+
+    #33%
+    rewiring_list = [5, 8]
+
+    alpha = get_rewired_alpha(rewiring_list)
     vth = [(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, a/256, NBTI.Tclk, t_sec)) for a in alpha]
     pfa = [VTH.get_body_voltage(v) for v in vth]
 
-
     update_netlist("/home/mheidary/simulation/main_MP4/spectre/schematic/netlist/netlist", pand, pfa)
-    update_ocean("./tmp_main_MP4.ocn", f"./log/power_M-{t_week}.txt")
-    run_ocean_script("./tmp_main_MP4.ocn")
-    
+    update_ocean("./tmp_energy.ocn", f"./logPower/power33%-{t_week}.txt")
+    run_ocean_script("./tmp_energy.ocn")
 
+
+    
 
