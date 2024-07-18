@@ -35,7 +35,8 @@ if False:
     plt.show()
 
 
-if True:
+# MAIN
+if False:
     time = []
     best_normal_vth = []
     worst_modified_vth = []
@@ -74,5 +75,13 @@ if True:
     plt.grid(True)
     plt.show()
 
+
+
+t_sec = 4 * 365/7/2 *30*24*60*60
+alpha = 136
+nor = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+alpha = 232
+mod = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+print((mod-nor)/nor*100)
 
 

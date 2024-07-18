@@ -18,12 +18,12 @@ def extract_number(text):
         return None
 
 
-x = []
+t = []
 normal_power = []
 modified_power = []
 
 for i in range(1, 100, 1):
-    x += [i]
+    t += [i]
 
     normal_power_file = open(f"./raw_data_power/power_N-{i}.txt", "r")
     modified_power_file = open(f"./raw_data_power/power_M-{i}.txt", "r")
@@ -35,7 +35,7 @@ for i in range(1, 100, 1):
 
 
 # expand time
-x = [i*2 for i in x]
+t = [i*2 for i in t]
 
 if False:
     plt.title('Power', fontsize=16)
@@ -55,6 +55,18 @@ modified_energy = [i*j for (i,j) in zip (modified_power, modified_delay)]
 normal_energy = [i/1000 for i in normal_energy]
 modified_energy = [i/1000 for i in modified_energy]
 
+
+# compare growth
+d = normal_energy[24] - normal_energy[0]
+print((modified_energy[24]-normal_energy[0]-d)/d *100)
+d = normal_energy[49] - normal_energy[0]
+print((modified_energy[49]-normal_energy[0]-d)/d *100)
+d = normal_energy[74] - normal_energy[0]
+print((modified_energy[74]-normal_energy[0]-d)/d *100)
+d = normal_energy[98] - normal_energy[0]
+print((modified_energy[98]-normal_energy[0]-d)/d *100)
+exit()
+
 # normalize energy
 normalize_scale = normal_energy[0]
 def normalize(x):
@@ -63,8 +75,8 @@ normal_energy = list(map(normalize, normal_energy))
 modified_energy = list(map(normalize, modified_energy))
 
 # plt.title('Energy', fontsize=16)
-plt.plot(x, normal_energy, label="normal", linewidth=3)
-plt.plot(x, modified_energy, label="modified", linewidth=3)
+plt.plot(t, normal_energy, label="normal", linewidth=3)
+plt.plot(t, modified_energy, label="modified", linewidth=3)
 
 plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
 plt.xticks(fontsize=14, fontweight='bold')

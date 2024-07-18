@@ -40,6 +40,13 @@ for i in range(1, 100, 1):
 # expand time
 x = [i*2 for i in x]
 
+# check the degredation percentage
+d = normal_delay[-1] - normal_delay[0]
+print((modified_delay[-1]-modified_delay[0]-d)/d * 100)
+print((M3_delay[-1]-modified_delay[0]-d)/d * 100)
+print((M2_delay[-1]-modified_delay[0]-d)/d * 100)
+exit()
+
 # normalize delay plot
 normalize_scale = normal_delay[0]
 def normalize(x):
