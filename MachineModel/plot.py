@@ -30,23 +30,25 @@ resnet18Mani_delta2 = [0.8666, 0.7486, 0.5593, 0.3686, 0.2440]
 vgg11Mani_delta2 = [0.8614, 0.7226, 0.4991, 0.3071, 0.2055]
 vgg19Mani_delta2 = [0.8891, 0.776, 0.4828, 0.1949, 0.1184]
 
-if False:
-    plt.plot(manipulate_percentage, darknetMani_delta2, linewidth=3, label="darknet")
-    plt.plot(manipulate_percentage, squeezenetMani_delta2, linewidth=3, label="squeeze")
-    plt.plot(manipulate_percentage, resnet18Mani_delta2, linewidth=3, label="resnet")
-    plt.plot(manipulate_percentage, vgg11Mani_delta2, linewidth=3, label="vgg11")
-    plt.plot(manipulate_percentage, vgg19Mani_delta2, linewidth=3, label="vgg19")
+if True:
+    plt.figure(figsize=(13, 10))
+
+    plt.plot(manipulate_percentage, darknetMani_delta2, linewidth=5, label="darknet")
+    plt.plot(manipulate_percentage, squeezenetMani_delta2, linewidth=5, label="squeeze")
+    plt.plot(manipulate_percentage, resnet18Mani_delta2, linewidth=5, label="resnet")
+    plt.plot(manipulate_percentage, vgg11Mani_delta2, linewidth=5, label="vgg11")
+    plt.plot(manipulate_percentage, vgg19Mani_delta2, linewidth=5, label="vgg19")
 
 
-    plt.xlabel('error rate percentage', fontsize=14, fontweight='bold')
-    plt.xticks(fontsize=14, fontweight='bold')
+    plt.xlabel('error rate percentage', fontsize=18, fontweight='bold')
+    plt.xticks(fontsize=18, fontweight='bold')
 
-    plt.ylabel('network accuracy', fontsize=14, fontweight='bold')
-    plt.yticks(fontsize=14, fontweight='bold')
+    plt.ylabel('network accuracy', fontsize=18, fontweight='bold')
+    plt.yticks(fontsize=18, fontweight='bold')
 
     plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
     plt.grid(True)
-    plt.legend(fontsize=14)
+    plt.legend(fontsize=16)
     plt.show()
 
 # plt.text(manipulate_percentage[-1], darknetMani_delta2[-1], "darknet d[2]", fontsize=14, fontweight='bold', ha='right', va='bottom') 
@@ -68,23 +70,26 @@ resnet18_SVHN = [0.8452, 0.7469, 0.5632, 0.3660, 0.2454]
 vgg11_SVHN = [0.8541, 0.6541, 0.3893, 0.2393, 0.1759]
 vgg19_SVHN = [0.8638, 0.7722, 0.5138, 0.2406, 0.1543]
 
-if True:
-    plt.plot(manipulate_percentage, darknet_SVHN, linewidth=3, label="darknet")
-    plt.plot(manipulate_percentage, squeezenet_SVHN, linewidth=3, label="squeeze")
-    plt.plot(manipulate_percentage, resnet18_SVHN, linewidth=3, label="resnet")
-    plt.plot(manipulate_percentage, vgg11_SVHN, linewidth=3, label="vgg11")
-    plt.plot(manipulate_percentage, vgg19_SVHN, linewidth=3, label="vgg19")
+if False:
+    plt.figure(figsize=(13, 10))
+
+    plt.plot(manipulate_percentage, darknet_SVHN, linewidth=5, label="darknet")
+    plt.plot(manipulate_percentage, squeezenet_SVHN, linewidth=5, label="squeeze")
+    plt.plot(manipulate_percentage, resnet18_SVHN, linewidth=5, label="resnet")
+    plt.plot(manipulate_percentage, vgg11_SVHN, linewidth=5, label="vgg11")
+    plt.plot(manipulate_percentage, vgg19_SVHN, linewidth=5, label="vgg19")
 
 
-    plt.xlabel('error rate percentage', fontsize=14, fontweight='bold')
-    plt.xticks(fontsize=14, fontweight='bold')
+    plt.xlabel('error rate percentage', fontsize=18, fontweight='bold')
+    plt.xticks(fontsize=18, fontweight='bold')
 
-    plt.ylabel('network accuracy', fontsize=14, fontweight='bold')
-    plt.yticks(fontsize=14, fontweight='bold')
+    plt.ylabel('network accuracy (SVHN)', fontsize=18, fontweight='bold')
+    plt.yticks(fontsize=18, fontweight='bold')
 
     # plt.title('Title', fontsize=16, fontweight='bold')
     # plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
     plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
     plt.grid(True)
-    plt.legend(fontsize=14)
+    plt.legend(fontsize=16)
+    # plt.gca().set_aspect(5)
     plt.show()
