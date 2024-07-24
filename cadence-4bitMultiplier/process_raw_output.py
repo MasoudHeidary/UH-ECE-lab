@@ -34,18 +34,18 @@ for i in range(1, 100, 1):
     M2_delay += [_m2]
     M3_delay += [_m3]
 
-    # print(f"{_modified}, ")
+    # print(f"{_m3}, ")
     
 
 # expand time
 x = [i*2 for i in x]
 
 # check the degredation percentage
-d = normal_delay[-1] - normal_delay[0]
-print((modified_delay[-1]-modified_delay[0]-d)/d * 100)
-print((M3_delay[-1]-modified_delay[0]-d)/d * 100)
-print((M2_delay[-1]-modified_delay[0]-d)/d * 100)
-exit()
+# d = normal_delay[-1] - normal_delay[0]
+# print((modified_delay[-1]-modified_delay[0]-d)/d * 100)
+# print((M3_delay[-1]-modified_delay[0]-d)/d * 100)
+# print((M2_delay[-1]-modified_delay[0]-d)/d * 100)
+# exit()
 
 # normalize delay plot
 normalize_scale = normal_delay[0]
@@ -56,19 +56,24 @@ M3_delay = list(map(normalize, M3_delay))
 M2_delay = list(map(normalize, M2_delay))
 normal_delay = list(map(normalize, normal_delay))
 
-plt.plot(x, modified_delay, label="100% modified", linewidth=3)
-plt.plot(x, M3_delay, label="50% modified", linewidth=3)
-plt.plot(x, M2_delay, label="33% modified", linewidth=3)
-plt.plot(x, normal_delay, label="0%  modified", linewidth=3)
 
-plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
-plt.xticks(fontsize=14, fontweight='bold')
 
-plt.ylabel('normalized delay', fontsize=14, fontweight='bold')
-plt.yticks(fontsize=14, fontweight='bold')
+################################################### plot
+plt.figure(figsize=(13, 10))
+
+plt.plot(x, modified_delay, label="100% modified", linewidth=5)
+plt.plot(x, M3_delay, label="50% modified", linewidth=5)
+plt.plot(x, M2_delay, label="33% modified", linewidth=5)
+plt.plot(x, normal_delay, label="0%  modified", linewidth=5)
+
+plt.xlabel('time(weeks)', fontsize=18, fontweight='bold')
+plt.xticks(fontsize=18, fontweight='bold')
+
+plt.ylabel('normalized delay', fontsize=18, fontweight='bold')
+plt.yticks(fontsize=18, fontweight='bold')
 
 # plt.title('Delay', fontsize=16)
 # plt.tick_params(axis='both', labelsize=16)
-plt.legend(fontsize=14)
+plt.legend(fontsize=16)
 plt.grid(True)
 plt.show()
