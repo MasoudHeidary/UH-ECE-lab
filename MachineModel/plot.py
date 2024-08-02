@@ -40,15 +40,15 @@ if True:
     plt.plot(manipulate_percentage, vgg19Mani_delta2, linewidth=5, label="vgg19")
 
 
-    plt.xlabel('error rate percentage', fontsize=18, fontweight='bold')
-    plt.xticks(fontsize=18, fontweight='bold')
+    plt.xlabel('number of errors (%)', fontsize=28, fontweight='bold')
+    plt.xticks(fontsize=28, fontweight='bold')
 
-    plt.ylabel('network accuracy', fontsize=18, fontweight='bold')
-    plt.yticks(fontsize=18, fontweight='bold')
+    plt.ylabel('network accuracy (CIFAR10)', fontsize=28, fontweight='bold')
+    plt.yticks(fontsize=28, fontweight='bold')
 
-    plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
+    # plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter(decimals=1))
     plt.grid(True)
-    plt.legend(fontsize=16)
+    plt.legend(fontsize=28)
     plt.show()
 
 # plt.text(manipulate_percentage[-1], darknetMani_delta2[-1], "darknet d[2]", fontsize=14, fontweight='bold', ha='right', va='bottom') 
@@ -70,7 +70,7 @@ resnet18_SVHN = [0.8452, 0.7469, 0.5632, 0.3660, 0.2454]
 vgg11_SVHN = [0.8541, 0.6541, 0.3893, 0.2393, 0.1759]
 vgg19_SVHN = [0.8638, 0.7722, 0.5138, 0.2406, 0.1543]
 
-if False:
+if True:
     plt.figure(figsize=(13, 10))
 
     plt.plot(manipulate_percentage, darknet_SVHN, linewidth=5, label="darknet")
@@ -80,16 +80,68 @@ if False:
     plt.plot(manipulate_percentage, vgg19_SVHN, linewidth=5, label="vgg19")
 
 
-    plt.xlabel('error rate percentage', fontsize=18, fontweight='bold')
-    plt.xticks(fontsize=18, fontweight='bold')
+    plt.xlabel('number of errors (%)', fontsize=28, fontweight='bold')
+    plt.xticks(fontsize=28, fontweight='bold')
 
-    plt.ylabel('network accuracy (SVHN)', fontsize=18, fontweight='bold')
-    plt.yticks(fontsize=18, fontweight='bold')
+    plt.ylabel('network accuracy (SVHN)', fontsize=28, fontweight='bold')
+    plt.yticks(fontsize=28, fontweight='bold')
 
     # plt.title('Title', fontsize=16, fontweight='bold')
     # plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
-    plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter())
+    # plt.gca().xaxis.set_major_formatter(mticker.PercentFormatter(decimals=1))
     plt.grid(True)
-    plt.legend(fontsize=16)
+    plt.legend(fontsize=28)
     # plt.gca().set_aspect(5)
     plt.show()
+
+
+
+
+
+# accuracy loss after 1 year
+print(
+    (
+        0.8358 - 0.5617 +\
+        0.8397 - 0.2692 +\
+        0.8666 - 0.7486 +\
+        0.8614 - 0.7226 +\
+        0.8891 - 0.776 +\
+        \
+        0.8575 - 0.6707 +\
+        0.8726 - 0.4841 +\
+        0.8452 - 0.7469 +\
+        0.8541 - 0.6541 +\
+        0.8638 - 0.7722 +\
+        \
+        0.6825 - 0.5175 +\
+        0.6702 - 0.3245 +\
+        0.7125 - 0.4647 +\
+        0.6783 - 0.2955 +\
+        0.4904 - 0.1426
+    ) / 15
+)
+
+
+# accuracy loss after 4 years
+
+print(
+    (
+    0.8358 - 0.1034 + \
+    0.8397 - 0.1010 + \
+    0.8666 - 0.2440 + \
+    0.8614 - 0.2055 + \
+    0.8891 - 0.1184 + \
+    \
+    0.8575 - 0.1696 +\
+    0.8726 - 0.1504 +\
+    0.8452 - 0.2454 +\
+    0.8541 - 0.1759 +\
+    0.8638 - 0.1543 +\
+    \
+    0.6825 - 0.1422 +\
+    0.6702 - 0.0361 +\
+    0.7125 - 0.0251 +\
+    0.6783 - 0.0267 +\
+    0.4904 - 0.0170 
+    ) / 15
+)

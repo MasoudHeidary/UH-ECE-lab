@@ -98,15 +98,15 @@ plt.plot(t, M50_energy, label="50% modified", linewidth=5)
 plt.plot(t, M33_energy, label="33% modified", linewidth=5)
 plt.plot(t, normal_energy, label="0% modified", linewidth=5)
 
-plt.xlabel('time(weeks)', fontsize=18, fontweight='bold')
-plt.xticks(fontsize=18, fontweight='bold')
+plt.xlabel('time(weeks)', fontsize=28, fontweight='bold')
+plt.xticks(fontsize=28, fontweight='bold')
 
-plt.ylabel('normalized energy', fontsize=18, fontweight='bold')
-plt.yticks(fontsize=18, fontweight='bold')
+plt.ylabel('normalized energy', fontsize=28, fontweight='bold')
+plt.yticks(fontsize=28, fontweight='bold')
 
 # plt.tick_params(axis='both', labelsize=14)
 
-plt.legend(fontsize=16)
+plt.legend(fontsize=28)
 plt.grid(True)
 plt.show()
 

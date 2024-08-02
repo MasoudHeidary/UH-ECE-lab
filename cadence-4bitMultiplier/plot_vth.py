@@ -36,7 +36,7 @@ if False:
 
 
 # MAIN
-if False:
+if True:
     time = []
     best_normal_vth = []
     worst_modified_vth = []
@@ -62,16 +62,18 @@ if False:
     # expand time
     time = [i*2 for i in time]
 
-    plt.plot(time, worst_modified_vth, label="modified vth", color='red', linewidth=3)
-    plt.plot(time, best_normal_vth, label="normal vth", linewidth=3)
+    plt.figure(figsize=(13, 10))
 
-    plt.xlabel('time(weeks)', fontsize=14, fontweight='bold')
-    plt.xticks(fontsize=14, fontweight='bold')
+    plt.plot(time, worst_modified_vth, label="modified vth", color='red', linewidth=5)
+    plt.plot(time, best_normal_vth, label="normal vth", linewidth=5)
 
-    plt.ylabel('Vth(v)', fontsize=14, fontweight='bold')
-    plt.yticks(fontsize=14, fontweight='bold')
+    plt.xlabel('time(weeks)', fontsize=28, fontweight='bold')
+    plt.xticks(fontsize=28, fontweight='bold')
 
-    plt.legend()
+    plt.ylabel('Vth(v)', fontsize=28, fontweight='bold')
+    plt.yticks(fontsize=28, fontweight='bold')
+
+    plt.legend(fontsize=28)
     plt.grid(True)
     plt.show()
 
@@ -85,3 +87,8 @@ mod = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_
 print((mod-nor)/nor*100)
 
 
+
+a = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 99 * 30 * 24 * 60 * 60)
+b = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 1)
+print((a-b)/b * 100)
+print(a-b)
