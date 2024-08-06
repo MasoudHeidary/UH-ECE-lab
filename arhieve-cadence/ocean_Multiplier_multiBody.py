@@ -455,16 +455,22 @@ for vdd in [i/100 for i in range(80, 90+5, 10)]:
                         for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
                             for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
 
-                                if (0 <= counter) and False:
+                                if (16796 <= counter):
                                     pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
-                                    netlist = generate_netlist(pb, vdd)
-                                    update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
 
-                                    script = generate_ocean_script(f"./log/{counter}", pb, vdd)
-                                    update_ocean_script_file("./multibody.ocn", script)
-                                    run_ocean_script("./multibody.ocn")
-                                    
-                                    log.println(f"counter #{counter}, data: {pb} vdd({vdd})")
+                                    # short circuit pb6 to pb5
+                                    pb[-1] = pb[-2]
+                                    if counter % 4 != 0:
+                                        log.println(f"counter #{counter} (!SKIPPED), data: {pb} vdd({vdd})")
+                                    else:
+                                        netlist = generate_netlist(pb, vdd)
+                                        update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
+
+                                        script = generate_ocean_script(f"./log/{counter}", pb, vdd)
+                                        update_ocean_script_file("./multibody.ocn", script)
+                                        run_ocean_script("./multibody.ocn")
+                                        
+                                        log.println(f"counter #{counter}, data: {pb} vdd({vdd})")
 
                                 counter += 1
                                 print(counter)

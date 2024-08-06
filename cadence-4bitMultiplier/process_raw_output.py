@@ -85,3 +85,8 @@ print((b-a)/a * 100)
 b = normal_delay[-1]
 a = normal_delay[0]
 print((b-a)/a * 100)
+
+
+w = normal_delay[0]
+a = modified_delay[24]
+print((a-w)/w * 100)
