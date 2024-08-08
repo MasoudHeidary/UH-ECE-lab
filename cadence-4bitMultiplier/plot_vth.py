@@ -36,7 +36,7 @@ if False:
 
 
 # MAIN
-if True:
+if False:
     time = []
     best_normal_vth = []
     worst_modified_vth = []
@@ -79,16 +79,20 @@ if True:
 
 
 
-t_sec = 4 * 365/7/2 *30*24*60*60
-alpha = 136
-nor = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+# 4 years
+# t_sec = 4 * 365/7/2 *30*24*60*60
+# alpha = 136
+# nor = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+# alpha = 232
+# mod = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+# print(nor)
+# print(mod)
+# print((mod-nor)/nor*100)
+
+
+
 alpha = 232
-mod = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
-print((mod-nor)/nor*100)
-
-
-
-a = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 99 * 30 * 24 * 60 * 60)
-b = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 1)
-print((a-b)/b * 100)
-print(a-b)
+end = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 99 * 30 * 24 * 60 * 60)
+start = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 1)
+print(f"{start} => {end}")
+print((end-start)/start * 100)

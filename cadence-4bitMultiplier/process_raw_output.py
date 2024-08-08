@@ -59,29 +59,45 @@ normal_delay = list(map(normalize, normal_delay))
 
 
 ################################################### plot
-plt.figure(figsize=(13, 10))
+if False:
+    plt.figure(figsize=(13, 10))
 
-plt.plot(x, modified_delay, label="100% modified", linewidth=5)
-plt.plot(x, M3_delay, label="50% modified", linewidth=5)
-plt.plot(x, M2_delay, label="33% modified", linewidth=5)
-plt.plot(x, normal_delay, label="0%  modified", linewidth=5)
+    plt.plot(x, modified_delay, label="100% modified", linewidth=5)
+    plt.plot(x, M3_delay, label="50% modified", linewidth=5)
+    plt.plot(x, M2_delay, label="33% modified", linewidth=5)
+    plt.plot(x, normal_delay, label="0%  modified", linewidth=5)
 
-plt.xlabel('time(weeks)', fontsize=28, fontweight='bold')
-plt.xticks(fontsize=28, fontweight='bold')
+    plt.xlabel('time(weeks)', fontsize=28, fontweight='bold')
+    plt.xticks(fontsize=28, fontweight='bold')
 
-plt.ylabel('normalized delay', fontsize=28, fontweight='bold')
-plt.yticks(fontsize=28, fontweight='bold')
+    plt.ylabel('normalized delay', fontsize=28, fontweight='bold')
+    plt.yticks(fontsize=28, fontweight='bold')
 
-# plt.title('Delay', fontsize=16)
-# plt.tick_params(axis='both', labelsize=16)
-plt.legend(fontsize=28)
-plt.grid(True)
-plt.show()
+    # plt.title('Delay', fontsize=16)
+    # plt.tick_params(axis='both', labelsize=16)
+    plt.legend(fontsize=28)
+    plt.grid(True)
+    plt.show()
 
 
-b = M2_delay[-1]
-a = normal_delay[0]
-print((b-a)/a * 100)
+
+# compare aging to normal aging
+# a = M2_delay[-1] - normal_delay[0]
+# w = normal_delay[-1] - normal_delay[0]
+# print((a-w ) / w * 100)
+
+# a = M3_delay[-1] - normal_delay[0]
+# print((a-w ) / w * 100)
+
+# a = modified_delay[-1] - normal_delay[0]
+# print((a-w ) / w * 100)
+
+
+print(
+    (M2_delay[-1] - normal_delay[0]) / normal_delay[0] * 100
+)
+
+
 b = normal_delay[-1]
 a = normal_delay[0]
 print((b-a)/a * 100)
