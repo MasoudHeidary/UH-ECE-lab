@@ -78,6 +78,13 @@ M50_energy = [i/1000 for i in M50_energy]
 # print((modified_energy[74]-normal_energy[0]-d)/d *100)
 # d = normal_energy[98] - normal_energy[0]
 # print((modified_energy[98]-normal_energy[0]-d)/d *100)
+
+#compare usage itself
+print((modified_energy[24]-normal_energy[24])/normal_energy[24] * 100)
+print((modified_energy[49]-normal_energy[49])/normal_energy[49] * 100)
+print((modified_energy[74]-normal_energy[74])/normal_energy[74] * 100)
+print((modified_energy[98]-normal_energy[98])/normal_energy[98] * 100)
+
 # exit()
 
 # normalize energy
@@ -93,15 +100,15 @@ M50_energy = list(map(normalize, M50_energy))
 plt.figure(figsize=(13, 10))
 
 # plt.title('Energy', fontsize=16)
-plt.plot(t, modified_energy, label="100% modified", linewidth=5)
-plt.plot(t, M50_energy, label="50% modified", linewidth=5)
-plt.plot(t, M33_energy, label="33% modified", linewidth=5)
-plt.plot(t, normal_energy, label="0% modified", linewidth=5)
+plt.plot(t, modified_energy, label="100% tampered", linewidth=5)
+plt.plot(t, M50_energy, label="50% tampered", linewidth=5)
+plt.plot(t, M33_energy, label="33% tampered", linewidth=5)
+plt.plot(t, normal_energy, label="0% tampered", linewidth=5)
 
-plt.xlabel('time(weeks)', fontsize=28, fontweight='bold')
+plt.xlabel('Time(weeks)', fontsize=28, fontweight='bold')
 plt.xticks(fontsize=28, fontweight='bold')
 
-plt.ylabel('normalized energy', fontsize=28, fontweight='bold')
+plt.ylabel('Normalized Energy', fontsize=28, fontweight='bold')
 plt.yticks(fontsize=28, fontweight='bold')
 
 # plt.tick_params(axis='both', labelsize=14)

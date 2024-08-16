@@ -78,10 +78,10 @@ plt.figure(figsize=(13, 10))
 
 plt.plot(time, error_rate_percent, label="", linewidth=5)
 
-plt.xlabel("time(weeks)", fontsize=28, fontweight='bold')
+plt.xlabel("Time(weeks)", fontsize=28, fontweight='bold')
 plt.xticks(fontsize=28, fontweight='bold')
 
-plt.ylabel('error rate percentage', fontsize=28, fontweight='bold')
+plt.ylabel('Error Rate Percentage', fontsize=28, fontweight='bold')
 plt.yticks(fontsize=28, fontweight='bold')
 # plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter())
 # plt.gca().yaxis.set_major_formatter(FormatStrFormatter('%.1f'))

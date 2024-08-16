@@ -36,7 +36,7 @@ if False:
 
 
 # MAIN
-if False:
+if True:
     time = []
     best_normal_vth = []
     worst_modified_vth = []
@@ -64,10 +64,10 @@ if False:
 
     plt.figure(figsize=(13, 10))
 
-    plt.plot(time, worst_modified_vth, label="modified vth", color='red', linewidth=5)
-    plt.plot(time, best_normal_vth, label="normal vth", linewidth=5)
+    plt.plot(time, worst_modified_vth, label="Tampered Vth", color='red', linewidth=5)
+    plt.plot(time, best_normal_vth, label="Normal Vth", linewidth=5)
 
-    plt.xlabel('time(weeks)', fontsize=28, fontweight='bold')
+    plt.xlabel('Time(weeks)', fontsize=28, fontweight='bold')
     plt.xticks(fontsize=28, fontweight='bold')
 
     plt.ylabel('Vth(v)', fontsize=28, fontweight='bold')
@@ -89,10 +89,36 @@ if False:
 # print(mod)
 # print((mod-nor)/nor*100)
 
-
-
-alpha = 232
-end = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 99 * 30 * 24 * 60 * 60)
+# growth 
+alpha = 136
 start = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 1)
-print(f"{start} => {end}")
-print((end-start)/start * 100)
+
+t_list = [
+    24 * 30 * 24* 60 * 60,
+    49 * 30 * 24* 60 * 60,
+    74 * 30 * 24* 60 * 60,
+    99 * 30 * 24* 60 * 60,
+]
+
+# for t in t_list:
+#     alpha = 136
+#     b = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
+#     alpha = 232
+#     c = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
+#     print((c-b)/b*100)
+
+for t in t_list:
+    alpha = 136
+    b = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
+    alpha = 232
+    c = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
+    print(f"{c-start}, {b-start} : {start}")
+    print((c-start-(b-start))/(b-start)*100)
+
+
+
+# alpha = 232
+# end = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 99 * 30 * 24 * 60 * 60)
+# start = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 1)
+# print(f"{start} => {end}")
+# print((end-start)/start * 100)
