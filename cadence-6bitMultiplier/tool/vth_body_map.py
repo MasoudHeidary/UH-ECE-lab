@@ -429,5 +429,4 @@ def get_body_voltage(vth: float) -> float:
     for v_index, v_value in enumerate(vth_list):
         if (v_value >= vth):
             return vbody_list[v_index]
-        
-print(get_body_voltage(0.6))
+    raise ValueError("excessive Vth")

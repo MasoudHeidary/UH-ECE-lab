@@ -39,6 +39,9 @@ def Bt(T, alpha, Tclk, t):
     return 1 - (_numerator / _denominator)
 
 def delta_vth(Vdef, T, alpha, Tclk, t):
+    if not (0 <= alpha < 1):
+        raise ValueError("alpha should be 0 <= alpha < 1")
+
     _Kv = Kv(Vdef, T)
     _Bt = Bt(T, alpha, Tclk, t)
     _numerator =  sqrt(_Kv**2 * alpha * Tclk)
