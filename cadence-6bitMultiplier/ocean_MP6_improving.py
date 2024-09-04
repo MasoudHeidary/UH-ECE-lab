@@ -13,7 +13,7 @@ normal_alpha = \
     [
         [
             [0.75, 0.625, 0.625], [0.75, 0.625, 0.625], [0.75, 0.625, 0.625], 
-            [0.75, 0.625, 0.625], [0.75, 0.625, 0.625], [1.0, 0.75, 0.75],
+            [0.75, 0.625, 0.625], [0.75, 0.625, 0.625], [0.5, 0.75, 0.75],  # [1,...] => [0.5, ...]
         ], 
         [
             [0.625, 0.5625, 0.5625], [0.625, 0.5625, 0.5625], [0.625, 0.5625, 0.5625],
@@ -39,7 +39,7 @@ improved_alpha = \
 [
     [
         [0.7421875, 0.61572265625, 0.61572265625], [0.73779296875, 0.61474609375, 0.61474609375], [0.72998046875, 0.607421875, 0.607421875], 
-        [0.7158203125, 0.59521484375, 0.59521484375], [0.6748046875, 0.568359375, 0.568359375], [1.0, 0.6708984375, 0.6708984375], 
+        [0.7158203125, 0.59521484375, 0.59521484375], [0.6748046875, 0.568359375, 0.568359375], [0.5, 0.6708984375, 0.6708984375],              # [1,...] => [0.5,...]
     ],
     [
         [0.6123046875, 0.5546875, 0.5546875], [0.6064453125, 0.54931640625, 0.54931640625], [0.59033203125, 0.53564453125, 0.53564453125], 
@@ -80,7 +80,6 @@ def generate_body_voltage(alpha_lst, t_sec):
                 v5 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec))
             else:
                 v0 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
-                print(v0)
                 v1 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
                 v2 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec))
                 v3 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec))
@@ -460,31 +459,31 @@ V46 (pbFA00\<1\> gnd) vsource dc={pfa[0][0][1]} type=dc
 V45 (pbFA00\<0\> gnd) vsource dc={pfa[0][0][0]} type=dc
 V1 (gnd 0) vsource dc=0 type=dc
 V0 (vdd 0) vsource dc=800.0m type=dc
-V5 (net9 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V5 (net9 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V4 (net8 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V4 (net8 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V3 (net7 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V3 (net7 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V2 (net6 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V2 (net6 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V100 (net37 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V100 (net37 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V200 (step gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V200 (step gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V105 (net36 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V105 (net36 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V107 (net35 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V107 (net35 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V103 (net34 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V103 (net34 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V101 (net33 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V101 (net33 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V106 (net32 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V106 (net32 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V104 (net31 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V104 (net31 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
-V102 (net30 gnd) vsource type=pulse val0=0 val1=800m period=20n delay=100p \
+V102 (net30 gnd) vsource type=pulse val0=0 val1=800m period=10n delay=100p \
         rise=1p fall=1p
 I82 (gnd vdd net55 vdd B\<1\> A\<5\>) and_for_trojan
 I81 (gnd vdd net4 vdd B\<4\> A\<5\>) and_for_trojan
@@ -566,7 +565,7 @@ resultsDir( "{RESULT_DIR}" )
 modelFile( 
     '("$SPECTRE_MODEL_PATH/design_wrapper.lib.scs" "tt_pre")
 )
-analysis('tran ?stop "10n"  ?errpreset "conservative"  )
+analysis('tran ?stop "5n"  ?errpreset "conservative"  )
 desVar(	  "wireopt" 19	)
 envOption(
 	'analysisOrder  list("tran") 
@@ -576,10 +575,12 @@ run()
 selectResult( 'tran )
 
 
-plot(getData("/step"))
 /* getData("/M<10>") getData("/M<11>") */
+/*
+plot(getData("/step"))
 hardCopyOptions(?hcOutputFile "{log_file}.png" ?hcResolution 500 ?hcFontSize 18 ?hcOutputFormat "png" ?hcImageWidth 1920 ?hcImageHeight 1080)
 hardCopy()
+*/
 
 
 /*calculate the output delays*/
@@ -633,26 +634,26 @@ log = log.Log("terminal_log.txt")
 log.println("### log file created")
 
 if True:
-    for t_week in range(0, 5, 1):
+    for t_week in range(0, 200, 1):
         t_sec = t_week * (30/2) * 24 * 60 * 60
 
 
         # normal aging
         log_name = f"./log/Normal-{t_week}.txt"
         body_voltage = generate_body_voltage(normal_alpha, t_sec)
-        log.println(str(body_voltage))
-        # update_netlist(NETLIST_DIR, body_voltage)
-        # update_ocean("./tmp_main.ocn", log_name)
-        # run_ocean_script("./tmp_main.ocn")
+        # log.println(str(body_voltage))
+        update_netlist(NETLIST_DIR, body_voltage)
+        update_ocean("./tmp_main.ocn", log_name)
+        run_ocean_script("./tmp_main.ocn")
         log.println(log_name)
 
 
-        # # improved aging
-        # log_name = f"./log/improved-FA[4][5]-T0-{t_week}.txt"
-        # update_netlist(NETLIST_DIR, generate_body_voltage(improved_alpha, t_sec))
-        # update_ocean("./tmp_main.ocn", log_name)
-        # run_ocean_script("./tmp_main.ocn")
-        # log.println(log_name)
+        # improved aging
+        log_name = f"./log/improved-FA[4][5]-T0-{t_week}.txt"
+        update_netlist(NETLIST_DIR, generate_body_voltage(improved_alpha, t_sec))
+        update_ocean("./tmp_main.ocn", log_name)
+        run_ocean_script("./tmp_main.ocn")
+        log.println(log_name)
 
 
 
