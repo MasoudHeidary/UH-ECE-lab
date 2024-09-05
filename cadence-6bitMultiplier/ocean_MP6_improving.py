@@ -3,8 +3,9 @@ import tool.NBTI_formula as NBTI
 import tool.vth_body_map as VTH
 
 
-NETLIST_DIR = "/home/mheidary/simulation/main_MP6/spectre/schematic/netlist/netlist"
-RESULT_DIR = "/home/mheidary/simulation/main_MP6/spectre/schematic"
+CADENCE_SERVER = True
+NETLIST_DIR = "/home/mheidary/simulation/main_MP6/spectre/schematic/netlist/netlist" if CADENCE_SERVER else "./netlist"
+RESULT_DIR = "/home/mheidary/simulation/main_MP6/spectre/schematic" if CADENCE_SERVER else "./result"
 
 
 
@@ -72,12 +73,12 @@ def generate_body_voltage(alpha_lst, t_sec):
         for fa_index in range(6):
             if (layer==4) and (fa_index==5):
                 #vth base is 10% higher
-                v0 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
-                v1 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
-                v2 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec))
-                v3 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec))
-                v4 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec))
-                v5 = VTH.get_body_voltage(abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec))
+                v0 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
+                v1 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
+                v2 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec))
+                v3 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec))
+                v4 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec))
+                v5 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec))
             else:
                 v0 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
                 v1 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
@@ -629,46 +630,49 @@ def run_ocean_script(script_address):
 
 
 
-import tool.log as log
-log = log.Log("terminal_log.txt")
-log.println("### log file created")
+if __name__ == "__main__":
+    import tool.log as log
+    log = log.Log("terminal_log.txt")
+    log.println("### log file created")
 
-if True:
-    for t_week in range(0, 200, 1):
-        t_sec = t_week * (30/2) * 24 * 60 * 60
-
-
-        # normal aging
-        log_name = f"./log/Normal-{t_week}.txt"
-        body_voltage = generate_body_voltage(normal_alpha, t_sec)
-        # log.println(str(body_voltage))
-        update_netlist(NETLIST_DIR, body_voltage)
-        update_ocean("./tmp_main.ocn", log_name)
-        run_ocean_script("./tmp_main.ocn")
-        log.println(log_name)
-
-
-        # improved aging
-        log_name = f"./log/improved-FA[4][5]-T0-{t_week}.txt"
-        update_netlist(NETLIST_DIR, generate_body_voltage(improved_alpha, t_sec))
-        update_ocean("./tmp_main.ocn", log_name)
-        run_ocean_script("./tmp_main.ocn")
-        log.println(log_name)
-
-
-
-import matplotlib.pyplot as plt
-# plot Vth
-if False:
-    vth = []
-    time = []
-    for i in range(6):
-        for t_week in range(0, 200, 199):
+    if True:
+        for t_week in range(0, 200, 1):
             t_sec = t_week * (30/2) * 24 * 60 * 60
 
-            time += [t_week]
-            vth += [generate_body_voltage(normal_alpha, t_sec)[4][5][i]]
-    
-        plt.plot(time, vth)
-    plt.show()
+
+            # normal aging
+            log_name = f"./log/Normal-{t_week}.txt"
+            body_voltage = generate_body_voltage(normal_alpha, t_sec)
+            # log.println(str(body_voltage))
+            update_netlist(NETLIST_DIR, body_voltage)
+            update_ocean("./tmp_main.ocn", log_name)
+            if CADENCE_SERVER:
+                run_ocean_script("./tmp_main.ocn")
+            log.println(log_name)
+
+
+            # improved aging
+            log_name = f"./log/improved-FA[4][5]-T0-{t_week}.txt"
+            update_netlist(NETLIST_DIR, generate_body_voltage(improved_alpha, t_sec))
+            update_ocean("./tmp_main.ocn", log_name)
+            if CADENCE_SERVER:
+                run_ocean_script("./tmp_main.ocn")
+            log.println(log_name)
+
+
+
+    import matplotlib.pyplot as plt
+    # plot Vth
+    if False:
+        vth = []
+        time = []
+        for i in range(6):
+            for t_week in range(0, 200, 199):
+                t_sec = t_week * (30/2) * 24 * 60 * 60
+
+                time += [t_week]
+                vth += [generate_body_voltage(normal_alpha, t_sec)[4][5][i]]
+        
+            plt.plot(time, vth)
+        plt.show()
 
