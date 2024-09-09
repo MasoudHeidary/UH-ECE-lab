@@ -16,10 +16,12 @@ t_week = []
 normal_delay = []
 improved_delay = []
 
-for i in range(0, 200, 1):
+for i in range(0, 100, 20):
 
-    normal_file = open(f"./raw_data_FA[4][5]_T0_(2)/Normal-{i}.txt")
-    improved_file = open(f"./raw_data_FA[4][5]_T0_(2)/improved-FA[4][5]-T0-{i}.txt")
+    # normal_file = open(f"./raw_data_FA[4][5]_T0_(2)/Normal-{i}.txt")
+    normal_file = open(f"./raw_data_tmp_2/Normal-{i}.txt")
+    # improved_file = open(f"./raw_data_FA[4][5]_T0_(2)/improved-FA[4][5]-T0-{i}.txt")
+    improved_file = open(f"./raw_data_tmp_2/improved-FA[4][5]-T0-{i}.txt")
 
     t_week += [i]
     _normal = max(filter_data(normal_file.read()))

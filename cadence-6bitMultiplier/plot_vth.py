@@ -19,7 +19,8 @@ def generate_vth_voltage(alpha_lst, t_sec):
                 #vth base is 10% higher
                 v0 = abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec)
                 v1 = abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec)
-                v2 = abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec)
+                tmp_v = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec)
+                v2 = tmp_v * 1.1
                 v3 = abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec)
                 v4 = abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec)
                 v5 = abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][2], NBTI.Tclk, t_sec)
@@ -48,8 +49,12 @@ for lay in range(5):
         x_time = []
         vth_T0_normal = []
         vth_T1_normal = []
+        vth_T1o_normal = []
         vth_T0_improved = []
         vth_T1_improved = []
+        vth_T1o_improved = []
+
+        
         for t_week in range(0, 200, 1):
             t_sec = t_week * (30/2) * 24 * 60 * 60
 
@@ -57,18 +62,26 @@ for lay in range(5):
 
             # normal_body_voltage = generate_vth_voltage(normal_alpha, t_sec)
             # improved_body_voltage = generate_vth_voltage(improved_alpha, t_sec)
+            _normal_vth = generate_vth_voltage(normal_alpha, t_sec)
+            vth_T0_normal += [_normal_vth[lay][fa_index][0*2]]
+            vth_T1_normal += [_normal_vth[lay][fa_index][1*2]]
+            vth_T1o_normal += [_normal_vth[lay][fa_index][1*2 + 1]]
 
-            # vth_T0_normal += [abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, normal_alpha[lay][fa_index][0], NBTI.Tclk, t_sec)]
-            vth_T1_normal += [abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, normal_alpha[lay][fa_index][1], NBTI.Tclk, t_sec)]
-
-            # vth_T0_improved += [abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, improved_alpha[lay][fa_index][0], NBTI.Tclk, t_sec)]
-            vth_T1_improved += [abs(NBTI.Vth)*1.1 + NBTI.delta_vth(NBTI.Vdef, NBTI.T, improved_alpha[lay][fa_index][0], NBTI.Tclk, t_sec)]
+            _improved_vth = generate_vth_voltage(improved_alpha, t_sec)
+            vth_T0_improved += [_improved_vth[lay][fa_index][0*2]]
+            vth_T1_improved += [_improved_vth[lay][fa_index][1*2]]
+            vth_T1o_improved += [_improved_vth[lay][fa_index][1*2 + 1]]
 
         ax = axes[lay, fa_index]
+
         # ax.plot(x_time, vth_T0_normal, label = "T0 Normal")
         ax.plot(x_time, vth_T1_normal, label = "T1 Normal")
+        ax.plot(x_time, vth_T1o_normal, label = "T1o Normal")
+
+
         # ax.plot(x_time, vth_T0_improved, label = "T0 improved")
         ax.plot(x_time, vth_T1_improved, label = "T1 improved")
+        ax.plot(x_time, vth_T1o_improved, label = "T1o improved")
     
 plt.legend()
 plt.tight_layout()
