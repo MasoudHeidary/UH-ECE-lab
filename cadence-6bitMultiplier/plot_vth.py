@@ -72,16 +72,30 @@ for lay in range(5):
             vth_T1_improved += [_improved_vth[lay][fa_index][1*2]]
             vth_T1o_improved += [_improved_vth[lay][fa_index][1*2 + 1]]
 
+
+        # print needed data
+        if (lay==4) and (fa_index==5):
+            print(vth_T1_normal[0], vth_T1_normal[200-1])
+            print(vth_T1_improved[0], vth_T1_improved[200-1])
+
+            initial = vth_T1_normal[0]
+            normal_age = vth_T1_normal[200-1] - initial
+            improved_age = vth_T1_improved[200-1] - initial
+            print(
+                (normal_age-improved_age)/normal_age*100
+            )
+
+        # plot data
         ax = axes[lay, fa_index]
 
         # ax.plot(x_time, vth_T0_normal, label = "T0 Normal")
         ax.plot(x_time, vth_T1_normal, label = "T1 Normal")
-        ax.plot(x_time, vth_T1o_normal, label = "T1o Normal")
+        # ax.plot(x_time, vth_T1o_normal, label = "T1o Normal")
 
 
         # ax.plot(x_time, vth_T0_improved, label = "T0 improved")
         ax.plot(x_time, vth_T1_improved, label = "T1 improved")
-        ax.plot(x_time, vth_T1o_improved, label = "T1o improved")
+        # ax.plot(x_time, vth_T1o_improved, label = "T1o improved")
     
 plt.legend()
 plt.tight_layout()
