@@ -99,7 +99,6 @@ def generate_body_voltage(alpha_lst, t_sec):
         lay_v = []
         for fa_index in range(6):
             if (layer==4) and (fa_index==5):
-                #vth base is 10% higher
                 v0 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
                 v1 = VTH.get_body_voltage(abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 1-alpha_lst[layer][fa_index][0], NBTI.Tclk, t_sec))
                 tmp_v = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha_lst[layer][fa_index][1], NBTI.Tclk, t_sec)
