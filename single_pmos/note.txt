@@ -1,0 +1,21 @@
+
+if we assume transistor failure is 70% deacrease in transistor current,
+
+normal result will be 
+[Tue Sep 24 11:17:18 2024] >> BASE Vbody [0.82] FAIL Vbody [4.44] BASE I [90.7785] FAIL I [27.23355]
+[Tue Sep 24 11:17:18 2024] >> FA[1][5], transistor[0] failed at week [110], 4.44 >= 4.44
+
+
+using improved alpha list (# modifing XOR FA[4][5] T1) will result to 
+[Tue Sep 24 11:27:20 2024] >> BASE Vbody [0.82] FAIL Vbody [4.44] BASE I [90.7785] FAIL I [27.23355]
+[Tue Sep 24 11:27:20 2024] >> FA[1][5], transistor[0] failed at week [173], 4.44 >= 4.44
+
+
+using improved alpha list (# modifing XOR FA[1][5] T0) will result to 
+# in the range of 200 weeks no transistor failed
+# result after extending
+[Tue Sep 24 12:40:22 2024] >> BASE Vbody [0.82] FAIL Vbody [4.44] BASE I [90.7785] FAIL I [27.23355]
+[Tue Sep 24 12:40:22 2024] >> FA[2][5], transistor[0] failed at week [231], 4.44 >= 4.44
+# this FA before improvement was
+[Tue Sep 24 12:41:06 2024] >> FA[2][5], transistor[0] failed at week [163], 4.44 >= 4.44
+
