@@ -36,7 +36,7 @@ if False:
 
 
 # MAIN
-if True:
+if False:
     time = []
     best_normal_vth = []
     worst_modified_vth = []
@@ -80,18 +80,27 @@ if True:
 
 
 # 4 years
-# t_sec = 4 * 365/7/2 *30*24*60*60
-# alpha = 136
-# nor = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
-# alpha = 232
-# mod = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
-# print(nor)
-# print(mod)
-# print((mod-nor)/nor*100)
+t_sec = 4 * 365/7/2 *30*24*60*60
+alpha = 136
+nor = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+alpha = 232
+mod = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t_sec)
+print(nor)
+print(mod)
+print((mod-nor)/nor*100)
 
 # growth 
 alpha = 136
 start = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, 1)
+
+
+
+# compare to initial value
+t_week = 100
+t_sec = t_week * (30/2) * 24 * 60 * 60
+end = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, 232/256, NBTI.Tclk, t_sec)
+print(f"compare to initial value: {(end - abs(NBTI.Vth))/abs(NBTI.Vth)*100}")
+
 
 t_list = [
     24 * 30 * 24* 60 * 60,
@@ -107,13 +116,13 @@ t_list = [
 #     c = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
 #     print((c-b)/b*100)
 
-for t in t_list:
-    alpha = 136
-    b = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
-    alpha = 232
-    c = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
-    print(f"{c-start}, {b-start} : {start}")
-    print((c-start-(b-start))/(b-start)*100)
+# for t in t_list:
+#     alpha = 136
+#     b = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
+#     alpha = 232
+#     c = abs(NBTI.Vth) + NBTI.delta_vth(NBTI.Vdef, NBTI.T, alpha/256, NBTI.Tclk, t)
+#     print(f"{c-start}, {b-start} : {start}")
+#     print((c-start-(b-start))/(b-start)*100)
 
 
 

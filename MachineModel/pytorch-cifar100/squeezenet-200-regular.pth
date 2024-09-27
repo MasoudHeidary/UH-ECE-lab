@@ -1,0 +1,19 @@
+[Thu Sep 26 22:48:14 2024] >> checkpoint/squeezenet/Thursday_18_July_2024_14h_14m_23s/squeezenet-200-regular.pth
+[Thu Sep 26 22:48:14 2024] >> set manipulate percentage: 0/100%
+[Thu Sep 26 22:49:12 2024] >> Test set: Epoch: 0, Average loss: 0.0103, Accuracy: 0.6783, Time consumed:57.56s
+[Thu Sep 26 22:49:12 2024] >> set manipulate percentage: 0.5/100%
+[Thu Sep 26 22:50:10 2024] >> Test set: Epoch: 0, Average loss: 0.0172, Accuracy: 0.5129, Time consumed:58.27s
+[Thu Sep 26 22:50:10 2024] >> set manipulate percentage: 1.0/100%
+[Thu Sep 26 22:51:08 2024] >> Test set: Epoch: 0, Average loss: 0.0321, Accuracy: 0.3021, Time consumed:57.81s
+[Thu Sep 26 22:51:08 2024] >> set manipulate percentage: 1.5/100%
+[Thu Sep 26 22:52:03 2024] >> Test set: Epoch: 0, Average loss: 0.0476, Accuracy: 0.1633, Time consumed:55.16s
+[Thu Sep 26 22:52:03 2024] >> set manipulate percentage: 2.0/100%
+[Thu Sep 26 22:52:56 2024] >> Test set: Epoch: 0, Average loss: 0.0605, Accuracy: 0.0962, Time consumed:53.08s
+[Thu Sep 26 22:52:56 2024] >> set manipulate percentage: 2.5/100%
+[Thu Sep 26 22:53:49 2024] >> Test set: Epoch: 0, Average loss: 0.0704, Accuracy: 0.0628, Time consumed:52.91s
+[Thu Sep 26 22:53:49 2024] >> set manipulate percentage: 3.0/100%
+[Thu Sep 26 22:54:42 2024] >> Test set: Epoch: 0, Average loss: 0.0781, Accuracy: 0.0417, Time consumed:52.73s
+[Thu Sep 26 22:54:42 2024] >> set manipulate percentage: 3.5/100%
+[Thu Sep 26 22:55:34 2024] >> Test set: Epoch: 0, Average loss: 0.0842, Accuracy: 0.0329, Time consumed:52.72s
+[Thu Sep 26 22:55:34 2024] >> set manipulate percentage: 4.0/100%
+[Thu Sep 26 22:56:26 2024] >> Test set: Epoch: 0, Average loss: 0.0896, Accuracy: 0.0234, Time consumed:51.76s

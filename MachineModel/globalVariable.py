@@ -12,24 +12,25 @@ default_weight_decay = 0.0005
 # 'Cifar10'
 # 'Cifar100'
 # 'SVHN'
-DATA_SET = 'Cifar10'
+DATA_SET = 'SVHN'
 
 TRAIN_FLAG = False
 CONFIRM_TO_TRAIN = True
 
-LOG_FILE_NAME = False 
+LOG_FILE_NAME = False or "log2.txt"
 
 # device to do the computation on
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.is_available():
     torch.cuda.set_device(0)
 
-default_manipulate_range = range(0, 4+1, 1)
+# default_manipulate_range = range(0, 4+1, 1)
+default_manipulate_range = [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
 default_manipulate_divider = 1
 delta = torch.tensor(
     [1, 0.5, 0.25, 0.125, 0.0675,
      -1, -0.5, -0.25, -0.125, -0.0675]
 ).to(device)
-delta *= 2
+# delta *= 2
 # delta /= 2
 # delta /= 2

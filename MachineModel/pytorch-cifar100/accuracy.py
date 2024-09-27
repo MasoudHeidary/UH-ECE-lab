@@ -21,14 +21,16 @@ from utils import get_network, get_training_dataloader, get_test_dataloader, War
 
 from models.mani import manipualte_percentage
 
+from log import Log
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-PATH = "checkpoint/resnet18/Wednesday_03_July_2024_10h_42m_56s/resnet18-200-regular.pth"
+# PATH = "checkpoint/resnet18/Wednesday_03_July_2024_10h_42m_56s/resnet18-200-regular.pth"
 # PATH = "checkpoint/vgg11/Wednesday_17_July_2024_15h_07m_56s/vgg11-200-regular.pth"
 # PATH = "checkpoint/vgg19/Thursday_18_July_2024_10h_57m_31s/vgg19-200-regular.pth"
 # PATH = "checkpoint/squeezenet/Thursday_18_July_2024_14h_14m_23s/squeezenet-200-regular.pth"
-# PATH = "checkpoint/darknet/Thursday_18_July_2024_16h_28m_01s/darknet-200-regular.pth"
+PATH = "checkpoint/darknet/Thursday_18_July_2024_16h_28m_01s/darknet-200-regular.pth"
 
+log = Log(PATH.split('/')[-1])
 
 #################################################################
 #################################################################
@@ -66,7 +68,7 @@ def eval_training(epoch=0, tb=True):
     #     print('GPU INFO.....')
     #     print(torch.cuda.memory_summary(), end='')
     print('Evaluating Network.....')
-    print('Test set: Epoch: {}, Average loss: {:.4f}, Accuracy: {:.4f}, Time consumed:{:.2f}s'.format(
+    log.println('Test set: Epoch: {}, Average loss: {:.4f}, Accuracy: {:.4f}, Time consumed:{:.2f}s'.format(
         epoch,
         test_loss / len(cifar100_test_loader.dataset),
         correct.float() / len(cifar100_test_loader.dataset),
@@ -124,9 +126,10 @@ if __name__ == '__main__':
     writer.add_graph(net, input_tensor)
 
 
-    for i in range(5+1):
+    log.println(f"{PATH}")
+    for i in [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]:
         manipualte_percentage.set(i/100)
-        print(f"set manipulate percentage: {i}/100%")
+        log.println(f"set manipulate percentage: {i}/100%")
         eval_training()
 
     writer.close()

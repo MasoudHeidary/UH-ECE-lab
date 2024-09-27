@@ -59,7 +59,7 @@ normal_delay = list(map(normalize, normal_delay))
 
 
 ################################################### plot
-if True:
+if False:
     plt.figure(figsize=(13, 10))
 
     plt.plot(x, modified_delay, label="100% tampered", linewidth=5)
@@ -70,7 +70,7 @@ if True:
     plt.xlabel('Time(weeks)', fontsize=28, fontweight='bold')
     plt.xticks(fontsize=28, fontweight='bold')
 
-    plt.ylabel('Normalized Delay', fontsize=28, fontweight='bold')
+    plt.ylabel('Normalized Execution Time', fontsize=28, fontweight='bold')
     plt.yticks(fontsize=28, fontweight='bold')
 
     # plt.title('Delay', fontsize=16)
@@ -82,16 +82,20 @@ if True:
 
 
 # compare aging to normal aging
-a = M2_delay[-1] - normal_delay[0]
-w = normal_delay[-1] - normal_delay[0]
-print((a-w ) / w * 100)
+# a = M2_delay[-1] - normal_delay[0]
+# w = normal_delay[-1] - normal_delay[0]
+# print((a-w ) / w * 100)
 
-a = M3_delay[-1] - normal_delay[0]
-print((a-w ) / w * 100)
+# a = M3_delay[-1] - normal_delay[0]
+# print((a-w ) / w * 100)
 
-a = modified_delay[-1] - normal_delay[0]
-print((a-w ) / w * 100)
+# a = modified_delay[-1] - normal_delay[0]
+# print((a-w ) / w * 100)
 
+a = modified_delay[25-1]  
+b = normal_delay[0]
+print( (a-b ) / b * 100)
+#-------------
 
 print(
     (M2_delay[-1] - normal_delay[0]) / normal_delay[0] * 100

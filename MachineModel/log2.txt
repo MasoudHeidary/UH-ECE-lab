@@ -1,0 +1,106 @@
+[Thu Sep 26 18:38:21 2024] >> 
+[Thu Sep 26 18:38:21 2024] >> PROGRAM START
+[Thu Sep 26 18:38:21 2024] >> TRAIN FLAG: False
+[Thu Sep 26 18:38:21 2024] >> DATA SET: SVHN
+[Thu Sep 26 18:38:21 2024] >> ---MAIN INFERENCE---
+[Thu Sep 26 18:38:21 2024] >> network: darknetManiSVHN
+[Thu Sep 26 18:38:21 2024] >> set manipulate percentage: 0.0/100%
+[Thu Sep 26 18:39:12 2024] >> testing accuracy: 0.8575
+[Thu Sep 26 18:39:12 2024] >> set manipulate percentage: 0.5/100%
+[Thu Sep 26 18:40:03 2024] >> testing accuracy: 0.7900
+[Thu Sep 26 18:40:03 2024] >> set manipulate percentage: 1.0/100%
+[Thu Sep 26 18:40:53 2024] >> testing accuracy: 0.6705
+[Thu Sep 26 18:40:53 2024] >> set manipulate percentage: 1.5/100%
+[Thu Sep 26 18:41:43 2024] >> testing accuracy: 0.5199
+[Thu Sep 26 18:41:43 2024] >> set manipulate percentage: 2.0/100%
+[Thu Sep 26 18:42:32 2024] >> testing accuracy: 0.3622
+[Thu Sep 26 18:42:32 2024] >> set manipulate percentage: 2.5/100%
+[Thu Sep 26 18:43:22 2024] >> testing accuracy: 0.2478
+[Thu Sep 26 18:43:22 2024] >> set manipulate percentage: 3.0/100%
+[Thu Sep 26 18:44:16 2024] >> testing accuracy: 0.1968
+[Thu Sep 26 18:44:16 2024] >> set manipulate percentage: 3.5/100%
+[Thu Sep 26 18:45:12 2024] >> testing accuracy: 0.1751
+[Thu Sep 26 18:45:12 2024] >> set manipulate percentage: 4.0/100%
+[Thu Sep 26 18:46:07 2024] >> testing accuracy: 0.1698
+[Thu Sep 26 18:46:07 2024] >> 
+[Thu Sep 26 18:46:07 2024] >> network: squeezenetManiSVHN
+[Thu Sep 26 18:46:08 2024] >> set manipulate percentage: 0.0/100%
+[Thu Sep 26 18:48:30 2024] >> testing accuracy: 0.8726
+[Thu Sep 26 18:48:30 2024] >> set manipulate percentage: 0.5/100%
+[Thu Sep 26 18:50:54 2024] >> testing accuracy: 0.7344
+[Thu Sep 26 18:50:54 2024] >> set manipulate percentage: 1.0/100%
+[Thu Sep 26 18:53:19 2024] >> testing accuracy: 0.4856
+[Thu Sep 26 18:53:19 2024] >> set manipulate percentage: 1.5/100%
+[Thu Sep 26 18:55:42 2024] >> testing accuracy: 0.2908
+[Thu Sep 26 18:55:42 2024] >> set manipulate percentage: 2.0/100%
+[Thu Sep 26 18:58:00 2024] >> testing accuracy: 0.2050
+[Thu Sep 26 18:58:00 2024] >> set manipulate percentage: 2.5/100%
+[Thu Sep 26 19:00:15 2024] >> testing accuracy: 0.1632
+[Thu Sep 26 19:00:15 2024] >> set manipulate percentage: 3.0/100%
+[Thu Sep 26 19:02:35 2024] >> testing accuracy: 0.1532
+[Thu Sep 26 19:02:35 2024] >> set manipulate percentage: 3.5/100%
+[Thu Sep 26 19:04:55 2024] >> testing accuracy: 0.1506
+[Thu Sep 26 19:04:55 2024] >> set manipulate percentage: 4.0/100%
+[Thu Sep 26 19:07:15 2024] >> testing accuracy: 0.1479
+[Thu Sep 26 19:07:15 2024] >> 
+[Thu Sep 26 19:07:15 2024] >> network: resnet18ManiSVHN
+[Thu Sep 26 19:07:15 2024] >> set manipulate percentage: 0.0/100%
+[Thu Sep 26 19:08:29 2024] >> testing accuracy: 0.8452
+[Thu Sep 26 19:08:29 2024] >> set manipulate percentage: 0.5/100%
+[Thu Sep 26 19:09:43 2024] >> testing accuracy: 0.8075
+[Thu Sep 26 19:09:43 2024] >> set manipulate percentage: 1.0/100%
+[Thu Sep 26 19:10:57 2024] >> testing accuracy: 0.7480
+[Thu Sep 26 19:10:57 2024] >> set manipulate percentage: 1.5/100%
+[Thu Sep 26 19:12:12 2024] >> testing accuracy: 0.6601
+[Thu Sep 26 19:12:12 2024] >> set manipulate percentage: 2.0/100%
+[Thu Sep 26 19:13:27 2024] >> testing accuracy: 0.5587
+[Thu Sep 26 19:13:27 2024] >> set manipulate percentage: 2.5/100%
+[Thu Sep 26 19:14:41 2024] >> testing accuracy: 0.4572
+[Thu Sep 26 19:14:41 2024] >> set manipulate percentage: 3.0/100%
+[Thu Sep 26 19:15:56 2024] >> testing accuracy: 0.3630
+[Thu Sep 26 19:15:56 2024] >> set manipulate percentage: 3.5/100%
+[Thu Sep 26 19:17:11 2024] >> testing accuracy: 0.2968
+[Thu Sep 26 19:17:11 2024] >> set manipulate percentage: 4.0/100%
+[Thu Sep 26 19:18:26 2024] >> testing accuracy: 0.2489
+[Thu Sep 26 19:18:26 2024] >> 
+[Thu Sep 26 19:18:26 2024] >> network: vgg11ManiSVHN
+[Thu Sep 26 19:18:26 2024] >> set manipulate percentage: 0.0/100%
+[Thu Sep 26 19:19:30 2024] >> testing accuracy: 0.8546
+[Thu Sep 26 19:19:30 2024] >> set manipulate percentage: 0.5/100%
+[Thu Sep 26 19:20:33 2024] >> testing accuracy: 0.7751
+[Thu Sep 26 19:20:33 2024] >> set manipulate percentage: 1.0/100%
+[Thu Sep 26 19:21:37 2024] >> testing accuracy: 0.6527
+[Thu Sep 26 19:21:37 2024] >> set manipulate percentage: 1.5/100%
+[Thu Sep 26 19:22:41 2024] >> testing accuracy: 0.5114
+[Thu Sep 26 19:22:41 2024] >> set manipulate percentage: 2.0/100%
+[Thu Sep 26 19:23:44 2024] >> testing accuracy: 0.3849
+[Thu Sep 26 19:23:44 2024] >> set manipulate percentage: 2.5/100%
+[Thu Sep 26 19:24:48 2024] >> testing accuracy: 0.3007
+[Thu Sep 26 19:24:48 2024] >> set manipulate percentage: 3.0/100%
+[Thu Sep 26 19:25:51 2024] >> testing accuracy: 0.2349
+[Thu Sep 26 19:25:51 2024] >> set manipulate percentage: 3.5/100%
+[Thu Sep 26 19:26:55 2024] >> testing accuracy: 0.2019
+[Thu Sep 26 19:26:55 2024] >> set manipulate percentage: 4.0/100%
+[Thu Sep 26 19:27:59 2024] >> testing accuracy: 0.1726
+[Thu Sep 26 19:27:59 2024] >> 
+[Thu Sep 26 19:27:59 2024] >> network: vgg19ManiSVHN
+[Thu Sep 26 19:27:59 2024] >> set manipulate percentage: 0.0/100%
+[Thu Sep 26 19:29:59 2024] >> testing accuracy: 0.8638
+[Thu Sep 26 19:29:59 2024] >> set manipulate percentage: 0.5/100%
+[Thu Sep 26 19:32:00 2024] >> testing accuracy: 0.8325
+[Thu Sep 26 19:32:00 2024] >> set manipulate percentage: 1.0/100%
+[Thu Sep 26 19:34:01 2024] >> testing accuracy: 0.7724
+[Thu Sep 26 19:34:01 2024] >> set manipulate percentage: 1.5/100%
+[Thu Sep 26 19:36:01 2024] >> testing accuracy: 0.6663
+[Thu Sep 26 19:36:01 2024] >> set manipulate percentage: 2.0/100%
+[Thu Sep 26 19:38:01 2024] >> testing accuracy: 0.5131
+[Thu Sep 26 19:38:01 2024] >> set manipulate percentage: 2.5/100%
+[Thu Sep 26 19:39:58 2024] >> testing accuracy: 0.3582
+[Thu Sep 26 19:39:58 2024] >> set manipulate percentage: 3.0/100%
+[Thu Sep 26 19:41:45 2024] >> testing accuracy: 0.2421
+[Thu Sep 26 19:41:45 2024] >> set manipulate percentage: 3.5/100%
+[Thu Sep 26 19:43:32 2024] >> testing accuracy: 0.1780
+[Thu Sep 26 19:43:32 2024] >> set manipulate percentage: 4.0/100%
+[Thu Sep 26 19:45:19 2024] >> testing accuracy: 0.1520
+[Thu Sep 26 19:45:19 2024] >> 
+[Thu Sep 26 19:45:19 2024] >> PROGRAM FINISHED
