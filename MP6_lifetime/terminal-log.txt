@@ -1,0 +1,4 @@
+[Thu Oct  3 15:10:40 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Thu Oct  3 15:12:58 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Thu Oct  3 15:13:17 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Thu Oct  3 15:13:17 2024] >> FA[1][5], transistor[0] failed at week [51], 3.5 >= 3.49
