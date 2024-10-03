@@ -53,15 +53,15 @@ for label, data, week_50p, yp in datasets:
         interpolated_x = x_above + (half_value - y_above) * (x_below - x_above) / (y_below - y_above)
 
         # Plot the 'x' marker at the interpolated point
-        plt.plot(interpolated_x, half_value, '*', markersize=15, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
+        plt.plot(interpolated_x, half_value, '*', markersize=20, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
         # Add text next to the 'x' marker
-        plt.text(interpolated_x - 0.2, half_value-yp, f't={week_50p}w', fontweight='bold', fontsize=22)
+        plt.text(interpolated_x - 0.2, half_value-yp, f't={week_50p}w', fontweight='bold', fontsize=26)
     except:
         pass
 
     if label == "Transformer":
-        plt.plot(0.5, 0.5, '*', markersize=15, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
-        plt.text(0.5 - 0.1, 0.5-yp, f'{week_50p}', fontweight='bold', fontsize=22, color='black')
+        plt.plot(0.5, 0.5, '*', markersize=20, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
+        plt.text(0.5 - 0.1, 0.5-yp, f't={week_50p}w', fontweight='bold', fontsize=26, color='black')
 
 
 # Set labels and styling
@@ -73,6 +73,9 @@ plt.yticks(fontsize=28, fontweight='bold')
 
 plt.grid(True)
 plt.legend(fontsize=28)
+
+plt.savefig('_cifar10.png', dpi=800, bbox_inches='tight')
+
 plt.show()
 
 
@@ -127,9 +130,9 @@ for label, data, week_50p, yp in datasets:
         interpolated_x = x_above + (half_value - y_above) * (x_below - x_above) / (y_below - y_above)
 
         # Plot the 'x' marker at the interpolated point
-        plt.plot(interpolated_x, half_value, '*', markersize=15, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
+        plt.plot(interpolated_x, half_value, '*', markersize=20, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
         # Add text next to the 'x' marker
-        plt.text(interpolated_x - 0.1, half_value-yp, f't={week_50p}w', fontweight='bold', fontsize=22)
+        plt.text(interpolated_x - 0.1, half_value-yp, f't={week_50p}w', fontweight='bold', fontsize=26)
     except:
         pass
 
@@ -145,6 +148,8 @@ plt.yticks(fontsize=28, fontweight='bold')
 plt.grid(True)
 plt.legend(fontsize=28)
 # plt.gca().set_aspect(5)
+plt.savefig('_svhn.png', dpi=800, bbox_inches='tight')
+
 plt.show()
 
 
