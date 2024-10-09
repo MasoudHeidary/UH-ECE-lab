@@ -146,14 +146,14 @@ log.println(f"BASE Vbody [{initial_v_base}] FAIL Vbody [{vb_fail}] BASE I [{curr
 if __name__ == "__main__":
 
     if True:
-        for t_week in range(0, 200, 1):
+        for t_week in range(0, 400, 1):
             t_sec = t_week * (30/2) * 24 * 60 * 60
 
 
 
             # normal aging
-            body_voltage = generate_body_voltage(normal_alpha, t_sec)
-            # body_voltage = generate_body_voltage(improved_alpha, t_sec)
+            # body_voltage = generate_body_voltage(normal_alpha, t_sec)
+            body_voltage = generate_body_voltage(improved_alpha, t_sec)
 
             for fa_i in range(5):
                 for fa_j in range(6):

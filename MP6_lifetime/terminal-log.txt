@@ -1,4 +1,38 @@
-[Thu Oct  3 15:10:40 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
-[Thu Oct  3 15:12:58 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
-[Thu Oct  3 15:13:17 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
-[Thu Oct  3 15:13:17 2024] >> FA[1][5], transistor[0] failed at week [51], 3.5 >= 3.49
+[Tue Oct  8 14:03:22 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Tue Oct  8 14:03:22 2024] >> FA[1][5], transistor[1] failed at week [99], 3.5 >= 3.49
+[Tue Oct  8 14:03:42 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Tue Oct  8 14:04:26 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Tue Oct  8 14:04:26 2024] >> FA[0][3], transistor[0] failed at week [152], 3.5 >= 3.49
+
+
+[Tue Oct  8 15:08:16 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Tue Oct  8 15:08:16 2024] >> FA[1][7], transistor[1] failed at week [98], 3.5 >= 3.49
+[Tue Oct  8 16:14:15 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Tue Oct  8 16:14:28 2024] >> FA[0][5], transistor[0] failed at week [150], 3.5 >= 3.49
+[Tue Oct  8 16:14:47 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Tue Oct  8 16:14:48 2024] >> FA[0][5], transistor[0] failed at week [150], 3.5 >= 3.49
+
+#file 0
+[Wed Oct  9 10:15:46 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Wed Oct  9 10:15:46 2024] >> FA[1][7], transistor[1] failed at week [115], 3.5 >= 3.49
+#file 1
+[Wed Oct  9 10:16:24 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Wed Oct  9 10:16:25 2024] >> FA[0][0], transistor[0] failed at week [189], 3.5 >= 3.49
+#file 2
+[Wed Oct  9 10:18:12 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Wed Oct  9 10:18:12 2024] >> FA[1][7], transistor[1] failed at week [115], 3.5 >= 3.49
+
+
+#file 1
+[Wed Oct  9 10:18:43 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Wed Oct  9 10:18:44 2024] >> FA[0][0], transistor[0] failed at week [189], 3.5 >= 3.49
+[Wed Oct  9 10:18:44 2024] >> FA[0][1], transistor[0] failed at week [189], 3.5 >= 3.49
+[Wed Oct  9 10:18:44 2024] >> FA[0][2], transistor[0] failed at week [189], 3.5 >= 3.49
+[Wed Oct  9 10:18:44 2024] >> FA[0][3], transistor[0] failed at week [189], 3.5 >= 3.49
+[Wed Oct  9 10:18:44 2024] >> FA[0][4], transistor[0] failed at week [189], 3.5 >= 3.49
+
+
+
+[Wed Oct  9 11:06:23 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Wed Oct  9 11:06:40 2024] >> BASE Vbody [0.82] FAIL Vbody [3.49] BASE I [90.7785] FAIL I [45.38925]
+[Wed Oct  9 11:06:40 2024] >> FA[0][0], transistor[0] failed at week [189], 3.5 >= 3.49
