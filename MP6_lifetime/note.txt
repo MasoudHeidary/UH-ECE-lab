@@ -1,0 +1,53 @@
+[NORMAL REGULAR 8BIT MULTIPLIER]
+
+normal aging
+[Tue Oct  8 15:08:16 2024] >> FA[1][7], transistor[1] failed at week [98], 3.5 >= 3.49
+
+optimized ones
+#focus only
+[Tue Oct  8 16:14:28 2024] >> FA[0][5], transistor[0] failed at week [150], 3.5 >= 3.49
+#file1 algorithm
+[Wed Oct  9 10:16:25 2024] >> FA[0][0], transistor[0] failed at week [189], 3.5 >= 3.49
+
+
+"""
+NOTE: regular 8bit multiplier, file1 optimizer
+        ######################### OPTIMIZER
+        if OPTIMIZER_ENABLE:
+            if (A == -1*2**(bit_len-1)) or (B == -1*2**(bit_len-1)):
+                pass
+            else:
+                if (mp.gfa[1][7].tgate[0].p1.gate == L):
+                    neg_A = -A
+                    neg_B = -B
+                    neg_mp = MPn_v3(
+                        signed_b(neg_A, bit_len),
+                        signed_b(neg_B, bit_len),
+                        bit_len
+                    )
+                    neg_mp.output
+
+                    if (neg_mp.gfa[1][7].tgate[0].p1.gate == H) or (neg_mp.gfa[0][5].tgate[0].p0.gate == H):
+                        mp = neg_mp
+                        optimized_flag = True
+                        # log.println(f"{A} * {B}, [optimizer: {optimized_flag}]")
+
+        ######################### /OPTIMIZER
+"""
+
+=================================================================================================
+=================================================================================================
+=================================================================================================
+
+
+[FAULTY 8BIT MULTIPLIER]
+
+# not optimized
+Fault: {'lay': 2, 'fa_index': 3, 't_index': 0}, basex1.2, growthx1.1
+FA[2][3], transistor[0] failed at week [15], 3.5 >= 3.49
+
+# optimized
+Fault: {'lay': 2, 'fa_index': 3, 't_index': 0}, basex1.2, growthx1.1
+FA[2][3], transistor[0] failed at week [45], 3.5 >= 3.49
+
+
