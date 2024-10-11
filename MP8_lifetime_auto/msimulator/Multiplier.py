@@ -1,5 +1,5 @@
-from sim import *
-from logic import *
+from .sim import *
+from .logic import *
 
 class Trans():
 

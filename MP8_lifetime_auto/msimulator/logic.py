@@ -1,4 +1,4 @@
-from sim import *
+from .sim import *
 
 class Not:
 

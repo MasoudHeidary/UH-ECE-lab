@@ -1,4 +1,4 @@
-from Multiplier import *
+from .Multiplier import *
 
 
 # we try to add timing to our system to make the simulation real

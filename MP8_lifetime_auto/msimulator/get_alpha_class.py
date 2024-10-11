@@ -2,13 +2,14 @@ import time
 import multiprocessing
 import os
 import random
-from Multiplier import MPn_v3, L, H
+from .Multiplier import MPn_v3, L, H
 
 MAX_PROCESSES = 20 #multiprocessing.cpu_count()
 
 class MultiplierStressTest:
     def __init__(self, bit_len, optimizer_trigger, optimizer_accept, optimizer_enable=True, queue_size=100_000_000):
         self.bit_len = bit_len
+        self.input_len = 2**(self.bit_len * 2)
         self.optimizer_enable = optimizer_enable
         self.queue = multiprocessing.Queue(maxsize=queue_size)
 
@@ -50,12 +51,12 @@ class MultiplierStressTest:
             # OPTIMIZER
             if self.optimizer_enable:
                 if (A != -1 * 2**(self.bit_len - 1)) and (B != -1 * 2**(self.bit_len - 1)):
-                    if (self.optimizer_trigger(mp)):
+                    if (self.optimizer_trigger(mp, A, B)):
                         neg_A = -A
                         neg_B = -B
                         neg_mp = MPn_v3(self.signed_b(neg_A, self.bit_len), self.signed_b(neg_B, self.bit_len), self.bit_len)
                         neg_mp.output
-                        if self.optimizer_accept(neg_mp):
+                        if self.optimizer_accept(neg_mp, neg_A, neg_B):
                             mp = neg_mp
             # OPTIMIZER DONE
 
@@ -72,18 +73,25 @@ class MultiplierStressTest:
                     T2 = mp.gfa[lay][index].tgate[2].p0.gate
                     T2p = mp.gfa[lay][index].tgate[2].p1.gate
 
-                    if T0 == L:
-                        stress_counter[lay][index]['T0'] += 1
-                    if T0p == L:
-                        stress_counter[lay][index]['T0p'] += 1
-                    if T1 == L:
-                        stress_counter[lay][index]['T1'] += 1
-                    if T1p == L:
-                        stress_counter[lay][index]['T1p'] += 1
-                    if T2 == L:
-                        stress_counter[lay][index]['T2'] += 1
-                    if T2p == L:
-                        stress_counter[lay][index]['T2p'] += 1
+                    # if T0 == L:
+                    #     stress_counter[lay][index]['T0'] += 1
+                    # if T0p == L:
+                    #     stress_counter[lay][index]['T0p'] += 1
+                    # if T1 == L:
+                    #     stress_counter[lay][index]['T1'] += 1
+                    # if T1p == L:
+                    #     stress_counter[lay][index]['T1p'] += 1
+                    # if T2 == L:
+                    #     stress_counter[lay][index]['T2'] += 1
+                    # if T2p == L:
+                    #     stress_counter[lay][index]['T2p'] += 1
+
+                    stress_counter[lay][index]['T0'] += (not T0)
+                    stress_counter[lay][index]['T0p'] += (not T0p)
+                    stress_counter[lay][index]['T1'] += (not T1)
+                    stress_counter[lay][index]['T1p'] += (not T1p)
+                    stress_counter[lay][index]['T2'] += (not T2)
+                    stress_counter[lay][index]['T2p'] += (not T2p)
 
         self.queue.put(stress_counter)
 
@@ -137,8 +145,18 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size):
-        return self.process_inputs_in_batches(batch_size)
+    def run(self, batch_size=1000):
+        alpha_lst = self.process_inputs_in_batches(batch_size)
+        # for i in range(self.bit_len - 1):
+        #     for j in range(self.bit_len):
+        #         alpha_lst[i][j] = {k: v / self.input_len for k, v in alpha_lst[i][j].items()}
+
+        # turn the values in a list with standard alpha
+        for i in range(self.bit_len - 1):
+            for j in range(self.bit_len):
+                alpha_lst[i][j] = [v / self.input_len for v in alpha_lst[i][j].values()]
+
+        return alpha_lst
 
 
 
