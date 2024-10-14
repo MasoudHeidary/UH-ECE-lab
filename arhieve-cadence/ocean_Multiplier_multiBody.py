@@ -443,10 +443,11 @@ log = Log("terminal-log.txt")
 counter = 0
 counter_t = 0
 
-for vdd in [i/100 for i in range(80, 90+5, 10)]:
+
+for vdd in [i/100 for i in range(60, 90+5, 10)]:
     # vb_base = int(vdd*100)
     vb_base = 200
-    vb_max = 350+1
+    vb_max = 250+1
     for pb0 in [i/100 for i in range(vb_base, vb_max, 50)]:
         for pb1 in [i/100 for i in range(vb_base, vb_max, 50)]:
             for pb2 in [i/100 for i in range(vb_base, vb_max, 50)]:
@@ -455,7 +456,19 @@ for vdd in [i/100 for i in range(80, 90+5, 10)]:
                         for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
                             for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
 
-                                if (16796 <= counter):
+# for vdd in [i/100 for i in range(80, 90+5, 10)]:
+#     # vb_base = int(vdd*100)
+#     vb_base = 200
+#     vb_max = 350+1
+#     for pb0 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#         for pb1 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#             for pb2 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                 for pb3 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                     for pb4 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                         for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                             for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
+
+                                if (8592 == counter):
                                     pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
 
                                     # short circuit pb6 to pb5
