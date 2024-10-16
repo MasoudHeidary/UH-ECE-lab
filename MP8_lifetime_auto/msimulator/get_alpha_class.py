@@ -145,7 +145,7 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size=1000):
+    def run(self, batch_size=4096):
         alpha_lst = self.process_inputs_in_batches(batch_size)
         # for i in range(self.bit_len - 1):
         #     for j in range(self.bit_len):

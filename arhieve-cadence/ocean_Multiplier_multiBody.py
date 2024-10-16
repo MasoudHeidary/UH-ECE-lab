@@ -412,9 +412,12 @@ save( 'i "/V0/PLUS" )
 temp( 27 ) 
 run()
 selectResult( 'tran )
+
+/*
 plot(getData("/end") getData("/vdd") getData("/V0/PLUS") getData("/step") )
 hardCopyOptions(?hcOutputFile "{log_file}.png")
 hardCopy()
+*/
 
 reportFile = outfile("{log_file}.txt")
 _delay = delay(?wf1 VT("/step"), ?value1 {vdd/2}, ?edge1 "rising", ?nth1 1, ?td1 0.0, ?tol1 nil, ?wf2 VT("/end"), ?value2 {vdd/2}, ?edge2 "rising", ?nth2 1, ?tol2 nil,  ?td2 nil , ?stop nil, ?multiple nil)
@@ -444,17 +447,17 @@ counter = 0
 counter_t = 0
 
 
-for vdd in [i/100 for i in range(60, 90+5, 10)]:
-    # vb_base = int(vdd*100)
-    vb_base = 200
-    vb_max = 250+1
-    for pb0 in [i/100 for i in range(vb_base, vb_max, 50)]:
-        for pb1 in [i/100 for i in range(vb_base, vb_max, 50)]:
-            for pb2 in [i/100 for i in range(vb_base, vb_max, 50)]:
-                for pb3 in [i/100 for i in range(vb_base, vb_max, 50)]:
-                    for pb4 in [i/100 for i in range(vb_base, vb_max, 50)]:
-                        for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
-                            for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
+# for vdd in [i/100 for i in range(60, 90+1, 10)]:
+#     vb_base = int(vdd*100)
+#     # vb_base = 200
+#     vb_max = 250+1
+#     for pb0 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#         for pb1 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#             for pb2 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                 for pb3 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                     for pb4 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                         for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
+#                             for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
 
 # for vdd in [i/100 for i in range(80, 90+5, 10)]:
 #     # vb_base = int(vdd*100)
@@ -468,23 +471,50 @@ for vdd in [i/100 for i in range(60, 90+5, 10)]:
 #                         for pb5 in [i/100 for i in range(vb_base, vb_max, 50)]:
 #                             for pb6 in [i/100 for i in range(vb_base, vb_max, 50)]:
 
-                                if (8592 == counter):
-                                    pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
+                                # if (8592 == counter):
+                                #     pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
 
-                                    # short circuit pb6 to pb5
-                                    pb[-1] = pb[-2]
-                                    if counter % 4 != 0:
-                                        log.println(f"counter #{counter} (!SKIPPED), data: {pb} vdd({vdd})")
-                                    else:
-                                        netlist = generate_netlist(pb, vdd)
-                                        update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
+                                #     # short circuit pb6 to pb5
+                                #     pb[-1] = pb[-2]
+                                #     if counter % 4 != 0:
+                                #         log.println(f"counter #{counter} (!SKIPPED), data: {pb} vdd({vdd})")
+                                #     else:
+                                #         netlist = generate_netlist(pb, vdd)
+                                #         update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
 
-                                        script = generate_ocean_script(f"./log/{counter}", pb, vdd)
-                                        update_ocean_script_file("./multibody.ocn", script)
-                                        run_ocean_script("./multibody.ocn")
+                                #         script = generate_ocean_script(f"./log/{counter}", pb, vdd)
+                                #         update_ocean_script_file("./multibody.ocn", script)
+                                #         run_ocean_script("./multibody.ocn")
                                         
-                                        log.println(f"counter #{counter}, data: {pb} vdd({vdd})")
+                                #         log.println(f"counter #{counter}, data: {pb} vdd({vdd})")
 
-                                counter += 1
-                                print(counter)
+                                # counter += 1
+                                # print(counter)
 
+
+
+
+
+for vdd in [i/100 for i in range(60, 90+1, 2)]:
+    vb_base = int(vdd*100)
+    vb_max = 390+1
+    for pb0 in [i/100 for i in range(vb_base, vb_max, 10)]:
+
+
+        if (-1 > counter):
+            # pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
+            pb = [pb0, pb0, pb0, pb0, pb0, pb0, pb0]
+
+            
+            netlist = generate_netlist(pb, vdd)
+            update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
+
+            _log_name = f"vdd-{vdd}-pb-{pb[0]}"
+            script = generate_ocean_script(f"./log-multi-body-0.6-0.7-0.8-0.9/{_log_name}", pb, vdd)
+            update_ocean_script_file("./multibody.ocn", script)
+            run_ocean_script("./multibody.ocn")
+            
+            log.println(f"counter #{counter}, data: {pb} vdd({vdd})")
+
+        counter += 1
+        print(counter)
