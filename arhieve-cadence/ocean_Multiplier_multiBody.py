@@ -495,13 +495,13 @@ counter_t = 0
 
 
 
-for vdd in [i/100 for i in range(60, 90+1, 2)]:
+for vdd in [i/100 for i in range(60, 90+1, 1)]:
     vb_base = int(vdd*100)
     vb_max = 390+1
     for pb0 in [i/100 for i in range(vb_base, vb_max, 10)]:
 
 
-        if (-1 > counter):
+        if (0 <= counter):
             # pb = [pb0, pb1, pb2, pb3, pb4, pb5, pb6]
             pb = [pb0, pb0, pb0, pb0, pb0, pb0, pb0]
 
@@ -510,7 +510,7 @@ for vdd in [i/100 for i in range(60, 90+1, 2)]:
             update_netlist_file("/home/mheidary/simulation/test_MPnb2/spectre/schematic/netlist/netlist", netlist)
 
             _log_name = f"vdd-{vdd}-pb-{pb[0]}"
-            script = generate_ocean_script(f"./log-multi-body-0.6-0.7-0.8-0.9/{_log_name}", pb, vdd)
+            script = generate_ocean_script(f"./log-multi-body-range-0.6-0.9-step-0.01/{_log_name}", pb, vdd)
             update_ocean_script_file("./multibody.ocn", script)
             run_ocean_script("./multibody.ocn")
             
