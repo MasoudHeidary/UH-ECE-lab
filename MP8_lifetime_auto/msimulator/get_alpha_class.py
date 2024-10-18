@@ -2,7 +2,12 @@ import time
 import multiprocessing
 import os
 import random
+
+from tool.log import Log
 from .Multiplier import MPn_v3, L, H
+
+# LOG = False
+log = Log("MP8_lifetime.txt", terminal=False)
 
 MAX_PROCESSES = 20 #multiprocessing.cpu_count()
 
@@ -38,17 +43,20 @@ class MultiplierStressTest:
             num = num - (2**len(binary_list))
         return num
 
-    def process_batch(self, batch):
+    def process_batch(self, batch, print_log=False):
         stress_counter = [
             [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
             for _ in range(self.bit_len - 1)
         ]
 
         for A, B in batch:
-            mp = MPn_v3(self.signed_b(A, self.bit_len), self.signed_b(B, self.bit_len), self.bit_len)
+            A_b = self.signed_b(A, self.bit_len)
+            B_b = self.signed_b(B, self.bit_len)
+            mp = MPn_v3(A_b, B_b, self.bit_len)
             mp.output
 
             # OPTIMIZER
+            optimize_flag = False
             if self.optimizer_enable:
                 if (A != -1 * 2**(self.bit_len - 1)) and (B != -1 * 2**(self.bit_len - 1)):
                     if (self.optimizer_trigger(mp, A, B)):
@@ -56,8 +64,13 @@ class MultiplierStressTest:
                         neg_B = -B
                         neg_mp = MPn_v3(self.signed_b(neg_A, self.bit_len), self.signed_b(neg_B, self.bit_len), self.bit_len)
                         neg_mp.output
+
                         if self.optimizer_accept(neg_mp, neg_A, neg_B):
+                            optimize_flag = True
                             mp = neg_mp
+            if print_log:
+                log.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
+            
             # OPTIMIZER DONE
 
             output = mp.output
@@ -108,7 +121,7 @@ class MultiplierStressTest:
         if batch:
             yield batch
 
-    def process_inputs_in_batches(self, batch_size):
+    def process_inputs_in_batches(self, batch_size, print_log=False):
         total_stress_counter = [
             [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
             for _ in range(self.bit_len - 1)
@@ -117,7 +130,7 @@ class MultiplierStressTest:
         processes = []
         batch_generator = self.generate_batches(self.bit_len, batch_size)
         for batch in batch_generator:
-            p = multiprocessing.Process(target=self.process_batch, args=(batch, ))
+            p = multiprocessing.Process(target=self.process_batch, args=(batch, ), kwargs={'print_log': print_log})
             processes.append(p)
             p.start()
 
@@ -145,8 +158,21 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size=4096):
-        alpha_lst = self.process_inputs_in_batches(batch_size)
+    def run(self, batch_size=4096, print_log=False):
+        start_time = time.time()  # Record end time
+
+        alpha_lst = self.process_inputs_in_batches(batch_size, print_log=print_log)
+
+        end_time = time.time()  # Record end time
+        execution_time = end_time - start_time  # Calculate total time taken
+        if print_log:
+            log.println("="*20)
+            log.println("="*20)
+            log.println("="*20)
+            # log.println(f"Execution time: {execution_time:.4f} seconds")  
+            # log.println("="*20)
+            # log.println("="*20)
+
         # for i in range(self.bit_len - 1):
         #     for j in range(self.bit_len):
         #         alpha_lst[i][j] = {k: v / self.input_len for k, v in alpha_lst[i][j].items()}

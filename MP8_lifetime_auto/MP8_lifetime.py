@@ -13,7 +13,6 @@ bit_len = 8
 # faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
 # faulty_transistor = {'fa_i': random.randint(0, bit_len-1-1), 'fa_j': random.randint(0, bit_len-1), 't_index': random.randint(0, 5), 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
 faulty_transistor = False
-log.println(f"faulty transistor: {faulty_transistor}")
 
 lst_transistor_optimize = []
 
@@ -87,12 +86,43 @@ def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
 # log.println("optimization accept")
 # log.println(inspect.getsource(optimizer_accept))
 
-for _ in range(5):
-    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
-    # log.println(f"alpha list: {alpha_lst}")
 
+# specific optimization
+if False:
+    lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
+    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(print_log=True)
     fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
     log.println(f"failed transistor: {fail_transistor}")
+# DONE
 
-    lst_transistor_optimize += [fail_transistor]
-    # log.println(f"optimization list: {lst_transistor_optimize}")
+if False:
+    log.println(f"faulty transistor: {faulty_transistor}")
+    for _ in range(5):
+        alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
+        # log.println(f"alpha list: {alpha_lst}")
+
+        fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
+        log.println(f"failed transistor: {fail_transistor}")
+
+        lst_transistor_optimize += [fail_transistor]
+        log.println(f"optimization list: {lst_transistor_optimize}")
+
+
+# auto generating for all transistors
+if True:
+    for fa_i in range(bit_len - 1):
+        for fa_j in range(bit_len):
+            for t_index in range(6):
+                
+                faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+                log.println(f"faulty transistor: {faulty_transistor}")
+                lst_transistor_optimize = []
+
+                for i in range(3):
+                    log.println(f"optimization list: {lst_transistor_optimize}")
+                    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(print_log=(i==2))
+                    fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
+                    lst_transistor_optimize += [fail_transistor]
+
+
+
