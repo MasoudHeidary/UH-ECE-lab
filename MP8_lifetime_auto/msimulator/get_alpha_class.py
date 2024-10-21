@@ -3,11 +3,11 @@ import multiprocessing
 import os
 import random
 
-from tool.log import Log
+# from tool.log import Log
 from .Multiplier import MPn_v3, L, H
 
 # LOG = False
-log = Log("MP8_lifetime.txt", terminal=False)
+# log = Log("MP8_lifetime.txt", terminal=False)
 
 MAX_PROCESSES = 20 #multiprocessing.cpu_count()
 
@@ -43,7 +43,7 @@ class MultiplierStressTest:
             num = num - (2**len(binary_list))
         return num
 
-    def process_batch(self, batch, print_log=False):
+    def process_batch(self, batch, log_obj=False):
         stress_counter = [
             [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
             for _ in range(self.bit_len - 1)
@@ -68,8 +68,8 @@ class MultiplierStressTest:
                         if self.optimizer_accept(neg_mp, neg_A, neg_B):
                             optimize_flag = True
                             mp = neg_mp
-            if print_log:
-                log.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
+            if log_obj:
+                log_obj.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
             
             # OPTIMIZER DONE
 
@@ -121,7 +121,7 @@ class MultiplierStressTest:
         if batch:
             yield batch
 
-    def process_inputs_in_batches(self, batch_size, print_log=False):
+    def process_inputs_in_batches(self, batch_size, log_obj=False):
         total_stress_counter = [
             [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
             for _ in range(self.bit_len - 1)
@@ -130,7 +130,7 @@ class MultiplierStressTest:
         processes = []
         batch_generator = self.generate_batches(self.bit_len, batch_size)
         for batch in batch_generator:
-            p = multiprocessing.Process(target=self.process_batch, args=(batch, ), kwargs={'print_log': print_log})
+            p = multiprocessing.Process(target=self.process_batch, args=(batch, ), kwargs={'log_obj': log_obj})
             processes.append(p)
             p.start()
 
@@ -158,20 +158,21 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size=4096, print_log=False):
+    def run(self, batch_size=4096, log_obj=False):
         start_time = time.time()  # Record end time
 
-        alpha_lst = self.process_inputs_in_batches(batch_size, print_log=print_log)
+        alpha_lst = self.process_inputs_in_batches(batch_size, log_obj=log_obj)
 
         end_time = time.time()  # Record end time
         execution_time = end_time - start_time  # Calculate total time taken
-        if print_log:
-            log.println("="*20)
-            log.println("="*20)
-            log.println("="*20)
-            # log.println(f"Execution time: {execution_time:.4f} seconds")  
-            # log.println("="*20)
-            # log.println("="*20)
+        print(f"Execution time: {execution_time:.4f} seconds") 
+        # if log_obj:
+        #     log_obj.println("="*20)
+        #     log_obj.println("="*20)
+        #     log_obj.println("="*20)
+        #     log.println(f"Execution time: {execution_time:.4f} seconds")  
+        #     log.println("="*20)
+        #     log.println("="*20)
 
         # for i in range(self.bit_len - 1):
         #     for j in range(self.bit_len):

@@ -118,9 +118,16 @@ if True:
                 log.println(f"faulty transistor: {faulty_transistor}")
                 lst_transistor_optimize = []
 
+                data_set_log_name = f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"
+                data_set_log_obj = Log(data_set_log_name, terminal=False)
+                
                 for i in range(3):
                     log.println(f"optimization list: {lst_transistor_optimize}")
-                    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(print_log=(i==2))
+                    if i != 2:
+                        alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
+                    else:
+                        alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=data_set_log_obj)
+                        del data_set_log_obj
                     fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
                     lst_transistor_optimize += [fail_transistor]
 
