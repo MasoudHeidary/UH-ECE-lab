@@ -1,0 +1,10 @@
+
+OPTIMIZER Failure:
+    for example optimization for some of the transistors is impossible
+    [Fri Oct 18 13:02:49 2024] >> faulty transistor: {'fa_i': 0, 'fa_j': 0, 't_index': 2, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+    [Fri Oct 18 13:02:49 2024] >> optimization list: []
+    [Fri Oct 18 13:04:13 2024] >> optimization list: [{'fa_i': 0, 'fa_j': 0, 't_index': 2, 't_week': 68}]
+    [Fri Oct 18 13:06:07 2024] >> optimization list: [{'fa_i': 0, 'fa_j': 0, 't_index': 2, 't_week': 68}, {'fa_i': 0, 'fa_j': 0, 't_index': 2, 't_week': 68}]
+    
+    and this will result in no improvement
+
