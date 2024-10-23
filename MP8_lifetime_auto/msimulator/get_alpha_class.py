@@ -2,12 +2,7 @@ import time
 import multiprocessing
 import os
 import random
-
-# from tool.log import Log
 from .Multiplier import MPn_v3, L, H
-
-# LOG = False
-# log = Log("MP8_lifetime.txt", terminal=False)
 
 MAX_PROCESSES = 20 #multiprocessing.cpu_count()
 
@@ -55,7 +50,7 @@ class MultiplierStressTest:
             mp = MPn_v3(A_b, B_b, self.bit_len)
             mp.output
 
-            # OPTIMIZER
+            # ====================================== OPTIMIZER
             optimize_flag = False
             if self.optimizer_enable:
                 if (A != -1 * 2**(self.bit_len - 1)) and (B != -1 * 2**(self.bit_len - 1)):
@@ -71,7 +66,7 @@ class MultiplierStressTest:
             if log_obj:
                 log_obj.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
             
-            # OPTIMIZER DONE
+            # ====================================== OPTIMIZER [END]
 
             output = mp.output
             if output != self.signed_b(A * B, self.bit_len * 2):
@@ -85,19 +80,6 @@ class MultiplierStressTest:
                     T1p = mp.gfa[lay][index].tgate[1].p1.gate
                     T2 = mp.gfa[lay][index].tgate[2].p0.gate
                     T2p = mp.gfa[lay][index].tgate[2].p1.gate
-
-                    # if T0 == L:
-                    #     stress_counter[lay][index]['T0'] += 1
-                    # if T0p == L:
-                    #     stress_counter[lay][index]['T0p'] += 1
-                    # if T1 == L:
-                    #     stress_counter[lay][index]['T1'] += 1
-                    # if T1p == L:
-                    #     stress_counter[lay][index]['T1p'] += 1
-                    # if T2 == L:
-                    #     stress_counter[lay][index]['T2'] += 1
-                    # if T2p == L:
-                    #     stress_counter[lay][index]['T2p'] += 1
 
                     stress_counter[lay][index]['T0'] += (not T0)
                     stress_counter[lay][index]['T0p'] += (not T0p)
@@ -134,11 +116,9 @@ class MultiplierStressTest:
             processes.append(p)
             p.start()
 
-            # if len(processes) >= multiprocessing.cpu_count():
             if len(processes) >= MAX_PROCESSES:
                 for p in processes:
                     p.join()
-                    # print(f"{random.random()} join")
                 while not self.queue.empty():
                     stress_counter = self.queue.get()
                     for lay in range(self.bit_len - 1):
@@ -166,19 +146,7 @@ class MultiplierStressTest:
         end_time = time.time()  # Record end time
         execution_time = end_time - start_time  # Calculate total time taken
         print(f"Execution time: {execution_time:.4f} seconds") 
-        # if log_obj:
-        #     log_obj.println("="*20)
-        #     log_obj.println("="*20)
-        #     log_obj.println("="*20)
-        #     log.println(f"Execution time: {execution_time:.4f} seconds")  
-        #     log.println("="*20)
-        #     log.println("="*20)
 
-        # for i in range(self.bit_len - 1):
-        #     for j in range(self.bit_len):
-        #         alpha_lst[i][j] = {k: v / self.input_len for k, v in alpha_lst[i][j].items()}
-
-        # turn the values in a list with standard alpha
         for i in range(self.bit_len - 1):
             for j in range(self.bit_len):
                 alpha_lst[i][j] = [v / self.input_len for v in alpha_lst[i][j].values()]
