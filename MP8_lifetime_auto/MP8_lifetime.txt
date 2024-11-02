@@ -1359,3 +1359,15 @@
 [Sat Oct 19 20:00:42 2024] >> optimization list: []
 [Sat Oct 19 20:02:02 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}]
 [Sat Oct 19 20:04:07 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
+[Fri Nov  1 15:27:49 2024] >> 
+[Fri Nov  1 15:27:49 2024] >> faulty transistor: False
+[Fri Nov  1 15:29:10 2024] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}
+[Fri Nov  1 15:29:10 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}]
+[Fri Nov  1 15:31:23 2024] >> failed transistor: {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}
+[Fri Nov  1 15:31:23 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
+[Fri Nov  1 15:35:25 2024] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}
+[Fri Nov  1 15:35:25 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}, {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}]
+[Fri Nov  1 15:39:29 2024] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}
+[Fri Nov  1 15:39:29 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}, {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}, {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}]
+[Fri Nov  1 15:43:28 2024] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}
+[Fri Nov  1 15:43:28 2024] >> optimization list: [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}, {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}, {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}, {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}]

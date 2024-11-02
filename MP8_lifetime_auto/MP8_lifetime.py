@@ -95,7 +95,7 @@ if False:
     log.println(f"failed transistor: {fail_transistor}")
 # DONE
 
-if False:
+if True:
     log.println(f"faulty transistor: {faulty_transistor}")
     for _ in range(5):
         alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
@@ -109,7 +109,7 @@ if False:
 
 
 # auto generating for all transistors
-if True:
+if False:
     for fa_i in range(bit_len - 1):
         for fa_j in range(bit_len):
             for t_index in range(6):
