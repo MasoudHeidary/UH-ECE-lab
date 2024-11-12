@@ -134,7 +134,7 @@ class SemiPEArrayStressTest:
         A_patterns = product(element_range, repeat=self.x_len)
 
         total_patterns = len(element_range)**(self.x_len + self.y_len)
-        print(total_patterns)
+        print("total pattern", total_patterns)
         processed_count = 0
 
         batch = []
@@ -145,10 +145,11 @@ class SemiPEArrayStressTest:
                 batch.append((list(A), list(B)))
 
                 processed_count += 1
+                #print("batch count\t", processed_count);
                 if processed_count % (total_patterns // 100) == 0:
                     percent_complete = (processed_count / total_patterns) * 100
                     print(f"Progress: {math.ceil(percent_complete)}%")
-
+                    print("count:", processed_count, "/", total_patterns)
                 if len(batch) >= batch_size:
                     yield batch
                     batch = []
@@ -210,7 +211,7 @@ class SemiPEArrayStressTest:
 
         return pe_total_stress_counter
 
-    def run(self, batch_size=1024, log_obj=False):
+    def run(self, batch_size=4096, log_obj=False):
         start_time = time.time()  # Record end time
 
         alpha_lst = self.process_inputs_in_batches(batch_size, log_obj=log_obj)
