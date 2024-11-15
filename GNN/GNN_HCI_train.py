@@ -1,3 +1,9 @@
+
+"""
+NOTE:
+https://github.com/leftthomas/DGCNN?tab=readme-ov-file
+"""
+
 import torch
 import torch.nn.functional as F
 from torch import nn
