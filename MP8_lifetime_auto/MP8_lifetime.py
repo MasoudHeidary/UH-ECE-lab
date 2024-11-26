@@ -6,8 +6,8 @@ from msimulator.Multiplier import *
 from get_life_expect import get_life_expect
 
 from tool.log import Log
-log = Log("MP8_lifetime.txt", terminal=True)
-log.println()
+log = Log("MP8_lifetime_pattern.txt", terminal=False)
+# log.println()
 
 bit_len = 8
 # faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
@@ -88,14 +88,16 @@ def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
 
 
 # specific optimization
-if False:
+if True:
     lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
-    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(print_log=True)
+    # lst_transistor_optimize = []
+    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=log)
     fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
+    log.println("fault age of circuit")
     log.println(f"failed transistor: {fail_transistor}")
 # DONE
 
-if True:
+if False:
     log.println(f"faulty transistor: {faulty_transistor}")
     for _ in range(5):
         alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
@@ -109,6 +111,14 @@ if True:
 
 
 # auto generating for all transistors
+max_life_time = 0
+min_life_time = 1000
+average_life_time = 0
+all_possible_faults = (bit_len - 1) * bit_len * 6
+
+DATASET_GENERATE = False
+MAX_OPT_LEVEL = 3
+
 if False:
     for fa_i in range(bit_len - 1):
         for fa_j in range(bit_len):
@@ -118,18 +128,39 @@ if False:
                 log.println(f"faulty transistor: {faulty_transistor}")
                 lst_transistor_optimize = []
 
-                data_set_log_name = f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"
-                data_set_log_obj = Log(data_set_log_name, terminal=False)
+                if DATASET_GENERATE:
+                    data_set_log_name = f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"
+                    data_set_log_obj = Log(data_set_log_name, terminal=False)
                 
-                for i in range(3):
-                    log.println(f"optimization list: {lst_transistor_optimize}")
-                    if i != 2:
+                    for i in range(MAX_OPT_LEVEL):
+                        log.println(f"optimization list: {lst_transistor_optimize}")
+                        if i != 2:
+                            alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
+                        else:
+                            alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=data_set_log_obj)
+                            del data_set_log_obj
+                        fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
+                        lst_transistor_optimize += [fail_transistor]
+                
+                else:
+                    circuit_lifetime = 0
+                    for i in range(MAX_OPT_LEVEL):
+                        log.println(f"optimization list: {lst_transistor_optimize}")
                         alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
-                    else:
-                        alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=data_set_log_obj)
-                        del data_set_log_obj
-                    fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
-                    lst_transistor_optimize += [fail_transistor]
+                        fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
+                        lst_transistor_optimize += [fail_transistor]
+
+                        life_time = fail_transistor['t_week']
+                        if life_time > circuit_lifetime:
+                            circuit_lifetime = life_time
+                    
+                    average_life_time = circuit_lifetime / all_possible_faults
+                    max_life_time = circuit_lifetime if circuit_lifetime > max_life_time else max_life_time
+                    min_life_time = circuit_lifetime if circuit_lifetime < min_life_time else min_life_time
+
+log.println(f"max lifetime: {max_life_time}")
+log.println(f"min lifetime: {min_life_time}")
+log.println(f"average lifetime: {average_life_time}")
 
 
 

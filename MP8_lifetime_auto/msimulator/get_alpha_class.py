@@ -65,6 +65,7 @@ class MultiplierStressTest:
                             mp = neg_mp
             if log_obj:
                 log_obj.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
+                # log_obj.println(f"{A}, {B}, [compliment: {optimize_flag}]")
             
             # ====================================== OPTIMIZER [END]
 
