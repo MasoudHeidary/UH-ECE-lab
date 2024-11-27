@@ -6,8 +6,8 @@ from msimulator.Multiplier import *
 from get_life_expect import get_life_expect
 
 from tool.log import Log
-log = Log("MP8_lifetime_pattern.txt", terminal=False)
-# log.println()
+log = Log("MP8_lifetime.txt", terminal=False)
+log.println("START...")
 
 bit_len = 8
 # faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
@@ -158,9 +158,9 @@ if False:
                     max_life_time = circuit_lifetime if circuit_lifetime > max_life_time else max_life_time
                     min_life_time = circuit_lifetime if circuit_lifetime < min_life_time else min_life_time
 
-log.println(f"max lifetime: {max_life_time}")
-log.println(f"min lifetime: {min_life_time}")
-log.println(f"average lifetime: {average_life_time}")
+    log.println(f"max lifetime: {max_life_time}")
+    log.println(f"min lifetime: {min_life_time}")
+    log.println(f"average lifetime: {average_life_time}")
 
 
 

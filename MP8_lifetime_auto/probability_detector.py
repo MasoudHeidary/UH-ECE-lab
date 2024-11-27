@@ -6,13 +6,23 @@ from tool.log import Log
 log = Log("probability_detector.txt")
 
 def parse_log_line(line):
-    pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
+    pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False|x)\]"
     match = re.search(pattern, line)
     
     if match:
         A = list(map(int, match.group(1).split(", ")))
         B = list(map(int, match.group(2).split(", ")))
-        result = True if match.group(3) == "True" else False
+        # result = True if match.group(3) == "True" else False
+        result = None
+        if match.group(3) == 'True':
+            result = True
+        elif match.group(3) == 'False':
+            result = False
+        elif match.group(3) == 'x':
+            result = 'x'
+        else:
+            raise RuntimeError("invalid output in log file")
+        
         return A, B, result
     return None
 
@@ -51,7 +61,7 @@ def reverse_signed_b(binary_list):
 
 
 
-log_filepath = 'pattern.txt'
+log_filepath = 'pattern_with_x.txt'
 input_data = load_log_file(log_filepath)
 print(f"data pattern: {input_data[0]}")
 
@@ -109,6 +119,7 @@ def calc_prob(partial_A, partial_B):
     global input_data
     false_count = 0
     true_count = 0
+    x_count = 0
 
     for data in input_data:
         A = data[0]
@@ -119,8 +130,11 @@ def calc_prob(partial_A, partial_B):
             true_count += 1
         elif comp(partial_A, A) and comp(partial_B, B) and (out == False):
             false_count += 1
+        elif comp(partial_A, A) and comp(partial_B, B) and (out == 'x'):
+            print('x')
+            x_count += 1
 
-    return true_count, false_count 
+    return true_count, false_count, x_count 
 
 def generate_patterns(bit_pattern):
     b_positions = [i for i, value in enumerate(bit_pattern) if value == 'b']
@@ -157,11 +171,11 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern):
 
     for a in A_patterns:
         for b in B_patterns:
-            prob = calc_prob(a, b)
-            log.println(f"{a} {b}: {prob} {prob[0]/(prob[1] or 0.001):.1f} [{'True' if prob[0] >= prob[1] else 'False'}]")
+            true_prob, false_prob, x_count = calc_prob(a, b)
+            log.println(f"{a} {b}: {true_prob, false_prob, x_count} {true_prob/(false_prob or 0.001):.1f} [{'True' if true_prob >= false_prob else 'False'}]")
 
             ML_table.append(
-                {'A': a, 'B': b, 'out': prob[0] > prob[1]}
+                {'A': a, 'B': b, 'out': true_prob > false_prob}
             )
 
     # testing
@@ -189,9 +203,10 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern):
 
 print(
     calc_accuracy(
-        ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
-        ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
-        # ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+        # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
+        # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
+        ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+        ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
     )
 )
 
