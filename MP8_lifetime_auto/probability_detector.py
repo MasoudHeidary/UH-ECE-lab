@@ -131,7 +131,6 @@ def calc_prob(partial_A, partial_B):
         elif comp(partial_A, A) and comp(partial_B, B) and (out == False):
             false_count += 1
         elif comp(partial_A, A) and comp(partial_B, B) and (out == 'x'):
-            print('x')
             x_count += 1
 
     return true_count, false_count, x_count 
