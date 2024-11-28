@@ -63,7 +63,7 @@ def reverse_signed_b(binary_list):
 
 log_filepath = 'pattern_with_x.txt'
 input_data = load_log_file(log_filepath)
-print(f"data pattern: {input_data[0]}")
+# print(f"data pattern: {input_data[0]}")
 
 
 # if the output is True, calculate of probaility of each bit (being 1)
@@ -187,26 +187,24 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern):
         y_pred = interface(ML_table, data)
         d_out = data[2]
 
-        if d_out and y_pred:
+        if (y_pred == d_out or y_pred == 'x') and (d_out == True):
             true_positive += 1
-        elif (not d_out) and (not y_pred):
+        elif (y_pred == d_out or y_pred == 'x') and (d_out == False):
             true_negative += 1
-        elif (not d_out) and y_pred:
+        elif (y_pred != d_out) and (d_out == True):
             false_positive += 1
-        elif d_out and (not y_pred):
+        elif (y_pred != d_out) and (d_out == False):
             false_negative += 1
 
-    accu = -1
-    log.println(f"Accuracy: {accu}, TP: {true_positive}, FN(lost compliments):{false_negative}, FP(not necessary compliment): {false_positive}")
+    accu = true_positive / (true_positive + false_positive)
+    log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, FN(lost compliments):{false_negative}, FP(should not compliment): {false_positive}, FN(suppose to do compliment): {false_negative}")
     return accu
 
-print(
-    calc_accuracy(
-        # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
-        # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
-        ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
-        ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
-    )
+calc_accuracy(
+    # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
+    # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
+    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
 )
 
 if False:    

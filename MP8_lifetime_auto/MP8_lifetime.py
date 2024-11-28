@@ -16,6 +16,7 @@ faulty_transistor = False
 
 lst_transistor_optimize = []
 
+# true if any of trans optimize is under stress
 def optimizer_trigger(mp: MPn_v3, A:int, B:int):
     for transistor in lst_transistor_optimize:
         fa_i:int = transistor['fa_i']
@@ -36,6 +37,7 @@ def optimizer_trigger(mp: MPn_v3, A:int, B:int):
 
     return False
 
+# true if any of transistor is not under stree
 def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
     for transistor in lst_transistor_optimize:
         fa_i:int = transistor['fa_i']
@@ -56,26 +58,26 @@ def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
                 return True
     return False
 
-# non of all the transistor in optimization list stay with no stress
-def optimizer_x(neg_mp: MPn_v3):
-    for transistor in lst_transistor_optimize:
-        fa_i:int = transistor['fa_i']
-        fa_j:int = transistor['fa_j']
+# False if any transistor under stress
+# def optimizer_false(neg_mp: MPn_v3):
+#     for transistor in lst_transistor_optimize:
+#         fa_i:int = transistor['fa_i']
+#         fa_j:int = transistor['fa_j']
 
-        t_index:int = transistor['t_index']
-        _tgate = t_index // 2
-        _p = t_index % 2
+#         t_index:int = transistor['t_index']
+#         _tgate = t_index // 2
+#         _p = t_index % 2
 
-        fa:FA = neg_mp.gfa[fa_i][fa_j]
+#         fa:FA = neg_mp.gfa[fa_i][fa_j]
         
-        # non go under stress
-        if _p == 0:
-            if fa.tgate[_tgate].p0.gate == L:
-                return False
-        else:
-            if fa.tgate[_tgate].p1.gate == L:
-                return False
-    return True
+#         # non go under stress
+#         if _p == 0:
+#             if fa.tgate[_tgate].p0.gate == L:
+#                 return False
+#         else:
+#             if fa.tgate[_tgate].p1.gate == L:
+#                 return False
+#     return True
 
 """
 def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
@@ -111,7 +113,7 @@ def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
 if True:
     lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
     # lst_transistor_optimize = []
-    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept, optimizer_x).run(log_obj=log)
+    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=log)
     fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
     log.println("fault age of circuit")
     log.println(f"failed transistor: {fail_transistor}")

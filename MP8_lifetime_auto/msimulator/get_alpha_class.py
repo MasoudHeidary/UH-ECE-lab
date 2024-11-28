@@ -7,7 +7,7 @@ from .Multiplier import MPn_v3, L, H
 MAX_PROCESSES = 20 #multiprocessing.cpu_count()
 
 class MultiplierStressTest:
-    def __init__(self, bit_len, optimizer_trigger, optimizer_accept, optimizer_x, optimizer_enable=True, queue_size=100_000_000):
+    def __init__(self, bit_len, optimizer_trigger, optimizer_accept, optimizer_enable=True, queue_size=100_000_000):
         self.bit_len = bit_len
         self.input_len = 2**(self.bit_len * 2)
         self.optimizer_enable = optimizer_enable
@@ -15,7 +15,6 @@ class MultiplierStressTest:
 
         self.optimizer_trigger = optimizer_trigger
         self.optimizer_accept = optimizer_accept
-        self.optimizer_x = optimizer_x
 
     @staticmethod
     def signed_b(num: int, bit_len: int):
@@ -64,22 +63,9 @@ class MultiplierStressTest:
                         if self.optimizer_accept(neg_mp, neg_A, neg_B):
                             optimize_flag = True
                             mp = neg_mp
-                        else:
-                            # transis was under stree and complimenting did not help
-                            optimize_flag = 'x'
+                else:
+                    optimize_flag = "edge"
                     
-                    else:
-                        # transistor was not under stress and but complimenting it will not be under stress
-                        neg_A = -A
-                        neg_B = -B
-                        neg_mp = MPn_v3(self.signed_b(neg_A, self.bit_len), self.signed_b(neg_B, self.bit_len), self.bit_len)
-                        neg_mp.output
-
-                        if self.optimizer_x(neg_mp):
-                            mp = neg_mp
-                            optimize_flag = 'x'
-                        else:
-                            optimize_flag = False
             if log_obj:
                 log_obj.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
                 # log_obj.println(f"{A}, {B}, [compliment: {optimize_flag}]")
