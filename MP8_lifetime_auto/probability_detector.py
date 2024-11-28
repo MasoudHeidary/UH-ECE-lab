@@ -6,7 +6,7 @@ from tool.log import Log
 log = Log("probability_detector.txt")
 
 def parse_log_line(line):
-    pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False|x)\]"
+    pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
     match = re.search(pattern, line)
     
     if match:
@@ -18,8 +18,6 @@ def parse_log_line(line):
             result = True
         elif match.group(3) == 'False':
             result = False
-        elif match.group(3) == 'x':
-            result = 'x'
         else:
             raise RuntimeError("invalid output in log file")
         
@@ -61,7 +59,7 @@ def reverse_signed_b(binary_list):
 
 
 
-log_filepath = 'pattern_with_x.txt'
+log_filepath = 'pattern.txt'
 input_data = load_log_file(log_filepath)
 # print(f"data pattern: {input_data[0]}")
 
@@ -119,7 +117,6 @@ def calc_prob(partial_A, partial_B):
     global input_data
     false_count = 0
     true_count = 0
-    x_count = 0
 
     for data in input_data:
         A = data[0]
@@ -130,10 +127,8 @@ def calc_prob(partial_A, partial_B):
             true_count += 1
         elif comp(partial_A, A) and comp(partial_B, B) and (out == False):
             false_count += 1
-        elif comp(partial_A, A) and comp(partial_B, B) and (out == 'x'):
-            x_count += 1
 
-    return true_count, false_count, x_count 
+    return true_count, false_count 
 
 def generate_patterns(bit_pattern):
     b_positions = [i for i, value in enumerate(bit_pattern) if value == 'b']
@@ -158,11 +153,12 @@ def interface(table, data):
             
     raise RuntimeError("table FAILED!")
 
-def calc_accuracy(A_bit_pattern, B_bit_pattern):
+def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
     global input_data
 
     # traing
-    log.println("TRAINING...")
+    if LOG:
+        log.println("TRAINING...")
     A_patterns = generate_patterns(A_bit_pattern)
     B_patterns = generate_patterns(B_bit_pattern)
 
@@ -170,8 +166,9 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern):
 
     for a in A_patterns:
         for b in B_patterns:
-            true_prob, false_prob, x_count = calc_prob(a, b)
-            log.println(f"{a} {b}: {true_prob, false_prob, x_count} {true_prob/(false_prob or 0.001):.1f} [{'True' if true_prob >= false_prob else 'False'}]")
+            true_prob, false_prob = calc_prob(a, b)
+            if LOG:
+                log.println(f"{a} {b}: {true_prob, false_prob} {true_prob/(false_prob or 0.001):.1f} [{'True' if true_prob > false_prob else 'False'}]")
 
             ML_table.append(
                 {'A': a, 'B': b, 'out': true_prob > false_prob}
@@ -187,25 +184,43 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern):
         y_pred = interface(ML_table, data)
         d_out = data[2]
 
-        if (y_pred == d_out or y_pred == 'x') and (d_out == True):
+        if (y_pred == d_out) and (y_pred == True):
             true_positive += 1
-        elif (y_pred == d_out or y_pred == 'x') and (d_out == False):
+        elif (y_pred == d_out) and (y_pred == False):
             true_negative += 1
-        elif (y_pred != d_out) and (d_out == True):
+        elif (y_pred != d_out) and (y_pred == True):
             false_positive += 1
-        elif (y_pred != d_out) and (d_out == False):
+        elif (y_pred != d_out) and (y_pred == False):
             false_negative += 1
 
-    accu = true_positive / (true_positive + false_positive)
-    log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, FN(lost compliments):{false_negative}, FP(should not compliment): {false_positive}, FN(suppose to do compliment): {false_negative}")
-    return accu
+    # accu = true_positive / ((true_positive + false_positive) or 1)
+    accu = (true_positive + true_negative) / ((true_positive + true_negative + false_positive + false_negative) or 1)
+    if LOG:
+        log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative}, ")
+    return accu, true_positive, true_negative, false_positive, false_negative
 
-calc_accuracy(
-    # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
-    # ['b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'],
-    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
-    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
-)
+# calc_accuracy(
+#     ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'b'],
+#     ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'b'],
+# )
+
+
+
+A_pattern = list(product(['b', 'x'], repeat=8))
+filtered_A = [lst for lst in A_pattern if lst.count('b') <= 4]
+filtered_A = [list(lst) for lst in filtered_A]
+
+for a_pattern in filtered_A:
+    B_pattern = list(product(['b', 'x'], repeat=8))
+    filtered_B = [lst for lst in B_pattern if lst.count('b') <= 4]
+    filtered_B = [list(lst) for lst in filtered_B]
+    
+    for b_pattern in filtered_B:
+        
+        log.println(f"{a_pattern} {b_pattern}")
+        log.println(f"{calc_accuracy(a_pattern, b_pattern, LOG=False)}")
+
+
 
 if False:    
     for A_msb in range(5):
