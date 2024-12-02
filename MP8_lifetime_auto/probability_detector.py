@@ -1,4 +1,5 @@
 from itertools import *
+import multiprocessing.process
 import re
 import itertools
 from tool.log import Log
@@ -195,8 +196,9 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
 
     # accu = true_positive / ((true_positive + false_positive) or 1)
     accu = (true_positive + true_negative) / ((true_positive + true_negative + false_positive + false_negative) or 1)
-    if LOG:
-        log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative}, ")
+    if LOG or True:
+        log.println(f"{A_bit_pattern}\t{B_bit_pattern} \t\t Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative},")
+        # log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative}, ")
     return accu, true_positive, true_negative, false_positive, false_negative
 
 # calc_accuracy(
@@ -205,22 +207,56 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
 # )
 
 
+if False:
+    A_pattern = list(product(['b', 'x'], repeat=8))
+    filtered_A = [lst for lst in A_pattern if lst.count('b') <= 4]
+    filtered_A = [list(lst) for lst in filtered_A]
 
-A_pattern = list(product(['b', 'x'], repeat=8))
-filtered_A = [lst for lst in A_pattern if lst.count('b') <= 4]
-filtered_A = [list(lst) for lst in filtered_A]
-
-for a_pattern in filtered_A:
-    B_pattern = list(product(['b', 'x'], repeat=8))
-    filtered_B = [lst for lst in B_pattern if lst.count('b') <= 4]
-    filtered_B = [list(lst) for lst in filtered_B]
-    
-    for b_pattern in filtered_B:
+    for a_pattern in filtered_A:
+        B_pattern = list(product(['b', 'x'], repeat=8))
+        filtered_B = [lst for lst in B_pattern if lst.count('b') <= 4]
+        filtered_B = [list(lst) for lst in filtered_B]
         
-        log.println(f"{a_pattern} {b_pattern}")
-        log.println(f"{calc_accuracy(a_pattern, b_pattern, LOG=False)}")
+        for b_pattern in filtered_B:
+            
+            # log.println(f"{a_pattern} {b_pattern}")
+            calc_accuracy(a_pattern, b_pattern)
 
+if True:
+    # automatic different pattern generator
+    import multiprocessing
+    from itertools import product
+    
+    processes = []
+    processes_count = 0
 
+    A_pattern = list(product(['b', 'x'], repeat=8))
+    filtered_A = [lst for lst in A_pattern if lst.count('b') <= 5]
+    filtered_A = [list(lst) for lst in filtered_A]
+
+    for a_pattern in filtered_A:
+        B_pattern = list(product(['b', 'x'], repeat=8))
+        filtered_B = [lst for lst in B_pattern if lst.count('b') <= 5]
+        filtered_B = [list(lst) for lst in filtered_B]
+        
+        for b_pattern in filtered_B:
+            
+            processes.append(
+                multiprocessing.Process(target=calc_accuracy, args=(a_pattern, b_pattern))
+            )
+            processes_count += 1
+            
+            if processes_count == 40:
+                # start processes
+                # log.println("Processing Batch:")
+                for p in processes:
+                    p.start()
+                for p in processes:
+                    p.join()
+                    
+                processes = []
+                processes_count = 0
+    
 
 if False:    
     for A_msb in range(5):
