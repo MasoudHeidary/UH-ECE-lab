@@ -203,7 +203,8 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
 
 # calc_accuracy(
 #     ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'b'],
-#     ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'b'],
+#     ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
+#     LOG = True
 # )
 
 
@@ -224,8 +225,15 @@ if False:
 
 if True:
     # automatic different pattern generator
+    # outcome:
+    # [Tue Dec  3 08:13:29 2024] >> ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b']	['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'] 		 Accuracy:  0.993, TP: 24256, TN: 40832, FP(not suppose compliment): 320, FN(lost compliments):128,
+    
+
     import multiprocessing
     from itertools import product
+
+    COUNTING = False
+    _counting = 0
     
     processes = []
     processes_count = 0
@@ -245,8 +253,9 @@ if True:
                 multiprocessing.Process(target=calc_accuracy, args=(a_pattern, b_pattern))
             )
             processes_count += 1
+            _counting += 1
             
-            if processes_count == 40:
+            if (not COUNTING) and (processes_count == 40):
                 # start processes
                 # log.println("Processing Batch:")
                 for p in processes:
@@ -256,6 +265,8 @@ if True:
                     
                 processes = []
                 processes_count = 0
+    
+    log.println(f"{_counting} processes counted")
     
 
 if False:    
