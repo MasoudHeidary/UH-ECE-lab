@@ -201,11 +201,11 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
         # log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative}, ")
     return accu, true_positive, true_negative, false_positive, false_negative
 
-# calc_accuracy(
-#     ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'b'],
-#     ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
-#     LOG = True
-# )
+calc_accuracy(
+    ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'],
+    ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
+    LOG = True
+)
 
 
 if False:
@@ -223,7 +223,7 @@ if False:
             # log.println(f"{a_pattern} {b_pattern}")
             calc_accuracy(a_pattern, b_pattern)
 
-if True:
+if False:
     # automatic different pattern generator
     # outcome:
     # [Tue Dec  3 08:13:29 2024] >> ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b']	['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'] 		 Accuracy:  0.993, TP: 24256, TN: 40832, FP(not suppose compliment): 320, FN(lost compliments):128,
