@@ -1,5 +1,6 @@
 import subprocess
 from tool.log import Log
+import random
 
 log = Log("tlog.txt")
 
@@ -374,44 +375,44 @@ I5 (A\<0\> A\<1\> A\<2\> A\<3\> A\<4\> A\<5\> A\<6\> A\<7\> B\<0\> B\<1\> \\
         net8 M14 M15 net20 net19 net18 net17 net16 net15 net14 net13 net12 \\
         gnd pbody vdd) prjage_8MPnb_schematic
 R20 (gnd clk) resistor r=100
-R75 (pbody gnd) resistor r=0
+R75 (pbody vdd) resistor r=0
 R17 (vdd net5) resistor r=0
 R16 (gnd net4) resistor r=0
 V1 (net4 0) vsource dc=0 type=dc
 V0 (net5 0) vsource dc=800.0m type=dc
-V18 (clk gnd) vsource type=pulse val0=0 val1=800m period=2n delay=100p \\
+V18 (clk gnd) vsource type=pulse val0=0 val1=800m period=4n delay=1p \\
         rise=1p fall=1p
-V17 (B\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[7] else "0"} period=2n delay=100p \\
+V17 (B\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[7] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V8 (B\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[6] else "0"} period=2n delay=100p \\
+V8 (B\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[6] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V16 (B\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[5] else "0"} period=2n delay=100p \\
+V16 (B\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[5] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V7 (B\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[4] else "0"} period=2n delay=100p \\
+V7 (B\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[4] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V15 (B\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[3] else "0"} period=2n delay=100p \\
+V15 (B\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[3] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V6 (B\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[2] else "0"} period=2n delay=100p \\
+V6 (B\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[2] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V14 (B\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[1] else "0"} period=2n delay=100p \\
+V14 (B\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[1] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V5 (B\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[0] else "0"} period=2n delay=100p \\
+V5 (B\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[0] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V13 (A\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[7] else "0"} period=2n delay=100p \\
+V13 (A\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[7] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V4 (A\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[6] else "0"} period=2n delay=100p \\
+V4 (A\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[6] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V12 (A\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[5] else "0"} period=2n delay=100p \\
+V12 (A\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[5] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V3 (A\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[4] else "0"} period=2n delay=100p \\
+V3 (A\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[4] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V11 (A\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[3] else "0"} period=2n delay=100p \\
+V11 (A\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[3] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V2 (A\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[2] else "0"} period=2n delay=100p \\
+V2 (A\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[2] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V10 (A\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[1] else "0"} period=2n delay=100p \\
+V10 (A\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[1] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
-V100 (A\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[0] else "0"} period=2n delay=100p \\
+V100 (A\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[0] else "0"} period=4n delay=1p \\
         rise=1p fall=1p
 C18 (M15 gnd) capacitor c=1f
 C17 (M14 gnd) capacitor c=1f
@@ -448,7 +449,7 @@ resultsDir( "/home/mheidary/simulation/delay_MP8/spectre/schematic" )
 modelFile( 
     '("$SPECTRE_MODEL_PATH/design_wrapper.lib.scs" "tt_pre")
 )
-analysis('tran ?stop "0.5n"  ?errpreset "conservative"  )
+analysis('tran ?stop "2n"  ?errpreset "conservative"  )
 desVar(	  "wireopt" 19	)
 envOption(
 	'analysisOrder  list("tran") 
@@ -456,19 +457,17 @@ envOption(
 temp( 27 ) 
 run()
 selectResult( 'tran )
-plot(getData("/clk") getData("/M14") getData("/M15") getData("/net21") )
-hardCopyOptions(?hcOutputFile "{log_file}.png" ?hcResolution 500 ?hcFontSize 18 ?hcOutputFormat "png" ?hcImageWidth 1920 ?hcImageHeight 1080)
+plot(getData("/clk") getData("/M14") getData("/M15"))
+hardCopyOptions(?hcOutputFile "{log_file}.png" ?hcResolution 500 ?hcFontSize 18 ?hcOutputFormat "png" ?hcImageWidth 3000 ?hcImageHeight 2000)
 hardCopy()
 
 
 M15_delay = delay(?wf1 VT("/clk"), ?value1 0.4, ?edge1 "rising", ?nth1 1, ?td1 0.0, ?tol1 nil, ?wf2 VT("/M15"), ?value2 0.4, ?edge2 "rising", ?nth2 1, ?tol2 nil,  ?td2 nil , ?stop nil, ?multiple nil)
 M14_delay = delay(?wf1 VT("/clk"), ?value1 0.4, ?edge1 "rising", ?nth1 1, ?td1 0.0, ?tol1 nil, ?wf2 VT("/M14"), ?value2 0.4, ?edge2 "rising", ?nth2 1, ?tol2 nil,  ?td2 nil , ?stop nil, ?multiple nil)
-M1_delay = delay(?wf1 VT("/clk"), ?value1 0.4, ?edge1 "rising", ?nth1 1, ?td1 0.0, ?tol1 nil, ?wf2 VT("/net21"), ?value2 0.4, ?edge2 "rising", ?nth2 1, ?tol2 nil,  ?td2 nil , ?stop nil, ?multiple nil)
 
 reportFile = outfile("{log_file}")
 ocnPrint(?output reportFile "15" M15_delay)
 ocnPrint(?output reportFile "14" M14_delay)
-ocnPrint(?output reportFile "1" M1_delay)
 close(reportFile)
 
 exit
@@ -493,21 +492,25 @@ def b(num: int, bit_len: int):
     return bit_num
 
 if __name__ == "__main__":
+
+    random_count = 0
     
-    for A in range(256):
-        for B in range(256):
+    while random_count <= 1000:
+            A = random.randint(0, 255)
+            B = random.randint(0, 255)
+
             A_bin = b(A, 8)
             B_bin = b(B, 8)
 
-            if b(A*B, 16)[14:] == [0,0]:
-                log.println(f"{A} {B} ignored!")
-            
-            else:
+            if b(A*B, 16)[14:] != [0,0]:
+                random_count += 1
                 log.println(f"{A} {B} {b(A*B, 16)} DONE.")
-
-                log_name = f"log/log-MP8-delay-{A}-{B}.txt"
-
                 update_netlist(NETLIST, A_bin, B_bin)
 
+                log_name = f"log/log-MP8-delay-{A}-{B}.txt"
                 update_ocean(OCEAN, log_name)
                 run_ocean_script(OCEAN)
+
+
+            else:
+                log.println(f"{A} {B} ignored!")
