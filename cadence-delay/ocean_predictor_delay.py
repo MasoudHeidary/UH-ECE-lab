@@ -270,7 +270,7 @@ def b(num: int, bit_len: int):
 
 if __name__ == "__main__":
 
-    for i in range(0, 2**4 + 1):
+    for i in range(0, 2**4):
         bin_input = b(i, 4)
 
         log_file_name = f"log/logic_predictor_{i}.txt"
