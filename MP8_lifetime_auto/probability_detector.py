@@ -1,12 +1,57 @@
+"""
+NOTE:
+
+
+for normal aging the pattern is:
+
+CODE:
+r = calc_accuracy(
+    input_data,
+    ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'],
+    ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
+    log_obj = log
+)
+log.println(f"{r}")
+
+OUTPUT:
+TRAINING...
+['x', 'x', 'x', 'x', 'x', 'x', 0, 0] [0, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 0] [0, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 0] [1, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (4032, 64) 63.0 [True]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 0] [1, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (4032, 64) 63.0 [True]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 1] [0, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 1] [0, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 1] [1, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (4032, 64) 63.0 [True]
+['x', 'x', 'x', 'x', 'x', 'x', 0, 1] [1, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (4032, 64) 63.0 [True]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 0] [0, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 0] [0, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (4032, 64) 63.0 [True]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 0] [1, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (4096, 0) 4096000.0 [True]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 0] [1, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (64, 4032) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 1] [0, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 1] [0, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 1] [1, 0, 'x', 'x', 'x', 'x', 'x', 'x']: (64, 4032) 0.0 [False]
+['x', 'x', 'x', 'x', 'x', 'x', 1, 1] [1, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
+(0.9931640625, 24256, 40832, 320, 128)
+
+['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b']  ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x']
+Accuracy:  0.993, TP: 24256, TN: 40832, FP(not suppose compliment): 320, FN(lost compliments):128,
+
+
+
+
+"""
+
+
 from itertools import *
-import multiprocessing.process
+import multiprocessing
 import re
 import itertools
+import time
 from tool.log import Log
 
-log = Log("probability_detector.txt")
+log = Log(f"{__file__}.log")
 
-def parse_log_line(line):
+def parse_pattern_line(line):
     pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
     match = re.search(pattern, line)
     
@@ -25,12 +70,12 @@ def parse_log_line(line):
         return A, B, result
     return None
 
-def load_log_file(filepath):
+def load_pattern_file(filepath):
     input_data = []
     
     with open(filepath, 'r') as file:
         for line in file:
-            parsed_data = parse_log_line(line)
+            parsed_data = parse_pattern_line(line)
             if parsed_data:
                 input_data.append(parsed_data)
     
@@ -60,30 +105,6 @@ def reverse_signed_b(binary_list):
 
 
 
-log_filepath = 'pattern.txt'
-input_data = load_log_file(log_filepath)
-# print(f"data pattern: {input_data[0]}")
-
-
-# if the output is True, calculate of probaility of each bit (being 1)
-A_bit_sum = [0 for _ in range(8)]
-B_bit_sum = [0 for _ in range(8)]
-for data in input_data:
-    if data[2] == True:
-        for i in range(8):
-            A_bit_sum[i] += data[0][i]
-            B_bit_sum[i] += data[1][i]
-
-# average_A_bit_sum = [i/(2**16) for i in A_bit_sum]
-# average_B_bit_sum = [i/(2**16) for i in B_bit_sum]
-# print(f"A: {average_A_bit_sum}, B: {average_B_bit_sum}")
-
-count = 0
-for data in input_data:
-    count += 1 if data[2] else 0
-
-print(f"number of TRUE patterns: {count}")
-
 def comp(x_data, solid_data):
     if len(x_data) != len(solid_data):
         raise RuntimeError()
@@ -97,8 +118,8 @@ def comp(x_data, solid_data):
     return True
 
 
-def calc_probability(partial_A, partial_B):
-    global input_data
+def calc_probability(input_data, partial_A, partial_B):
+    # global input_data
     false_count = 0
     true_count = 0
 
@@ -114,8 +135,8 @@ def calc_probability(partial_A, partial_B):
 
     return true_count, false_count     
 
-def calc_prob(partial_A, partial_B):
-    global input_data
+def calc_prob(input_data, partial_A, partial_B):
+    # global input_data
     false_count = 0
     true_count = 0
 
@@ -151,15 +172,15 @@ def interface(table, data):
         if comp(t_A, data[0]) and comp(t_B, data[1]):
             t_out = tb['out']
             return t_out
-            
     raise RuntimeError("table FAILED!")
 
-def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
-    global input_data
+
+def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
+    # global input_data
 
     # traing
-    if LOG:
-        log.println("TRAINING...")
+    if log_obj:
+        log_obj.println("TRAINING...")
     A_patterns = generate_patterns(A_bit_pattern)
     B_patterns = generate_patterns(B_bit_pattern)
 
@@ -167,9 +188,9 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
 
     for a in A_patterns:
         for b in B_patterns:
-            true_prob, false_prob = calc_prob(a, b)
-            if LOG:
-                log.println(f"{a} {b}: {true_prob, false_prob} {true_prob/(false_prob or 0.001):.1f} [{'True' if true_prob > false_prob else 'False'}]")
+            true_prob, false_prob = calc_prob(input_data, a, b)
+            if log_obj:
+                log_obj.println(f"{a} {b}: {true_prob, false_prob} {true_prob/(false_prob or 0.001):.1f} [{'True' if true_prob > false_prob else 'False'}]")
 
             ML_table.append(
                 {'A': a, 'B': b, 'out': true_prob > false_prob}
@@ -196,142 +217,118 @@ def calc_accuracy(A_bit_pattern, B_bit_pattern, LOG=False):
 
     # accu = true_positive / ((true_positive + false_positive) or 1)
     accu = (true_positive + true_negative) / ((true_positive + true_negative + false_positive + false_negative) or 1)
-    if LOG or True:
-        log.println(f"{A_bit_pattern}\t{B_bit_pattern} \t\t Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative},")
+    # if log_obj:
+    #     log_obj.println(f"{A_bit_pattern}\t{B_bit_pattern} \t\t Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative},")
         # log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative}, ")
     return accu, true_positive, true_negative, false_positive, false_negative
 
-calc_accuracy(
-    ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'],
-    ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
-    LOG = True
-)
 
 
-if False:
-    A_pattern = list(product(['b', 'x'], repeat=8))
-    filtered_A = [lst for lst in A_pattern if lst.count('b') <= 4]
-    filtered_A = [list(lst) for lst in filtered_A]
 
-    for a_pattern in filtered_A:
-        B_pattern = list(product(['b', 'x'], repeat=8))
-        filtered_B = [lst for lst in B_pattern if lst.count('b') <= 4]
-        filtered_B = [list(lst) for lst in filtered_B]
-        
-        for b_pattern in filtered_B:
-            
-            # log.println(f"{a_pattern} {b_pattern}")
-            calc_accuracy(a_pattern, b_pattern)
+def multi_process_best_pattern_finder(
+        input_data,
+        lst_count_A_bit_pattern,
+        lst_count_B_bit_pattern,
+        max_process_count = multiprocessing.cpu_count(),
+        log_obj = False,
+):
+    def work_wrapper(input_data, a_pattern, b_pattern, log_obj, results):
+        accu, TP, TN, FP, FN = calc_accuracy(input_data, a_pattern, b_pattern, log_obj=False)
+        if log_obj:
+            log_obj.println(f"{a_pattern}\t{b_pattern}\t{accu} ({(TP, TN, FP, FN)})")
+        results.append({
+            'A': a_pattern,
+            'B': b_pattern,
+            'accu': accu,
+            'TP': TP,
+            'TN': TN,
+            'FP': FP,
+            'FN': FN
+        })
 
-if False:
-    # automatic different pattern generator
-    # outcome:
-    # [Tue Dec  3 08:13:29 2024] >> ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b']	['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'] 		 Accuracy:  0.993, TP: 24256, TN: 40832, FP(not suppose compliment): 320, FN(lost compliments):128,
-    
-
-    import multiprocessing
-    from itertools import product
-
-    COUNTING = False
-    _counting = 0
-    
     processes = []
     processes_count = 0
+    result = multiprocessing.Manager().list()
 
     A_pattern = list(product(['b', 'x'], repeat=8))
-    filtered_A = [lst for lst in A_pattern if lst.count('b') <= 5]
+    filtered_A = [lst for lst in A_pattern if lst.count('b') in lst_count_A_bit_pattern]
     filtered_A = [list(lst) for lst in filtered_A]
 
     for a_pattern in filtered_A:
         B_pattern = list(product(['b', 'x'], repeat=8))
-        filtered_B = [lst for lst in B_pattern if lst.count('b') <= 5]
+        filtered_B = [lst for lst in B_pattern if lst.count('b') in lst_count_B_bit_pattern]
         filtered_B = [list(lst) for lst in filtered_B]
-        
+
         for b_pattern in filtered_B:
-            
             processes.append(
-                multiprocessing.Process(target=calc_accuracy, args=(a_pattern, b_pattern))
+                multiprocessing.Process(
+                    target=work_wrapper,
+                    args=(input_data, a_pattern, b_pattern, log_obj, result),
+                )
             )
             processes_count += 1
-            _counting += 1
-            
-            if (not COUNTING) and (processes_count == 40):
-                # start processes
-                # log.println("Processing Batch:")
+
+            if len(processes) == max_process_count:
                 for p in processes:
                     p.start()
                 for p in processes:
                     p.join()
-                    
+
                 processes = []
-                processes_count = 0
     
-    log.println(f"{_counting} processes counted")
+    # process left over processes
+    for p in processes:
+        p.start()
+    for p in processes:
+        p.join()
+    processes = []
+
+    # best pattern
+    max_accuracy = max([i['accu'] for i in result])
+    max_accuracy_patterns = [i for i in result if i['accu']==max_accuracy]
+    best_accuracy_pattern = max_accuracy_patterns[0]
+    for pattern in max_accuracy_patterns:
+        if  (
+            pattern['A'].count('b') + pattern['B'].count('b')
+            ) < (
+            best_accuracy_pattern['A'].count('b') + best_accuracy_pattern['B'].count('b')
+            ):
+            best_accuracy_pattern = pattern
     
-
-if False:    
-    for A_msb in range(5):
-        for B_msb in range(5):
-
-            log.println()
-            log.println(f"A_msb: {A_msb}, B_msb: {B_msb}")
-            
-            partial_A_combination = list(itertools.product([0, 1], repeat=A_msb)).copy()
-            partial_B_combination = list(itertools.product([0, 1], repeat=B_msb)).copy()
-
-            for a in partial_A_combination:
-                for b in partial_B_combination:
-                    a = list(a)
-                    b = list(b)
-                    prob = calc_probability(a, b)
-                    log.println(f"{a} {b}: {prob} \t{prob[0]/prob[1]}")
+    if log_obj:
+        log_obj.println(f"max accuracy: {max_accuracy}")
+        log_obj.println(f"processes count: {processes_count}")
+    return best_accuracy_pattern
 
 
 
-if False:
-    A_bit_selection = list(itertools.product([0, 1], repeat=4)).copy()
-    B_bit_selection = list(itertools.product([0, 1], repeat=4)).copy()
-
-    base = [0 for _ in range(4)] + [1 for _ in range(4)]
-    unique_perm = set(itertools.permutations(base))
-    valid_comb = [list(perm) for perm in unique_perm]
-
-    for comb in valid_comb:
-        print(comb)
-    exit()
-
-    for A_msb in range(4, 5):
-        for B_msb in range(4, 5):
-
-            log.println()
-            log.println(f"A_msb: {A_msb}, B_msb: {B_msb}")
-            
-            partial_A_combination = list(itertools.product([0, 1], repeat=A_msb)).copy()
-            partial_B_combination = list(itertools.product([0, 1], repeat=B_msb)).copy()
-
-            for a in partial_A_combination:
-                for b in partial_B_combination:
-                    a = list(a)
-                    b = list(b)
-                    prob = calc_probability(a, b)
-                    log.println(f"{a} {b}: {prob}")
 
 
 
-if False:
-    # lets predict and get the accuracy
-    true_predict = 0
-    false_predict = 0
-    for data in input_data:
-        A = data[0]
-        B = data[1]
 
-        if A.count(0) + B.count(0) > 12:
-            if data[2] == True:
-                true_predict += 1
-            else:
-                false_predict += 1
-    print(f"true predict: {true_predict}")
-    print(f"false predict: {false_predict}")
-        
 
+# =========================================================================================================
+# =========================================================================================================
+# =========================================================================================================
+
+log_filepath = 'pattern.txt'
+input_data = load_pattern_file(log_filepath)
+
+count = 0
+for data in input_data:
+    count += 1 if data[2] else 0
+log.println(f"number of TRUE patterns: {count}")
+
+
+_start_time = time.time()
+
+r = multi_process_best_pattern_finder(
+        input_data,
+        [2],
+        [2],
+        log_obj=False,
+    )
+log.println(f"{r}")
+
+_end_time = time.time()
+log.println(f"execution time: {_end_time - _start_time}")
