@@ -380,39 +380,39 @@ R17 (vdd net5) resistor r=0
 R16 (gnd net4) resistor r=0
 V1 (net4 0) vsource dc=0 type=dc
 V0 (net5 0) vsource dc=800.0m type=dc
-V18 (clk gnd) vsource type=pulse val0=0 val1=800m period=4n delay=1p \\
+V18 (clk gnd) vsource type=pulse val0=0 val1=800m period=50n delay=1p \\
         rise=1p fall=1p
-V17 (B\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[7] else "0"} period=4n delay=1p \\
+V17 (B\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[7] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V8 (B\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[6] else "0"} period=4n delay=1p \\
+V8 (B\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[6] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V16 (B\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[5] else "0"} period=4n delay=1p \\
+V16 (B\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[5] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V7 (B\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[4] else "0"} period=4n delay=1p \\
+V7 (B\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[4] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V15 (B\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[3] else "0"} period=4n delay=1p \\
+V15 (B\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[3] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V6 (B\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[2] else "0"} period=4n delay=1p \\
+V6 (B\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[2] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V14 (B\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[1] else "0"} period=4n delay=1p \\
+V14 (B\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[1] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V5 (B\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[0] else "0"} period=4n delay=1p \\
+V5 (B\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if B_bin[0] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V13 (A\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[7] else "0"} period=4n delay=1p \\
+V13 (A\<7\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[7] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V4 (A\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[6] else "0"} period=4n delay=1p \\
+V4 (A\<6\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[6] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V12 (A\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[5] else "0"} period=4n delay=1p \\
+V12 (A\<5\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[5] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V3 (A\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[4] else "0"} period=4n delay=1p \\
+V3 (A\<4\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[4] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V11 (A\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[3] else "0"} period=4n delay=1p \\
+V11 (A\<3\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[3] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V2 (A\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[2] else "0"} period=4n delay=1p \\
+V2 (A\<2\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[2] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V10 (A\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[1] else "0"} period=4n delay=1p \\
+V10 (A\<1\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[1] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
-V100 (A\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[0] else "0"} period=4n delay=1p \\
+V100 (A\<0\> gnd) vsource type=pulse val0=0 val1={"800m" if A_bin[0] else "0"} period=50n delay=1p \\
         rise=1p fall=1p
 C18 (M15 gnd) capacitor c=1f
 C17 (M14 gnd) capacitor c=1f
@@ -449,7 +449,7 @@ resultsDir( "/home/mheidary/simulation/delay_MP8/spectre/schematic" )
 modelFile( 
     '("$SPECTRE_MODEL_PATH/design_wrapper.lib.scs" "tt_pre")
 )
-analysis('tran ?stop "2n"  ?errpreset "conservative"  )
+analysis('tran ?stop "10n"  ?errpreset "conservative"  )
 desVar(	  "wireopt" 19	)
 envOption(
 	'analysisOrder  list("tran") 
