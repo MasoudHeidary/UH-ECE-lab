@@ -493,17 +493,17 @@ def b(num: int, bit_len: int):
 
 if __name__ == "__main__":
 
-    random_count = 0
+    input_stack = []
     
-    while random_count <= 1000:
+    while len(input_stack) < 1000:
             A = random.randint(0, 255)
             B = random.randint(0, 255)
 
             A_bin = b(A, 8)
             B_bin = b(B, 8)
 
-            if b(A*B, 16)[14:] != [0,0]:
-                random_count += 1
+            if (b(A*B, 16)[14:] != [0,0]) and ((A,B) not in input_stack):
+                input_stack += [(A,B)]
                 log.println(f"{A} {B} {b(A*B, 16)} DONE.")
                 update_netlist(NETLIST, A_bin, B_bin)
 
