@@ -6,7 +6,7 @@ from msimulator.Multiplier import *
 from get_life_expect import get_life_expect
 
 from tool.log import Log
-log = Log("MP8_lifetime.txt", terminal=False)
+log = Log(f"{__file__}.log", terminal=True)
 log.println("START...")
 
 bit_len = 8
@@ -58,27 +58,6 @@ def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
                 return True
     return False
 
-# False if any transistor under stress
-# def optimizer_false(neg_mp: MPn_v3):
-#     for transistor in lst_transistor_optimize:
-#         fa_i:int = transistor['fa_i']
-#         fa_j:int = transistor['fa_j']
-
-#         t_index:int = transistor['t_index']
-#         _tgate = t_index // 2
-#         _p = t_index % 2
-
-#         fa:FA = neg_mp.gfa[fa_i][fa_j]
-        
-#         # non go under stress
-#         if _p == 0:
-#             if fa.tgate[_tgate].p0.gate == L:
-#                 return False
-#         else:
-#             if fa.tgate[_tgate].p1.gate == L:
-#                 return False
-#     return True
-
 """
 def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
     for transistor in lst_transistor_optimize:
@@ -113,9 +92,9 @@ def optimizer_accept(neg_mp: MPn_v3, neg_A:int, neg_B:int):
 if True:
     lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
     # lst_transistor_optimize = []
-    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=log)
-    fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
-    log.println("fault age of circuit")
+    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=False)
+    fail_transistor = get_life_expect(alpha_lst, bit_len, lst_transistor_optimize)
+    # log.println("fault age of circuit")
     log.println(f"failed transistor: {fail_transistor}")
 # DONE
 
@@ -141,7 +120,7 @@ all_possible_faults = (bit_len - 1) * bit_len * 6
 DATASET_GENERATE = False
 MAX_OPT_LEVEL = 3
 
-if False:
+if True:
     for fa_i in range(bit_len - 1):
         for fa_j in range(bit_len):
             for t_index in range(6):

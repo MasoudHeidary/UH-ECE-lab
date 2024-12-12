@@ -1,3 +1,0 @@
-[Wed Nov 27 19:40:35 2024] >> START...
-[Wed Nov 27 19:42:42 2024] >> fault age of circuit
-[Wed Nov 27 19:42:42 2024] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}

@@ -63,8 +63,6 @@ class MultiplierStressTest:
                         if self.optimizer_accept(neg_mp, neg_A, neg_B):
                             optimize_flag = True
                             mp = neg_mp
-                else:
-                    optimize_flag = "edge"
                     
             if log_obj:
                 log_obj.println(f"{A_b}, {B_b}, [compliment: {optimize_flag}]")
@@ -142,7 +140,7 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size=4096, log_obj=False):
+    def run(self, batch_size=2**13, log_obj=False):
         start_time = time.time()  # Record end time
 
         alpha_lst = self.process_inputs_in_batches(batch_size, log_obj=log_obj)

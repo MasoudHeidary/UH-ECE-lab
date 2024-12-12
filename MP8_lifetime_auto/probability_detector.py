@@ -232,6 +232,9 @@ def multi_process_best_pattern_finder(
         max_process_count = multiprocessing.cpu_count(),
         log_obj = False,
 ):
+    if log_obj:
+        _start_time = time.time()
+
     def work_wrapper(input_data, a_pattern, b_pattern, log_obj, results):
         accu, TP, TN, FP, FN = calc_accuracy(input_data, a_pattern, b_pattern, log_obj=False)
         if log_obj:
@@ -263,7 +266,7 @@ def multi_process_best_pattern_finder(
             processes.append(
                 multiprocessing.Process(
                     target=work_wrapper,
-                    args=(input_data, a_pattern, b_pattern, log_obj, result),
+                    args=(input_data, a_pattern, b_pattern, False, result),
                 )
             )
             processes_count += 1
@@ -298,6 +301,10 @@ def multi_process_best_pattern_finder(
     if log_obj:
         log_obj.println(f"max accuracy: {max_accuracy}")
         log_obj.println(f"processes count: {processes_count}")
+
+        _end_time = time.time()
+        _func_time = _end_time - _start_time
+        log.println(f"execution time:\t{_func_time}s")
     return best_accuracy_pattern
 
 
@@ -305,30 +312,75 @@ def multi_process_best_pattern_finder(
 
 
 
-
-
 # =========================================================================================================
 # =========================================================================================================
 # =========================================================================================================
 
-log_filepath = 'pattern.txt'
-input_data = load_pattern_file(log_filepath)
+if False:
+    # normal agine, fine logical optimizer
+    log_filepath = 'pattern.txt'
+    input_data = load_pattern_file(log_filepath)
 
-count = 0
-for data in input_data:
-    count += 1 if data[2] else 0
-log.println(f"number of TRUE patterns: {count}")
+    count = 0
+    for data in input_data:
+        count += 1 if data[2] else 0
+    log.println(f"number of TRUE patterns: {count}")
 
 
-_start_time = time.time()
+    _start_time = time.time()
 
-r = multi_process_best_pattern_finder(
-        input_data,
-        [2],
-        [2],
-        log_obj=False,
-    )
-log.println(f"{r}")
+    r = multi_process_best_pattern_finder(
+            input_data,
+            [2],
+            [2],
+            log_obj=False,
+        )
+    log.println(f"{r}")
 
-_end_time = time.time()
-log.println(f"execution time: {_end_time - _start_time}")
+    _end_time = time.time()
+    log.println(f"execution time: {_end_time - _start_time}")
+
+    exit()
+
+
+# 6 2 0
+# input_data = load_pattern_file(f"dataset/fa_i-{6}-fa_j-{2}-t_index-{0}.txt")
+# r = multi_process_best_pattern_finder(
+#     input_data,
+#     [0, 1, 2],
+#     [0, 1],
+#     log_obj=log,
+#     max_process_count=120
+# )
+# log.println(f"{r}")
+
+# exit()
+
+
+if True:
+    for fa_i in range(7):
+        for fa_j in range(8):
+            for t_index in range(6):
+
+                data_set_log_name = f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"
+                log.println(data_set_log_name)
+                input_data = load_pattern_file(data_set_log_name)
+
+                # keep the accuracy +89%
+                MIN_ACCURACY = 0.89
+                max_bit = 0
+                max_accuracy = 0
+                while (max_accuracy < MIN_ACCURACY) and (max_bit < 5):
+                    r = multi_process_best_pattern_finder(
+                        input_data,
+                        range(max_bit),
+                        range(max_bit),
+                        log_obj=False,
+                        max_process_count=100
+                    )
+
+                    max_accuracy = r['accu']
+                    max_bit += 1
+
+                log.println(f"{r}")
+                log.println()
