@@ -225,10 +225,92 @@ def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
 
 
 
+# def multi_process_best_pattern_finder(
+#         input_data,
+#         lst_count_A_bit_pattern,
+#         lst_count_B_bit_pattern,
+#         max_process_count = multiprocessing.cpu_count(),
+#         log_obj = False,
+# ):
+#     if log_obj:
+#         _start_time = time.time()
+
+#     def work_wrapper(input_data, a_pattern, b_pattern, log_obj, results):
+#         accu, TP, TN, FP, FN = calc_accuracy(input_data, a_pattern, b_pattern, log_obj=False)
+#         if log_obj:
+#             log_obj.println(f"{a_pattern}\t{b_pattern}\t{accu} ({(TP, TN, FP, FN)})")
+#         results.append({
+#             'A': a_pattern,
+#             'B': b_pattern,
+#             'accu': accu,
+#             'TP': TP,
+#             'TN': TN,
+#             'FP': FP,
+#             'FN': FN
+#         })
+
+#     processes = []
+#     processes_count = 0
+#     result = multiprocessing.Manager().list()
+
+#     A_pattern = list(product(['b', 'x'], repeat=8))
+#     filtered_A = [lst for lst in A_pattern if lst.count('b') in lst_count_A_bit_pattern]
+#     filtered_A = [list(lst) for lst in filtered_A]
+
+#     for a_pattern in filtered_A:
+#         B_pattern = list(product(['b', 'x'], repeat=8))
+#         filtered_B = [lst for lst in B_pattern if lst.count('b') in lst_count_B_bit_pattern]
+#         filtered_B = [list(lst) for lst in filtered_B]
+
+#         for b_pattern in filtered_B:
+#             processes.append(
+#                 multiprocessing.Process(
+#                     target=work_wrapper,
+#                     args=(input_data, a_pattern, b_pattern, False, result),
+#                 )
+#             )
+#             processes_count += 1
+
+#             if len(processes) == max_process_count:
+#                 for p in processes:
+#                     p.start()
+#                 for p in processes:
+#                     p.join()
+
+#                 processes = []
+    
+#     # process left over processes
+#     for p in processes:
+#         p.start()
+#     for p in processes:
+#         p.join()
+#     processes = []
+
+#     # best pattern
+#     max_accuracy = max([i['accu'] for i in result])
+#     max_accuracy_patterns = [i for i in result if i['accu']==max_accuracy]
+#     best_accuracy_pattern = max_accuracy_patterns[0]
+#     for pattern in max_accuracy_patterns:
+#         if  (
+#             pattern['A'].count('b') + pattern['B'].count('b')
+#             ) < (
+#             best_accuracy_pattern['A'].count('b') + best_accuracy_pattern['B'].count('b')
+#             ):
+#             best_accuracy_pattern = pattern
+    
+#     if log_obj:
+#         log_obj.println(f"max accuracy: {max_accuracy}")
+#         log_obj.println(f"processes count: {processes_count}")
+
+#         _end_time = time.time()
+#         _func_time = _end_time - _start_time
+#         log.println(f"execution time:\t{_func_time}s")
+#     return best_accuracy_pattern
+
+
 def multi_process_best_pattern_finder(
         input_data,
-        lst_count_A_bit_pattern,
-        lst_count_B_bit_pattern,
+        count_bit_pattern,
         max_process_count = multiprocessing.cpu_count(),
         log_obj = False,
 ):
@@ -254,15 +336,16 @@ def multi_process_best_pattern_finder(
     result = multiprocessing.Manager().list()
 
     A_pattern = list(product(['b', 'x'], repeat=8))
-    filtered_A = [lst for lst in A_pattern if lst.count('b') in lst_count_A_bit_pattern]
-    filtered_A = [list(lst) for lst in filtered_A]
+    A_pattern = [list(lst) for lst in A_pattern]
 
-    for a_pattern in filtered_A:
+    for a_pattern in A_pattern:
         B_pattern = list(product(['b', 'x'], repeat=8))
-        filtered_B = [lst for lst in B_pattern if lst.count('b') in lst_count_B_bit_pattern]
-        filtered_B = [list(lst) for lst in filtered_B]
+        B_pattern = [list(lst) for lst in B_pattern]
 
-        for b_pattern in filtered_B:
+        for b_pattern in B_pattern:
+            if a_pattern.count('b') + b_pattern.count('b') != count_bit_pattern:
+                continue
+
             processes.append(
                 multiprocessing.Process(
                     target=work_wrapper,
@@ -299,15 +382,13 @@ def multi_process_best_pattern_finder(
             best_accuracy_pattern = pattern
     
     if log_obj:
-        log_obj.println(f"max accuracy: {max_accuracy}")
-        log_obj.println(f"processes count: {processes_count}")
+        log_obj.println(f"**max accuracy: {max_accuracy}")
+        log_obj.println(f"**processes count: {processes_count}")
 
         _end_time = time.time()
         _func_time = _end_time - _start_time
-        log.println(f"execution time:\t{_func_time}s")
+        log.println(f"**execution time:\t{_func_time}s")
     return best_accuracy_pattern
-
-
 
 
 
@@ -361,26 +442,33 @@ if True:
     for fa_i in range(7):
         for fa_j in range(8):
             for t_index in range(6):
+                _start_time = time.time()
 
                 data_set_log_name = f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"
                 log.println(data_set_log_name)
                 input_data = load_pattern_file(data_set_log_name)
 
-                # keep the accuracy +89%
-                MIN_ACCURACY = 0.89
+                # keep the accuracy +85%
+                MIN_ACCURACY = 0.85
                 max_bit = 0
                 max_accuracy = 0
-                while (max_accuracy < MIN_ACCURACY) and (max_bit < 5):
+                while (max_accuracy < MIN_ACCURACY) and (max_bit < 9):
+                    max_bit += 1
+                    
                     r = multi_process_best_pattern_finder(
                         input_data,
-                        range(max_bit),
-                        range(max_bit),
+                        # range(max_bit),
+                        # range(max_bit),
+                        max_bit,
                         log_obj=False,
                         max_process_count=100
                     )
-
                     max_accuracy = r['accu']
-                    max_bit += 1
+
+
+                _end_time = time.time()
+                _exe_time = _end_time - _start_time
 
                 log.println(f"{r}")
-                log.println()
+                log.println(f"max bit:\t{max_bit}")
+                log.println(f"exe time:\t{_exe_time} \n")
