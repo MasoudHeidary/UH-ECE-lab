@@ -449,10 +449,11 @@ if True:
                 input_data = load_pattern_file(data_set_log_name)
 
                 # keep the accuracy +85%
-                MIN_ACCURACY = 0.85
+                MIN_ACCURACY = 0.84
+                MAX_BIT = 5
                 max_bit = 0
                 max_accuracy = 0
-                while (max_accuracy < MIN_ACCURACY) and (max_bit < 9):
+                while (max_accuracy < MIN_ACCURACY) and (max_bit <= MAX_BIT):
                     max_bit += 1
                     
                     r = multi_process_best_pattern_finder(
@@ -471,4 +472,5 @@ if True:
 
                 log.println(f"{r}")
                 log.println(f"max bit:\t{max_bit}")
-                log.println(f"exe time:\t{_exe_time} \n")
+                log.println(f"accuracy:\t{r['accu']}")
+                log.println(f"exe time:\t{_exe_time:.2f}s \n")
