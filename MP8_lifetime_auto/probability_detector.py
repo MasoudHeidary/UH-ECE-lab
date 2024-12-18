@@ -47,9 +47,9 @@ import multiprocessing
 import re
 import itertools
 import time
+import math
 from tool.log import Log
 
-log = Log(f"{__file__}.log")
 
 def parse_pattern_line(line):
     pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
@@ -437,10 +437,39 @@ if False:
 
 # exit()
 
+input_data = load_pattern_file(f"dataset/fa_i-{0}-fa_j-{0}-t_index-{1}.txt")
+# {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+
+log = Log(f"{__file__}.{0}.{0}.{1}.txt")
+calc_accuracy(
+    input_data,
+    ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'],
+    ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
+    log_obj=log
+)
+exit()
+
 
 if True:
-    for fa_i in range(7):
-        for fa_j in range(8):
+    bit_len = 8
+    MULTI_COMPUTER = True
+    MAX_COMPUTER = 3
+    CURRENT_COMPUTER = 1
+
+    log = Log(f"{__file__}.{CURRENT_COMPUTER}.log")
+
+
+    if MULTI_COMPUTER == False:
+        fa_i_range = range(bit_len-1)
+    else:
+        fa_i_range = range(bit_len-1)
+        chunk_size = math.ceil(len(fa_i_range)/MAX_COMPUTER)
+        partition = [fa_i_range[i:i+chunk_size] for i in range(0, len(fa_i_range), chunk_size)]
+        
+        fa_i_range = partition[CURRENT_COMPUTER]
+
+    for fa_i in fa_i_range:
+        for fa_j in range(bit_len):
             for t_index in range(6):
                 _start_time = time.time()
 
@@ -453,7 +482,7 @@ if True:
                 MAX_BIT = 5
                 max_bit = 0
                 max_accuracy = 0
-                while (max_accuracy < MIN_ACCURACY) and (max_bit <= MAX_BIT):
+                while (max_accuracy < MIN_ACCURACY) and (max_bit < MAX_BIT):
                     max_bit += 1
                     
                     r = multi_process_best_pattern_finder(
@@ -472,5 +501,5 @@ if True:
 
                 log.println(f"{r}")
                 log.println(f"max bit:\t{max_bit}")
-                log.println(f"accuracy:\t{r['accu']}")
+                log.println(f"accuracy:\t{r['accu']}\t+{MIN_ACCURACY}[{'TRUE' if max_accuracy>MIN_ACCURACY else 'FALSE'}]")
                 log.println(f"exe time:\t{_exe_time:.2f}s \n")
