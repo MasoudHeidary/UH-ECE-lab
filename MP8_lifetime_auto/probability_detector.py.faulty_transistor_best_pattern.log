@@ -1,0 +1,2016 @@
+[Mon Dec 16 13:00:34 2024] >> dataset/fa_i-0-fa_j-0-t_index-0.txt
+[Mon Dec 16 13:00:35 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.875, 'TP': 0, 'TN': 57344, 'FP': 0, 'FN': 8192}
+[Mon Dec 16 13:00:35 2024] >> max bit:	1
+[Mon Dec 16 13:00:35 2024] >> accuracy:	0.875	+0.84[TRUE]
+[Mon Dec 16 13:00:35 2024] >> exe time:	1.43s 
+
+[Mon Dec 16 13:00:35 2024] >> dataset/fa_i-0-fa_j-0-t_index-1.txt
+[Mon Dec 16 13:00:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:00:43 2024] >> max bit:	2
+[Mon Dec 16 13:00:43 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:00:43 2024] >> exe time:	7.26s 
+
+[Mon Dec 16 13:00:43 2024] >> dataset/fa_i-0-fa_j-0-t_index-2.txt
+[Mon Dec 16 13:00:44 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 1.0, 'TP': 0, 'TN': 65536, 'FP': 0, 'FN': 0}
+[Mon Dec 16 13:00:44 2024] >> max bit:	1
+[Mon Dec 16 13:00:44 2024] >> accuracy:	1.0	+0.84[TRUE]
+[Mon Dec 16 13:00:44 2024] >> exe time:	1.52s 
+
+[Mon Dec 16 13:00:44 2024] >> dataset/fa_i-0-fa_j-0-t_index-3.txt
+[Mon Dec 16 13:00:52 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:00:52 2024] >> max bit:	2
+[Mon Dec 16 13:00:52 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:00:52 2024] >> exe time:	7.37s 
+
+[Mon Dec 16 13:00:52 2024] >> dataset/fa_i-0-fa_j-0-t_index-4.txt
+[Mon Dec 16 13:00:59 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:00:59 2024] >> max bit:	2
+[Mon Dec 16 13:00:59 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:00:59 2024] >> exe time:	7.19s 
+
+[Mon Dec 16 13:00:59 2024] >> dataset/fa_i-0-fa_j-0-t_index-5.txt
+[Mon Dec 16 13:01:00 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 1.0, 'TP': 0, 'TN': 65536, 'FP': 0, 'FN': 0}
+[Mon Dec 16 13:01:00 2024] >> max bit:	1
+[Mon Dec 16 13:01:00 2024] >> accuracy:	1.0	+0.84[TRUE]
+[Mon Dec 16 13:01:00 2024] >> exe time:	1.53s 
+
+[Mon Dec 16 13:01:00 2024] >> dataset/fa_i-0-fa_j-1-t_index-0.txt
+[Mon Dec 16 13:01:08 2024] >> {'A': ['x', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.9375, 'TP': 12288, 'TN': 49152, 'FP': 4096, 'FN': 0}
+[Mon Dec 16 13:01:08 2024] >> max bit:	2
+[Mon Dec 16 13:01:08 2024] >> accuracy:	0.9375	+0.84[TRUE]
+[Mon Dec 16 13:01:08 2024] >> exe time:	7.29s 
+
+[Mon Dec 16 13:01:08 2024] >> dataset/fa_i-0-fa_j-1-t_index-1.txt
+[Mon Dec 16 13:01:15 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:01:15 2024] >> max bit:	2
+[Mon Dec 16 13:01:15 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:01:15 2024] >> exe time:	7.26s 
+
+[Mon Dec 16 13:01:15 2024] >> dataset/fa_i-0-fa_j-1-t_index-2.txt
+[Mon Dec 16 13:22:39 2024] >> {'A': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8818359375, 'TP': 21440, 'TN': 36352, 'FP': 3136, 'FN': 4608}
+[Mon Dec 16 13:22:39 2024] >> max bit:	5
+[Mon Dec 16 13:22:39 2024] >> accuracy:	0.8818359375	+0.84[TRUE]
+[Mon Dec 16 13:22:39 2024] >> exe time:	1284.46s 
+
+[Mon Dec 16 13:22:39 2024] >> dataset/fa_i-0-fa_j-1-t_index-3.txt
+[Mon Dec 16 13:22:46 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:22:46 2024] >> max bit:	2
+[Mon Dec 16 13:22:46 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:22:46 2024] >> exe time:	6.87s 
+
+[Mon Dec 16 13:22:46 2024] >> dataset/fa_i-0-fa_j-1-t_index-4.txt
+[Mon Dec 16 13:22:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:22:53 2024] >> max bit:	2
+[Mon Dec 16 13:22:53 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:22:53 2024] >> exe time:	6.96s 
+
+[Mon Dec 16 13:22:53 2024] >> dataset/fa_i-0-fa_j-1-t_index-5.txt
+[Mon Dec 16 13:44:15 2024] >> {'A': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8818359375, 'TP': 21440, 'TN': 36352, 'FP': 3136, 'FN': 4608}
+[Mon Dec 16 13:44:15 2024] >> max bit:	5
+[Mon Dec 16 13:44:15 2024] >> accuracy:	0.8818359375	+0.84[TRUE]
+[Mon Dec 16 13:44:15 2024] >> exe time:	1281.81s 
+
+[Mon Dec 16 13:44:15 2024] >> dataset/fa_i-0-fa_j-2-t_index-0.txt
+[Mon Dec 16 13:44:22 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8466796875, 'TP': 14656, 'TN': 40832, 'FP': 1728, 'FN': 8320}
+[Mon Dec 16 13:44:22 2024] >> max bit:	2
+[Mon Dec 16 13:44:22 2024] >> accuracy:	0.8466796875	+0.84[TRUE]
+[Mon Dec 16 13:44:22 2024] >> exe time:	7.22s 
+
+[Mon Dec 16 13:44:22 2024] >> dataset/fa_i-0-fa_j-2-t_index-1.txt
+[Mon Dec 16 13:44:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 13:44:30 2024] >> max bit:	2
+[Mon Dec 16 13:44:30 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 13:44:30 2024] >> exe time:	7.29s 
+
+[Mon Dec 16 13:44:30 2024] >> dataset/fa_i-0-fa_j-2-t_index-2.txt
+[Mon Dec 16 14:05:51 2024] >> {'A': ['x', 'x', 'b', 'b', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8720703125, 'TP': 24704, 'TN': 32448, 'FP': 6016, 'FN': 2368}
+[Mon Dec 16 14:05:51 2024] >> max bit:	5
+[Mon Dec 16 14:05:51 2024] >> accuracy:	0.8720703125	+0.84[TRUE]
+[Mon Dec 16 14:05:51 2024] >> exe time:	1281.00s 
+
+[Mon Dec 16 14:05:51 2024] >> dataset/fa_i-0-fa_j-2-t_index-3.txt
+[Mon Dec 16 14:05:58 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:05:58 2024] >> max bit:	2
+[Mon Dec 16 14:05:58 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:05:58 2024] >> exe time:	7.33s 
+
+[Mon Dec 16 14:05:58 2024] >> dataset/fa_i-0-fa_j-2-t_index-4.txt
+[Mon Dec 16 14:06:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:06:05 2024] >> max bit:	2
+[Mon Dec 16 14:06:05 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:06:05 2024] >> exe time:	6.91s 
+
+[Mon Dec 16 14:06:05 2024] >> dataset/fa_i-0-fa_j-2-t_index-5.txt
+[Mon Dec 16 14:27:26 2024] >> {'A': ['x', 'x', 'b', 'b', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8720703125, 'TP': 24704, 'TN': 32448, 'FP': 6016, 'FN': 2368}
+[Mon Dec 16 14:27:26 2024] >> max bit:	5
+[Mon Dec 16 14:27:26 2024] >> accuracy:	0.8720703125	+0.84[TRUE]
+[Mon Dec 16 14:27:26 2024] >> exe time:	1280.95s 
+
+[Mon Dec 16 14:27:26 2024] >> dataset/fa_i-0-fa_j-3-t_index-0.txt
+[Mon Dec 16 14:27:33 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8681640625, 'TP': 15488, 'TN': 41408, 'FP': 896, 'FN': 7744}
+[Mon Dec 16 14:27:33 2024] >> max bit:	2
+[Mon Dec 16 14:27:33 2024] >> accuracy:	0.8681640625	+0.84[TRUE]
+[Mon Dec 16 14:27:33 2024] >> exe time:	7.41s 
+
+[Mon Dec 16 14:27:33 2024] >> dataset/fa_i-0-fa_j-3-t_index-1.txt
+[Mon Dec 16 14:27:40 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:27:40 2024] >> max bit:	2
+[Mon Dec 16 14:27:40 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:27:40 2024] >> exe time:	7.03s 
+
+[Mon Dec 16 14:27:40 2024] >> dataset/fa_i-0-fa_j-3-t_index-2.txt
+[Mon Dec 16 14:32:21 2024] >> {'A': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8623046875, 'TP': 21312, 'TN': 35200, 'FP': 3264, 'FN': 5760}
+[Mon Dec 16 14:32:21 2024] >> max bit:	4
+[Mon Dec 16 14:32:21 2024] >> accuracy:	0.8623046875	+0.84[TRUE]
+[Mon Dec 16 14:32:21 2024] >> exe time:	280.82s 
+
+[Mon Dec 16 14:32:21 2024] >> dataset/fa_i-0-fa_j-3-t_index-3.txt
+[Mon Dec 16 14:32:28 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:32:28 2024] >> max bit:	2
+[Mon Dec 16 14:32:28 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:32:28 2024] >> exe time:	7.50s 
+
+[Mon Dec 16 14:32:28 2024] >> dataset/fa_i-0-fa_j-3-t_index-4.txt
+[Mon Dec 16 14:32:35 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:32:35 2024] >> max bit:	2
+[Mon Dec 16 14:32:35 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:32:35 2024] >> exe time:	7.01s 
+
+[Mon Dec 16 14:32:35 2024] >> dataset/fa_i-0-fa_j-3-t_index-5.txt
+[Mon Dec 16 14:37:17 2024] >> {'A': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8623046875, 'TP': 21312, 'TN': 35200, 'FP': 3264, 'FN': 5760}
+[Mon Dec 16 14:37:17 2024] >> max bit:	4
+[Mon Dec 16 14:37:17 2024] >> accuracy:	0.8623046875	+0.84[TRUE]
+[Mon Dec 16 14:37:17 2024] >> exe time:	281.13s 
+
+[Mon Dec 16 14:37:17 2024] >> dataset/fa_i-0-fa_j-4-t_index-0.txt
+[Mon Dec 16 14:37:24 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8740234375, 'TP': 15936, 'TN': 41344, 'FP': 448, 'FN': 7808}
+[Mon Dec 16 14:37:24 2024] >> max bit:	2
+[Mon Dec 16 14:37:24 2024] >> accuracy:	0.8740234375	+0.84[TRUE]
+[Mon Dec 16 14:37:24 2024] >> exe time:	6.88s 
+
+[Mon Dec 16 14:37:24 2024] >> dataset/fa_i-0-fa_j-4-t_index-1.txt
+[Mon Dec 16 14:37:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:37:30 2024] >> max bit:	2
+[Mon Dec 16 14:37:30 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:37:30 2024] >> exe time:	6.94s 
+
+[Mon Dec 16 14:37:30 2024] >> dataset/fa_i-0-fa_j-4-t_index-2.txt
+[Mon Dec 16 14:42:12 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8818359375, 'TP': 24448, 'TN': 33344, 'FP': 4224, 'FN': 3520}
+[Mon Dec 16 14:42:12 2024] >> max bit:	4
+[Mon Dec 16 14:42:12 2024] >> accuracy:	0.8818359375	+0.84[TRUE]
+[Mon Dec 16 14:42:12 2024] >> exe time:	281.13s 
+
+[Mon Dec 16 14:42:12 2024] >> dataset/fa_i-0-fa_j-4-t_index-3.txt
+[Mon Dec 16 14:42:19 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:42:19 2024] >> max bit:	2
+[Mon Dec 16 14:42:19 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:42:19 2024] >> exe time:	7.31s 
+
+[Mon Dec 16 14:42:19 2024] >> dataset/fa_i-0-fa_j-4-t_index-4.txt
+[Mon Dec 16 14:42:26 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:42:26 2024] >> max bit:	2
+[Mon Dec 16 14:42:26 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:42:26 2024] >> exe time:	7.21s 
+
+[Mon Dec 16 14:42:26 2024] >> dataset/fa_i-0-fa_j-4-t_index-5.txt
+[Mon Dec 16 14:47:06 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8818359375, 'TP': 24448, 'TN': 33344, 'FP': 4224, 'FN': 3520}
+[Mon Dec 16 14:47:06 2024] >> max bit:	4
+[Mon Dec 16 14:47:06 2024] >> accuracy:	0.8818359375	+0.84[TRUE]
+[Mon Dec 16 14:47:06 2024] >> exe time:	279.92s 
+
+[Mon Dec 16 14:47:06 2024] >> dataset/fa_i-0-fa_j-5-t_index-0.txt
+[Mon Dec 16 14:47:13 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:47:13 2024] >> max bit:	2
+[Mon Dec 16 14:47:13 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:47:13 2024] >> exe time:	7.19s 
+
+[Mon Dec 16 14:47:13 2024] >> dataset/fa_i-0-fa_j-5-t_index-1.txt
+[Mon Dec 16 14:47:21 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:47:21 2024] >> max bit:	2
+[Mon Dec 16 14:47:21 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:47:21 2024] >> exe time:	7.39s 
+
+[Mon Dec 16 14:47:21 2024] >> dataset/fa_i-0-fa_j-5-t_index-2.txt
+[Mon Dec 16 14:52:02 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8984375, 'TP': 24192, 'TN': 34688, 'FP': 4480, 'FN': 2176}
+[Mon Dec 16 14:52:02 2024] >> max bit:	4
+[Mon Dec 16 14:52:02 2024] >> accuracy:	0.8984375	+0.84[TRUE]
+[Mon Dec 16 14:52:02 2024] >> exe time:	281.48s 
+
+[Mon Dec 16 14:52:02 2024] >> dataset/fa_i-0-fa_j-5-t_index-3.txt
+[Mon Dec 16 14:52:10 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:52:10 2024] >> max bit:	2
+[Mon Dec 16 14:52:10 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:52:10 2024] >> exe time:	7.39s 
+
+[Mon Dec 16 14:52:10 2024] >> dataset/fa_i-0-fa_j-5-t_index-4.txt
+[Mon Dec 16 14:52:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:52:17 2024] >> max bit:	2
+[Mon Dec 16 14:52:17 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:52:17 2024] >> exe time:	7.39s 
+
+[Mon Dec 16 14:52:17 2024] >> dataset/fa_i-0-fa_j-5-t_index-5.txt
+[Mon Dec 16 14:56:57 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8984375, 'TP': 24192, 'TN': 34688, 'FP': 4480, 'FN': 2176}
+[Mon Dec 16 14:56:57 2024] >> max bit:	4
+[Mon Dec 16 14:56:57 2024] >> accuracy:	0.8984375	+0.84[TRUE]
+[Mon Dec 16 14:56:57 2024] >> exe time:	280.24s 
+
+[Mon Dec 16 14:56:57 2024] >> dataset/fa_i-0-fa_j-6-t_index-0.txt
+[Mon Dec 16 14:57:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:57:05 2024] >> max bit:	2
+[Mon Dec 16 14:57:05 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:57:05 2024] >> exe time:	7.40s 
+
+[Mon Dec 16 14:57:05 2024] >> dataset/fa_i-0-fa_j-6-t_index-1.txt
+[Mon Dec 16 14:57:12 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.998046875, 'TP': 16256, 'TN': 49152, 'FP': 128, 'FN': 0}
+[Mon Dec 16 14:57:12 2024] >> max bit:	2
+[Mon Dec 16 14:57:12 2024] >> accuracy:	0.998046875	+0.84[TRUE]
+[Mon Dec 16 14:57:12 2024] >> exe time:	7.34s 
+
+[Mon Dec 16 14:57:12 2024] >> dataset/fa_i-0-fa_j-6-t_index-2.txt
+[Mon Dec 16 14:57:19 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 14:57:19 2024] >> max bit:	2
+[Mon Dec 16 14:57:19 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 14:57:19 2024] >> exe time:	7.33s 
+
+[Mon Dec 16 14:57:19 2024] >> dataset/fa_i-0-fa_j-6-t_index-3.txt
+[Mon Dec 16 15:01:59 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.9736328125, 'TP': 28416, 'TN': 35392, 'FP': 256, 'FN': 1472}
+[Mon Dec 16 15:01:59 2024] >> max bit:	4
+[Mon Dec 16 15:01:59 2024] >> accuracy:	0.9736328125	+0.84[TRUE]
+[Mon Dec 16 15:01:59 2024] >> exe time:	279.97s 
+
+[Mon Dec 16 15:01:59 2024] >> dataset/fa_i-0-fa_j-6-t_index-4.txt
+[Mon Dec 16 15:06:40 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.9736328125, 'TP': 28416, 'TN': 35392, 'FP': 256, 'FN': 1472}
+[Mon Dec 16 15:06:40 2024] >> max bit:	4
+[Mon Dec 16 15:06:40 2024] >> accuracy:	0.9736328125	+0.84[TRUE]
+[Mon Dec 16 15:06:40 2024] >> exe time:	281.24s 
+
+[Mon Dec 16 15:06:40 2024] >> dataset/fa_i-0-fa_j-6-t_index-5.txt
+[Mon Dec 16 15:06:48 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 15:06:48 2024] >> max bit:	2
+[Mon Dec 16 15:06:48 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 15:06:48 2024] >> exe time:	7.09s 
+
+[Mon Dec 16 15:06:48 2024] >> dataset/fa_i-0-fa_j-7-t_index-0.txt
+[Mon Dec 16 15:06:55 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 15:06:55 2024] >> max bit:	2
+[Mon Dec 16 15:06:55 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 15:06:55 2024] >> exe time:	7.42s 
+
+[Mon Dec 16 15:06:55 2024] >> dataset/fa_i-0-fa_j-7-t_index-1.txt
+[Mon Dec 16 15:06:56 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.85546875, 'TP': 0, 'TN': 56064, 'FP': 0, 'FN': 9472}
+[Mon Dec 16 15:06:56 2024] >> max bit:	1
+[Mon Dec 16 15:06:56 2024] >> accuracy:	0.85546875	+0.84[TRUE]
+[Mon Dec 16 15:06:56 2024] >> exe time:	1.25s 
+
+[Mon Dec 16 15:06:56 2024] >> dataset/fa_i-0-fa_j-7-t_index-2.txt
+[Mon Dec 16 15:07:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.998046875, 'TP': 16256, 'TN': 49152, 'FP': 128, 'FN': 0}
+[Mon Dec 16 15:07:45 2024] >> max bit:	3
+[Mon Dec 16 15:07:45 2024] >> accuracy:	0.998046875	+0.84[TRUE]
+[Mon Dec 16 15:07:45 2024] >> exe time:	48.96s 
+
+[Mon Dec 16 15:07:45 2024] >> dataset/fa_i-0-fa_j-7-t_index-3.txt
+[Mon Dec 16 15:07:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 15:07:53 2024] >> max bit:	2
+[Mon Dec 16 15:07:53 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 15:07:53 2024] >> exe time:	7.43s 
+
+[Mon Dec 16 15:07:53 2024] >> dataset/fa_i-0-fa_j-7-t_index-4.txt
+[Mon Dec 16 15:08:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 15:08:00 2024] >> max bit:	2
+[Mon Dec 16 15:08:00 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 15:08:00 2024] >> exe time:	7.31s 
+
+[Mon Dec 16 15:08:00 2024] >> dataset/fa_i-0-fa_j-7-t_index-5.txt
+[Mon Dec 16 15:08:49 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.998046875, 'TP': 16256, 'TN': 49152, 'FP': 128, 'FN': 0}
+[Mon Dec 16 15:08:49 2024] >> max bit:	3
+[Mon Dec 16 15:08:49 2024] >> accuracy:	0.998046875	+0.84[TRUE]
+[Mon Dec 16 15:08:49 2024] >> exe time:	49.01s 
+
+[Mon Dec 16 15:08:49 2024] >> dataset/fa_i-1-fa_j-0-t_index-0.txt
+[Mon Dec 16 15:30:10 2024] >> {'A': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8916015625, 'TP': 22144, 'TN': 36288, 'FP': 2432, 'FN': 4672}
+[Mon Dec 16 15:30:10 2024] >> max bit:	5
+[Mon Dec 16 15:30:10 2024] >> accuracy:	0.8916015625	+0.84[TRUE]
+[Mon Dec 16 15:30:10 2024] >> exe time:	1280.68s 
+
+[Mon Dec 16 15:30:10 2024] >> dataset/fa_i-1-fa_j-0-t_index-1.txt
+[Mon Dec 16 15:30:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 15:30:17 2024] >> max bit:	2
+[Mon Dec 16 15:30:17 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 15:30:17 2024] >> exe time:	7.31s 
+
+[Mon Dec 16 15:30:17 2024] >> dataset/fa_i-1-fa_j-0-t_index-2.txt
+[Mon Dec 16 15:30:18 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 1.0, 'TP': 0, 'TN': 65536, 'FP': 0, 'FN': 0}
+[Mon Dec 16 15:30:18 2024] >> max bit:	1
+[Mon Dec 16 15:30:18 2024] >> accuracy:	1.0	+0.84[TRUE]
+[Mon Dec 16 15:30:18 2024] >> exe time:	1.21s 
+
+[Mon Dec 16 15:30:18 2024] >> dataset/fa_i-1-fa_j-0-t_index-3.txt
+[Mon Dec 16 15:51:31 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7675933837890625, 'TP': 24993, 'TN': 25312, 'FP': 3679, 'FN': 11552}
+[Mon Dec 16 15:51:31 2024] >> max bit:	5
+[Mon Dec 16 15:51:31 2024] >> accuracy:	0.7675933837890625	+0.84[FALSE]
+[Mon Dec 16 15:51:31 2024] >> exe time:	1273.11s 
+
+[Mon Dec 16 15:51:31 2024] >> dataset/fa_i-1-fa_j-0-t_index-4.txt
+[Mon Dec 16 16:12:42 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7675933837890625, 'TP': 24993, 'TN': 25312, 'FP': 3679, 'FN': 11552}
+[Mon Dec 16 16:12:42 2024] >> max bit:	5
+[Mon Dec 16 16:12:42 2024] >> accuracy:	0.7675933837890625	+0.84[FALSE]
+[Mon Dec 16 16:12:42 2024] >> exe time:	1271.18s 
+
+[Mon Dec 16 16:12:42 2024] >> dataset/fa_i-1-fa_j-0-t_index-5.txt
+[Mon Dec 16 16:12:44 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 1.0, 'TP': 0, 'TN': 65536, 'FP': 0, 'FN': 0}
+[Mon Dec 16 16:12:44 2024] >> max bit:	1
+[Mon Dec 16 16:12:44 2024] >> accuracy:	1.0	+0.84[TRUE]
+[Mon Dec 16 16:12:44 2024] >> exe time:	1.53s 
+
+[Mon Dec 16 16:12:44 2024] >> dataset/fa_i-1-fa_j-1-t_index-0.txt
+[Mon Dec 16 16:34:02 2024] >> {'A': ['x', 'b', 'x', 'b', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.82421875, 'TP': 21184, 'TN': 32832, 'FP': 5440, 'FN': 6080}
+[Mon Dec 16 16:34:02 2024] >> max bit:	5
+[Mon Dec 16 16:34:02 2024] >> accuracy:	0.82421875	+0.84[FALSE]
+[Mon Dec 16 16:34:02 2024] >> exe time:	1278.21s 
+
+[Mon Dec 16 16:34:02 2024] >> dataset/fa_i-1-fa_j-1-t_index-1.txt
+[Mon Dec 16 16:34:10 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 16:34:10 2024] >> max bit:	2
+[Mon Dec 16 16:34:10 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 16:34:10 2024] >> exe time:	7.33s 
+
+[Mon Dec 16 16:34:10 2024] >> dataset/fa_i-1-fa_j-1-t_index-2.txt
+[Mon Dec 16 16:55:28 2024] >> {'A': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.74169921875, 'TP': 18688, 'TN': 29920, 'FP': 5888, 'FN': 11040}
+[Mon Dec 16 16:55:28 2024] >> max bit:	5
+[Mon Dec 16 16:55:28 2024] >> accuracy:	0.74169921875	+0.84[FALSE]
+[Mon Dec 16 16:55:28 2024] >> exe time:	1278.14s 
+
+[Mon Dec 16 16:55:28 2024] >> dataset/fa_i-1-fa_j-1-t_index-3.txt
+[Mon Dec 16 17:16:42 2024] >> {'A': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7343902587890625, 'TP': 30625, 'TN': 17504, 'FP': 10335, 'FN': 7072}
+[Mon Dec 16 17:16:42 2024] >> max bit:	5
+[Mon Dec 16 17:16:42 2024] >> accuracy:	0.7343902587890625	+0.84[FALSE]
+[Mon Dec 16 17:16:42 2024] >> exe time:	1273.80s 
+
+[Mon Dec 16 17:16:42 2024] >> dataset/fa_i-1-fa_j-1-t_index-4.txt
+[Mon Dec 16 17:37:59 2024] >> {'A': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7343902587890625, 'TP': 30625, 'TN': 17504, 'FP': 10335, 'FN': 7072}
+[Mon Dec 16 17:37:59 2024] >> max bit:	5
+[Mon Dec 16 17:37:59 2024] >> accuracy:	0.7343902587890625	+0.84[FALSE]
+[Mon Dec 16 17:37:59 2024] >> exe time:	1277.64s 
+
+[Mon Dec 16 17:37:59 2024] >> dataset/fa_i-1-fa_j-1-t_index-5.txt
+[Mon Dec 16 17:59:28 2024] >> {'A': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.74169921875, 'TP': 18688, 'TN': 29920, 'FP': 5888, 'FN': 11040}
+[Mon Dec 16 17:59:28 2024] >> max bit:	5
+[Mon Dec 16 17:59:28 2024] >> accuracy:	0.74169921875	+0.84[FALSE]
+[Mon Dec 16 17:59:28 2024] >> exe time:	1288.93s 
+
+[Mon Dec 16 17:59:28 2024] >> dataset/fa_i-1-fa_j-2-t_index-0.txt
+[Mon Dec 16 18:20:53 2024] >> {'A': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8603515625, 'TP': 25728, 'TN': 30656, 'FP': 7040, 'FN': 2112}
+[Mon Dec 16 18:20:53 2024] >> max bit:	5
+[Mon Dec 16 18:20:53 2024] >> accuracy:	0.8603515625	+0.84[TRUE]
+[Mon Dec 16 18:20:53 2024] >> exe time:	1285.07s 
+
+[Mon Dec 16 18:20:53 2024] >> dataset/fa_i-1-fa_j-2-t_index-1.txt
+[Mon Dec 16 18:21:01 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 18:21:01 2024] >> max bit:	2
+[Mon Dec 16 18:21:01 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 18:21:01 2024] >> exe time:	7.37s 
+
+[Mon Dec 16 18:21:01 2024] >> dataset/fa_i-1-fa_j-2-t_index-2.txt
+[Mon Dec 16 18:42:24 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.728515625, 'TP': 19488, 'TN': 28256, 'FP': 7136, 'FN': 10656}
+[Mon Dec 16 18:42:24 2024] >> max bit:	5
+[Mon Dec 16 18:42:24 2024] >> accuracy:	0.728515625	+0.84[FALSE]
+[Mon Dec 16 18:42:24 2024] >> exe time:	1283.88s 
+
+[Mon Dec 16 18:42:24 2024] >> dataset/fa_i-1-fa_j-2-t_index-3.txt
+[Mon Dec 16 19:03:40 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7314605712890625, 'TP': 27841, 'TN': 20096, 'FP': 6975, 'FN': 10624}
+[Mon Dec 16 19:03:40 2024] >> max bit:	5
+[Mon Dec 16 19:03:40 2024] >> accuracy:	0.7314605712890625	+0.84[FALSE]
+[Mon Dec 16 19:03:40 2024] >> exe time:	1275.31s 
+
+[Mon Dec 16 19:03:40 2024] >> dataset/fa_i-1-fa_j-2-t_index-4.txt
+[Mon Dec 16 19:24:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7314605712890625, 'TP': 27841, 'TN': 20096, 'FP': 6975, 'FN': 10624}
+[Mon Dec 16 19:24:54 2024] >> max bit:	5
+[Mon Dec 16 19:24:54 2024] >> accuracy:	0.7314605712890625	+0.84[FALSE]
+[Mon Dec 16 19:24:54 2024] >> exe time:	1274.08s 
+
+[Mon Dec 16 19:24:54 2024] >> dataset/fa_i-1-fa_j-2-t_index-5.txt
+[Mon Dec 16 19:46:16 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.728515625, 'TP': 19488, 'TN': 28256, 'FP': 7136, 'FN': 10656}
+[Mon Dec 16 19:46:16 2024] >> max bit:	5
+[Mon Dec 16 19:46:16 2024] >> accuracy:	0.728515625	+0.84[FALSE]
+[Mon Dec 16 19:46:16 2024] >> exe time:	1282.55s 
+
+[Mon Dec 16 19:46:16 2024] >> dataset/fa_i-1-fa_j-3-t_index-0.txt
+[Mon Dec 16 19:50:57 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.845703125, 'TP': 25152, 'TN': 30272, 'FP': 7616, 'FN': 2496}
+[Mon Dec 16 19:50:57 2024] >> max bit:	4
+[Mon Dec 16 19:50:57 2024] >> accuracy:	0.845703125	+0.84[TRUE]
+[Mon Dec 16 19:50:57 2024] >> exe time:	280.29s 
+
+[Mon Dec 16 19:50:57 2024] >> dataset/fa_i-1-fa_j-3-t_index-1.txt
+[Mon Dec 16 19:51:04 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 19:51:04 2024] >> max bit:	2
+[Mon Dec 16 19:51:04 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 19:51:04 2024] >> exe time:	7.27s 
+
+[Mon Dec 16 19:51:04 2024] >> dataset/fa_i-1-fa_j-3-t_index-2.txt
+[Mon Dec 16 20:12:25 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.75537109375, 'TP': 24704, 'TN': 24800, 'FP': 10112, 'FN': 5920}
+[Mon Dec 16 20:12:25 2024] >> max bit:	5
+[Mon Dec 16 20:12:25 2024] >> accuracy:	0.75537109375	+0.84[FALSE]
+[Mon Dec 16 20:12:25 2024] >> exe time:	1280.88s 
+
+[Mon Dec 16 20:12:25 2024] >> dataset/fa_i-1-fa_j-3-t_index-3.txt
+[Mon Dec 16 20:33:38 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7529449462890625, 'TP': 32705, 'TN': 16640, 'FP': 10303, 'FN': 5888}
+[Mon Dec 16 20:33:38 2024] >> max bit:	5
+[Mon Dec 16 20:33:38 2024] >> accuracy:	0.7529449462890625	+0.84[FALSE]
+[Mon Dec 16 20:33:38 2024] >> exe time:	1273.64s 
+
+[Mon Dec 16 20:33:38 2024] >> dataset/fa_i-1-fa_j-3-t_index-4.txt
+[Mon Dec 16 20:54:50 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7529449462890625, 'TP': 32705, 'TN': 16640, 'FP': 10303, 'FN': 5888}
+[Mon Dec 16 20:54:50 2024] >> max bit:	5
+[Mon Dec 16 20:54:50 2024] >> accuracy:	0.7529449462890625	+0.84[FALSE]
+[Mon Dec 16 20:54:50 2024] >> exe time:	1271.66s 
+
+[Mon Dec 16 20:54:50 2024] >> dataset/fa_i-1-fa_j-3-t_index-5.txt
+[Mon Dec 16 21:16:15 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.75537109375, 'TP': 24704, 'TN': 24800, 'FP': 10112, 'FN': 5920}
+[Mon Dec 16 21:16:15 2024] >> max bit:	5
+[Mon Dec 16 21:16:15 2024] >> accuracy:	0.75537109375	+0.84[FALSE]
+[Mon Dec 16 21:16:15 2024] >> exe time:	1285.27s 
+
+[Mon Dec 16 21:16:15 2024] >> dataset/fa_i-1-fa_j-4-t_index-0.txt
+[Mon Dec 16 21:20:56 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.857421875, 'TP': 27648, 'TN': 28544, 'FP': 9216, 'FN': 128}
+[Mon Dec 16 21:20:56 2024] >> max bit:	4
+[Mon Dec 16 21:20:56 2024] >> accuracy:	0.857421875	+0.84[TRUE]
+[Mon Dec 16 21:20:56 2024] >> exe time:	280.80s 
+
+[Mon Dec 16 21:20:56 2024] >> dataset/fa_i-1-fa_j-4-t_index-1.txt
+[Mon Dec 16 21:21:04 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 21:21:04 2024] >> max bit:	2
+[Mon Dec 16 21:21:04 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 21:21:04 2024] >> exe time:	7.34s 
+
+[Mon Dec 16 21:21:04 2024] >> dataset/fa_i-1-fa_j-4-t_index-2.txt
+[Mon Dec 16 21:42:26 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.798828125, 'TP': 25856, 'TN': 26496, 'FP': 8960, 'FN': 4224}
+[Mon Dec 16 21:42:26 2024] >> max bit:	5
+[Mon Dec 16 21:42:26 2024] >> accuracy:	0.798828125	+0.84[FALSE]
+[Mon Dec 16 21:42:26 2024] >> exe time:	1282.68s 
+
+[Mon Dec 16 21:42:26 2024] >> dataset/fa_i-1-fa_j-4-t_index-3.txt
+[Mon Dec 16 21:42:34 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 21:42:34 2024] >> max bit:	2
+[Mon Dec 16 21:42:34 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 21:42:34 2024] >> exe time:	7.45s 
+
+[Mon Dec 16 21:42:34 2024] >> dataset/fa_i-1-fa_j-4-t_index-4.txt
+[Mon Dec 16 21:42:41 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 21:42:41 2024] >> max bit:	2
+[Mon Dec 16 21:42:41 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 21:42:41 2024] >> exe time:	7.26s 
+
+[Mon Dec 16 21:42:41 2024] >> dataset/fa_i-1-fa_j-4-t_index-5.txt
+[Mon Dec 16 22:04:02 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.798828125, 'TP': 25856, 'TN': 26496, 'FP': 8960, 'FN': 4224}
+[Mon Dec 16 22:04:02 2024] >> max bit:	5
+[Mon Dec 16 22:04:02 2024] >> accuracy:	0.798828125	+0.84[FALSE]
+[Mon Dec 16 22:04:02 2024] >> exe time:	1281.46s 
+
+[Mon Dec 16 22:04:02 2024] >> dataset/fa_i-1-fa_j-5-t_index-0.txt
+[Mon Dec 16 22:04:10 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 22:04:10 2024] >> max bit:	2
+[Mon Dec 16 22:04:10 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 22:04:10 2024] >> exe time:	7.46s 
+
+[Mon Dec 16 22:04:10 2024] >> dataset/fa_i-1-fa_j-5-t_index-1.txt
+[Mon Dec 16 22:04:58 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.892578125, 'TP': 24384, 'TN': 34112, 'FP': 192, 'FN': 6848}
+[Mon Dec 16 22:04:58 2024] >> max bit:	3
+[Mon Dec 16 22:04:58 2024] >> accuracy:	0.892578125	+0.84[TRUE]
+[Mon Dec 16 22:04:58 2024] >> exe time:	48.27s 
+
+[Mon Dec 16 22:04:58 2024] >> dataset/fa_i-1-fa_j-5-t_index-2.txt
+[Mon Dec 16 22:05:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 22:05:05 2024] >> max bit:	2
+[Mon Dec 16 22:05:05 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 22:05:05 2024] >> exe time:	7.14s 
+
+[Mon Dec 16 22:05:05 2024] >> dataset/fa_i-1-fa_j-5-t_index-3.txt
+[Mon Dec 16 22:26:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.85546875, 'TP': 23520, 'TN': 32544, 'FP': 1056, 'FN': 8416}
+[Mon Dec 16 22:26:23 2024] >> max bit:	5
+[Mon Dec 16 22:26:23 2024] >> accuracy:	0.85546875	+0.84[TRUE]
+[Mon Dec 16 22:26:23 2024] >> exe time:	1277.50s 
+
+[Mon Dec 16 22:26:23 2024] >> dataset/fa_i-1-fa_j-5-t_index-4.txt
+[Mon Dec 16 22:47:38 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.85546875, 'TP': 23520, 'TN': 32544, 'FP': 1056, 'FN': 8416}
+[Mon Dec 16 22:47:38 2024] >> max bit:	5
+[Mon Dec 16 22:47:38 2024] >> accuracy:	0.85546875	+0.84[TRUE]
+[Mon Dec 16 22:47:38 2024] >> exe time:	1275.27s 
+
+[Mon Dec 16 22:47:38 2024] >> dataset/fa_i-1-fa_j-5-t_index-5.txt
+[Mon Dec 16 22:47:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 22:47:45 2024] >> max bit:	2
+[Mon Dec 16 22:47:45 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 22:47:45 2024] >> exe time:	7.21s 
+
+[Mon Dec 16 22:47:45 2024] >> dataset/fa_i-1-fa_j-6-t_index-0.txt
+[Mon Dec 16 22:47:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.9150390625, 'TP': 10880, 'TN': 49088, 'FP': 5504, 'FN': 64}
+[Mon Dec 16 22:47:53 2024] >> max bit:	2
+[Mon Dec 16 22:47:53 2024] >> accuracy:	0.9150390625	+0.84[TRUE]
+[Mon Dec 16 22:47:53 2024] >> exe time:	7.57s 
+
+[Mon Dec 16 22:47:53 2024] >> dataset/fa_i-1-fa_j-6-t_index-1.txt
+[Mon Dec 16 22:48:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 22:48:00 2024] >> max bit:	2
+[Mon Dec 16 22:48:00 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 22:48:00 2024] >> exe time:	6.88s 
+
+[Mon Dec 16 22:48:00 2024] >> dataset/fa_i-1-fa_j-6-t_index-2.txt
+[Mon Dec 16 23:09:19 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.96337890625, 'TP': 20256, 'TN': 42880, 'FP': 224, 'FN': 2176}
+[Mon Dec 16 23:09:19 2024] >> max bit:	5
+[Mon Dec 16 23:09:19 2024] >> accuracy:	0.96337890625	+0.84[TRUE]
+[Mon Dec 16 23:09:19 2024] >> exe time:	1279.47s 
+
+[Mon Dec 16 23:09:19 2024] >> dataset/fa_i-1-fa_j-6-t_index-3.txt
+[Mon Dec 16 23:10:06 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['x', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8447418212890625, 'TP': 43137, 'TN': 12224, 'FP': 6015, 'FN': 4160}
+[Mon Dec 16 23:10:06 2024] >> max bit:	3
+[Mon Dec 16 23:10:06 2024] >> accuracy:	0.8447418212890625	+0.84[TRUE]
+[Mon Dec 16 23:10:06 2024] >> exe time:	46.77s 
+
+[Mon Dec 16 23:10:06 2024] >> dataset/fa_i-1-fa_j-6-t_index-4.txt
+[Mon Dec 16 23:10:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['x', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8447418212890625, 'TP': 43137, 'TN': 12224, 'FP': 6015, 'FN': 4160}
+[Mon Dec 16 23:10:53 2024] >> max bit:	3
+[Mon Dec 16 23:10:53 2024] >> accuracy:	0.8447418212890625	+0.84[TRUE]
+[Mon Dec 16 23:10:53 2024] >> exe time:	47.07s 
+
+[Mon Dec 16 23:10:53 2024] >> dataset/fa_i-1-fa_j-6-t_index-5.txt
+[Mon Dec 16 23:32:22 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.96337890625, 'TP': 20256, 'TN': 42880, 'FP': 224, 'FN': 2176}
+[Mon Dec 16 23:32:22 2024] >> max bit:	5
+[Mon Dec 16 23:32:22 2024] >> accuracy:	0.96337890625	+0.84[TRUE]
+[Mon Dec 16 23:32:22 2024] >> exe time:	1288.94s 
+
+[Mon Dec 16 23:32:22 2024] >> dataset/fa_i-1-fa_j-7-t_index-0.txt
+[Mon Dec 16 23:32:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 23:32:30 2024] >> max bit:	2
+[Mon Dec 16 23:32:30 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 23:32:30 2024] >> exe time:	7.41s 
+
+[Mon Dec 16 23:32:30 2024] >> dataset/fa_i-1-fa_j-7-t_index-1.txt
+[Mon Dec 16 23:32:31 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.85546875, 'TP': 0, 'TN': 56064, 'FP': 0, 'FN': 9472}
+[Mon Dec 16 23:32:31 2024] >> max bit:	1
+[Mon Dec 16 23:32:31 2024] >> accuracy:	0.85546875	+0.84[TRUE]
+[Mon Dec 16 23:32:31 2024] >> exe time:	1.55s 
+
+[Mon Dec 16 23:32:31 2024] >> dataset/fa_i-1-fa_j-7-t_index-2.txt
+[Mon Dec 16 23:33:20 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8955078125, 'TP': 12896, 'TN': 45792, 'FP': 3488, 'FN': 3360}
+[Mon Dec 16 23:33:20 2024] >> max bit:	3
+[Mon Dec 16 23:33:20 2024] >> accuracy:	0.8955078125	+0.84[TRUE]
+[Mon Dec 16 23:33:20 2024] >> exe time:	48.80s 
+
+[Mon Dec 16 23:33:20 2024] >> dataset/fa_i-1-fa_j-7-t_index-3.txt
+[Mon Dec 16 23:33:27 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 23:33:27 2024] >> max bit:	2
+[Mon Dec 16 23:33:27 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 23:33:27 2024] >> exe time:	7.19s 
+
+[Mon Dec 16 23:33:27 2024] >> dataset/fa_i-1-fa_j-7-t_index-4.txt
+[Mon Dec 16 23:33:34 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Mon Dec 16 23:33:34 2024] >> max bit:	2
+[Mon Dec 16 23:33:34 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Mon Dec 16 23:33:34 2024] >> exe time:	7.30s 
+
+[Mon Dec 16 23:33:34 2024] >> dataset/fa_i-1-fa_j-7-t_index-5.txt
+[Mon Dec 16 23:34:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8955078125, 'TP': 12896, 'TN': 45792, 'FP': 3488, 'FN': 3360}
+[Mon Dec 16 23:34:23 2024] >> max bit:	3
+[Mon Dec 16 23:34:23 2024] >> accuracy:	0.8955078125	+0.84[TRUE]
+[Mon Dec 16 23:34:23 2024] >> exe time:	48.87s 
+
+[Mon Dec 16 23:34:23 2024] >> dataset/fa_i-2-fa_j-0-t_index-0.txt
+[Mon Dec 16 23:55:46 2024] >> {'A': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7333984375, 'TP': 19040, 'TN': 29024, 'FP': 5536, 'FN': 11936}
+[Mon Dec 16 23:55:46 2024] >> max bit:	5
+[Mon Dec 16 23:55:46 2024] >> accuracy:	0.7333984375	+0.84[FALSE]
+[Mon Dec 16 23:55:46 2024] >> exe time:	1282.27s 
+
+[Mon Dec 16 23:55:46 2024] >> dataset/fa_i-2-fa_j-0-t_index-1.txt
+[Tue Dec 17 00:17:01 2024] >> {'A': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'B': ['b', 'x', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7422027587890625, 'TP': 31457, 'TN': 17184, 'FP': 9503, 'FN': 7392}
+[Tue Dec 17 00:17:01 2024] >> max bit:	5
+[Tue Dec 17 00:17:01 2024] >> accuracy:	0.7422027587890625	+0.84[FALSE]
+[Tue Dec 17 00:17:01 2024] >> exe time:	1275.34s 
+
+[Tue Dec 17 00:17:01 2024] >> dataset/fa_i-2-fa_j-0-t_index-2.txt
+[Tue Dec 17 00:38:19 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.70703125, 'TP': 20032, 'TN': 26304, 'FP': 8640, 'FN': 10560}
+[Tue Dec 17 00:38:19 2024] >> max bit:	5
+[Tue Dec 17 00:38:19 2024] >> accuracy:	0.70703125	+0.84[FALSE]
+[Tue Dec 17 00:38:19 2024] >> exe time:	1278.38s 
+
+[Tue Dec 17 00:38:19 2024] >> dataset/fa_i-2-fa_j-0-t_index-3.txt
+[Tue Dec 17 00:59:39 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7050933837890625, 'TP': 21889, 'TN': 24320, 'FP': 6783, 'FN': 12544}
+[Tue Dec 17 00:59:39 2024] >> max bit:	5
+[Tue Dec 17 00:59:39 2024] >> accuracy:	0.7050933837890625	+0.84[FALSE]
+[Tue Dec 17 00:59:39 2024] >> exe time:	1279.83s 
+
+[Tue Dec 17 00:59:39 2024] >> dataset/fa_i-2-fa_j-0-t_index-4.txt
+[Tue Dec 17 01:20:52 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7050933837890625, 'TP': 21889, 'TN': 24320, 'FP': 6783, 'FN': 12544}
+[Tue Dec 17 01:20:52 2024] >> max bit:	5
+[Tue Dec 17 01:20:52 2024] >> accuracy:	0.7050933837890625	+0.84[FALSE]
+[Tue Dec 17 01:20:52 2024] >> exe time:	1273.11s 
+
+[Tue Dec 17 01:20:52 2024] >> dataset/fa_i-2-fa_j-0-t_index-5.txt
+[Tue Dec 17 01:42:09 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.70703125, 'TP': 20032, 'TN': 26304, 'FP': 8640, 'FN': 10560}
+[Tue Dec 17 01:42:09 2024] >> max bit:	5
+[Tue Dec 17 01:42:09 2024] >> accuracy:	0.70703125	+0.84[FALSE]
+[Tue Dec 17 01:42:09 2024] >> exe time:	1277.13s 
+
+[Tue Dec 17 01:42:09 2024] >> dataset/fa_i-2-fa_j-1-t_index-0.txt
+[Tue Dec 17 02:03:26 2024] >> {'A': ['x', 'b', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7294921875, 'TP': 19872, 'TN': 27936, 'FP': 6752, 'FN': 10976}
+[Tue Dec 17 02:03:26 2024] >> max bit:	5
+[Tue Dec 17 02:03:26 2024] >> accuracy:	0.7294921875	+0.84[FALSE]
+[Tue Dec 17 02:03:26 2024] >> exe time:	1276.71s 
+
+[Tue Dec 17 02:03:26 2024] >> dataset/fa_i-2-fa_j-1-t_index-1.txt
+[Tue Dec 17 02:24:34 2024] >> {'A': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7275543212890625, 'TP': 35137, 'TN': 12544, 'FP': 14015, 'FN': 3840}
+[Tue Dec 17 02:24:34 2024] >> max bit:	5
+[Tue Dec 17 02:24:34 2024] >> accuracy:	0.7275543212890625	+0.84[FALSE]
+[Tue Dec 17 02:24:34 2024] >> exe time:	1267.52s 
+
+[Tue Dec 17 02:24:34 2024] >> dataset/fa_i-2-fa_j-1-t_index-2.txt
+[Tue Dec 17 02:45:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.68896484375, 'TP': 17920, 'TN': 27232, 'FP': 6656, 'FN': 13728}
+[Tue Dec 17 02:45:54 2024] >> max bit:	5
+[Tue Dec 17 02:45:54 2024] >> accuracy:	0.68896484375	+0.84[FALSE]
+[Tue Dec 17 02:45:54 2024] >> exe time:	1280.19s 
+
+[Tue Dec 17 02:45:54 2024] >> dataset/fa_i-2-fa_j-1-t_index-3.txt
+[Tue Dec 17 03:07:09 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6865386962890625, 'TP': 24001, 'TN': 20992, 'FP': 8767, 'FN': 11776}
+[Tue Dec 17 03:07:09 2024] >> max bit:	5
+[Tue Dec 17 03:07:09 2024] >> accuracy:	0.6865386962890625	+0.84[FALSE]
+[Tue Dec 17 03:07:09 2024] >> exe time:	1274.83s 
+
+[Tue Dec 17 03:07:09 2024] >> dataset/fa_i-2-fa_j-1-t_index-4.txt
+[Tue Dec 17 03:28:22 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6865386962890625, 'TP': 24001, 'TN': 20992, 'FP': 8767, 'FN': 11776}
+[Tue Dec 17 03:28:22 2024] >> max bit:	5
+[Tue Dec 17 03:28:22 2024] >> accuracy:	0.6865386962890625	+0.84[FALSE]
+[Tue Dec 17 03:28:22 2024] >> exe time:	1273.75s 
+
+[Tue Dec 17 03:28:22 2024] >> dataset/fa_i-2-fa_j-1-t_index-5.txt
+[Tue Dec 17 03:49:38 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.68896484375, 'TP': 17920, 'TN': 27232, 'FP': 6656, 'FN': 13728}
+[Tue Dec 17 03:49:38 2024] >> max bit:	5
+[Tue Dec 17 03:49:38 2024] >> accuracy:	0.68896484375	+0.84[FALSE]
+[Tue Dec 17 03:49:38 2024] >> exe time:	1275.25s 
+
+[Tue Dec 17 03:49:38 2024] >> dataset/fa_i-2-fa_j-2-t_index-0.txt
+[Tue Dec 17 04:10:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7392578125, 'TP': 22336, 'TN': 26112, 'FP': 8384, 'FN': 8704}
+[Tue Dec 17 04:10:54 2024] >> max bit:	5
+[Tue Dec 17 04:10:54 2024] >> accuracy:	0.7392578125	+0.84[FALSE]
+[Tue Dec 17 04:10:54 2024] >> exe time:	1276.63s 
+
+[Tue Dec 17 04:10:54 2024] >> dataset/fa_i-2-fa_j-2-t_index-1.txt
+[Tue Dec 17 04:32:06 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7436676025390625, 'TP': 35809, 'TN': 12928, 'FP': 13343, 'FN': 3456}
+[Tue Dec 17 04:32:06 2024] >> max bit:	5
+[Tue Dec 17 04:32:06 2024] >> accuracy:	0.7436676025390625	+0.84[FALSE]
+[Tue Dec 17 04:32:06 2024] >> exe time:	1271.49s 
+
+[Tue Dec 17 04:32:06 2024] >> dataset/fa_i-2-fa_j-2-t_index-2.txt
+[Tue Dec 17 04:53:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.677490234375, 'TP': 17920, 'TN': 26480, 'FP': 6656, 'FN': 14480}
+[Tue Dec 17 04:53:23 2024] >> max bit:	5
+[Tue Dec 17 04:53:23 2024] >> accuracy:	0.677490234375	+0.84[FALSE]
+[Tue Dec 17 04:53:23 2024] >> exe time:	1277.68s 
+
+[Tue Dec 17 04:53:23 2024] >> dataset/fa_i-2-fa_j-2-t_index-3.txt
+[Tue Dec 17 05:14:37 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6750640869140625, 'TP': 24865, 'TN': 19376, 'FP': 9951, 'FN': 11344}
+[Tue Dec 17 05:14:37 2024] >> max bit:	5
+[Tue Dec 17 05:14:37 2024] >> accuracy:	0.6750640869140625	+0.84[FALSE]
+[Tue Dec 17 05:14:37 2024] >> exe time:	1273.46s 
+
+[Tue Dec 17 05:14:37 2024] >> dataset/fa_i-2-fa_j-2-t_index-4.txt
+[Tue Dec 17 05:35:52 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6750640869140625, 'TP': 24865, 'TN': 19376, 'FP': 9951, 'FN': 11344}
+[Tue Dec 17 05:35:53 2024] >> max bit:	5
+[Tue Dec 17 05:35:53 2024] >> accuracy:	0.6750640869140625	+0.84[FALSE]
+[Tue Dec 17 05:35:53 2024] >> exe time:	1275.52s 
+
+[Tue Dec 17 05:35:53 2024] >> dataset/fa_i-2-fa_j-2-t_index-5.txt
+[Tue Dec 17 05:57:10 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.677490234375, 'TP': 17920, 'TN': 26480, 'FP': 6656, 'FN': 14480}
+[Tue Dec 17 05:57:10 2024] >> max bit:	5
+[Tue Dec 17 05:57:10 2024] >> accuracy:	0.677490234375	+0.84[FALSE]
+[Tue Dec 17 05:57:10 2024] >> exe time:	1277.59s 
+
+[Tue Dec 17 05:57:10 2024] >> dataset/fa_i-2-fa_j-3-t_index-0.txt
+[Tue Dec 17 06:18:26 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.765625, 'TP': 21152, 'TN': 29024, 'FP': 5472, 'FN': 9888}
+[Tue Dec 17 06:18:26 2024] >> max bit:	5
+[Tue Dec 17 06:18:26 2024] >> accuracy:	0.765625	+0.84[FALSE]
+[Tue Dec 17 06:18:26 2024] >> exe time:	1276.12s 
+
+[Tue Dec 17 06:18:26 2024] >> dataset/fa_i-2-fa_j-3-t_index-1.txt
+[Tue Dec 17 06:18:33 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 06:18:34 2024] >> max bit:	2
+[Tue Dec 17 06:18:34 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 06:18:34 2024] >> exe time:	7.27s 
+
+[Tue Dec 17 06:18:34 2024] >> dataset/fa_i-2-fa_j-3-t_index-2.txt
+[Tue Dec 17 06:39:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.695068359375, 'TP': 17408, 'TN': 28144, 'FP': 5120, 'FN': 14864}
+[Tue Dec 17 06:39:54 2024] >> max bit:	5
+[Tue Dec 17 06:39:54 2024] >> accuracy:	0.695068359375	+0.84[FALSE]
+[Tue Dec 17 06:39:54 2024] >> exe time:	1280.11s 
+
+[Tue Dec 17 06:39:54 2024] >> dataset/fa_i-2-fa_j-3-t_index-3.txt
+[Tue Dec 17 07:01:14 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7068023681640625, 'TP': 30369, 'TN': 15952, 'FP': 12639, 'FN': 6576}
+[Tue Dec 17 07:01:14 2024] >> max bit:	5
+[Tue Dec 17 07:01:14 2024] >> accuracy:	0.7068023681640625	+0.84[FALSE]
+[Tue Dec 17 07:01:14 2024] >> exe time:	1280.04s 
+
+[Tue Dec 17 07:01:14 2024] >> dataset/fa_i-2-fa_j-3-t_index-4.txt
+[Tue Dec 17 07:22:32 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7068023681640625, 'TP': 30369, 'TN': 15952, 'FP': 12639, 'FN': 6576}
+[Tue Dec 17 07:22:32 2024] >> max bit:	5
+[Tue Dec 17 07:22:32 2024] >> accuracy:	0.7068023681640625	+0.84[FALSE]
+[Tue Dec 17 07:22:32 2024] >> exe time:	1278.07s 
+
+[Tue Dec 17 07:22:32 2024] >> dataset/fa_i-2-fa_j-3-t_index-5.txt
+[Tue Dec 17 07:43:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.695068359375, 'TP': 17408, 'TN': 28144, 'FP': 5120, 'FN': 14864}
+[Tue Dec 17 07:43:53 2024] >> max bit:	5
+[Tue Dec 17 07:43:53 2024] >> accuracy:	0.695068359375	+0.84[FALSE]
+[Tue Dec 17 07:43:53 2024] >> exe time:	1280.86s 
+
+[Tue Dec 17 07:43:53 2024] >> dataset/fa_i-2-fa_j-4-t_index-0.txt
+[Tue Dec 17 07:44:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 07:44:00 2024] >> max bit:	2
+[Tue Dec 17 07:44:00 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 07:44:00 2024] >> exe time:	7.30s 
+
+[Tue Dec 17 07:44:00 2024] >> dataset/fa_i-2-fa_j-4-t_index-1.txt
+[Tue Dec 17 08:05:21 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.83154296875, 'TP': 25440, 'TN': 29056, 'FP': 3232, 'FN': 7808}
+[Tue Dec 17 08:05:21 2024] >> max bit:	5
+[Tue Dec 17 08:05:21 2024] >> accuracy:	0.83154296875	+0.84[FALSE]
+[Tue Dec 17 08:05:21 2024] >> exe time:	1281.26s 
+
+[Tue Dec 17 08:05:21 2024] >> dataset/fa_i-2-fa_j-4-t_index-2.txt
+[Tue Dec 17 08:26:39 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7263031005859375, 'TP': 30640, 'TN': 16959, 'FP': 12368, 'FN': 5569}
+[Tue Dec 17 08:26:39 2024] >> max bit:	5
+[Tue Dec 17 08:26:39 2024] >> accuracy:	0.7263031005859375	+0.84[FALSE]
+[Tue Dec 17 08:26:39 2024] >> exe time:	1277.40s 
+
+[Tue Dec 17 08:26:39 2024] >> dataset/fa_i-2-fa_j-4-t_index-3.txt
+[Tue Dec 17 08:47:55 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.743896484375, 'TP': 22592, 'TN': 26160, 'FP': 6080, 'FN': 10704}
+[Tue Dec 17 08:47:55 2024] >> max bit:	5
+[Tue Dec 17 08:47:55 2024] >> accuracy:	0.743896484375	+0.84[FALSE]
+[Tue Dec 17 08:47:55 2024] >> exe time:	1276.47s 
+
+[Tue Dec 17 08:47:55 2024] >> dataset/fa_i-2-fa_j-4-t_index-4.txt
+[Tue Dec 17 09:09:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.743896484375, 'TP': 22592, 'TN': 26160, 'FP': 6080, 'FN': 10704}
+[Tue Dec 17 09:09:17 2024] >> max bit:	5
+[Tue Dec 17 09:09:17 2024] >> accuracy:	0.743896484375	+0.84[FALSE]
+[Tue Dec 17 09:09:17 2024] >> exe time:	1281.64s 
+
+[Tue Dec 17 09:09:17 2024] >> dataset/fa_i-2-fa_j-4-t_index-5.txt
+[Tue Dec 17 09:30:33 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7263031005859375, 'TP': 30640, 'TN': 16959, 'FP': 12368, 'FN': 5569}
+[Tue Dec 17 09:30:33 2024] >> max bit:	5
+[Tue Dec 17 09:30:33 2024] >> accuracy:	0.7263031005859375	+0.84[FALSE]
+[Tue Dec 17 09:30:33 2024] >> exe time:	1276.07s 
+
+[Tue Dec 17 09:30:33 2024] >> dataset/fa_i-2-fa_j-5-t_index-0.txt
+[Tue Dec 17 09:51:52 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.82080078125, 'TP': 21280, 'TN': 32512, 'FP': 7392, 'FN': 4352}
+[Tue Dec 17 09:51:52 2024] >> max bit:	5
+[Tue Dec 17 09:51:52 2024] >> accuracy:	0.82080078125	+0.84[FALSE]
+[Tue Dec 17 09:51:52 2024] >> exe time:	1279.27s 
+
+[Tue Dec 17 09:51:52 2024] >> dataset/fa_i-2-fa_j-5-t_index-1.txt
+[Tue Dec 17 10:12:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8339691162109375, 'TP': 40736, 'TN': 13919, 'FP': 6368, 'FN': 4513}
+[Tue Dec 17 10:12:54 2024] >> max bit:	5
+[Tue Dec 17 10:12:54 2024] >> accuracy:	0.8339691162109375	+0.84[FALSE]
+[Tue Dec 17 10:12:54 2024] >> exe time:	1262.12s 
+
+[Tue Dec 17 10:12:54 2024] >> dataset/fa_i-2-fa_j-5-t_index-2.txt
+[Tue Dec 17 10:34:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7802734375, 'TP': 18368, 'TN': 32768, 'FP': 4160, 'FN': 10240}
+[Tue Dec 17 10:34:17 2024] >> max bit:	5
+[Tue Dec 17 10:34:17 2024] >> accuracy:	0.7802734375	+0.84[FALSE]
+[Tue Dec 17 10:34:17 2024] >> exe time:	1282.33s 
+
+[Tue Dec 17 10:34:17 2024] >> dataset/fa_i-2-fa_j-5-t_index-3.txt
+[Tue Dec 17 10:55:28 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'b', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.8047027587890625, 'TP': 34609, 'TN': 18128, 'FP': 6351, 'FN': 6448}
+[Tue Dec 17 10:55:28 2024] >> max bit:	5
+[Tue Dec 17 10:55:28 2024] >> accuracy:	0.8047027587890625	+0.84[FALSE]
+[Tue Dec 17 10:55:28 2024] >> exe time:	1271.09s 
+
+[Tue Dec 17 10:55:28 2024] >> dataset/fa_i-2-fa_j-5-t_index-4.txt
+[Tue Dec 17 11:16:36 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'b', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.8047027587890625, 'TP': 34609, 'TN': 18128, 'FP': 6351, 'FN': 6448}
+[Tue Dec 17 11:16:36 2024] >> max bit:	5
+[Tue Dec 17 11:16:36 2024] >> accuracy:	0.8047027587890625	+0.84[FALSE]
+[Tue Dec 17 11:16:36 2024] >> exe time:	1268.47s 
+
+[Tue Dec 17 11:16:36 2024] >> dataset/fa_i-2-fa_j-5-t_index-5.txt
+[Tue Dec 17 11:37:51 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7802734375, 'TP': 18368, 'TN': 32768, 'FP': 4160, 'FN': 10240}
+[Tue Dec 17 11:37:51 2024] >> max bit:	5
+[Tue Dec 17 11:37:51 2024] >> accuracy:	0.7802734375	+0.84[FALSE]
+[Tue Dec 17 11:37:51 2024] >> exe time:	1274.72s 
+
+[Tue Dec 17 11:37:51 2024] >> dataset/fa_i-2-fa_j-6-t_index-0.txt
+[Tue Dec 17 11:38:40 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.84716796875, 'TP': 5984, 'TN': 49536, 'FP': 2208, 'FN': 7808}
+[Tue Dec 17 11:38:40 2024] >> max bit:	3
+[Tue Dec 17 11:38:40 2024] >> accuracy:	0.84716796875	+0.84[TRUE]
+[Tue Dec 17 11:38:40 2024] >> exe time:	48.87s 
+
+[Tue Dec 17 11:38:40 2024] >> dataset/fa_i-2-fa_j-6-t_index-1.txt
+[Tue Dec 17 11:38:47 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 11:38:47 2024] >> max bit:	2
+[Tue Dec 17 11:38:47 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 11:38:47 2024] >> exe time:	7.32s 
+
+[Tue Dec 17 11:38:47 2024] >> dataset/fa_i-2-fa_j-6-t_index-2.txt
+[Tue Dec 17 12:00:03 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'b', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.842529296875, 'TP': 20288, 'TN': 34928, 'FP': 4288, 'FN': 6032}
+[Tue Dec 17 12:00:03 2024] >> max bit:	5
+[Tue Dec 17 12:00:03 2024] >> accuracy:	0.842529296875	+0.84[TRUE]
+[Tue Dec 17 12:00:03 2024] >> exe time:	1275.69s 
+
+[Tue Dec 17 12:00:03 2024] >> dataset/fa_i-2-fa_j-6-t_index-3.txt
+[Tue Dec 17 12:21:12 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.8342437744140625, 'TP': 39825, 'TN': 14848, 'FP': 7279, 'FN': 3584}
+[Tue Dec 17 12:21:12 2024] >> max bit:	5
+[Tue Dec 17 12:21:12 2024] >> accuracy:	0.8342437744140625	+0.84[FALSE]
+[Tue Dec 17 12:21:12 2024] >> exe time:	1268.79s 
+
+[Tue Dec 17 12:21:12 2024] >> dataset/fa_i-2-fa_j-6-t_index-4.txt
+[Tue Dec 17 12:42:21 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.8342437744140625, 'TP': 39825, 'TN': 14848, 'FP': 7279, 'FN': 3584}
+[Tue Dec 17 12:42:21 2024] >> max bit:	5
+[Tue Dec 17 12:42:21 2024] >> accuracy:	0.8342437744140625	+0.84[FALSE]
+[Tue Dec 17 12:42:21 2024] >> exe time:	1269.54s 
+
+[Tue Dec 17 12:42:21 2024] >> dataset/fa_i-2-fa_j-6-t_index-5.txt
+[Tue Dec 17 13:03:40 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'b', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.842529296875, 'TP': 20288, 'TN': 34928, 'FP': 4288, 'FN': 6032}
+[Tue Dec 17 13:03:40 2024] >> max bit:	5
+[Tue Dec 17 13:03:40 2024] >> accuracy:	0.842529296875	+0.84[TRUE]
+[Tue Dec 17 13:03:40 2024] >> exe time:	1278.79s 
+
+[Tue Dec 17 13:03:40 2024] >> dataset/fa_i-2-fa_j-7-t_index-0.txt
+[Tue Dec 17 13:03:47 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 13:03:47 2024] >> max bit:	2
+[Tue Dec 17 13:03:47 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 13:03:47 2024] >> exe time:	7.29s 
+
+[Tue Dec 17 13:03:47 2024] >> dataset/fa_i-2-fa_j-7-t_index-1.txt
+[Tue Dec 17 13:03:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8505859375, 'TP': 12256, 'TN': 43488, 'FP': 4128, 'FN': 5664}
+[Tue Dec 17 13:03:54 2024] >> max bit:	2
+[Tue Dec 17 13:03:54 2024] >> accuracy:	0.8505859375	+0.84[TRUE]
+[Tue Dec 17 13:03:54 2024] >> exe time:	7.22s 
+
+[Tue Dec 17 13:03:54 2024] >> dataset/fa_i-2-fa_j-7-t_index-2.txt
+[Tue Dec 17 13:04:42 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.84912109375, 'TP': 11376, 'TN': 44272, 'FP': 5008, 'FN': 4880}
+[Tue Dec 17 13:04:42 2024] >> max bit:	3
+[Tue Dec 17 13:04:42 2024] >> accuracy:	0.84912109375	+0.84[TRUE]
+[Tue Dec 17 13:04:42 2024] >> exe time:	47.98s 
+
+[Tue Dec 17 13:04:42 2024] >> dataset/fa_i-2-fa_j-7-t_index-3.txt
+[Tue Dec 17 13:04:49 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 13:04:49 2024] >> max bit:	2
+[Tue Dec 17 13:04:49 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 13:04:49 2024] >> exe time:	6.90s 
+
+[Tue Dec 17 13:04:49 2024] >> dataset/fa_i-2-fa_j-7-t_index-4.txt
+[Tue Dec 17 13:04:56 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 13:04:56 2024] >> max bit:	2
+[Tue Dec 17 13:04:56 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 13:04:56 2024] >> exe time:	6.98s 
+
+[Tue Dec 17 13:04:56 2024] >> dataset/fa_i-2-fa_j-7-t_index-5.txt
+[Tue Dec 17 13:05:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.84912109375, 'TP': 11376, 'TN': 44272, 'FP': 5008, 'FN': 4880}
+[Tue Dec 17 13:05:45 2024] >> max bit:	3
+[Tue Dec 17 13:05:45 2024] >> accuracy:	0.84912109375	+0.84[TRUE]
+[Tue Dec 17 13:05:45 2024] >> exe time:	48.90s 
+
+[Mon Dec 16 12:59:54 2024] >> dataset/fa_i-3-fa_j-0-t_index-0.txt
+[Mon Dec 16 13:17:13 2024] >> {'A': ['b', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.69482421875, 'TP': 18784, 'TN': 26752, 'FP': 5792, 'FN': 14208}
+[Mon Dec 16 13:17:13 2024] >> max bit:	5
+[Mon Dec 16 13:17:13 2024] >> accuracy:	0.69482421875	+0.84[FALSE]
+[Mon Dec 16 13:17:13 2024] >> exe time:	1038.72s 
+
+[Mon Dec 16 13:17:13 2024] >> dataset/fa_i-3-fa_j-0-t_index-1.txt
+[Mon Dec 16 13:34:13 2024] >> {'A': ['b', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6889801025390625, 'TP': 28705, 'TN': 16448, 'FP': 12255, 'FN': 8128}
+[Mon Dec 16 13:34:13 2024] >> max bit:	5
+[Mon Dec 16 13:34:13 2024] >> accuracy:	0.6889801025390625	+0.84[FALSE]
+[Mon Dec 16 13:34:13 2024] >> exe time:	1019.91s 
+
+[Mon Dec 16 13:34:13 2024] >> dataset/fa_i-3-fa_j-0-t_index-2.txt
+[Mon Dec 16 13:51:14 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.69140625, 'TP': 17952, 'TN': 27360, 'FP': 6624, 'FN': 13600}
+[Mon Dec 16 13:51:14 2024] >> max bit:	5
+[Mon Dec 16 13:51:14 2024] >> accuracy:	0.69140625	+0.84[FALSE]
+[Mon Dec 16 13:51:14 2024] >> exe time:	1021.17s 
+
+[Mon Dec 16 13:51:14 2024] >> dataset/fa_i-3-fa_j-0-t_index-3.txt
+[Mon Dec 16 14:08:07 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6894683837890625, 'TP': 22945, 'TN': 22240, 'FP': 9823, 'FN': 10528}
+[Mon Dec 16 14:08:07 2024] >> max bit:	5
+[Mon Dec 16 14:08:07 2024] >> accuracy:	0.6894683837890625	+0.84[FALSE]
+[Mon Dec 16 14:08:07 2024] >> exe time:	1013.05s 
+
+[Mon Dec 16 14:08:07 2024] >> dataset/fa_i-3-fa_j-0-t_index-4.txt
+[Mon Dec 16 14:25:01 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6894683837890625, 'TP': 22945, 'TN': 22240, 'FP': 9823, 'FN': 10528}
+[Mon Dec 16 14:25:01 2024] >> max bit:	5
+[Mon Dec 16 14:25:01 2024] >> accuracy:	0.6894683837890625	+0.84[FALSE]
+[Mon Dec 16 14:25:01 2024] >> exe time:	1013.51s 
+
+[Mon Dec 16 14:25:01 2024] >> dataset/fa_i-3-fa_j-0-t_index-5.txt
+[Mon Dec 16 14:41:48 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.69140625, 'TP': 17952, 'TN': 27360, 'FP': 6624, 'FN': 13600}
+[Mon Dec 16 14:41:48 2024] >> max bit:	5
+[Mon Dec 16 14:41:48 2024] >> accuracy:	0.69140625	+0.84[FALSE]
+[Mon Dec 16 14:41:48 2024] >> exe time:	1007.60s 
+
+[Mon Dec 16 14:41:48 2024] >> dataset/fa_i-3-fa_j-1-t_index-0.txt
+[Mon Dec 16 14:58:34 2024] >> {'A': ['x', 'b', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.676513671875, 'TP': 19168, 'TN': 25168, 'FP': 7456, 'FN': 13744}
+[Mon Dec 16 14:58:34 2024] >> max bit:	5
+[Mon Dec 16 14:58:34 2024] >> accuracy:	0.676513671875	+0.84[FALSE]
+[Mon Dec 16 14:58:34 2024] >> exe time:	1005.61s 
+
+[Mon Dec 16 14:58:34 2024] >> dataset/fa_i-3-fa_j-1-t_index-1.txt
+[Mon Dec 16 15:15:16 2024] >> {'A': ['x', 'b', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6735992431640625, 'TP': 29233, 'TN': 14912, 'FP': 13775, 'FN': 7616}
+[Mon Dec 16 15:15:16 2024] >> max bit:	5
+[Mon Dec 16 15:15:16 2024] >> accuracy:	0.6735992431640625	+0.84[FALSE]
+[Mon Dec 16 15:15:16 2024] >> exe time:	1002.50s 
+
+[Mon Dec 16 15:15:16 2024] >> dataset/fa_i-3-fa_j-1-t_index-2.txt
+[Mon Dec 16 15:32:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6636962890625, 'TP': 17664, 'TN': 25832, 'FP': 6912, 'FN': 15128}
+[Mon Dec 16 15:32:05 2024] >> max bit:	5
+[Mon Dec 16 15:32:05 2024] >> accuracy:	0.6636962890625	+0.84[FALSE]
+[Mon Dec 16 15:32:05 2024] >> exe time:	1008.80s 
+
+[Mon Dec 16 15:32:05 2024] >> dataset/fa_i-3-fa_j-1-t_index-3.txt
+[Mon Dec 16 15:48:50 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6610260009765625, 'TP': 22593, 'TN': 20728, 'FP': 10175, 'FN': 12040}
+[Mon Dec 16 15:48:50 2024] >> max bit:	5
+[Mon Dec 16 15:48:50 2024] >> accuracy:	0.6610260009765625	+0.84[FALSE]
+[Mon Dec 16 15:48:50 2024] >> exe time:	1004.93s 
+
+[Mon Dec 16 15:48:50 2024] >> dataset/fa_i-3-fa_j-1-t_index-4.txt
+[Mon Dec 16 16:05:35 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6610260009765625, 'TP': 22593, 'TN': 20728, 'FP': 10175, 'FN': 12040}
+[Mon Dec 16 16:05:35 2024] >> max bit:	5
+[Mon Dec 16 16:05:35 2024] >> accuracy:	0.6610260009765625	+0.84[FALSE]
+[Mon Dec 16 16:05:35 2024] >> exe time:	1005.22s 
+
+[Mon Dec 16 16:05:35 2024] >> dataset/fa_i-3-fa_j-1-t_index-5.txt
+[Mon Dec 16 16:22:24 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6636962890625, 'TP': 17664, 'TN': 25832, 'FP': 6912, 'FN': 15128}
+[Mon Dec 16 16:22:24 2024] >> max bit:	5
+[Mon Dec 16 16:22:24 2024] >> accuracy:	0.6636962890625	+0.84[FALSE]
+[Mon Dec 16 16:22:24 2024] >> exe time:	1008.70s 
+
+[Mon Dec 16 16:22:24 2024] >> dataset/fa_i-3-fa_j-2-t_index-0.txt
+[Mon Dec 16 16:39:13 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.691162109375, 'TP': 18624, 'TN': 26672, 'FP': 5952, 'FN': 14288}
+[Mon Dec 16 16:39:13 2024] >> max bit:	5
+[Mon Dec 16 16:39:13 2024] >> accuracy:	0.691162109375	+0.84[FALSE]
+[Mon Dec 16 16:39:13 2024] >> exe time:	1008.75s 
+
+[Mon Dec 16 16:39:13 2024] >> dataset/fa_i-3-fa_j-2-t_index-1.txt
+[Mon Dec 16 16:56:01 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6989898681640625, 'TP': 30129, 'TN': 15680, 'FP': 12879, 'FN': 6848}
+[Mon Dec 16 16:56:01 2024] >> max bit:	5
+[Mon Dec 16 16:56:01 2024] >> accuracy:	0.6989898681640625	+0.84[FALSE]
+[Mon Dec 16 16:56:01 2024] >> exe time:	1008.35s 
+
+[Mon Dec 16 16:56:01 2024] >> dataset/fa_i-3-fa_j-2-t_index-2.txt
+[Mon Dec 16 17:12:52 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.659423828125, 'TP': 16704, 'TN': 26512, 'FP': 5824, 'FN': 16496}
+[Mon Dec 16 17:12:52 2024] >> max bit:	5
+[Mon Dec 16 17:12:52 2024] >> accuracy:	0.659423828125	+0.84[FALSE]
+[Mon Dec 16 17:12:52 2024] >> exe time:	1011.43s 
+
+[Mon Dec 16 17:12:52 2024] >> dataset/fa_i-3-fa_j-2-t_index-3.txt
+[Mon Dec 16 17:29:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6621246337890625, 'TP': 27113, 'TN': 16280, 'FP': 13847, 'FN': 8296}
+[Mon Dec 16 17:29:43 2024] >> max bit:	5
+[Mon Dec 16 17:29:43 2024] >> accuracy:	0.6621246337890625	+0.84[FALSE]
+[Mon Dec 16 17:29:43 2024] >> exe time:	1010.02s 
+
+[Mon Dec 16 17:29:43 2024] >> dataset/fa_i-3-fa_j-2-t_index-4.txt
+[Mon Dec 16 17:46:29 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6621246337890625, 'TP': 27113, 'TN': 16280, 'FP': 13847, 'FN': 8296}
+[Mon Dec 16 17:46:29 2024] >> max bit:	5
+[Mon Dec 16 17:46:29 2024] >> accuracy:	0.6621246337890625	+0.84[FALSE]
+[Mon Dec 16 17:46:29 2024] >> exe time:	1006.63s 
+
+[Mon Dec 16 17:46:29 2024] >> dataset/fa_i-3-fa_j-2-t_index-5.txt
+[Mon Dec 16 18:03:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.659423828125, 'TP': 16704, 'TN': 26512, 'FP': 5824, 'FN': 16496}
+[Mon Dec 16 18:03:17 2024] >> max bit:	5
+[Mon Dec 16 18:03:17 2024] >> accuracy:	0.659423828125	+0.84[FALSE]
+[Mon Dec 16 18:03:17 2024] >> exe time:	1008.23s 
+
+[Mon Dec 16 18:03:17 2024] >> dataset/fa_i-3-fa_j-3-t_index-0.txt
+[Mon Dec 16 18:20:06 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.7201995849609375, 'TP': 23008, 'TN': 24191, 'FP': 5664, 'FN': 12673}
+[Mon Dec 16 18:20:06 2024] >> max bit:	5
+[Mon Dec 16 18:20:06 2024] >> accuracy:	0.7201995849609375	+0.84[FALSE]
+[Mon Dec 16 18:20:06 2024] >> exe time:	1008.34s 
+
+[Mon Dec 16 18:20:06 2024] >> dataset/fa_i-3-fa_j-3-t_index-1.txt
+[Mon Dec 16 18:36:54 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.740966796875, 'TP': 22880, 'TN': 25680, 'FP': 5792, 'FN': 11184}
+[Mon Dec 16 18:36:54 2024] >> max bit:	5
+[Mon Dec 16 18:36:54 2024] >> accuracy:	0.740966796875	+0.84[FALSE]
+[Mon Dec 16 18:36:54 2024] >> exe time:	1008.62s 
+
+[Mon Dec 16 18:36:54 2024] >> dataset/fa_i-3-fa_j-3-t_index-2.txt
+[Mon Dec 16 18:53:46 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6674652099609375, 'TP': 25080, 'TN': 18663, 'FP': 11784, 'FN': 10009}
+[Mon Dec 16 18:53:46 2024] >> max bit:	5
+[Mon Dec 16 18:53:46 2024] >> accuracy:	0.6674652099609375	+0.84[FALSE]
+[Mon Dec 16 18:53:46 2024] >> exe time:	1011.66s 
+
+[Mon Dec 16 18:53:46 2024] >> dataset/fa_i-3-fa_j-3-t_index-3.txt
+[Mon Dec 16 19:10:32 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.683837890625, 'TP': 21040, 'TN': 23776, 'FP': 7632, 'FN': 13088}
+[Mon Dec 16 19:10:32 2024] >> max bit:	5
+[Mon Dec 16 19:10:32 2024] >> accuracy:	0.683837890625	+0.84[FALSE]
+[Mon Dec 16 19:10:32 2024] >> exe time:	1006.27s 
+
+[Mon Dec 16 19:10:32 2024] >> dataset/fa_i-3-fa_j-3-t_index-4.txt
+[Mon Dec 16 19:27:22 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.683837890625, 'TP': 21040, 'TN': 23776, 'FP': 7632, 'FN': 13088}
+[Mon Dec 16 19:27:22 2024] >> max bit:	5
+[Mon Dec 16 19:27:22 2024] >> accuracy:	0.683837890625	+0.84[FALSE]
+[Mon Dec 16 19:27:22 2024] >> exe time:	1009.55s 
+
+[Mon Dec 16 19:27:22 2024] >> dataset/fa_i-3-fa_j-3-t_index-5.txt
+[Mon Dec 16 19:44:10 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6674652099609375, 'TP': 25080, 'TN': 18663, 'FP': 11784, 'FN': 10009}
+[Mon Dec 16 19:44:10 2024] >> max bit:	5
+[Mon Dec 16 19:44:10 2024] >> accuracy:	0.6674652099609375	+0.84[FALSE]
+[Mon Dec 16 19:44:10 2024] >> exe time:	1008.57s 
+
+[Mon Dec 16 19:44:10 2024] >> dataset/fa_i-3-fa_j-4-t_index-0.txt
+[Mon Dec 16 20:00:59 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.718994140625, 'TP': 17120, 'TN': 30000, 'FP': 5408, 'FN': 13008}
+[Mon Dec 16 20:00:59 2024] >> max bit:	5
+[Mon Dec 16 20:00:59 2024] >> accuracy:	0.718994140625	+0.84[FALSE]
+[Mon Dec 16 20:00:59 2024] >> exe time:	1008.82s 
+
+[Mon Dec 16 20:00:59 2024] >> dataset/fa_i-3-fa_j-4-t_index-1.txt
+[Mon Dec 16 20:17:44 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7216949462890625, 'TP': 34609, 'TN': 12688, 'FP': 12495, 'FN': 5744}
+[Mon Dec 16 20:17:44 2024] >> max bit:	5
+[Mon Dec 16 20:17:44 2024] >> accuracy:	0.7216949462890625	+0.84[FALSE]
+[Mon Dec 16 20:17:44 2024] >> exe time:	1004.82s 
+
+[Mon Dec 16 20:17:44 2024] >> dataset/fa_i-3-fa_j-4-t_index-2.txt
+[Mon Dec 16 20:34:35 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.7021484375, 'TP': 18352, 'TN': 27664, 'FP': 6224, 'FN': 13296}
+[Mon Dec 16 20:34:35 2024] >> max bit:	5
+[Mon Dec 16 20:34:35 2024] >> accuracy:	0.7021484375	+0.84[FALSE]
+[Mon Dec 16 20:34:35 2024] >> exe time:	1011.03s 
+
+[Mon Dec 16 20:34:35 2024] >> dataset/fa_i-3-fa_j-4-t_index-3.txt
+[Mon Dec 16 20:51:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'b', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6801910400390625, 'TP': 27905, 'TN': 16672, 'FP': 11007, 'FN': 9952}
+[Mon Dec 16 20:51:17 2024] >> max bit:	5
+[Mon Dec 16 20:51:17 2024] >> accuracy:	0.6801910400390625	+0.84[FALSE]
+[Mon Dec 16 20:51:17 2024] >> exe time:	1001.99s 
+
+[Mon Dec 16 20:51:17 2024] >> dataset/fa_i-3-fa_j-4-t_index-4.txt
+[Mon Dec 16 21:08:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'b', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6801910400390625, 'TP': 27905, 'TN': 16672, 'FP': 11007, 'FN': 9952}
+[Mon Dec 16 21:08:00 2024] >> max bit:	5
+[Mon Dec 16 21:08:00 2024] >> accuracy:	0.6801910400390625	+0.84[FALSE]
+[Mon Dec 16 21:08:00 2024] >> exe time:	1002.84s 
+
+[Mon Dec 16 21:08:00 2024] >> dataset/fa_i-3-fa_j-4-t_index-5.txt
+[Mon Dec 16 21:24:48 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.7021484375, 'TP': 18352, 'TN': 27664, 'FP': 6224, 'FN': 13296}
+[Mon Dec 16 21:24:48 2024] >> max bit:	5
+[Mon Dec 16 21:24:48 2024] >> accuracy:	0.7021484375	+0.84[FALSE]
+[Mon Dec 16 21:24:48 2024] >> exe time:	1007.76s 
+
+[Mon Dec 16 21:24:48 2024] >> dataset/fa_i-3-fa_j-5-t_index-0.txt
+[Mon Dec 16 21:41:39 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.783935546875, 'TP': 20496, 'TN': 30880, 'FP': 6128, 'FN': 8032}
+[Mon Dec 16 21:41:39 2024] >> max bit:	5
+[Mon Dec 16 21:41:39 2024] >> accuracy:	0.783935546875	+0.84[FALSE]
+[Mon Dec 16 21:41:39 2024] >> exe time:	1011.10s 
+
+[Mon Dec 16 21:41:39 2024] >> dataset/fa_i-3-fa_j-5-t_index-1.txt
+[Mon Dec 16 21:58:22 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'b', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.7785491943359375, 'TP': 34624, 'TN': 16399, 'FP': 8384, 'FN': 6129}
+[Mon Dec 16 21:58:22 2024] >> max bit:	5
+[Mon Dec 16 21:58:22 2024] >> accuracy:	0.7785491943359375	+0.84[FALSE]
+[Mon Dec 16 21:58:22 2024] >> exe time:	1002.95s 
+
+[Mon Dec 16 21:58:22 2024] >> dataset/fa_i-3-fa_j-5-t_index-2.txt
+[Mon Dec 16 22:15:16 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.7640380859375, 'TP': 24208, 'TN': 25864, 'FP': 8560, 'FN': 6904}
+[Mon Dec 16 22:15:16 2024] >> max bit:	5
+[Mon Dec 16 22:15:16 2024] >> accuracy:	0.7640380859375	+0.84[FALSE]
+[Mon Dec 16 22:15:16 2024] >> exe time:	1014.77s 
+
+[Mon Dec 16 22:15:16 2024] >> dataset/fa_i-3-fa_j-5-t_index-3.txt
+[Mon Dec 16 22:32:04 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'x', 'b', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.7403717041015625, 'TP': 32273, 'TN': 16248, 'FP': 10735, 'FN': 6280}
+[Mon Dec 16 22:32:04 2024] >> max bit:	5
+[Mon Dec 16 22:32:04 2024] >> accuracy:	0.7403717041015625	+0.84[FALSE]
+[Mon Dec 16 22:32:04 2024] >> exe time:	1007.16s 
+
+[Mon Dec 16 22:32:04 2024] >> dataset/fa_i-3-fa_j-5-t_index-4.txt
+[Mon Dec 16 22:48:51 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'x', 'b', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.7403717041015625, 'TP': 32273, 'TN': 16248, 'FP': 10735, 'FN': 6280}
+[Mon Dec 16 22:48:51 2024] >> max bit:	5
+[Mon Dec 16 22:48:51 2024] >> accuracy:	0.7403717041015625	+0.84[FALSE]
+[Mon Dec 16 22:48:51 2024] >> exe time:	1007.11s 
+
+[Mon Dec 16 22:48:51 2024] >> dataset/fa_i-3-fa_j-5-t_index-5.txt
+[Mon Dec 16 23:05:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.7640380859375, 'TP': 24208, 'TN': 25864, 'FP': 8560, 'FN': 6904}
+[Mon Dec 16 23:05:43 2024] >> max bit:	5
+[Mon Dec 16 23:05:43 2024] >> accuracy:	0.7640380859375	+0.84[FALSE]
+[Mon Dec 16 23:05:43 2024] >> exe time:	1011.77s 
+
+[Mon Dec 16 23:05:43 2024] >> dataset/fa_i-3-fa_j-6-t_index-0.txt
+[Mon Dec 16 23:09:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.847900390625, 'TP': 22160, 'TN': 33408, 'FP': 6512, 'FN': 3456}
+[Mon Dec 16 23:09:23 2024] >> max bit:	4
+[Mon Dec 16 23:09:23 2024] >> accuracy:	0.847900390625	+0.84[TRUE]
+[Mon Dec 16 23:09:23 2024] >> exe time:	220.65s 
+
+[Mon Dec 16 23:09:23 2024] >> dataset/fa_i-3-fa_j-6-t_index-1.txt
+[Mon Dec 16 23:26:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.8178863525390625, 'TP': 37425, 'TN': 16176, 'FP': 5583, 'FN': 6352}
+[Mon Dec 16 23:26:05 2024] >> max bit:	5
+[Mon Dec 16 23:26:05 2024] >> accuracy:	0.8178863525390625	+0.84[FALSE]
+[Mon Dec 16 23:26:05 2024] >> exe time:	1001.93s 
+
+[Mon Dec 16 23:26:05 2024] >> dataset/fa_i-3-fa_j-6-t_index-2.txt
+[Mon Dec 16 23:42:58 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'b', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.8509521484375, 'TP': 25064, 'TN': 30704, 'FP': 7704, 'FN': 2064}
+[Mon Dec 16 23:42:58 2024] >> max bit:	5
+[Mon Dec 16 23:42:58 2024] >> accuracy:	0.8509521484375	+0.84[TRUE]
+[Mon Dec 16 23:42:58 2024] >> exe time:	1013.24s 
+
+[Mon Dec 16 23:42:58 2024] >> dataset/fa_i-3-fa_j-6-t_index-3.txt
+[Mon Dec 16 23:59:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'b', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.8048248291015625, 'TP': 38457, 'TN': 14288, 'FP': 8647, 'FN': 4144}
+[Mon Dec 16 23:59:45 2024] >> max bit:	5
+[Mon Dec 16 23:59:45 2024] >> accuracy:	0.8048248291015625	+0.84[FALSE]
+[Mon Dec 16 23:59:45 2024] >> exe time:	1006.46s 
+
+[Mon Dec 16 23:59:45 2024] >> dataset/fa_i-3-fa_j-6-t_index-4.txt
+[Tue Dec 17 00:16:29 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'b', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.8048248291015625, 'TP': 38457, 'TN': 14288, 'FP': 8647, 'FN': 4144}
+[Tue Dec 17 00:16:29 2024] >> max bit:	5
+[Tue Dec 17 00:16:29 2024] >> accuracy:	0.8048248291015625	+0.84[FALSE]
+[Tue Dec 17 00:16:29 2024] >> exe time:	1004.60s 
+
+[Tue Dec 17 00:16:29 2024] >> dataset/fa_i-3-fa_j-6-t_index-5.txt
+[Tue Dec 17 00:33:21 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'b', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.8509521484375, 'TP': 25064, 'TN': 30704, 'FP': 7704, 'FN': 2064}
+[Tue Dec 17 00:33:21 2024] >> max bit:	5
+[Tue Dec 17 00:33:21 2024] >> accuracy:	0.8509521484375	+0.84[TRUE]
+[Tue Dec 17 00:33:21 2024] >> exe time:	1011.27s 
+
+[Tue Dec 17 00:33:21 2024] >> dataset/fa_i-3-fa_j-7-t_index-0.txt
+[Tue Dec 17 00:33:57 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8479156494140625, 'TP': 44945, 'TN': 10624, 'FP': 4207, 'FN': 5760}
+[Tue Dec 17 00:33:57 2024] >> max bit:	3
+[Tue Dec 17 00:33:57 2024] >> accuracy:	0.8479156494140625	+0.84[TRUE]
+[Tue Dec 17 00:33:57 2024] >> exe time:	36.09s 
+
+[Tue Dec 17 00:33:57 2024] >> dataset/fa_i-3-fa_j-7-t_index-1.txt
+[Tue Dec 17 00:33:58 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8826446533203125, 'TP': 57845, 'TN': 0, 'FP': 7691, 'FN': 0}
+[Tue Dec 17 00:33:58 2024] >> max bit:	1
+[Tue Dec 17 00:33:58 2024] >> accuracy:	0.8826446533203125	+0.84[TRUE]
+[Tue Dec 17 00:33:58 2024] >> exe time:	0.79s 
+
+[Tue Dec 17 00:33:58 2024] >> dataset/fa_i-3-fa_j-7-t_index-2.txt
+[Tue Dec 17 00:34:02 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.89599609375, 'TP': 12912, 'TN': 45808, 'FP': 3472, 'FN': 3344}
+[Tue Dec 17 00:34:02 2024] >> max bit:	2
+[Tue Dec 17 00:34:02 2024] >> accuracy:	0.89599609375	+0.84[TRUE]
+[Tue Dec 17 00:34:02 2024] >> exe time:	4.93s 
+
+[Tue Dec 17 00:34:02 2024] >> dataset/fa_i-3-fa_j-7-t_index-3.txt
+[Tue Dec 17 00:34:07 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 00:34:07 2024] >> max bit:	2
+[Tue Dec 17 00:34:07 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 00:34:07 2024] >> exe time:	4.98s 
+
+[Tue Dec 17 00:34:07 2024] >> dataset/fa_i-3-fa_j-7-t_index-4.txt
+[Tue Dec 17 00:34:12 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 00:34:12 2024] >> max bit:	2
+[Tue Dec 17 00:34:12 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 00:34:12 2024] >> exe time:	4.98s 
+
+[Tue Dec 17 00:34:12 2024] >> dataset/fa_i-3-fa_j-7-t_index-5.txt
+[Tue Dec 17 00:34:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.89599609375, 'TP': 12912, 'TN': 45808, 'FP': 3472, 'FN': 3344}
+[Tue Dec 17 00:34:17 2024] >> max bit:	2
+[Tue Dec 17 00:34:17 2024] >> accuracy:	0.89599609375	+0.84[TRUE]
+[Tue Dec 17 00:34:17 2024] >> exe time:	5.03s 
+
+[Tue Dec 17 00:34:17 2024] >> dataset/fa_i-4-fa_j-0-t_index-0.txt
+[Tue Dec 17 00:51:08 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.645751953125, 'TP': 17712, 'TN': 24608, 'FP': 6864, 'FN': 16352}
+[Tue Dec 17 00:51:08 2024] >> max bit:	5
+[Tue Dec 17 00:51:08 2024] >> accuracy:	0.645751953125	+0.84[FALSE]
+[Tue Dec 17 00:51:08 2024] >> exe time:	1010.88s 
+
+[Tue Dec 17 00:51:08 2024] >> dataset/fa_i-4-fa_j-0-t_index-1.txt
+[Tue Dec 17 01:07:57 2024] >> {'A': ['b', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6467132568359375, 'TP': 29856, 'TN': 12527, 'FP': 17248, 'FN': 5905}
+[Tue Dec 17 01:07:57 2024] >> max bit:	5
+[Tue Dec 17 01:07:57 2024] >> accuracy:	0.6467132568359375	+0.84[FALSE]
+[Tue Dec 17 01:07:57 2024] >> exe time:	1008.47s 
+
+[Tue Dec 17 01:07:57 2024] >> dataset/fa_i-4-fa_j-0-t_index-2.txt
+[Tue Dec 17 01:24:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.66796875, 'TP': 17472, 'TN': 26304, 'FP': 7104, 'FN': 14656}
+[Tue Dec 17 01:24:45 2024] >> max bit:	5
+[Tue Dec 17 01:24:45 2024] >> accuracy:	0.66796875	+0.84[FALSE]
+[Tue Dec 17 01:24:45 2024] >> exe time:	1007.86s 
+
+[Tue Dec 17 01:24:45 2024] >> dataset/fa_i-4-fa_j-0-t_index-3.txt
+[Tue Dec 17 01:41:34 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6660308837890625, 'TP': 21889, 'TN': 21760, 'FP': 10879, 'FN': 11008}
+[Tue Dec 17 01:41:34 2024] >> max bit:	5
+[Tue Dec 17 01:41:34 2024] >> accuracy:	0.6660308837890625	+0.84[FALSE]
+[Tue Dec 17 01:41:34 2024] >> exe time:	1009.13s 
+
+[Tue Dec 17 01:41:34 2024] >> dataset/fa_i-4-fa_j-0-t_index-4.txt
+[Tue Dec 17 01:58:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6660308837890625, 'TP': 21889, 'TN': 21760, 'FP': 10879, 'FN': 11008}
+[Tue Dec 17 01:58:23 2024] >> max bit:	5
+[Tue Dec 17 01:58:23 2024] >> accuracy:	0.6660308837890625	+0.84[FALSE]
+[Tue Dec 17 01:58:23 2024] >> exe time:	1009.37s 
+
+[Tue Dec 17 01:58:23 2024] >> dataset/fa_i-4-fa_j-0-t_index-5.txt
+[Tue Dec 17 02:15:14 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.66796875, 'TP': 17472, 'TN': 26304, 'FP': 7104, 'FN': 14656}
+[Tue Dec 17 02:15:14 2024] >> max bit:	5
+[Tue Dec 17 02:15:14 2024] >> accuracy:	0.66796875	+0.84[FALSE]
+[Tue Dec 17 02:15:14 2024] >> exe time:	1011.10s 
+
+[Tue Dec 17 02:15:14 2024] >> dataset/fa_i-4-fa_j-1-t_index-0.txt
+[Tue Dec 17 02:32:03 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.652099609375, 'TP': 17888, 'TN': 24848, 'FP': 6688, 'FN': 16112}
+[Tue Dec 17 02:32:03 2024] >> max bit:	5
+[Tue Dec 17 02:32:03 2024] >> accuracy:	0.652099609375	+0.84[FALSE]
+[Tue Dec 17 02:32:03 2024] >> exe time:	1008.51s 
+
+[Tue Dec 17 02:32:03 2024] >> dataset/fa_i-4-fa_j-1-t_index-1.txt
+[Tue Dec 17 02:48:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6540679931640625, 'TP': 27057, 'TN': 15808, 'FP': 13903, 'FN': 8768}
+[Tue Dec 17 02:48:53 2024] >> max bit:	5
+[Tue Dec 17 02:48:53 2024] >> accuracy:	0.6540679931640625	+0.84[FALSE]
+[Tue Dec 17 02:48:53 2024] >> exe time:	1009.73s 
+
+[Tue Dec 17 02:48:53 2024] >> dataset/fa_i-4-fa_j-1-t_index-2.txt
+[Tue Dec 17 03:05:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.64581298828125, 'TP': 15248, 'TN': 27076, 'FP': 5232, 'FN': 17980}
+[Tue Dec 17 03:05:43 2024] >> max bit:	5
+[Tue Dec 17 03:05:43 2024] >> accuracy:	0.64581298828125	+0.84[FALSE]
+[Tue Dec 17 03:05:43 2024] >> exe time:	1010.76s 
+
+[Tue Dec 17 03:05:43 2024] >> dataset/fa_i-4-fa_j-1-t_index-3.txt
+[Tue Dec 17 03:22:32 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.6491241455078125, 'TP': 24033, 'TN': 18508, 'FP': 12831, 'FN': 10164}
+[Tue Dec 17 03:22:32 2024] >> max bit:	5
+[Tue Dec 17 03:22:32 2024] >> accuracy:	0.6491241455078125	+0.84[FALSE]
+[Tue Dec 17 03:22:32 2024] >> exe time:	1008.56s 
+
+[Tue Dec 17 03:22:32 2024] >> dataset/fa_i-4-fa_j-1-t_index-4.txt
+[Tue Dec 17 03:39:28 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.6491241455078125, 'TP': 24033, 'TN': 18508, 'FP': 12831, 'FN': 10164}
+[Tue Dec 17 03:39:28 2024] >> max bit:	5
+[Tue Dec 17 03:39:28 2024] >> accuracy:	0.6491241455078125	+0.84[FALSE]
+[Tue Dec 17 03:39:28 2024] >> exe time:	1015.68s 
+
+[Tue Dec 17 03:39:28 2024] >> dataset/fa_i-4-fa_j-1-t_index-5.txt
+[Tue Dec 17 03:56:21 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.64581298828125, 'TP': 15248, 'TN': 27076, 'FP': 5232, 'FN': 17980}
+[Tue Dec 17 03:56:21 2024] >> max bit:	5
+[Tue Dec 17 03:56:21 2024] >> accuracy:	0.64581298828125	+0.84[FALSE]
+[Tue Dec 17 03:56:21 2024] >> exe time:	1013.80s 
+
+[Tue Dec 17 03:56:21 2024] >> dataset/fa_i-4-fa_j-2-t_index-0.txt
+[Tue Dec 17 04:13:12 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6718597412109375, 'TP': 21200, 'TN': 22831, 'FP': 7472, 'FN': 14033}
+[Tue Dec 17 04:13:12 2024] >> max bit:	5
+[Tue Dec 17 04:13:12 2024] >> accuracy:	0.6718597412109375	+0.84[FALSE]
+[Tue Dec 17 04:13:12 2024] >> exe time:	1010.83s 
+
+[Tue Dec 17 04:13:12 2024] >> dataset/fa_i-4-fa_j-2-t_index-1.txt
+[Tue Dec 17 04:30:02 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6824951171875, 'TP': 21208, 'TN': 23520, 'FP': 7464, 'FN': 13344}
+[Tue Dec 17 04:30:02 2024] >> max bit:	5
+[Tue Dec 17 04:30:02 2024] >> accuracy:	0.6824951171875	+0.84[FALSE]
+[Tue Dec 17 04:30:02 2024] >> exe time:	1010.10s 
+
+[Tue Dec 17 04:30:02 2024] >> dataset/fa_i-4-fa_j-2-t_index-2.txt
+[Tue Dec 17 04:46:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.6472625732421875, 'TP': 23112, 'TN': 19307, 'FP': 11704, 'FN': 11413}
+[Tue Dec 17 04:46:53 2024] >> max bit:	5
+[Tue Dec 17 04:46:53 2024] >> accuracy:	0.6472625732421875	+0.84[FALSE]
+[Tue Dec 17 04:46:53 2024] >> exe time:	1011.01s 
+
+[Tue Dec 17 04:46:53 2024] >> dataset/fa_i-4-fa_j-2-t_index-3.txt
+[Tue Dec 17 05:03:46 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.65472412109375, 'TP': 21088, 'TN': 21820, 'FP': 9632, 'FN': 12996}
+[Tue Dec 17 05:03:46 2024] >> max bit:	5
+[Tue Dec 17 05:03:46 2024] >> accuracy:	0.65472412109375	+0.84[FALSE]
+[Tue Dec 17 05:03:46 2024] >> exe time:	1012.46s 
+
+[Tue Dec 17 05:03:46 2024] >> dataset/fa_i-4-fa_j-2-t_index-4.txt
+[Tue Dec 17 05:20:38 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.65472412109375, 'TP': 21088, 'TN': 21820, 'FP': 9632, 'FN': 12996}
+[Tue Dec 17 05:20:38 2024] >> max bit:	5
+[Tue Dec 17 05:20:38 2024] >> accuracy:	0.65472412109375	+0.84[FALSE]
+[Tue Dec 17 05:20:38 2024] >> exe time:	1011.95s 
+
+[Tue Dec 17 05:20:38 2024] >> dataset/fa_i-4-fa_j-2-t_index-5.txt
+[Tue Dec 17 05:37:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.6472625732421875, 'TP': 23112, 'TN': 19307, 'FP': 11704, 'FN': 11413}
+[Tue Dec 17 05:37:30 2024] >> max bit:	5
+[Tue Dec 17 05:37:30 2024] >> accuracy:	0.6472625732421875	+0.84[FALSE]
+[Tue Dec 17 05:37:30 2024] >> exe time:	1012.33s 
+
+[Tue Dec 17 05:37:30 2024] >> dataset/fa_i-4-fa_j-3-t_index-0.txt
+[Tue Dec 17 05:54:27 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.67236328125, 'TP': 19752, 'TN': 24312, 'FP': 8920, 'FN': 12552}
+[Tue Dec 17 05:54:27 2024] >> max bit:	5
+[Tue Dec 17 05:54:27 2024] >> accuracy:	0.67236328125	+0.84[FALSE]
+[Tue Dec 17 05:54:27 2024] >> exe time:	1016.59s 
+
+[Tue Dec 17 05:54:27 2024] >> dataset/fa_i-4-fa_j-3-t_index-1.txt
+[Tue Dec 17 06:11:17 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6695404052734375, 'TP': 26376, 'TN': 17503, 'FP': 10488, 'FN': 11169}
+[Tue Dec 17 06:11:17 2024] >> max bit:	5
+[Tue Dec 17 06:11:17 2024] >> accuracy:	0.6695404052734375	+0.84[FALSE]
+[Tue Dec 17 06:11:17 2024] >> exe time:	1010.30s 
+
+[Tue Dec 17 06:11:17 2024] >> dataset/fa_i-4-fa_j-3-t_index-2.txt
+[Tue Dec 17 06:28:28 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.66400146484375, 'TP': 16736, 'TN': 26780, 'FP': 5792, 'FN': 16228}
+[Tue Dec 17 06:28:28 2024] >> max bit:	5
+[Tue Dec 17 06:28:28 2024] >> accuracy:	0.66400146484375	+0.84[FALSE]
+[Tue Dec 17 06:28:28 2024] >> exe time:	1031.44s 
+
+[Tue Dec 17 06:28:28 2024] >> dataset/fa_i-4-fa_j-3-t_index-3.txt
+[Tue Dec 17 06:45:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'accu': 0.6476287841796875, 'TP': 25012, 'TN': 17431, 'FP': 11852, 'FN': 11241}
+[Tue Dec 17 06:45:17 2024] >> max bit:	5
+[Tue Dec 17 06:45:17 2024] >> accuracy:	0.6476287841796875	+0.84[FALSE]
+[Tue Dec 17 06:45:17 2024] >> exe time:	1009.03s 
+
+[Tue Dec 17 06:45:17 2024] >> dataset/fa_i-4-fa_j-3-t_index-4.txt
+[Tue Dec 17 07:02:09 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'accu': 0.6476287841796875, 'TP': 25012, 'TN': 17431, 'FP': 11852, 'FN': 11241}
+[Tue Dec 17 07:02:09 2024] >> max bit:	5
+[Tue Dec 17 07:02:09 2024] >> accuracy:	0.6476287841796875	+0.84[FALSE]
+[Tue Dec 17 07:02:09 2024] >> exe time:	1011.19s 
+
+[Tue Dec 17 07:02:09 2024] >> dataset/fa_i-4-fa_j-3-t_index-5.txt
+[Tue Dec 17 07:19:03 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.66400146484375, 'TP': 16736, 'TN': 26780, 'FP': 5792, 'FN': 16228}
+[Tue Dec 17 07:19:03 2024] >> max bit:	5
+[Tue Dec 17 07:19:03 2024] >> accuracy:	0.66400146484375	+0.84[FALSE]
+[Tue Dec 17 07:19:03 2024] >> exe time:	1014.79s 
+
+[Tue Dec 17 07:19:03 2024] >> dataset/fa_i-4-fa_j-4-t_index-0.txt
+[Tue Dec 17 07:35:58 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.7147216796875, 'TP': 21896, 'TN': 24944, 'FP': 8824, 'FN': 9872}
+[Tue Dec 17 07:35:58 2024] >> max bit:	5
+[Tue Dec 17 07:35:58 2024] >> accuracy:	0.7147216796875	+0.84[FALSE]
+[Tue Dec 17 07:35:58 2024] >> exe time:	1014.24s 
+
+[Tue Dec 17 07:35:58 2024] >> dataset/fa_i-4-fa_j-4-t_index-1.txt
+[Tue Dec 17 07:52:48 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6963958740234375, 'TP': 27504, 'TN': 18135, 'FP': 9360, 'FN': 10537}
+[Tue Dec 17 07:52:48 2024] >> max bit:	5
+[Tue Dec 17 07:52:48 2024] >> accuracy:	0.6963958740234375	+0.84[FALSE]
+[Tue Dec 17 07:52:48 2024] >> exe time:	1010.20s 
+
+[Tue Dec 17 07:52:48 2024] >> dataset/fa_i-4-fa_j-4-t_index-2.txt
+[Tue Dec 17 08:09:41 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'accu': 0.69012451171875, 'TP': 22652, 'TN': 22576, 'FP': 10116, 'FN': 10192}
+[Tue Dec 17 08:09:41 2024] >> max bit:	5
+[Tue Dec 17 08:09:41 2024] >> accuracy:	0.69012451171875	+0.84[FALSE]
+[Tue Dec 17 08:09:41 2024] >> exe time:	1012.93s 
+
+[Tue Dec 17 08:09:41 2024] >> dataset/fa_i-4-fa_j-4-t_index-3.txt
+[Tue Dec 17 08:26:32 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.6661834716796875, 'TP': 27872, 'TN': 15787, 'FP': 13088, 'FN': 8789}
+[Tue Dec 17 08:26:32 2024] >> max bit:	5
+[Tue Dec 17 08:26:32 2024] >> accuracy:	0.6661834716796875	+0.84[FALSE]
+[Tue Dec 17 08:26:32 2024] >> exe time:	1010.88s 
+
+[Tue Dec 17 08:26:32 2024] >> dataset/fa_i-4-fa_j-4-t_index-4.txt
+[Tue Dec 17 08:43:27 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.6661834716796875, 'TP': 27872, 'TN': 15787, 'FP': 13088, 'FN': 8789}
+[Tue Dec 17 08:43:27 2024] >> max bit:	5
+[Tue Dec 17 08:43:27 2024] >> accuracy:	0.6661834716796875	+0.84[FALSE]
+[Tue Dec 17 08:43:27 2024] >> exe time:	1015.09s 
+
+[Tue Dec 17 08:43:27 2024] >> dataset/fa_i-4-fa_j-4-t_index-5.txt
+[Tue Dec 17 09:00:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'b', 'x', 'x'], 'accu': 0.69012451171875, 'TP': 22652, 'TN': 22576, 'FP': 10116, 'FN': 10192}
+[Tue Dec 17 09:00:23 2024] >> max bit:	5
+[Tue Dec 17 09:00:23 2024] >> accuracy:	0.69012451171875	+0.84[FALSE]
+[Tue Dec 17 09:00:23 2024] >> exe time:	1016.49s 
+
+[Tue Dec 17 09:00:23 2024] >> dataset/fa_i-4-fa_j-5-t_index-0.txt
+[Tue Dec 17 09:17:26 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.7952880859375, 'TP': 28032, 'TN': 24088, 'FP': 10880, 'FN': 2536}
+[Tue Dec 17 09:17:26 2024] >> max bit:	5
+[Tue Dec 17 09:17:26 2024] >> accuracy:	0.7952880859375	+0.84[FALSE]
+[Tue Dec 17 09:17:26 2024] >> exe time:	1022.75s 
+
+[Tue Dec 17 09:17:26 2024] >> dataset/fa_i-4-fa_j-5-t_index-1.txt
+[Tue Dec 17 09:34:22 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.7818450927734375, 'TP': 32752, 'TN': 18487, 'FP': 8208, 'FN': 6089}
+[Tue Dec 17 09:34:22 2024] >> max bit:	5
+[Tue Dec 17 09:34:22 2024] >> accuracy:	0.7818450927734375	+0.84[FALSE]
+[Tue Dec 17 09:34:22 2024] >> exe time:	1016.51s 
+
+[Tue Dec 17 09:34:22 2024] >> dataset/fa_i-4-fa_j-5-t_index-2.txt
+[Tue Dec 17 09:51:25 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.763916015625, 'TP': 24360, 'TN': 25704, 'FP': 8408, 'FN': 7064}
+[Tue Dec 17 09:51:25 2024] >> max bit:	5
+[Tue Dec 17 09:51:25 2024] >> accuracy:	0.763916015625	+0.84[FALSE]
+[Tue Dec 17 09:51:25 2024] >> exe time:	1022.36s 
+
+[Tue Dec 17 09:51:25 2024] >> dataset/fa_i-4-fa_j-5-t_index-3.txt
+[Tue Dec 17 10:08:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'x', 'x', 'b', 'b', 'b', 'x', 'x'], 'accu': 0.7393951416015625, 'TP': 31061, 'TN': 17396, 'FP': 9899, 'FN': 7180}
+[Tue Dec 17 10:08:17 2024] >> max bit:	5
+[Tue Dec 17 10:08:17 2024] >> accuracy:	0.7393951416015625	+0.84[FALSE]
+[Tue Dec 17 10:08:17 2024] >> exe time:	1012.16s 
+
+[Tue Dec 17 10:08:17 2024] >> dataset/fa_i-4-fa_j-5-t_index-4.txt
+[Tue Dec 17 10:25:14 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'x', 'x', 'b', 'b', 'b', 'x', 'x'], 'accu': 0.7393951416015625, 'TP': 31061, 'TN': 17396, 'FP': 9899, 'FN': 7180}
+[Tue Dec 17 10:25:14 2024] >> max bit:	5
+[Tue Dec 17 10:25:14 2024] >> accuracy:	0.7393951416015625	+0.84[FALSE]
+[Tue Dec 17 10:25:14 2024] >> exe time:	1017.00s 
+
+[Tue Dec 17 10:25:14 2024] >> dataset/fa_i-4-fa_j-5-t_index-5.txt
+[Tue Dec 17 10:42:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.763916015625, 'TP': 24360, 'TN': 25704, 'FP': 8408, 'FN': 7064}
+[Tue Dec 17 10:42:23 2024] >> max bit:	5
+[Tue Dec 17 10:42:23 2024] >> accuracy:	0.763916015625	+0.84[FALSE]
+[Tue Dec 17 10:42:23 2024] >> exe time:	1028.63s 
+
+[Tue Dec 17 10:42:23 2024] >> dataset/fa_i-4-fa_j-6-t_index-0.txt
+[Tue Dec 17 10:42:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8507080078125, 'TP': 25704, 'TN': 30048, 'FP': 7064, 'FN': 2720}
+[Tue Dec 17 10:42:23 2024] >> max bit:	1
+[Tue Dec 17 10:42:23 2024] >> accuracy:	0.8507080078125	+0.84[TRUE]
+[Tue Dec 17 10:42:23 2024] >> exe time:	0.88s 
+
+[Tue Dec 17 10:42:23 2024] >> dataset/fa_i-4-fa_j-6-t_index-1.txt
+[Tue Dec 17 10:59:28 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.8201751708984375, 'TP': 31024, 'TN': 22727, 'FP': 1744, 'FN': 10041}
+[Tue Dec 17 10:59:28 2024] >> max bit:	5
+[Tue Dec 17 10:59:28 2024] >> accuracy:	0.8201751708984375	+0.84[FALSE]
+[Tue Dec 17 10:59:28 2024] >> exe time:	1024.52s 
+
+[Tue Dec 17 10:59:28 2024] >> dataset/fa_i-4-fa_j-6-t_index-2.txt
+[Tue Dec 17 11:03:16 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.84271240234375, 'TP': 22944, 'TN': 32284, 'FP': 5728, 'FN': 4580}
+[Tue Dec 17 11:03:16 2024] >> max bit:	4
+[Tue Dec 17 11:03:16 2024] >> accuracy:	0.84271240234375	+0.84[TRUE]
+[Tue Dec 17 11:03:16 2024] >> exe time:	228.27s 
+
+[Tue Dec 17 11:03:16 2024] >> dataset/fa_i-4-fa_j-6-t_index-3.txt
+[Tue Dec 17 11:20:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'b', 'x', 'x'], 'accu': 0.7937774658203125, 'TP': 37897, 'TN': 14124, 'FP': 9207, 'FN': 4308}
+[Tue Dec 17 11:20:43 2024] >> max bit:	5
+[Tue Dec 17 11:20:43 2024] >> accuracy:	0.7937774658203125	+0.84[FALSE]
+[Tue Dec 17 11:20:43 2024] >> exe time:	1046.33s 
+
+[Tue Dec 17 11:20:43 2024] >> dataset/fa_i-4-fa_j-6-t_index-4.txt
+[Tue Dec 17 11:37:55 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'b', 'x', 'x'], 'accu': 0.7937774658203125, 'TP': 37897, 'TN': 14124, 'FP': 9207, 'FN': 4308}
+[Tue Dec 17 11:37:55 2024] >> max bit:	5
+[Tue Dec 17 11:37:55 2024] >> accuracy:	0.7937774658203125	+0.84[FALSE]
+[Tue Dec 17 11:37:55 2024] >> exe time:	1031.97s 
+
+[Tue Dec 17 11:37:55 2024] >> dataset/fa_i-4-fa_j-6-t_index-5.txt
+[Tue Dec 17 11:41:42 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.84271240234375, 'TP': 22944, 'TN': 32284, 'FP': 5728, 'FN': 4580}
+[Tue Dec 17 11:41:42 2024] >> max bit:	4
+[Tue Dec 17 11:41:42 2024] >> accuracy:	0.84271240234375	+0.84[TRUE]
+[Tue Dec 17 11:41:42 2024] >> exe time:	227.23s 
+
+[Tue Dec 17 11:41:42 2024] >> dataset/fa_i-4-fa_j-7-t_index-0.txt
+[Tue Dec 17 11:42:19 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8685455322265625, 'TP': 43777, 'TN': 13144, 'FP': 5375, 'FN': 3240}
+[Tue Dec 17 11:42:19 2024] >> max bit:	3
+[Tue Dec 17 11:42:19 2024] >> accuracy:	0.8685455322265625	+0.84[TRUE]
+[Tue Dec 17 11:42:19 2024] >> exe time:	36.95s 
+
+[Tue Dec 17 11:42:19 2024] >> dataset/fa_i-4-fa_j-7-t_index-1.txt
+[Tue Dec 17 11:42:20 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.9389190673828125, 'TP': 61533, 'TN': 0, 'FP': 4003, 'FN': 0}
+[Tue Dec 17 11:42:20 2024] >> max bit:	1
+[Tue Dec 17 11:42:20 2024] >> accuracy:	0.9389190673828125	+0.84[TRUE]
+[Tue Dec 17 11:42:20 2024] >> exe time:	0.83s 
+
+[Tue Dec 17 11:42:20 2024] >> dataset/fa_i-4-fa_j-7-t_index-2.txt
+[Tue Dec 17 11:42:25 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.936767578125, 'TP': 14248, 'TN': 47144, 'FP': 2136, 'FN': 2008}
+[Tue Dec 17 11:42:25 2024] >> max bit:	2
+[Tue Dec 17 11:42:25 2024] >> accuracy:	0.936767578125	+0.84[TRUE]
+[Tue Dec 17 11:42:25 2024] >> exe time:	5.26s 
+
+[Tue Dec 17 11:42:25 2024] >> dataset/fa_i-4-fa_j-7-t_index-3.txt
+[Tue Dec 17 11:42:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 11:42:30 2024] >> max bit:	2
+[Tue Dec 17 11:42:30 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 11:42:30 2024] >> exe time:	5.24s 
+
+[Tue Dec 17 11:42:30 2024] >> dataset/fa_i-4-fa_j-7-t_index-4.txt
+[Tue Dec 17 11:42:35 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 11:42:35 2024] >> max bit:	2
+[Tue Dec 17 11:42:35 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 11:42:35 2024] >> exe time:	5.12s 
+
+[Tue Dec 17 11:42:35 2024] >> dataset/fa_i-4-fa_j-7-t_index-5.txt
+[Tue Dec 17 11:42:41 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.936767578125, 'TP': 14248, 'TN': 47144, 'FP': 2136, 'FN': 2008}
+[Tue Dec 17 11:42:41 2024] >> max bit:	2
+[Tue Dec 17 11:42:41 2024] >> accuracy:	0.936767578125	+0.84[TRUE]
+[Tue Dec 17 11:42:41 2024] >> exe time:	5.48s 
+
+[Tue Dec 17 11:42:41 2024] >> dataset/fa_i-5-fa_j-0-t_index-0.txt
+[Tue Dec 17 11:59:53 2024] >> {'A': ['b', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6416015625, 'TP': 20896, 'TN': 21152, 'FP': 9824, 'FN': 13664}
+[Tue Dec 17 11:59:53 2024] >> max bit:	5
+[Tue Dec 17 11:59:53 2024] >> accuracy:	0.6416015625	+0.84[FALSE]
+[Tue Dec 17 11:59:53 2024] >> exe time:	1032.66s 
+
+[Tue Dec 17 11:59:53 2024] >> dataset/fa_i-5-fa_j-0-t_index-1.txt
+[Tue Dec 17 12:17:08 2024] >> {'A': ['b', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6386871337890625, 'TP': 23201, 'TN': 18656, 'FP': 11615, 'FN': 12064}
+[Tue Dec 17 12:17:08 2024] >> max bit:	5
+[Tue Dec 17 12:17:08 2024] >> accuracy:	0.6386871337890625	+0.84[FALSE]
+[Tue Dec 17 12:17:08 2024] >> exe time:	1034.53s 
+
+[Tue Dec 17 12:17:08 2024] >> dataset/fa_i-5-fa_j-0-t_index-2.txt
+[Tue Dec 17 12:34:20 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.662109375, 'TP': 20448, 'TN': 22944, 'FP': 10272, 'FN': 11872}
+[Tue Dec 17 12:34:20 2024] >> max bit:	5
+[Tue Dec 17 12:34:20 2024] >> accuracy:	0.662109375	+0.84[FALSE]
+[Tue Dec 17 12:34:20 2024] >> exe time:	1032.06s 
+
+[Tue Dec 17 12:34:20 2024] >> dataset/fa_i-5-fa_j-0-t_index-3.txt
+[Tue Dec 17 12:51:31 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6631011962890625, 'TP': 17601, 'TN': 25856, 'FP': 6975, 'FN': 15104}
+[Tue Dec 17 12:51:31 2024] >> max bit:	5
+[Tue Dec 17 12:51:31 2024] >> accuracy:	0.6631011962890625	+0.84[FALSE]
+[Tue Dec 17 12:51:31 2024] >> exe time:	1031.38s 
+
+[Tue Dec 17 12:51:31 2024] >> dataset/fa_i-5-fa_j-0-t_index-4.txt
+[Tue Dec 17 13:08:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6631011962890625, 'TP': 17601, 'TN': 25856, 'FP': 6975, 'FN': 15104}
+[Tue Dec 17 13:08:45 2024] >> max bit:	5
+[Tue Dec 17 13:08:45 2024] >> accuracy:	0.6631011962890625	+0.84[FALSE]
+[Tue Dec 17 13:08:45 2024] >> exe time:	1033.46s 
+
+[Tue Dec 17 13:08:45 2024] >> dataset/fa_i-5-fa_j-0-t_index-5.txt
+[Tue Dec 17 13:26:08 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.662109375, 'TP': 20448, 'TN': 22944, 'FP': 10272, 'FN': 11872}
+[Tue Dec 17 13:26:08 2024] >> max bit:	5
+[Tue Dec 17 13:26:08 2024] >> accuracy:	0.662109375	+0.84[FALSE]
+[Tue Dec 17 13:26:08 2024] >> exe time:	1043.18s 
+
+[Tue Dec 17 13:26:08 2024] >> dataset/fa_i-5-fa_j-1-t_index-0.txt
+[Tue Dec 17 13:43:16 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6441497802734375, 'TP': 20116, 'TN': 22099, 'FP': 8556, 'FN': 14765}
+[Tue Dec 17 13:43:16 2024] >> max bit:	5
+[Tue Dec 17 13:43:16 2024] >> accuracy:	0.6441497802734375	+0.84[FALSE]
+[Tue Dec 17 13:43:16 2024] >> exe time:	1027.71s 
+
+[Tue Dec 17 13:43:16 2024] >> dataset/fa_i-5-fa_j-1-t_index-1.txt
+[Tue Dec 17 14:00:16 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.64794921875, 'TP': 20244, 'TN': 22220, 'FP': 8428, 'FN': 14644}
+[Tue Dec 17 14:00:16 2024] >> max bit:	5
+[Tue Dec 17 14:00:16 2024] >> accuracy:	0.64794921875	+0.84[FALSE]
+[Tue Dec 17 14:00:16 2024] >> exe time:	1020.74s 
+
+[Tue Dec 17 14:00:16 2024] >> dataset/fa_i-5-fa_j-1-t_index-2.txt
+[Tue Dec 17 14:17:11 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6452484130859375, 'TP': 22610, 'TN': 19677, 'FP': 12206, 'FN': 11043}
+[Tue Dec 17 14:17:11 2024] >> max bit:	5
+[Tue Dec 17 14:17:11 2024] >> accuracy:	0.6452484130859375	+0.84[FALSE]
+[Tue Dec 17 14:17:11 2024] >> exe time:	1014.72s 
+
+[Tue Dec 17 14:17:11 2024] >> dataset/fa_i-5-fa_j-1-t_index-3.txt
+[Tue Dec 17 14:34:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.64703369140625, 'TP': 20680, 'TN': 21724, 'FP': 10040, 'FN': 13092}
+[Tue Dec 17 14:34:05 2024] >> max bit:	5
+[Tue Dec 17 14:34:05 2024] >> accuracy:	0.64703369140625	+0.84[FALSE]
+[Tue Dec 17 14:34:05 2024] >> exe time:	1014.18s 
+
+[Tue Dec 17 14:34:05 2024] >> dataset/fa_i-5-fa_j-1-t_index-4.txt
+[Tue Dec 17 14:51:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.64703369140625, 'TP': 20680, 'TN': 21724, 'FP': 10040, 'FN': 13092}
+[Tue Dec 17 14:51:00 2024] >> max bit:	5
+[Tue Dec 17 14:51:00 2024] >> accuracy:	0.64703369140625	+0.84[FALSE]
+[Tue Dec 17 14:51:00 2024] >> exe time:	1014.46s 
+
+[Tue Dec 17 14:51:00 2024] >> dataset/fa_i-5-fa_j-1-t_index-5.txt
+[Tue Dec 17 15:07:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6452484130859375, 'TP': 22610, 'TN': 19677, 'FP': 12206, 'FN': 11043}
+[Tue Dec 17 15:07:53 2024] >> max bit:	5
+[Tue Dec 17 15:07:53 2024] >> accuracy:	0.6452484130859375	+0.84[FALSE]
+[Tue Dec 17 15:07:53 2024] >> exe time:	1012.86s 
+
+[Tue Dec 17 15:07:53 2024] >> dataset/fa_i-5-fa_j-2-t_index-0.txt
+[Tue Dec 17 15:24:51 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.64404296875, 'TP': 19476, 'TN': 22732, 'FP': 9196, 'FN': 14132}
+[Tue Dec 17 15:24:51 2024] >> max bit:	5
+[Tue Dec 17 15:24:51 2024] >> accuracy:	0.64404296875	+0.84[FALSE]
+[Tue Dec 17 15:24:51 2024] >> exe time:	1018.09s 
+
+[Tue Dec 17 15:24:51 2024] >> dataset/fa_i-5-fa_j-2-t_index-1.txt
+[Tue Dec 17 15:41:47 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6439666748046875, 'TP': 24904, 'TN': 17299, 'FP': 11960, 'FN': 11373}
+[Tue Dec 17 15:41:47 2024] >> max bit:	5
+[Tue Dec 17 15:41:47 2024] >> accuracy:	0.6439666748046875	+0.84[FALSE]
+[Tue Dec 17 15:41:47 2024] >> exe time:	1016.56s 
+
+[Tue Dec 17 15:41:47 2024] >> dataset/fa_i-5-fa_j-2-t_index-2.txt
+[Tue Dec 17 15:58:41 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.64434814453125, 'TP': 16368, 'TN': 25860, 'FP': 6160, 'FN': 17148}
+[Tue Dec 17 15:58:41 2024] >> max bit:	5
+[Tue Dec 17 15:58:41 2024] >> accuracy:	0.64434814453125	+0.84[FALSE]
+[Tue Dec 17 15:58:41 2024] >> exe time:	1013.68s 
+
+[Tue Dec 17 15:58:41 2024] >> dataset/fa_i-5-fa_j-2-t_index-3.txt
+[Tue Dec 17 16:15:32 2024] >> {'A': ['x', 'x', 'b', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6367645263671875, 'TP': 22028, 'TN': 19703, 'FP': 10740, 'FN': 13065}
+[Tue Dec 17 16:15:32 2024] >> max bit:	5
+[Tue Dec 17 16:15:32 2024] >> accuracy:	0.6367645263671875	+0.84[FALSE]
+[Tue Dec 17 16:15:32 2024] >> exe time:	1010.95s 
+
+[Tue Dec 17 16:15:32 2024] >> dataset/fa_i-5-fa_j-2-t_index-4.txt
+[Tue Dec 17 16:32:25 2024] >> {'A': ['x', 'x', 'b', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6367645263671875, 'TP': 22028, 'TN': 19703, 'FP': 10740, 'FN': 13065}
+[Tue Dec 17 16:32:25 2024] >> max bit:	5
+[Tue Dec 17 16:32:25 2024] >> accuracy:	0.6367645263671875	+0.84[FALSE]
+[Tue Dec 17 16:32:25 2024] >> exe time:	1013.22s 
+
+[Tue Dec 17 16:32:25 2024] >> dataset/fa_i-5-fa_j-2-t_index-5.txt
+[Tue Dec 17 16:49:21 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.64434814453125, 'TP': 16368, 'TN': 25860, 'FP': 6160, 'FN': 17148}
+[Tue Dec 17 16:49:21 2024] >> max bit:	5
+[Tue Dec 17 16:49:21 2024] >> accuracy:	0.64434814453125	+0.84[FALSE]
+[Tue Dec 17 16:49:21 2024] >> exe time:	1015.68s 
+
+[Tue Dec 17 16:49:21 2024] >> dataset/fa_i-5-fa_j-3-t_index-0.txt
+[Tue Dec 17 17:06:16 2024] >> {'A': ['x', 'x', 'x', 'b', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.66943359375, 'TP': 21172, 'TN': 22700, 'FP': 9548, 'FN': 12116}
+[Tue Dec 17 17:06:16 2024] >> max bit:	5
+[Tue Dec 17 17:06:16 2024] >> accuracy:	0.66943359375	+0.84[FALSE]
+[Tue Dec 17 17:06:16 2024] >> exe time:	1015.11s 
+
+[Tue Dec 17 17:06:16 2024] >> dataset/fa_i-5-fa_j-3-t_index-1.txt
+[Tue Dec 17 17:23:09 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6559295654296875, 'TP': 23280, 'TN': 19707, 'FP': 9488, 'FN': 13061}
+[Tue Dec 17 17:23:09 2024] >> max bit:	5
+[Tue Dec 17 17:23:09 2024] >> accuracy:	0.6559295654296875	+0.84[FALSE]
+[Tue Dec 17 17:23:09 2024] >> exe time:	1012.88s 
+
+[Tue Dec 17 17:23:09 2024] >> dataset/fa_i-5-fa_j-3-t_index-2.txt
+[Tue Dec 17 17:40:08 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'x'], 'accu': 0.657806396484375, 'TP': 22032, 'TN': 21078, 'FP': 10736, 'FN': 11690}
+[Tue Dec 17 17:40:08 2024] >> max bit:	5
+[Tue Dec 17 17:40:08 2024] >> accuracy:	0.657806396484375	+0.84[FALSE]
+[Tue Dec 17 17:40:08 2024] >> exe time:	1019.01s 
+
+[Tue Dec 17 17:40:08 2024] >> dataset/fa_i-5-fa_j-3-t_index-3.txt
+[Tue Dec 17 17:57:07 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.6415557861328125, 'TP': 26482, 'TN': 15563, 'FP': 14478, 'FN': 9013}
+[Tue Dec 17 17:57:07 2024] >> max bit:	5
+[Tue Dec 17 17:57:07 2024] >> accuracy:	0.6415557861328125	+0.84[FALSE]
+[Tue Dec 17 17:57:07 2024] >> exe time:	1019.04s 
+
+[Tue Dec 17 17:57:07 2024] >> dataset/fa_i-5-fa_j-3-t_index-4.txt
+[Tue Dec 17 18:14:05 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'b', 'x', 'x', 'x'], 'accu': 0.6415557861328125, 'TP': 26482, 'TN': 15563, 'FP': 14478, 'FN': 9013}
+[Tue Dec 17 18:14:05 2024] >> max bit:	5
+[Tue Dec 17 18:14:05 2024] >> accuracy:	0.6415557861328125	+0.84[FALSE]
+[Tue Dec 17 18:14:05 2024] >> exe time:	1018.09s 
+
+[Tue Dec 17 18:14:05 2024] >> dataset/fa_i-5-fa_j-3-t_index-5.txt
+[Tue Dec 17 18:31:03 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'x'], 'accu': 0.657806396484375, 'TP': 22032, 'TN': 21078, 'FP': 10736, 'FN': 11690}
+[Tue Dec 17 18:31:03 2024] >> max bit:	5
+[Tue Dec 17 18:31:03 2024] >> accuracy:	0.657806396484375	+0.84[FALSE]
+[Tue Dec 17 18:31:03 2024] >> exe time:	1017.99s 
+
+[Tue Dec 17 18:31:03 2024] >> dataset/fa_i-5-fa_j-4-t_index-0.txt
+[Tue Dec 17 18:47:58 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.72381591796875, 'TP': 22736, 'TN': 24700, 'FP': 7984, 'FN': 10116}
+[Tue Dec 17 18:47:58 2024] >> max bit:	5
+[Tue Dec 17 18:47:58 2024] >> accuracy:	0.72381591796875	+0.84[FALSE]
+[Tue Dec 17 18:47:58 2024] >> exe time:	1015.11s 
+
+[Tue Dec 17 18:47:58 2024] >> dataset/fa_i-5-fa_j-4-t_index-1.txt
+[Tue Dec 17 19:04:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'x', 'x', 'b', 'b', 'b', 'x', 'x'], 'accu': 0.6962432861328125, 'TP': 29037, 'TN': 16592, 'FP': 11923, 'FN': 7984}
+[Tue Dec 17 19:04:53 2024] >> max bit:	5
+[Tue Dec 17 19:04:53 2024] >> accuracy:	0.6962432861328125	+0.84[FALSE]
+[Tue Dec 17 19:04:53 2024] >> exe time:	1014.82s 
+
+[Tue Dec 17 19:04:53 2024] >> dataset/fa_i-5-fa_j-4-t_index-2.txt
+[Tue Dec 17 19:21:46 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'accu': 0.7001953125, 'TP': 23096, 'TN': 22792, 'FP': 9672, 'FN': 9976}
+[Tue Dec 17 19:21:46 2024] >> max bit:	5
+[Tue Dec 17 19:21:46 2024] >> accuracy:	0.7001953125	+0.84[FALSE]
+[Tue Dec 17 19:21:46 2024] >> exe time:	1012.99s 
+
+[Tue Dec 17 19:21:46 2024] >> dataset/fa_i-5-fa_j-4-t_index-3.txt
+[Tue Dec 17 19:38:38 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'accu': 0.6694183349609375, 'TP': 25816, 'TN': 18055, 'FP': 11048, 'FN': 10617}
+[Tue Dec 17 19:38:38 2024] >> max bit:	5
+[Tue Dec 17 19:38:38 2024] >> accuracy:	0.6694183349609375	+0.84[FALSE]
+[Tue Dec 17 19:38:38 2024] >> exe time:	1012.13s 
+
+[Tue Dec 17 19:38:38 2024] >> dataset/fa_i-5-fa_j-4-t_index-4.txt
+[Tue Dec 17 19:55:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'accu': 0.6694183349609375, 'TP': 25816, 'TN': 18055, 'FP': 11048, 'FN': 10617}
+[Tue Dec 17 19:55:30 2024] >> max bit:	5
+[Tue Dec 17 19:55:30 2024] >> accuracy:	0.6694183349609375	+0.84[FALSE]
+[Tue Dec 17 19:55:30 2024] >> exe time:	1012.04s 
+
+[Tue Dec 17 19:55:30 2024] >> dataset/fa_i-5-fa_j-4-t_index-5.txt
+[Tue Dec 17 20:12:31 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'x'], 'accu': 0.7001953125, 'TP': 23096, 'TN': 22792, 'FP': 9672, 'FN': 9976}
+[Tue Dec 17 20:12:31 2024] >> max bit:	5
+[Tue Dec 17 20:12:31 2024] >> accuracy:	0.7001953125	+0.84[FALSE]
+[Tue Dec 17 20:12:31 2024] >> exe time:	1021.27s 
+
+[Tue Dec 17 20:12:31 2024] >> dataset/fa_i-5-fa_j-5-t_index-0.txt
+[Tue Dec 17 20:29:31 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.811279296875, 'TP': 28224, 'TN': 24944, 'FP': 8640, 'FN': 3728}
+[Tue Dec 17 20:29:31 2024] >> max bit:	5
+[Tue Dec 17 20:29:31 2024] >> accuracy:	0.811279296875	+0.84[FALSE]
+[Tue Dec 17 20:29:31 2024] >> exe time:	1019.65s 
+
+[Tue Dec 17 20:29:31 2024] >> dataset/fa_i-5-fa_j-5-t_index-1.txt
+[Tue Dec 17 20:46:24 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.7803802490234375, 'TP': 31024, 'TN': 20119, 'FP': 7888, 'FN': 6505}
+[Tue Dec 17 20:46:24 2024] >> max bit:	5
+[Tue Dec 17 20:46:24 2024] >> accuracy:	0.7803802490234375	+0.84[FALSE]
+[Tue Dec 17 20:46:24 2024] >> exe time:	1013.52s 
+
+[Tue Dec 17 20:46:24 2024] >> dataset/fa_i-5-fa_j-5-t_index-2.txt
+[Tue Dec 17 21:03:24 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.772613525390625, 'TP': 24730, 'TN': 25904, 'FP': 8038, 'FN': 6864}
+[Tue Dec 17 21:03:24 2024] >> max bit:	5
+[Tue Dec 17 21:03:24 2024] >> accuracy:	0.772613525390625	+0.84[FALSE]
+[Tue Dec 17 21:03:24 2024] >> exe time:	1019.78s 
+
+[Tue Dec 17 21:03:24 2024] >> dataset/fa_i-5-fa_j-5-t_index-3.txt
+[Tue Dec 17 21:20:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.7388458251953125, 'TP': 30958, 'TN': 17463, 'FP': 10002, 'FN': 7113}
+[Tue Dec 17 21:20:17 2024] >> max bit:	5
+[Tue Dec 17 21:20:17 2024] >> accuracy:	0.7388458251953125	+0.84[FALSE]
+[Tue Dec 17 21:20:17 2024] >> exe time:	1012.61s 
+
+[Tue Dec 17 21:20:17 2024] >> dataset/fa_i-5-fa_j-5-t_index-4.txt
+[Tue Dec 17 21:37:08 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.7388458251953125, 'TP': 30958, 'TN': 17463, 'FP': 10002, 'FN': 7113}
+[Tue Dec 17 21:37:08 2024] >> max bit:	5
+[Tue Dec 17 21:37:08 2024] >> accuracy:	0.7388458251953125	+0.84[FALSE]
+[Tue Dec 17 21:37:08 2024] >> exe time:	1011.64s 
+
+[Tue Dec 17 21:37:08 2024] >> dataset/fa_i-5-fa_j-5-t_index-5.txt
+[Tue Dec 17 21:54:07 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.772613525390625, 'TP': 24730, 'TN': 25904, 'FP': 8038, 'FN': 6864}
+[Tue Dec 17 21:54:07 2024] >> max bit:	5
+[Tue Dec 17 21:54:07 2024] >> accuracy:	0.772613525390625	+0.84[FALSE]
+[Tue Dec 17 21:54:07 2024] >> exe time:	1018.27s 
+
+[Tue Dec 17 21:54:07 2024] >> dataset/fa_i-5-fa_j-6-t_index-0.txt
+[Tue Dec 17 21:54:08 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8812255859375, 'TP': 27580, 'TN': 30172, 'FP': 5188, 'FN': 2596}
+[Tue Dec 17 21:54:08 2024] >> max bit:	1
+[Tue Dec 17 21:54:08 2024] >> accuracy:	0.8812255859375	+0.84[TRUE]
+[Tue Dec 17 21:54:08 2024] >> exe time:	0.85s 
+
+[Tue Dec 17 21:54:08 2024] >> dataset/fa_i-5-fa_j-6-t_index-1.txt
+[Tue Dec 17 22:10:59 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.8404388427734375, 'TP': 31856, 'TN': 23223, 'FP': 2960, 'FN': 7497}
+[Tue Dec 17 22:10:59 2024] >> max bit:	5
+[Tue Dec 17 22:10:59 2024] >> accuracy:	0.8404388427734375	+0.84[TRUE]
+[Tue Dec 17 22:10:59 2024] >> exe time:	1011.67s 
+
+[Tue Dec 17 22:10:59 2024] >> dataset/fa_i-5-fa_j-6-t_index-2.txt
+[Tue Dec 17 22:14:41 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.868927001953125, 'TP': 23904, 'TN': 33042, 'FP': 4768, 'FN': 3822}
+[Tue Dec 17 22:14:41 2024] >> max bit:	4
+[Tue Dec 17 22:14:41 2024] >> accuracy:	0.868927001953125	+0.84[TRUE]
+[Tue Dec 17 22:14:41 2024] >> exe time:	221.51s 
+
+[Tue Dec 17 22:14:41 2024] >> dataset/fa_i-5-fa_j-6-t_index-3.txt
+[Tue Dec 17 22:31:30 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.8146514892578125, 'TP': 33360, 'TN': 20029, 'FP': 3504, 'FN': 8643}
+[Tue Dec 17 22:31:30 2024] >> max bit:	5
+[Tue Dec 17 22:31:30 2024] >> accuracy:	0.8146514892578125	+0.84[FALSE]
+[Tue Dec 17 22:31:30 2024] >> exe time:	1009.36s 
+
+[Tue Dec 17 22:31:30 2024] >> dataset/fa_i-5-fa_j-6-t_index-4.txt
+[Tue Dec 17 22:48:20 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.8146514892578125, 'TP': 33360, 'TN': 20029, 'FP': 3504, 'FN': 8643}
+[Tue Dec 17 22:48:20 2024] >> max bit:	5
+[Tue Dec 17 22:48:20 2024] >> accuracy:	0.8146514892578125	+0.84[FALSE]
+[Tue Dec 17 22:48:20 2024] >> exe time:	1009.80s 
+
+[Tue Dec 17 22:48:20 2024] >> dataset/fa_i-5-fa_j-6-t_index-5.txt
+[Tue Dec 17 22:52:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.868927001953125, 'TP': 23904, 'TN': 33042, 'FP': 4768, 'FN': 3822}
+[Tue Dec 17 22:52:00 2024] >> max bit:	4
+[Tue Dec 17 22:52:00 2024] >> accuracy:	0.868927001953125	+0.84[TRUE]
+[Tue Dec 17 22:52:00 2024] >> exe time:	220.51s 
+
+[Tue Dec 17 22:52:00 2024] >> dataset/fa_i-5-fa_j-7-t_index-0.txt
+[Tue Dec 17 22:52:37 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8794708251953125, 'TP': 43029, 'TN': 14608, 'FP': 6123, 'FN': 1776}
+[Tue Dec 17 22:52:37 2024] >> max bit:	3
+[Tue Dec 17 22:52:37 2024] >> accuracy:	0.8794708251953125	+0.84[TRUE]
+[Tue Dec 17 22:52:37 2024] >> exe time:	36.41s 
+
+[Tue Dec 17 22:52:37 2024] >> dataset/fa_i-5-fa_j-7-t_index-1.txt
+[Tue Dec 17 22:52:38 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.9726715087890625, 'TP': 63745, 'TN': 0, 'FP': 1791, 'FN': 0}
+[Tue Dec 17 22:52:38 2024] >> max bit:	1
+[Tue Dec 17 22:52:38 2024] >> accuracy:	0.9726715087890625	+0.84[TRUE]
+[Tue Dec 17 22:52:38 2024] >> exe time:	0.83s 
+
+[Tue Dec 17 22:52:38 2024] >> dataset/fa_i-5-fa_j-7-t_index-2.txt
+[Tue Dec 17 22:52:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.9627685546875, 'TP': 15100, 'TN': 47996, 'FP': 1284, 'FN': 1156}
+[Tue Dec 17 22:52:43 2024] >> max bit:	2
+[Tue Dec 17 22:52:43 2024] >> accuracy:	0.9627685546875	+0.84[TRUE]
+[Tue Dec 17 22:52:43 2024] >> exe time:	4.96s 
+
+[Tue Dec 17 22:52:43 2024] >> dataset/fa_i-5-fa_j-7-t_index-3.txt
+[Tue Dec 17 22:52:48 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 22:52:48 2024] >> max bit:	2
+[Tue Dec 17 22:52:48 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 22:52:48 2024] >> exe time:	4.97s 
+
+[Tue Dec 17 22:52:48 2024] >> dataset/fa_i-5-fa_j-7-t_index-4.txt
+[Tue Dec 17 22:52:53 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Tue Dec 17 22:52:53 2024] >> max bit:	2
+[Tue Dec 17 22:52:53 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Tue Dec 17 22:52:53 2024] >> exe time:	5.07s 
+
+[Tue Dec 17 22:52:53 2024] >> dataset/fa_i-5-fa_j-7-t_index-5.txt
+[Tue Dec 17 22:52:58 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.9627685546875, 'TP': 15100, 'TN': 47996, 'FP': 1284, 'FN': 1156}
+[Tue Dec 17 22:52:58 2024] >> max bit:	2
+[Tue Dec 17 22:52:58 2024] >> accuracy:	0.9627685546875	+0.84[TRUE]
+[Tue Dec 17 22:52:58 2024] >> exe time:	5.00s 
+
+[Wed Dec 18 11:32:04 2024] >> dataset/fa_i-6-fa_j-0-t_index-0.txt
+[Wed Dec 18 11:48:57 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6268768310546875, 'TP': 21580, 'TN': 19503, 'FP': 11188, 'FN': 13265}
+[Wed Dec 18 11:48:57 2024] >> max bit:	5
+[Wed Dec 18 11:48:57 2024] >> accuracy:	0.6268768310546875	+0.84[FALSE]
+[Wed Dec 18 11:48:57 2024] >> exe time:	1013.65s 
+
+[Wed Dec 18 11:48:57 2024] >> dataset/fa_i-6-fa_j-0-t_index-1.txt
+[Wed Dec 18 12:05:55 2024] >> {'A': ['b', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.63043212890625, 'TP': 18692, 'TN': 22624, 'FP': 7932, 'FN': 16288}
+[Wed Dec 18 12:05:55 2024] >> max bit:	5
+[Wed Dec 18 12:05:55 2024] >> accuracy:	0.63043212890625	+0.84[FALSE]
+[Wed Dec 18 12:05:55 2024] >> exe time:	1017.67s 
+
+[Wed Dec 18 12:05:55 2024] >> dataset/fa_i-6-fa_j-0-t_index-2.txt
+[Wed Dec 18 12:22:59 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.658447265625, 'TP': 17320, 'TN': 25832, 'FP': 7256, 'FN': 15128}
+[Wed Dec 18 12:22:59 2024] >> max bit:	5
+[Wed Dec 18 12:22:59 2024] >> accuracy:	0.658447265625	+0.84[FALSE]
+[Wed Dec 18 12:22:59 2024] >> exe time:	1024.20s 
+
+[Wed Dec 18 12:22:59 2024] >> dataset/fa_i-6-fa_j-0-t_index-3.txt
+[Wed Dec 18 12:40:02 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6596832275390625, 'TP': 21521, 'TN': 21712, 'FP': 11247, 'FN': 11056}
+[Wed Dec 18 12:40:02 2024] >> max bit:	5
+[Wed Dec 18 12:40:02 2024] >> accuracy:	0.6596832275390625	+0.84[FALSE]
+[Wed Dec 18 12:40:02 2024] >> exe time:	1022.92s 
+
+[Wed Dec 18 12:40:02 2024] >> dataset/fa_i-6-fa_j-0-t_index-4.txt
+[Wed Dec 18 12:57:11 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6596832275390625, 'TP': 21521, 'TN': 21712, 'FP': 11247, 'FN': 11056}
+[Wed Dec 18 12:57:11 2024] >> max bit:	5
+[Wed Dec 18 12:57:11 2024] >> accuracy:	0.6596832275390625	+0.84[FALSE]
+[Wed Dec 18 12:57:11 2024] >> exe time:	1028.89s 
+
+[Wed Dec 18 12:57:11 2024] >> dataset/fa_i-6-fa_j-0-t_index-5.txt
+[Wed Dec 18 13:14:14 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.658447265625, 'TP': 17320, 'TN': 25832, 'FP': 7256, 'FN': 15128}
+[Wed Dec 18 13:14:14 2024] >> max bit:	5
+[Wed Dec 18 13:14:14 2024] >> accuracy:	0.658447265625	+0.84[FALSE]
+[Wed Dec 18 13:14:14 2024] >> exe time:	1022.83s 
+
+[Wed Dec 18 13:14:14 2024] >> dataset/fa_i-6-fa_j-1-t_index-0.txt
+[Wed Dec 18 13:31:14 2024] >> {'A': ['x', 'b', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.628692626953125, 'TP': 19322, 'TN': 21880, 'FP': 9350, 'FN': 14984}
+[Wed Dec 18 13:31:14 2024] >> max bit:	5
+[Wed Dec 18 13:31:14 2024] >> accuracy:	0.628692626953125	+0.84[FALSE]
+[Wed Dec 18 13:31:14 2024] >> exe time:	1020.14s 
+
+[Wed Dec 18 13:31:14 2024] >> dataset/fa_i-6-fa_j-1-t_index-1.txt
+[Wed Dec 18 13:48:09 2024] >> {'A': ['x', 'b', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'b', 'x', 'x', 'x', 'x'], 'accu': 0.6293487548828125, 'TP': 23026, 'TN': 18219, 'FP': 11790, 'FN': 12501}
+[Wed Dec 18 13:48:09 2024] >> max bit:	5
+[Wed Dec 18 13:48:09 2024] >> accuracy:	0.6293487548828125	+0.84[FALSE]
+[Wed Dec 18 13:48:09 2024] >> exe time:	1015.05s 
+
+[Wed Dec 18 13:48:09 2024] >> dataset/fa_i-6-fa_j-1-t_index-2.txt
+[Wed Dec 18 14:05:06 2024] >> {'A': ['x', 'b', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.638458251953125, 'TP': 21610, 'TN': 20232, 'FP': 11158, 'FN': 12536}
+[Wed Dec 18 14:05:06 2024] >> max bit:	5
+[Wed Dec 18 14:05:06 2024] >> accuracy:	0.638458251953125	+0.84[FALSE]
+[Wed Dec 18 14:05:06 2024] >> exe time:	1017.51s 
+
+[Wed Dec 18 14:05:06 2024] >> dataset/fa_i-6-fa_j-1-t_index-3.txt
+[Wed Dec 18 14:22:10 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.6414031982421875, 'TP': 17177, 'TN': 24858, 'FP': 7399, 'FN': 16102}
+[Wed Dec 18 14:22:10 2024] >> max bit:	5
+[Wed Dec 18 14:22:10 2024] >> accuracy:	0.6414031982421875	+0.84[FALSE]
+[Wed Dec 18 14:22:10 2024] >> exe time:	1023.14s 
+
+[Wed Dec 18 14:22:10 2024] >> dataset/fa_i-6-fa_j-1-t_index-4.txt
+[Wed Dec 18 14:39:03 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.6414031982421875, 'TP': 17177, 'TN': 24858, 'FP': 7399, 'FN': 16102}
+[Wed Dec 18 14:39:03 2024] >> max bit:	5
+[Wed Dec 18 14:39:03 2024] >> accuracy:	0.6414031982421875	+0.84[FALSE]
+[Wed Dec 18 14:39:03 2024] >> exe time:	1013.59s 
+
+[Wed Dec 18 14:39:03 2024] >> dataset/fa_i-6-fa_j-1-t_index-5.txt
+[Wed Dec 18 14:55:58 2024] >> {'A': ['x', 'b', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.638458251953125, 'TP': 21610, 'TN': 20232, 'FP': 11158, 'FN': 12536}
+[Wed Dec 18 14:55:58 2024] >> max bit:	5
+[Wed Dec 18 14:55:58 2024] >> accuracy:	0.638458251953125	+0.84[FALSE]
+[Wed Dec 18 14:55:58 2024] >> exe time:	1015.30s 
+
+[Wed Dec 18 14:55:58 2024] >> dataset/fa_i-6-fa_j-2-t_index-0.txt
+[Wed Dec 18 15:12:52 2024] >> {'A': ['x', 'x', 'b', 'b', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.6435546875, 'TP': 20764, 'TN': 21412, 'FP': 9956, 'FN': 13404}
+[Wed Dec 18 15:12:52 2024] >> max bit:	5
+[Wed Dec 18 15:12:52 2024] >> accuracy:	0.6435546875	+0.84[FALSE]
+[Wed Dec 18 15:12:52 2024] >> exe time:	1013.30s 
+
+[Wed Dec 18 15:12:52 2024] >> dataset/fa_i-6-fa_j-2-t_index-1.txt
+[Wed Dec 18 15:29:38 2024] >> {'A': ['x', 'x', 'b', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'x'], 'accu': 0.6360321044921875, 'TP': 22262, 'TN': 19421, 'FP': 10506, 'FN': 13347}
+[Wed Dec 18 15:29:38 2024] >> max bit:	5
+[Wed Dec 18 15:29:38 2024] >> accuracy:	0.6360321044921875	+0.84[FALSE]
+[Wed Dec 18 15:29:38 2024] >> exe time:	1006.44s 
+
+[Wed Dec 18 15:29:38 2024] >> dataset/fa_i-6-fa_j-2-t_index-2.txt
+[Wed Dec 18 15:46:23 2024] >> {'A': ['x', 'x', 'b', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6325225830078125, 'TP': 20748, 'TN': 20705, 'FP': 9972, 'FN': 14111}
+[Wed Dec 18 15:46:23 2024] >> max bit:	5
+[Wed Dec 18 15:46:23 2024] >> accuracy:	0.6325225830078125	+0.84[FALSE]
+[Wed Dec 18 15:46:23 2024] >> exe time:	1004.59s 
+
+[Wed Dec 18 15:46:23 2024] >> dataset/fa_i-6-fa_j-2-t_index-3.txt
+[Wed Dec 18 16:03:08 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.63885498046875, 'TP': 19377, 'TN': 22491, 'FP': 9295, 'FN': 14373}
+[Wed Dec 18 16:03:08 2024] >> max bit:	5
+[Wed Dec 18 16:03:08 2024] >> accuracy:	0.63885498046875	+0.84[FALSE]
+[Wed Dec 18 16:03:08 2024] >> exe time:	1005.40s 
+
+[Wed Dec 18 16:03:08 2024] >> dataset/fa_i-6-fa_j-2-t_index-4.txt
+[Wed Dec 18 16:19:55 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'b', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.63885498046875, 'TP': 19377, 'TN': 22491, 'FP': 9295, 'FN': 14373}
+[Wed Dec 18 16:19:55 2024] >> max bit:	5
+[Wed Dec 18 16:19:55 2024] >> accuracy:	0.63885498046875	+0.84[FALSE]
+[Wed Dec 18 16:19:55 2024] >> exe time:	1006.89s 
+
+[Wed Dec 18 16:19:55 2024] >> dataset/fa_i-6-fa_j-2-t_index-5.txt
+[Wed Dec 18 16:36:43 2024] >> {'A': ['x', 'x', 'b', 'x', 'x', 'b', 'b', 'b'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.6325225830078125, 'TP': 20748, 'TN': 20705, 'FP': 9972, 'FN': 14111}
+[Wed Dec 18 16:36:43 2024] >> max bit:	5
+[Wed Dec 18 16:36:43 2024] >> accuracy:	0.6325225830078125	+0.84[FALSE]
+[Wed Dec 18 16:36:43 2024] >> exe time:	1008.03s 
+
+[Wed Dec 18 16:36:43 2024] >> dataset/fa_i-6-fa_j-3-t_index-0.txt
+[Wed Dec 18 16:53:34 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.676361083984375, 'TP': 21688, 'TN': 22638, 'FP': 9032, 'FN': 12178}
+[Wed Dec 18 16:53:34 2024] >> max bit:	5
+[Wed Dec 18 16:53:34 2024] >> accuracy:	0.676361083984375	+0.84[FALSE]
+[Wed Dec 18 16:53:34 2024] >> exe time:	1011.05s 
+
+[Wed Dec 18 16:53:34 2024] >> dataset/fa_i-6-fa_j-3-t_index-1.txt
+[Wed Dec 18 17:10:21 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'x'], 'accu': 0.6574859619140625, 'TP': 23086, 'TN': 20003, 'FP': 9682, 'FN': 12765}
+[Wed Dec 18 17:10:21 2024] >> max bit:	5
+[Wed Dec 18 17:10:21 2024] >> accuracy:	0.6574859619140625	+0.84[FALSE]
+[Wed Dec 18 17:10:21 2024] >> exe time:	1006.44s 
+
+[Wed Dec 18 17:10:21 2024] >> dataset/fa_i-6-fa_j-3-t_index-2.txt
+[Wed Dec 18 17:27:06 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.6405181884765625, 'TP': 25438, 'TN': 16539, 'FP': 13474, 'FN': 10085}
+[Wed Dec 18 17:27:06 2024] >> max bit:	5
+[Wed Dec 18 17:27:06 2024] >> accuracy:	0.6405181884765625	+0.84[FALSE]
+[Wed Dec 18 17:27:06 2024] >> exe time:	1005.27s 
+
+[Wed Dec 18 17:27:06 2024] >> dataset/fa_i-6-fa_j-3-t_index-3.txt
+[Wed Dec 18 17:43:53 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'accu': 0.656219482421875, 'TP': 22990, 'TN': 20016, 'FP': 11826, 'FN': 10704}
+[Wed Dec 18 17:43:53 2024] >> max bit:	5
+[Wed Dec 18 17:43:53 2024] >> accuracy:	0.656219482421875	+0.84[FALSE]
+[Wed Dec 18 17:43:53 2024] >> exe time:	1006.86s 
+
+[Wed Dec 18 17:43:53 2024] >> dataset/fa_i-6-fa_j-3-t_index-4.txt
+[Wed Dec 18 18:00:39 2024] >> {'A': ['x', 'x', 'x', 'b', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'x', 'x', 'b'], 'accu': 0.656219482421875, 'TP': 22990, 'TN': 20016, 'FP': 11826, 'FN': 10704}
+[Wed Dec 18 18:00:39 2024] >> max bit:	5
+[Wed Dec 18 18:00:39 2024] >> accuracy:	0.656219482421875	+0.84[FALSE]
+[Wed Dec 18 18:00:39 2024] >> exe time:	1006.54s 
+
+[Wed Dec 18 18:00:39 2024] >> dataset/fa_i-6-fa_j-3-t_index-5.txt
+[Wed Dec 18 18:17:27 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'x', 'x'], 'accu': 0.6405181884765625, 'TP': 25438, 'TN': 16539, 'FP': 13474, 'FN': 10085}
+[Wed Dec 18 18:17:27 2024] >> max bit:	5
+[Wed Dec 18 18:17:27 2024] >> accuracy:	0.6405181884765625	+0.84[FALSE]
+[Wed Dec 18 18:17:27 2024] >> exe time:	1008.16s 
+
+[Wed Dec 18 18:17:27 2024] >> dataset/fa_i-6-fa_j-4-t_index-0.txt
+[Wed Dec 18 18:34:14 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.731597900390625, 'TP': 24350, 'TN': 23596, 'FP': 8418, 'FN': 9172}
+[Wed Dec 18 18:34:14 2024] >> max bit:	5
+[Wed Dec 18 18:34:14 2024] >> accuracy:	0.731597900390625	+0.84[FALSE]
+[Wed Dec 18 18:34:14 2024] >> exe time:	1006.59s 
+
+[Wed Dec 18 18:34:14 2024] >> dataset/fa_i-6-fa_j-4-t_index-1.txt
+[Wed Dec 18 18:51:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'B': ['x', 'x', 'x', 'x', 'b', 'b', 'b', 'x'], 'accu': 0.6982269287109375, 'TP': 28777, 'TN': 16982, 'FP': 12183, 'FN': 7594}
+[Wed Dec 18 18:51:00 2024] >> max bit:	5
+[Wed Dec 18 18:51:00 2024] >> accuracy:	0.6982269287109375	+0.84[FALSE]
+[Wed Dec 18 18:51:00 2024] >> exe time:	1005.48s 
+
+[Wed Dec 18 18:51:00 2024] >> dataset/fa_i-6-fa_j-4-t_index-2.txt
+[Wed Dec 18 19:07:44 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'accu': 0.679473876953125, 'TP': 26175, 'TN': 18355, 'FP': 10689, 'FN': 10317}
+[Wed Dec 18 19:07:44 2024] >> max bit:	5
+[Wed Dec 18 19:07:44 2024] >> accuracy:	0.679473876953125	+0.84[FALSE]
+[Wed Dec 18 19:07:44 2024] >> exe time:	1004.68s 
+
+[Wed Dec 18 19:07:44 2024] >> dataset/fa_i-6-fa_j-4-t_index-3.txt
+[Wed Dec 18 19:24:38 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'accu': 0.7043914794921875, 'TP': 23204, 'TN': 22959, 'FP': 9564, 'FN': 9809}
+[Wed Dec 18 19:24:38 2024] >> max bit:	5
+[Wed Dec 18 19:24:38 2024] >> accuracy:	0.7043914794921875	+0.84[FALSE]
+[Wed Dec 18 19:24:38 2024] >> exe time:	1013.83s 
+
+[Wed Dec 18 19:24:38 2024] >> dataset/fa_i-6-fa_j-4-t_index-4.txt
+[Wed Dec 18 19:41:28 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'accu': 0.7043914794921875, 'TP': 23204, 'TN': 22959, 'FP': 9564, 'FN': 9809}
+[Wed Dec 18 19:41:28 2024] >> max bit:	5
+[Wed Dec 18 19:41:28 2024] >> accuracy:	0.7043914794921875	+0.84[FALSE]
+[Wed Dec 18 19:41:28 2024] >> exe time:	1010.36s 
+
+[Wed Dec 18 19:41:28 2024] >> dataset/fa_i-6-fa_j-4-t_index-5.txt
+[Wed Dec 18 19:58:16 2024] >> {'A': ['x', 'x', 'x', 'x', 'b', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'x', 'b'], 'accu': 0.679473876953125, 'TP': 26175, 'TN': 18355, 'FP': 10689, 'FN': 10317}
+[Wed Dec 18 19:58:16 2024] >> max bit:	5
+[Wed Dec 18 19:58:16 2024] >> accuracy:	0.679473876953125	+0.84[FALSE]
+[Wed Dec 18 19:58:16 2024] >> exe time:	1007.30s 
+
+[Wed Dec 18 19:58:16 2024] >> dataset/fa_i-6-fa_j-5-t_index-0.txt
+[Wed Dec 18 20:15:08 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.82489013671875, 'TP': 29090, 'TN': 24970, 'FP': 7774, 'FN': 3702}
+[Wed Dec 18 20:15:08 2024] >> max bit:	5
+[Wed Dec 18 20:15:08 2024] >> accuracy:	0.82489013671875	+0.84[FALSE]
+[Wed Dec 18 20:15:08 2024] >> exe time:	1012.24s 
+
+[Wed Dec 18 20:15:08 2024] >> dataset/fa_i-6-fa_j-5-t_index-1.txt
+[Wed Dec 18 20:31:56 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'x'], 'accu': 0.7857818603515625, 'TP': 30790, 'TN': 20707, 'FP': 8122, 'FN': 5917}
+[Wed Dec 18 20:31:56 2024] >> max bit:	5
+[Wed Dec 18 20:31:56 2024] >> accuracy:	0.7857818603515625	+0.84[FALSE]
+[Wed Dec 18 20:31:56 2024] >> exe time:	1008.56s 
+
+[Wed Dec 18 20:31:56 2024] >> dataset/fa_i-6-fa_j-5-t_index-2.txt
+[Wed Dec 18 20:48:45 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'accu': 0.75531005859375, 'TP': 31527, 'TN': 17973, 'FP': 9433, 'FN': 6603}
+[Wed Dec 18 20:48:45 2024] >> max bit:	5
+[Wed Dec 18 20:48:45 2024] >> accuracy:	0.75531005859375	+0.84[FALSE]
+[Wed Dec 18 20:48:45 2024] >> exe time:	1008.86s 
+
+[Wed Dec 18 20:48:45 2024] >> dataset/fa_i-6-fa_j-5-t_index-3.txt
+[Wed Dec 18 21:05:37 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'accu': 0.7818756103515625, 'TP': 25004, 'TN': 26237, 'FP': 7764, 'FN': 6531}
+[Wed Dec 18 21:05:37 2024] >> max bit:	5
+[Wed Dec 18 21:05:37 2024] >> accuracy:	0.7818756103515625	+0.84[FALSE]
+[Wed Dec 18 21:05:37 2024] >> exe time:	1011.22s 
+
+[Wed Dec 18 21:05:37 2024] >> dataset/fa_i-6-fa_j-5-t_index-4.txt
+[Wed Dec 18 21:22:29 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'accu': 0.7818756103515625, 'TP': 25004, 'TN': 26237, 'FP': 7764, 'FN': 6531}
+[Wed Dec 18 21:22:29 2024] >> max bit:	5
+[Wed Dec 18 21:22:29 2024] >> accuracy:	0.7818756103515625	+0.84[FALSE]
+[Wed Dec 18 21:22:29 2024] >> exe time:	1012.12s 
+
+[Wed Dec 18 21:22:29 2024] >> dataset/fa_i-6-fa_j-5-t_index-5.txt
+[Wed Dec 18 21:39:17 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'b', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'accu': 0.75531005859375, 'TP': 31527, 'TN': 17973, 'FP': 9433, 'FN': 6603}
+[Wed Dec 18 21:39:17 2024] >> max bit:	5
+[Wed Dec 18 21:39:17 2024] >> accuracy:	0.75531005859375	+0.84[FALSE]
+[Wed Dec 18 21:39:17 2024] >> exe time:	1008.53s 
+
+[Wed Dec 18 21:39:17 2024] >> dataset/fa_i-6-fa_j-6-t_index-0.txt
+[Wed Dec 18 21:39:18 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.89874267578125, 'TP': 28676, 'TN': 30224, 'FP': 4092, 'FN': 2544}
+[Wed Dec 18 21:39:18 2024] >> max bit:	1
+[Wed Dec 18 21:39:18 2024] >> accuracy:	0.89874267578125	+0.84[TRUE]
+[Wed Dec 18 21:39:18 2024] >> exe time:	0.83s 
+
+[Wed Dec 18 21:39:18 2024] >> dataset/fa_i-6-fa_j-6-t_index-1.txt
+[Wed Dec 18 21:56:03 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'b', 'x'], 'accu': 0.8564300537109375, 'TP': 30834, 'TN': 25293, 'FP': 1934, 'FN': 7475}
+[Wed Dec 18 21:56:03 2024] >> max bit:	5
+[Wed Dec 18 21:56:03 2024] >> accuracy:	0.8564300537109375	+0.84[TRUE]
+[Wed Dec 18 21:56:03 2024] >> exe time:	1004.72s 
+
+[Wed Dec 18 21:56:03 2024] >> dataset/fa_i-6-fa_j-6-t_index-2.txt
+[Wed Dec 18 22:12:46 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.8324737548828125, 'TP': 33962, 'TN': 20595, 'FP': 2902, 'FN': 8077}
+[Wed Dec 18 22:12:46 2024] >> max bit:	5
+[Wed Dec 18 22:12:46 2024] >> accuracy:	0.8324737548828125	+0.84[FALSE]
+[Wed Dec 18 22:12:46 2024] >> exe time:	1003.39s 
+
+[Wed Dec 18 22:12:46 2024] >> dataset/fa_i-6-fa_j-6-t_index-3.txt
+[Wed Dec 18 22:13:23 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.848297119140625, 'TP': 21162, 'TN': 34432, 'FP': 3414, 'FN': 6528}
+[Wed Dec 18 22:13:23 2024] >> max bit:	3
+[Wed Dec 18 22:13:23 2024] >> accuracy:	0.848297119140625	+0.84[TRUE]
+[Wed Dec 18 22:13:23 2024] >> exe time:	37.17s 
+
+[Wed Dec 18 22:13:23 2024] >> dataset/fa_i-6-fa_j-6-t_index-4.txt
+[Wed Dec 18 22:14:00 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.848297119140625, 'TP': 21162, 'TN': 34432, 'FP': 3414, 'FN': 6528}
+[Wed Dec 18 22:14:00 2024] >> max bit:	3
+[Wed Dec 18 22:14:00 2024] >> accuracy:	0.848297119140625	+0.84[TRUE]
+[Wed Dec 18 22:14:00 2024] >> exe time:	37.13s 
+
+[Wed Dec 18 22:14:00 2024] >> dataset/fa_i-6-fa_j-6-t_index-5.txt
+[Wed Dec 18 22:30:43 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.8324737548828125, 'TP': 33962, 'TN': 20595, 'FP': 2902, 'FN': 8077}
+[Wed Dec 18 22:30:43 2024] >> max bit:	5
+[Wed Dec 18 22:30:43 2024] >> accuracy:	0.8324737548828125	+0.84[FALSE]
+[Wed Dec 18 22:30:43 2024] >> exe time:	1002.15s 
+
+[Wed Dec 18 22:30:43 2024] >> dataset/fa_i-6-fa_j-7-t_index-0.txt
+[Wed Dec 18 22:31:19 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8850250244140625, 'TP': 42571, 'TN': 15430, 'FP': 6581, 'FN': 954}
+[Wed Dec 18 22:31:19 2024] >> max bit:	3
+[Wed Dec 18 22:31:19 2024] >> accuracy:	0.8850250244140625	+0.84[TRUE]
+[Wed Dec 18 22:31:19 2024] >> exe time:	36.29s 
+
+[Wed Dec 18 22:31:19 2024] >> dataset/fa_i-6-fa_j-7-t_index-1.txt
+[Wed Dec 18 22:31:24 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Wed Dec 18 22:31:24 2024] >> max bit:	2
+[Wed Dec 18 22:31:24 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Wed Dec 18 22:31:24 2024] >> exe time:	4.90s 
+
+[Wed Dec 18 22:31:24 2024] >> dataset/fa_i-6-fa_j-7-t_index-2.txt
+[Wed Dec 18 22:31:29 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Wed Dec 18 22:31:29 2024] >> max bit:	2
+[Wed Dec 18 22:31:29 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Wed Dec 18 22:31:29 2024] >> exe time:	4.97s 
+
+[Wed Dec 18 22:31:29 2024] >> dataset/fa_i-6-fa_j-7-t_index-3.txt
+[Wed Dec 18 22:31:34 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.9764862060546875, 'TP': 15486, 'TN': 48509, 'FP': 898, 'FN': 643}
+[Wed Dec 18 22:31:34 2024] >> max bit:	2
+[Wed Dec 18 22:31:34 2024] >> accuracy:	0.9764862060546875	+0.84[TRUE]
+[Wed Dec 18 22:31:34 2024] >> exe time:	5.02s 
+
+[Wed Dec 18 22:31:34 2024] >> dataset/fa_i-6-fa_j-7-t_index-4.txt
+[Wed Dec 18 22:31:39 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'B': ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'b'], 'accu': 0.9764862060546875, 'TP': 15486, 'TN': 48509, 'FP': 898, 'FN': 643}
+[Wed Dec 18 22:31:39 2024] >> max bit:	2
+[Wed Dec 18 22:31:39 2024] >> accuracy:	0.9764862060546875	+0.84[TRUE]
+[Wed Dec 18 22:31:39 2024] >> exe time:	5.08s 
+
+[Wed Dec 18 22:31:39 2024] >> dataset/fa_i-6-fa_j-7-t_index-5.txt
+[Wed Dec 18 22:31:44 2024] >> {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
+[Wed Dec 18 22:31:44 2024] >> max bit:	2
+[Wed Dec 18 22:31:44 2024] >> accuracy:	0.8701171875	+0.84[TRUE]
+[Wed Dec 18 22:31:44 2024] >> exe time:	4.86s 
+

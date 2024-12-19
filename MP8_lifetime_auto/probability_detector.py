@@ -49,6 +49,8 @@ import itertools
 import time
 import math
 from tool.log import Log
+from sympy import symbols, Or, And, Not, simplify_logic
+from pyeda.inter import expr
 
 
 def parse_pattern_line(line):
@@ -175,17 +177,13 @@ def interface(table, data):
     raise RuntimeError("table FAILED!")
 
 
-def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
-    # global input_data
-
-    # traing
+def truth_table(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
     if log_obj:
-        log_obj.println("TRAINING...")
+        log.println("Truth Table >> Training")
     A_patterns = generate_patterns(A_bit_pattern)
     B_patterns = generate_patterns(B_bit_pattern)
 
     ML_table = []
-
     for a in A_patterns:
         for b in B_patterns:
             true_prob, false_prob = calc_prob(input_data, a, b)
@@ -195,6 +193,71 @@ def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
             ML_table.append(
                 {'A': a, 'B': b, 'out': true_prob > false_prob}
             )
+
+    return ML_table
+
+def generate_equation(truth_table):
+    terms = []
+    variables = [
+        'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7',
+        'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7',
+        ]
+    for row in truth_table:
+        inputs, output = (row['A']+row['B']), row['out']
+        if output == 1:
+            term = []
+            for var, val in zip(variables, inputs):
+                if val != 'x':  # Ignore 'x' bits
+                    term.append(f"{var}" if val == 1 else f"~{var}")
+            terms.append(" & ".join(term))
+
+    equation = " | ".join(f"({term})" for term in terms)
+    return equation if equation else "0"
+
+
+
+def generate_optimized_equation_with_or(truth_table):
+    variables = symbols('A0 A1 A2 A3 A4 A5 A6 A7 B0 B1 B2 B3 B4 B5 B6 B7')
+    minterms = []
+    for row in truth_table:
+        inputs, output = (row['A'] + row['B']), row['out']
+        if output == 1:
+            term = []
+            for var, val in zip(variables, inputs):
+                if val != 'x':
+                    term.append(var if val == 1 else Not(var))
+            minterms.append(And(*term))
+
+    equation = Or(*minterms)
+    optimized_equation = simplify_logic(equation, form='dnf')
+
+    return str(optimized_equation) if optimized_equation else "0"
+
+def generate_optimized_equation_with_and(truth_table):
+    variables = symbols('A0 A1 A2 A3 A4 A5 A6 A7 B0 B1 B2 B3 B4 B5 B6 B7')
+    maxterms = []
+    for row in truth_table:
+        inputs, output = (row['A'] + row['B']), row['out']
+        if output == 0:  # Collect maxterms where output is 0
+            term = []
+            for var, val in zip(variables, inputs):
+                if val != 'x':
+                    # If the value is 1, use Not(var); if 0, use var itself
+                    term.append(var if val == 0 else Not(var))
+            maxterms.append(Or(*term))
+
+    # Combine all maxterms using AND
+    equation = And(*maxterms)
+    optimized_equation = simplify_logic(equation, form='cnf')
+
+    return str(optimized_equation) if optimized_equation else "1"
+
+
+def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
+    ML_table = truth_table(input_data, A_bit_pattern, B_bit_pattern, log_obj)
+
+    if log_obj:
+        log_obj.println(f"Calc Accuracy >> testing")
 
     # testing
     true_positive = 0
@@ -215,11 +278,10 @@ def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
         elif (y_pred != d_out) and (y_pred == False):
             false_negative += 1
 
-    # accu = true_positive / ((true_positive + false_positive) or 1)
     accu = (true_positive + true_negative) / ((true_positive + true_negative + false_positive + false_negative) or 1)
-    # if log_obj:
-    #     log_obj.println(f"{A_bit_pattern}\t{B_bit_pattern} \t\t Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative},")
-        # log.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative}, ")
+    if log_obj:
+        log_obj.println(f"{A_bit_pattern}\t{B_bit_pattern}")
+        log_obj.println(f"Accuracy: {accu: 0.3f}, TP: {true_positive}, TN: {true_negative}, FP(not suppose compliment): {false_positive}, FN(lost compliments):{false_negative},")
     return accu, true_positive, true_negative, false_positive, false_negative
 
 
@@ -423,38 +485,30 @@ if False:
 
     exit()
 
+# input_data = load_pattern_file(f"pattern.txt")
+# log = Log(f"{__file__}.{0}.{0}.{1}.txt")
 
-# 6 2 0
-# input_data = load_pattern_file(f"dataset/fa_i-{6}-fa_j-{2}-t_index-{0}.txt")
-# r = multi_process_best_pattern_finder(
-#     input_data,
-#     [0, 1, 2],
-#     [0, 1],
-#     log_obj=log,
-#     max_process_count=120
-# )
+# TT = truth_table(
+#         input_data,
+#         ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'],
+#         ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
+#         log_obj=log
+#     )
+
+# r = generate_optimized_equation_with_or(TT)
+# log.println(f"{r}")
+# r = generate_optimized_equation_with_and(TT)
 # log.println(f"{r}")
 
 # exit()
 
-input_data = load_pattern_file(f"dataset/fa_i-{0}-fa_j-{0}-t_index-{1}.txt")
-# {'A': ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'], 'B': ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'], 'accu': 0.8701171875, 'TP': 16128, 'TN': 40896, 'FP': 256, 'FN': 8256}
 
-log = Log(f"{__file__}.{0}.{0}.{1}.txt")
-calc_accuracy(
-    input_data,
-    ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'x'],
-    ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
-    log_obj=log
-)
-exit()
-
-
-if True:
+if False:
+    # finding the best patterns for each faulty transistor
     bit_len = 8
     MULTI_COMPUTER = True
     MAX_COMPUTER = 3
-    CURRENT_COMPUTER = 1
+    CURRENT_COMPUTER = 2
 
     log = Log(f"{__file__}.{CURRENT_COMPUTER}.log")
 
@@ -503,3 +557,42 @@ if True:
                 log.println(f"max bit:\t{max_bit}")
                 log.println(f"accuracy:\t{r['accu']}\t+{MIN_ACCURACY}[{'TRUE' if max_accuracy>MIN_ACCURACY else 'FALSE'}]")
                 log.println(f"exe time:\t{_exe_time:.2f}s \n")
+
+
+if True:
+    # generate logical equation for each faulty transistor using the best pattern log file
+    def parse_file(filename):
+        results = []
+        with open(filename, 'r') as file:
+            content = file.read()
+            entries = re.findall(r'dataset/fa_i-(\d+)-fa_j-(\d+)-t_index-(\d+)\.txt\n.*?\{(.*?)\}', content, re.DOTALL)
+            for fa_i, fa_j, t_index, data_str in entries:
+                data = eval(f'{{{data_str}}}')  # Safely evaluate the dictionary
+                A_pattern = data['A']
+                B_pattern = data['B']
+                results.append((int(fa_i), int(fa_j), int(t_index), A_pattern, B_pattern))
+        return results  
+
+    log = Log(f"{__file__}.faulty_transistor_equation.log")    
+    filename = f'{__file__}.{"faulty_transistor_best_pattern"}.log'
+    parsed_data = parse_file(filename)
+    for entry in parsed_data:
+        fa_i, fa_j, t_index = entry[0], entry[1], entry[2]
+        A_bit_pattern, B_bit_pattern = entry[3], entry[4]
+
+        log.println(f"transistor: {(fa_i, fa_j, t_index)}")
+        log.println(f"{A_bit_pattern} {B_bit_pattern}")
+
+        TT = truth_table(
+                input_data=load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"),
+                A_bit_pattern=A_bit_pattern,
+                B_bit_pattern=B_bit_pattern,
+                log_obj=False
+            )
+        
+        eq = generate_optimized_equation_with_or(TT)
+        log.println(f"equation: {eq}")
+
+        eq = generate_optimized_equation_with_and(TT)
+        log.println(f"equation: {eq} \n")
+

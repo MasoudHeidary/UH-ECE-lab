@@ -36,14 +36,5 @@ the extracted table looks like this:
 ['x', 'x', 'x', 'x', 'x', 'x', 1, 1] [1, 1, 'x', 'x', 'x', 'x', 'x', 'x']: (0, 4096) 0.0 [False]
 ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b']  ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'] Accuracy:  0.993, TP: 24256, TN: 40832, FP(not suppose compliment): 320, FN(lost compliments):128,
 
-this system is a 4bit system (A5, A6, B0, B1):
-
-out [True|False]
-=
-(A5 | B0) 
-&
-(B0 | B1) 
-&
-(!A5 | !A6) 
-&
-(!A5 | !B0 | !B1)
+(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)
+(A6 | B0) & (B0 | B1) & (~A6 | ~A7) & (~A6 | ~B0 | ~B1)
