@@ -60,7 +60,7 @@ class MultiplierStressTest:
                         neg_mp = MPn_v3(self.signed_b(neg_A, self.bit_len), self.signed_b(neg_B, self.bit_len), self.bit_len)
                         neg_mp.output
 
-                        if self.optimizer_accept(neg_mp, neg_A, neg_B):
+                        if self.optimizer_accept(neg_mp, A_b, B_b):
                             optimize_flag = True
                             mp = neg_mp
                     
@@ -140,7 +140,7 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size=2**13, log_obj=False):
+    def run(self, batch_size=2**12, log_obj=False):
         start_time = time.time()  # Record end time
 
         alpha_lst = self.process_inputs_in_batches(batch_size, log_obj=log_obj)

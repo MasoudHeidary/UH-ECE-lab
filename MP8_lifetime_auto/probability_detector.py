@@ -503,12 +503,12 @@ if False:
 # exit()
 
 
-if False:
+if True:
     # finding the best patterns for each faulty transistor
     bit_len = 8
     MULTI_COMPUTER = True
     MAX_COMPUTER = 3
-    CURRENT_COMPUTER = 2
+    CURRENT_COMPUTER = 0
 
     log = Log(f"{__file__}.{CURRENT_COMPUTER}.log")
 
@@ -531,8 +531,8 @@ if False:
                 log.println(data_set_log_name)
                 input_data = load_pattern_file(data_set_log_name)
 
-                # keep the accuracy +85%
-                MIN_ACCURACY = 0.84
+                # keep the accuracy +89%
+                MIN_ACCURACY = 0.89
                 MAX_BIT = 5
                 max_bit = 0
                 max_accuracy = 0
@@ -549,17 +549,23 @@ if False:
                     )
                     max_accuracy = r['accu']
 
+                    log.println(f"{r}")
+                    log.println(f"max bit:\t{max_bit}")
+                    log.println(f"accuracy:\t{r['accu']}\t+{MIN_ACCURACY}[{'TRUE' if max_accuracy>MIN_ACCURACY else 'FALSE'}]")
+                
 
                 _end_time = time.time()
                 _exe_time = _end_time - _start_time
 
-                log.println(f"{r}")
-                log.println(f"max bit:\t{max_bit}")
-                log.println(f"accuracy:\t{r['accu']}\t+{MIN_ACCURACY}[{'TRUE' if max_accuracy>MIN_ACCURACY else 'FALSE'}]")
-                log.println(f"exe time:\t{_exe_time:.2f}s \n")
+                log.println("")
+                # log.println(f"{r}")
+                # log.println(f"max bit:\t{max_bit}")
+                # log.println(f"accuracy:\t{r['accu']}\t+{MIN_ACCURACY}[{'TRUE' if max_accuracy>MIN_ACCURACY else 'FALSE'}]")
+                # log.println(f"exe time:\t{_exe_time:.2f}s \n")
+                
 
 
-if True:
+if False:
     # generate logical equation for each faulty transistor using the best pattern log file
     def parse_file(filename):
         results = []
