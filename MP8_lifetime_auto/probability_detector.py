@@ -51,7 +51,7 @@ import math
 from tool.log import Log
 from sympy import symbols, Or, And, Not, simplify_logic
 from pyeda.inter import expr
-
+from collections import Counter
 
 def parse_pattern_line(line):
     pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
@@ -576,6 +576,8 @@ if True:
     log = Log(f"{__file__}.faulty_transistor_equation.log")    
     filename = f'{__file__}.{"faulty_transistor_best_pattern"}.log'
     parsed_data = parse_file(filename)
+
+    equation_list = []
     for entry in parsed_data:
         fa_i, fa_j, t_index = entry[0], entry[1], entry[2]
         A_bit_pattern, B_bit_pattern = entry[3], entry[4]
@@ -591,8 +593,17 @@ if True:
             )
         
         eq = generate_optimized_equation_with_or(TT)
-        log.println(f"equation: {eq}")
+        log.println(f"equation: {eq}\n")
+        equation_list.append(eq)
 
-        eq = generate_optimized_equation_with_and(TT)
-        log.println(f"equation: {eq} \n")
+        # eq = generate_optimized_equation_with_and(TT)
+        # log.println(f"equation: {eq} \n")
+        
+    #histogram of equations
+    equation_count = Counter(equation_list)
+    unique_count = len(equation_count)
 
+    log.println(f"Number of unique equation: {unique_count}")
+    log.println("Occurrences of each equation:")
+    for eq, count in equation_count.items():
+        log.println(f"{eq}: {count}")
