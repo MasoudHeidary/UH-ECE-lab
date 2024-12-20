@@ -7,7 +7,7 @@ from get_life_expect import get_life_expect
 
 from tool.log import Log
 log = Log(f"{__file__}.log", terminal=True)
-log.println("START...")
+# log.println("START...")
 
 bit_len = 8
 # faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
@@ -195,14 +195,62 @@ if True:
     def eq_optimizer_trigger(mp: MPn_v3, A, B):
         return True
 
+
+    def convert_logical_expression(expression):
+        """Convert bitwise operators to Python logical operators."""
+        return (expression
+                .replace("&", "and")
+                .replace("|", "or")
+                .replace("~", "not "))
+
+    optimizer_equation = [""]
     def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
-        return False
+        "normal aging equation"
+        "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+
+        # global aging_equation
+        aging_equation = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+        logical_expression = convert_logical_expression(aging_equation)
+
+        variables = {
+            'B0': bin_B[0],
+            'B1': bin_B[1],
+            'A6': bin_A[6],
+            'A7': bin_A[7]
+        }
+
+        result = eval(logical_expression, {}, variables)
+        return result
+
+
+
+    # healthy Multiplier
+    log.println(f"Healthy Multiplier\n")
+
+    alpha_lst = MultiplierStressTest(bit_len, None, None, optimizer_enable=False).run(log_obj=False)
+    fail_transistor = get_life_expect(alpha_lst, bit_len)
+    unoptimized_lifetime = fail_transistor["t_week"]
+    log.println(f"unoptimized lifetime: {unoptimized_lifetime} weeks")
+
+    data_set_log_name = f"pattern.txt"
+    input_data=load_pattern_file(data_set_log_name)
+    alpha_lst = MultiplierStressTest(bit_len, dataset_optimizer_trigger, dataset_optimizer_accept).run(log_obj=False)
+    fail_transistor = get_life_expect(alpha_lst, bit_len)
+    dataset_lifetime = fail_transistor["t_week"]
+    log.println(f"dataset lifetime: {dataset_lifetime} weeks (maximum optimization)")
+
+    optimizer_equation[0] = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+    alpha_lst = MultiplierStressTest(bit_len, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+    fail_transistor = get_life_expect(alpha_lst, bit_len)
+    eq_lifetime = fail_transistor["t_week"]
+    log.println(f"equation lifetime: {eq_lifetime} weeks {eq_lifetime/dataset_lifetime*100}%")
 
 
 
 
-    # maximum lifetime reading from dataset
-
+    # faulty transistors
+    log.println(f"\n\n")
+    log.println(f"looping in faulty transistors")
     for fa_i in range(bit_len-1):
         for fa_j in range(bit_len):
             for t_index in range(6):
@@ -212,12 +260,12 @@ if True:
                 
                 alpha_lst = MultiplierStressTest(bit_len, None, None, optimizer_enable=False).run(log_obj=False)
                 fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
-                lifetime = fail_transistor["t_week"]
-                log.println(f"lifetime: {lifetime} weeks")
+                unoptimized_lifetime = fail_transistor["t_week"]
+                log.println(f"lifetime: {unoptimized_lifetime} weeks")
 
                 data_set_log_name = f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"
                 input_data=load_pattern_file(data_set_log_name)
                 alpha_lst = MultiplierStressTest(bit_len, dataset_optimizer_trigger, dataset_optimizer_accept).run(log_obj=False)
                 fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
-                lifetime = fail_transistor["t_week"]
-                log.println(f"dataset lifetime: {lifetime} weeks (maximum optimization) \n")
+                dataset_lifetime = fail_transistor["t_week"]
+                log.println(f"dataset lifetime: {dataset_lifetime} weeks (maximum optimization) \n")
