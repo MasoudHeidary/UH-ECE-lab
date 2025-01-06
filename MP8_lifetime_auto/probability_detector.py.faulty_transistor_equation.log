@@ -1,5 +1,3 @@
-[Thu Dec 26 17:49:57 2024] >> 
-
 [Thu Dec 26 17:49:57 2024] >> transistor: (0, 0, 0) >>> ['b', 'x', 'x', 'x', 'x', 'x', 'x', 'x'] ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']
 [Thu Dec 26 17:53:57 2024] >> unoptimized lifetime: [38 weeks] ({'fa_i': 0, 'fa_j': 0, 't_index': 0, 't_week': 38})
 [Thu Dec 26 17:58:51 2024] >> dataset lifetime: [68 weeks] ({'fa_i': 0, 'fa_j': 0, 't_index': 0, 't_week': 68})
