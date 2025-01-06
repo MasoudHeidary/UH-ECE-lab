@@ -52,6 +52,10 @@ from tool.log import Log
 from sympy import symbols, Or, And, Not, simplify_logic
 from pyeda.inter import expr
 from collections import Counter
+import ast
+from msimulator.get_alpha_class import MultiplierStressTest
+from msimulator.Multiplier import MPn_v3
+from get_life_expect import get_life_expect
 
 def parse_pattern_line(line):
     pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
@@ -503,7 +507,7 @@ if False:
 # exit()
 
 
-if True:
+if False:
     # finding the best patterns for each faulty transistor
     bit_len = 8
     MULTI_COMPUTER = True
@@ -565,51 +569,219 @@ if True:
                 
 
 
-if False:
-    # generate logical equation for each faulty transistor using the best pattern log file
-    def parse_file(filename):
-        results = []
-        with open(filename, 'r') as file:
-            content = file.read()
-            entries = re.findall(r'dataset/fa_i-(\d+)-fa_j-(\d+)-t_index-(\d+)\.txt\n.*?\{(.*?)\}', content, re.DOTALL)
-            for fa_i, fa_j, t_index, data_str in entries:
-                data = eval(f'{{{data_str}}}')  # Safely evaluate the dictionary
-                A_pattern = data['A']
-                B_pattern = data['B']
-                results.append((int(fa_i), int(fa_j), int(t_index), A_pattern, B_pattern))
-        return results  
 
-    log = Log(f"{__file__}.faulty_transistor_equation.log")    
+
+
+
+
+
+
+
+if True:
+    # generate logical equation for each faulty transistor using the best pattern log file
+    
+    input_data = []
+    def dataset_optimizer_trigger(mp: MPn_v3, _a, _b):
+        return True
+    
+    def dataset_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
+        for data in input_data:
+            A = data[0]
+            B = data[1]
+
+            if (A == bin_A) and (B == bin_B):
+                return data[2]
+        raise LookupError    
+    
+    def eq_optimizer_trigger(mp: MPn_v3, A, B):
+        return True
+
+
+    def convert_logical_expression(expression):
+        """Convert bitwise operators to Python logical operators."""
+        return (expression
+                .replace("&", "and")
+                .replace("|", "or")
+                .replace("~", "not "))
+
+    optimizer_equation = [""]
+    def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
+        "normal aging equation"
+        "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+
+        global optimizer_equation
+        # eq = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+        
+        eq = optimizer_equation[0]
+        logical_expression = convert_logical_expression(eq)
+
+        variables = {
+            'B0': bin_B[0],
+            'B1': bin_B[1],
+            'B2': bin_B[2],
+            'B3': bin_B[3],
+            'B4': bin_B[4],
+            'B5': bin_B[5],
+            'B6': bin_B[6],
+            'B7': bin_B[7],
+            'A0': bin_A[0],
+            'A1': bin_A[1],
+            'A2': bin_A[2],
+            'A3': bin_A[3],
+            'A4': bin_A[4],
+            'A5': bin_A[5],
+            'A6': bin_A[6],
+            'A7': bin_A[7],
+        }
+
+        result = eval(logical_expression, {}, variables)
+        return result
+    
+    def normal_eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
+        # eq = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+        eq = "(A6 | B0) & (B0 | B1) & (~A6 | ~A7) & (~A6 | ~B0 | ~B1)"
+        logical_expression = convert_logical_expression(eq)
+        variables = {
+            'B0': bin_B[0],
+            'B1': bin_B[1],
+            'B2': bin_B[2],
+            'B3': bin_B[3],
+            'B4': bin_B[4],
+            'B5': bin_B[5],
+            'B6': bin_B[6],
+            'B7': bin_B[7],
+            'A0': bin_A[0],
+            'A1': bin_A[1],
+            'A2': bin_A[2],
+            'A3': bin_A[3],
+            'A4': bin_A[4],
+            'A5': bin_A[5],
+            'A6': bin_A[6],
+            'A7': bin_A[7],
+        }
+        
+        result = eval(logical_expression, {}, variables)
+        return result
+        
+    
+    def parse_file(file_path):
+        results = []
+        
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+
+        # Regex to extract dataset info
+        dataset_pattern = r"fa_i-(\d+)-fa_j-(\d+)-t_index-(\d+)"
+        # Regex to extract max bit
+        max_bit_pattern = r"max bit:\s+(\d+)"
+        # Extract patterns A and B
+        pattern_dict_pattern = r"{.*}"
+
+        fa_i, fa_j, t_index = None, None, None
+
+        for i, line in enumerate(lines):
+            if "dataset" in line:
+                match = re.search(dataset_pattern, line)
+                if match:
+                    fa_i, fa_j, t_index = match.groups()
+
+            elif "{" in line:
+                pattern_match = re.search(pattern_dict_pattern, line)
+                if pattern_match:
+                    pattern_dict = ast.literal_eval(pattern_match.group())  # Safely parse dictionary
+                    A = pattern_dict.get('A')
+                    B = pattern_dict.get('B')
+
+            elif "max bit" in line:
+                max_bit_match = re.search(max_bit_pattern, line)
+                if max_bit_match:
+                    max_bit = int(max_bit_match.group(1))
+                    # Store the extracted data
+                    results.append({
+                        'fa_i': int(fa_i),
+                        'fa_j': int(fa_j),
+                        't_index': int(t_index),
+                        'max_bit': int(max_bit),
+                        'A': A,
+                        'B': B,
+                    })
+
+        return results
+
+    log = Log(f"{__file__}.faulty_transistor_equation.{1}.log")    
     filename = f'{__file__}.{"faulty_transistor_best_pattern"}.log'
     parsed_data = parse_file(filename)
 
     equation_list = []
+    current_transistor = (-1, 0, 0)
+    
     for entry in parsed_data:
-        fa_i, fa_j, t_index = entry[0], entry[1], entry[2]
-        A_bit_pattern, B_bit_pattern = entry[3], entry[4]
-
-        log.println(f"transistor: {(fa_i, fa_j, t_index)}")
-        log.println(f"{A_bit_pattern} {B_bit_pattern}")
+        fa_i, fa_j, t_index = entry['fa_i'], entry['fa_j'], entry['t_index']
+        max_bit = entry['max_bit']
+        A_bit_pattern, B_bit_pattern = entry['A'], entry['B']
+        faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+        
+        # if not(fa_i==3 and fa_j==4 and t_index==3):
+        #     continue
+        
+        if (fa_i <= 3):
+            # skip
+            continue
+        
+        if (fa_i, fa_j, t_index) != current_transistor:
+            log.println("\n")
+        log.println(f"transistor: {(fa_i, fa_j, t_index)} >>> {A_bit_pattern} {B_bit_pattern}")
+        input_data = load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt")
+                
+        if current_transistor != (fa_i, fa_j, t_index):
+        # if False:
+            # run normal aging and normal optimized aging to compare
+            
+            # normal aging lifetime
+            alpha_lst = MultiplierStressTest(8, None, None, optimizer_enable=False).run(log_obj=False)
+            fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
+            unoptimized_lifetime = fail_transistor["t_week"]
+            log.println(f"unoptimized lifetime: [{unoptimized_lifetime} weeks] ({fail_transistor})")
+            
+            # dataset lifetime
+            alpha_lst = MultiplierStressTest(8, dataset_optimizer_trigger, dataset_optimizer_accept).run(log_obj=False)
+            fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
+            dataset_lifetime = fail_transistor["t_week"]
+            log.println(f"dataset lifetime: [{dataset_lifetime} weeks] ({fail_transistor})")
+            
+            # normal equation lifetime
+            alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, normal_eq_optimizer_accept).run(log_obj=False)
+            fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
+            normal_eq_lifetime = fail_transistor["t_week"]
+            log.println(f"normal EQ lifetime: [{normal_eq_lifetime} weeks] ({fail_transistor})")
 
         TT = truth_table(
-                input_data=load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt"),
+                input_data=input_data,
                 A_bit_pattern=A_bit_pattern,
                 B_bit_pattern=B_bit_pattern,
                 log_obj=False
             )
         
         eq = generate_optimized_equation_with_or(TT)
-        log.println(f"equation: {eq}\n")
         equation_list.append(eq)
+        
+        
+        optimizer_equation[0] = eq
+        alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+        fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor=faulty_transistor)
+        eq_lifetime = fail_transistor["t_week"]
+        # eq_lifetime = -1
+        
+        log.println(f"{max_bit} >>> equation: {eq} [{eq_lifetime} weeks] ({fail_transistor})")
+        
+        current_transistor = (fa_i, fa_j, t_index)
 
-        # eq = generate_optimized_equation_with_and(TT)
-        # log.println(f"equation: {eq} \n")
         
     #histogram of equations
-    equation_count = Counter(equation_list)
-    unique_count = len(equation_count)
+    # equation_count = Counter(equation_list)
+    # unique_count = len(equation_count)
 
-    log.println(f"Number of unique equation: {unique_count}")
-    log.println("Occurrences of each equation:")
-    for eq, count in equation_count.items():
-        log.println(f"{eq}: {count}")
+    # log.println(f"Number of unique equation: {unique_count}")
+    # log.println("Occurrences of each equation:")
+    # for eq, count in equation_count.items():
+    #     log.println(f"{eq}: {count}")
