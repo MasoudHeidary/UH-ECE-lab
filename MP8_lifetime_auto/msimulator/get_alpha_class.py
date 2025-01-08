@@ -140,7 +140,7 @@ class MultiplierStressTest:
 
         return total_stress_counter
 
-    def run(self, batch_size=2**12, log_obj=False):
+    def run(self, batch_size=2**11, log_obj=False):
         start_time = time.time()  # Record end time
 
         alpha_lst = self.process_inputs_in_batches(batch_size, log_obj=log_obj)
