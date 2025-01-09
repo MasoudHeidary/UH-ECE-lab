@@ -13,9 +13,10 @@ import re
 from sympy import symbols, Or, And, Not, simplify_logic
 from msimulator.get_alpha_class import MultiplierStressTest
 from get_life_expect import get_life_expect
+from random import randint
 
 
-log = Log(f"{__file__}.log")
+log = Log(f"{__file__}.eq.log")
 
 transistor_list = [
     #(transistor_location, normal_eq_lifetime, dataset_lifetime)
@@ -346,6 +347,42 @@ def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 
 # ===
 
+# === cache
+class CACHE():
+    def __init__(self, MAX_LENGTH=10000):
+        self.max_length = MAX_LENGTH
+        self.key_list = []
+        self.value_list = []
+        
+    
+    def hit_cache(self, key):
+        return (key in self.key_list)
+    
+    def get_cache(self, key):
+        if not self.hit_cache(key):
+            raise LookupError("no cache hit")
+        
+        return self.value_list[self.key_list.index(key)]
+    
+    def add_cache(self, key, value=None):
+        # overflow protection, remove a random value from cache
+        if len(self.key_list) >= self.max_length:
+            rnd_index = randint(0, self.max_length-1)
+            self.key_list.pop(rnd_index)
+            self.value_list.pop(rnd_index)
+
+            log.println(f"CACHE WARNING: overflow max [{self.max_length}]")
+
+        self.key_list.append(key)
+        self.value_list.append(value)
+
+    def reset_cache(self):
+        self.key_list = []
+        self.value_list = []
+
+
+# === cache END
+
 def generate_all_bit_pattern(bit_count):
     equations = []
 
@@ -361,7 +398,14 @@ def generate_all_bit_pattern(bit_count):
 
     return equations
 
-if True:
+
+
+"""
+NOTE:
+progressive method, we will get the set of equations and pace transistors one by one 
+and drop the equations that are not compatible
+"""
+if False:
     # generate all equations possible, and calculate how much lifeitme each get
     BIT_COUNT = 4
     bit_pattern_list = generate_all_bit_pattern(BIT_COUNT)
@@ -369,7 +413,7 @@ if True:
 
     ### CONFIG
     initial_transistor = transistor_list[0]
-    group_transistor = transistor_list[1:5]
+    group_transistor = transistor_list[1:]
 
 
     # generate the initial equation set using bit_pattern_list
@@ -405,7 +449,8 @@ if True:
             fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
             eq_lifetime = fail_transistor["t_week"]
 
-            if eq_lifetime > normal_eq_lifetime:
+            # the new equation should be 20% better than normal equation at least
+            if (eq_lifetime >= normal_eq_lifetime * 1.2) or (eq_lifetime >= dataset_lifetime):
                 description = "New EQ Saved"
                 equation_list.append(equation)
             else:
@@ -413,7 +458,8 @@ if True:
                 false_equation_list.append(equation)
 
 
-        log.println(f"{bit_pattern} \t>>> {equation} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
+        # log.println(f"{bit_pattern} \t>>> {equation} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
+        log.println(f"{"..."} \t>>> {equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
     log.println(f"bit pattern process DONE")
 
 
@@ -423,16 +469,15 @@ if True:
         normal_eq_lifetime = t[1]
         dataset_lifetime = t[2]
         
-        loop_equation_list = equation_list.copy()
+        loop_equation_list = equation_list[:]
         loop_equation_list = list(set(loop_equation_list))
         equation_list = []
 
         log.println(f"GROUPING PROCESS")
         log.println(f"transistor: {(fa_i, fa_j, t_index)}, loop equation count: {len(loop_equation_list)}")
-        log.println('\n'.join(map(str, loop_equation_list)))
+        log.println('equations:\n' + '\n'.join(loop_equation_list))
 
-        input_data = load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt")
-
+        # input_data = load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt")
 
         for equation in loop_equation_list:
             optimizer_equation[0] = equation
@@ -441,13 +486,128 @@ if True:
             fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
             eq_lifetime = fail_transistor["t_week"]
 
-            if eq_lifetime > normal_eq_lifetime:
+            description = str()
+            # the new equation should be 20% better than normal equation at least
+            if (eq_lifetime > normal_eq_lifetime * 1.2) or (eq_lifetime >= dataset_lifetime):
                 equation_list.append(equation)
+                description = "EQ OK"
+            else:
+                description = "EQ DROPEED"
 
 
-            log.println(f"{equation} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t{'True' if eq_lifetime>normal_eq_lifetime else 'False'}")
-        log.println("this transistor DONE \n")
+            log.println(f"{equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t{description}")
+        log.println(f"transistor {(fa_i, fa_j, t_index)} DONE")
+        log.println(f"\n")
 
+
+# GROUPING MOST COMPATIBLE ONES
+"""
+NOTE:
+instead of dropping the incompatible equations, we will drop the incompatible transistors
+"""
+if True:
+    equation_cache = CACHE()
+    alpha_lst_cache = CACHE()
+    
+    for initial_transistor in transistor_list:
+        
+        EQ_DIFF_NORMAL_EQ = 1.2     # +20%
+        # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
+        equation_list = []
+        
+        
+
+        # generate all equations possible, and calculate how much lifeitme each get
+        BIT_COUNT = 4
+        bit_pattern_list = generate_all_bit_pattern(BIT_COUNT)
+
+        log.println(f"initial transistor: {initial_transistor[0]}")
+        log.println(f"total bit pattern: {len(bit_pattern_list)}, bit count: {BIT_COUNT}")
+
+
+        # generate the initial equation set using bit_pattern_list
+        fa_i, fa_j, t_index = initial_transistor[0]
+        faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+        normal_eq_lifetime = initial_transistor[1]
+        dataset_lifetime = initial_transistor[2]
+        
+        input_data = load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt")
+        log.println(f"transistor: {(fa_i, fa_j, t_index)}")
+
+        for bit_pattern in bit_pattern_list:
+            TT = truth_table(input_data, bit_pattern[0], bit_pattern[1], log_obj=False)
+            equation = generate_optimized_equation_with_or(TT)
+
+
+            description = str()
+            eq_lifetime = int()
+            if (equation == "0"):
+                description = "NO EQ"
+            
+            elif equation_cache.hit_cache(equation):
+                description = "EQ in Cache"
+
+            else:
+                equation_cache.add_cache(equation)
+
+                optimizer_equation[0] = equation
+                alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+                alpha_lst_cache.add_cache(equation, alpha_lst)
+
+                fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
+                eq_lifetime = fail_transistor["t_week"]
+
+                # the new equation should be 20% better than normal equation at least
+                if (eq_lifetime >= normal_eq_lifetime * 1.2) or (eq_lifetime >= dataset_lifetime):
+                    description = "New EQ Saved"
+                    equation_list.append(equation)
+                else:
+                    description = "New EQ Regarded"
+
+
+            # log.println(f"{bit_pattern} \t>>> {equation} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
+            log.println(f"{"..."} \t>>> {equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
+        log.println(f"bit pattern process DONE")
+
+
+
+
+        log.println(f"GROUPING PROCESS >>> keeping the equations and dropping the transistors")
+        for eq in equation_list:
+            log.println(f"equation:\t{eq}")
+            
+            if alpha_lst_cache.hit_cache(eq):
+                alpha_lst = alpha_lst_cache.get_cache(eq)
+            else:
+                optimizer_equation[0] = eq
+                alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+                log.println(f"CACHE ERROR: alpha list MISS")
+
+            added_t_list = []
+            for t in transistor_list:
+                fa_i, fa_j, t_index = t[0]
+                faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+                normal_eq_lifetime = t[1]
+                dataset_lifetime = t[2]
+
+                fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
+                eq_lifetime = fail_transistor["t_week"]
+
+                description = str()
+                if(eq_lifetime > normal_eq_lifetime * EQ_DIFF_NORMAL_EQ) or (eq_lifetime >= dataset_lifetime):
+                    description = "TRANSISTOR ADDED"
+                    added_t_list.append(t)
+                else:
+                    description = "TRANSISTOR SKIPPED"
+                
+                # log.println(f"{(fa_i, fa_j, t_index)} \t>>> {eq_lifetime} > {normal_eq_lifetime} \t>>> {description}")
+
+            log.println()
+            log.println(f"{eq} >>> works for {len(added_t_list):3}/{len(transistor_list):3}")
+            log_str = "transistor list: "
+            for t in added_t_list:
+                log_str += f"\n [{transistor_list.index(t)}] {t[0]}"
+            log.println(log_str)
 
 
 
