@@ -14,165 +14,107 @@ from sympy import symbols, Or, And, Not, simplify_logic
 from msimulator.get_alpha_class import MultiplierStressTest
 from get_life_expect import get_life_expect
 from random import randint
+import pickle
 
 
-log = Log(f"{__file__}.eq.log")
+log = Log(f"{__file__}.log")
+eq_log = Log(f"{__file__}.equations.log")
 
 transistor_list = [
     #(transistor_location, normal_eq_lifetime, dataset_lifetime)
-    ((2, 7, 1), 63,     137 ),
-    ((0, 6, 1), 51,     112 ),
-    ((0, 7, 2), 68,     112 ),
-    ((0, 7, 5), 68,     112 ),
-    ((1, 7, 2), 51,     112 ),
-    ((1, 7, 5), 51,     112 ),
-    ((2, 7, 2), 51,     112 ),
-    ((2, 7, 5), 51,     112 ),
-    ((3, 7, 2), 51,     112 ),
-    ((3, 7, 5), 51,     112 ),
-    ((4, 7, 2), 51,     112 ),
-    ((4, 7, 5), 51,     112 ),
-    ((5, 7, 2), 51,     112 ),
-    ((5, 7, 5), 51,     112 ),
-    ((6, 7, 3), 51,     111 ),
-    ((6, 7, 4), 51,     111 ),
-    ((1, 6, 2), 112,    190 ),
-    ((1, 6, 5), 112,    190 ),
-    ((1, 5, 1), 62,     169 ),
-    ((2, 6, 2), 108,    189 ),
-    ((2, 6, 5), 108,    189 ),
-    ((1, 3, 0), 68,     162 ),
-    ((2, 6, 0), 83,     146 ),
-    ((1, 4, 0), 112,    160 ),
-    ((0, 3, 0), 38,     89  ),
-    ((0, 4, 0), 38,     89  ),
-    ((3, 6, 2), 108,    189 ),
-    ((3, 6, 5), 108,    189 ),
-    ((1, 2, 0), 68,     158 ),
-    ((0, 1, 0), 38,     88  ),
-    ((4, 6, 2), 107,    189 ),
-    ((4, 6, 5), 107,    189 ),
-    ((5, 6, 2), 107,    189 ),
-    ((5, 6, 5), 107,    189 ),
-    ((6, 6, 3), 106,    189 ),
-    ((6, 6, 4), 106,    189 ),
-    ((0, 2, 0), 38,     85  ),
-    ((2, 5, 0), 86,     162 ),
-    ((3, 5, 0), 100,    175 ),
-    ((0, 6, 3), 68,     143 ),
-    ((0, 6, 4), 68,     143 ),
-    ((3, 6, 0), 111,    161 ),
-    ((2, 5, 2), 112,    187 ),
-    ((2, 5, 5), 112,    187 ),
-    ((0, 5, 2), 98,     141 ),
-    ((0, 5, 5), 98,     141 ),
-    ((2, 3, 0), 119,    181 ),
-    ((1, 6, 0), 62,     96  ),
-    ((0, 4, 2), 68,     138 ),
-    ((0, 4, 5), 68,     138 ),
-    ((3, 5, 2), 109,    188 ),
-    ((3, 5, 5), 109,    188 ),
-    ((1, 1, 0), 68,     137 ),
-    ((5, 5, 2), 113,    189 ),
-    ((5, 5, 5), 113,    189 ),
-    ((6, 5, 3), 113,    189 ),
-    ((6, 5, 4), 113,    189 ),
-    ((0, 3, 2), 68,     135 ),
-    ((0, 3, 5), 68,     135 ),
-    ((4, 5, 2), 113,    188 ),
-    ((4, 5, 5), 113,    188 ),
-    ((1, 4, 2), 111,    174 ),
-    ((1, 4, 5), 111,    174 ),
-    ((2, 4, 1), 82,     172 ),
-    ((4, 5, 0), 120,    179 ),
-    ((1, 5, 3), 88,     169 ),
-    ((1, 5, 4), 88,     169 ),
-    ((3, 4, 0), 100,    171 ),
-    ((5, 5, 0), 134,    184 ),
-    ((2, 2, 0), 88,     163 ),
-    ((1, 0, 0), 68,     125 ),
-    ((4, 4, 0), 108,    176 ),
-    ((2, 1, 0), 88,     161 ),
-    ((1, 3, 2), 88,     160 ),
-    ((1, 3, 5), 88,     160 ),
-    ((2, 0, 0), 88,     160 ),
-    ((3, 2, 0), 118,    178 ),
-    ((3, 4, 2), 116,    178 ),
-    ((3, 4, 5), 116,    178 ),
-    ((0, 2, 2), 68,     123 ),
-    ((0, 2, 5), 68,     123 ),
-    ((4, 1, 0), 117,    176 ),
-    ((5, 0, 0), 116,    176 ),
-    ((1, 2, 2), 88,     158 ),
-    ((1, 2, 5), 88,     158 ),
-    ((0, 0, 0), 38,     68  ),
-    ((0, 0, 0), 38,     68  ),
-    ((3, 2, 2), 113,    172 ),
-    ((3, 2, 5), 113,    172 ),
-    ((5, 3, 0), 111,    172 ),
-    ((2, 4, 3), 100,    171 ),
-    ((2, 4, 4), 100,    171 ),
-    ((3, 3, 1), 95,     168 ),
-    ((4, 3, 0), 107,    168 ),
-    ((4, 3, 2), 115,    167 ),
-    ((4, 3, 5), 115,    167 ),
-    ((6, 2, 0), 112,    166 ),
-    ((3, 3, 3), 105,    165 ),
-    ((3, 3, 4), 105,    165 ),
-    ((4, 2, 1), 103,    164 ),
-    ((5, 2, 0), 110,    164 ),
-    ((5, 2, 2), 114,    163 ),
-    ((5, 2, 5), 114,    163 ),
-    ((6, 1, 0), 112,    163 ),
-    ((6, 2, 3), 113,    163 ),
-    ((6, 2, 4), 113,    163 ),
-    ((3, 1, 0), 99,     162 ),
-    ((5, 1, 1), 107,    162 ),
-    ((4, 2, 3), 110,    161 ),
-    ((4, 2, 4), 110,    161 ),
-    ((6, 0, 1), 109,    161 ),
-    ((3, 0, 0), 99,     160 ),
-    ((4, 0, 0), 106,    160 ),
-    ((2, 2, 2), 99,     159 ),
-    ((2, 2, 5), 99,     159 ),
-    ((5, 1, 0), 118,    158 ),
-    ((6, 0, 0), 116,    158 ),
-    ((6, 1, 3), 113,    158 ),
-    ((6, 1, 4), 113,    158 ),
-    ((4, 0, 1), 120,    156 ),
-    ((4, 2, 0), 123,    156 ),
-    ((5, 1, 3), 110,    156 ),
-    ((5, 1, 4), 110,    156 ),
-    ((3, 3, 0), 133,    154 ),
-    ((4, 2, 2), 116,    153 ),
-    ((4, 2, 5), 116,    153 ),
-    ((3, 3, 2), 120,    152 ),
-    ((3, 3, 5), 120,    152 ),
-    ((6, 2, 2), 112,    152 ),
-    ((6, 2, 5), 112,    152 ),
-    ((3, 4, 1), 126,    151 ),
-    ((2, 5, 1), 147,    150 ),
-    ((1, 1, 2), 88,     134 ),
-    ((1, 1, 5), 88,     134 ),
-    ((2, 4, 2), 127,    148 ),
-    ((2, 4, 5), 127,    148 ),
-    ((4, 1, 3), 112,    147 ),
-    ((4, 1, 4), 112,    147 ),
-    ((0, 1, 2), 68,     101 ),
-    ((0, 1, 5), 68,     101 ),
-    ((5, 0, 1), 109,    144 ),
-    ((2, 2, 3), 127,    143 ),
-    ((2, 2, 4), 127,    143 ),
-    ((1, 2, 3), 145,    134 ),
-    ((1, 2, 4), 145,    134 ),
-    ((2, 5, 3), 113,    134 ),
-    ((2, 5, 4), 113,    134 ),
-    ((3, 0, 1), 127,    134 ),
-    ((1, 4, 3), 114,    114 ),
-    ((1, 4, 4), 114,    114 ),
-    ((1, 4, 1), 113,    113 ),
-    ((2, 3, 1), 107,    107 ),
-    ((4, 6, 1), 94,     104 ),
+    ((2, 7, 1),     63,     137 ),
+    ((0, 6, 1),     51,     112 ),
+    ((0, 7, 2),     68,     112 ),
+    ((0, 7, 5),     68,     112 ),
+    ((1, 7, 2),     51,     112 ),
+    ((1, 7, 5),     51,     112 ),
+    ((2, 7, 2),     51,     112 ),
+    ((2, 7, 5),     51,     112 ),
+    ((3, 7, 2),     51,     112 ),
+    ((3, 7, 5),     51,     112 ),
+    ((4, 7, 2),     51,     112 ),
+    ((4, 7, 5),     51,     112 ),
+    ((5, 7, 2),     51,     112 ),
+    ((5, 7, 5),     51,     112 ),
+    ((6, 7, 3),     51,     111 ),
+    ((6, 7, 4),     51,     111 ),
+    ((1, 6, 2),     112,    190 ),
+    ((1, 6, 5),     112,    190 ),
+    ((1, 5, 1),     62,     169 ),
+    ((2, 6, 2),     108,    189 ),
+    ((2, 6, 5),     108,    189 ),
+    ((1, 3, 0),     68,     162 ),
+    ((2, 6, 0),     83,     146 ),
+    ((1, 4, 0),     112,    160 ),
+    ((0, 3, 0),      38,    89  ),
+    ((0, 4, 0),      38,    89  ),
+    ((3, 6, 2),     108,    189 ),
+    ((3, 6, 5),     108,    189 ),
+    ((1, 2, 0),     68,     158 ),
+    ((0, 1, 0),      38,    88  ),
+    ((4, 6, 2),     107,    189 ),
+    ((4, 6, 5),     107,    189 ),
+    ((5, 6, 2),     107,    189 ),
+    ((5, 6, 5),     107,    189 ),
+    ((6, 6, 3),     106,    189 ),
+    ((6, 6, 4),     106,    189 ),
+    ((0, 2, 0),      38,    85  ),
+    ((2, 5, 0),     86,     162 ),
+    ((3, 5, 0),     100,    175 ),
+    ((0, 6, 3),     68,     143 ),
+    ((0, 6, 4),     68,     143 ),
+    ((3, 6, 0),     111,    161 ),
+    ((2, 5, 2),     112,    187 ),
+    ((2, 5, 5),     112,    187 ),
+    ((0, 5, 2),     98,     141 ),
+    ((0, 5, 5),     98,     141 ),
+    ((2, 3, 0),     119,    181 ),
+    ((1, 6, 0),      62,    96  ),
+    ((0, 4, 2),     68,     138 ),
+    ((0, 4, 5),     68,     138 ),
+    ((1, 1, 0),     68,     137 ),
+    ((6, 5, 3),     113,    189 ),
+    ((6, 5, 4),     113,    189 ),
+    ((0, 3, 2),     68,     135 ),
+    ((0, 3, 5),     68,     135 ),
+    ((1, 4, 2),     111,    174 ),
+    ((1, 4, 5),     111,    174 ),
+    ((2, 4, 1),     82,     172 ),
+    ((4, 5, 0),     120,    179 ),
+    ((1, 5, 3),     88,     169 ),
+    ((1, 5, 4),     88,     169 ),
+    ((3, 4, 0),     100,    171 ),
+    ((5, 5, 0),     134,    184 ),
+    ((2, 2, 0),     88,     163 ),
+    ((1, 0, 0),     68,     125 ),
+    ((4, 4, 0),     108,    176 ),
+    ((2, 1, 0),     88,     161 ),
+    ((1, 3, 2),     88,     160 ),
+    ((1, 3, 5),     88,     160 ),
+    ((2, 0, 0),     88,     160 ),
+    ((3, 4, 2),     116,    178 ),
+    ((3, 4, 5),     116,    178 ),
+    ((0, 2, 2),     68,     123 ),
+    ((0, 2, 5),     68,     123 ),
+    ((0, 0, 0),      38,    68  ),
+    ((0, 0, 0),      38,    68  ),
+    ((5, 3, 0),     111,    172 ),
+    ((2, 4, 3),     100,    171 ),
+    ((2, 4, 4),     100,    171 ),
+    ((3, 3, 1),     95,     168 ),
+    ((4, 3, 0),     107,    168 ),
+    ((3, 3, 3),     105,    165 ),
+    ((3, 3, 4),     105,    165 ),
+    ((4, 2, 1),     103,    164 ),
+    ((3, 1, 0),     99,     162 ),
+    ((3, 0, 0),     99,     160 ),
+    ((5, 1, 0),     118,    158 ),
+    ((3, 3, 0),     133,    154 ),
+    ((2, 4, 2),     127,    148 ),
+    ((2, 4, 5),     127,    148 ),
+    ((0, 1, 2),     68,     101 ),
+    ((0, 1, 5),     68,     101 ),
+    ((4, 6, 1),     94,     104 ),
 ]
 
 # === private old
@@ -349,8 +291,9 @@ def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 
 # === cache
 class CACHE():
-    def __init__(self, MAX_LENGTH=10000):
+    def __init__(self, MAX_LENGTH=10000, filename=None):
         self.max_length = MAX_LENGTH
+        self.filename = filename
         self.key_list = []
         self.value_list = []
         
@@ -376,9 +319,24 @@ class CACHE():
         self.key_list.append(key)
         self.value_list.append(value)
 
+        if self.filename:
+            self.dump_cache()
+
     def reset_cache(self):
         self.key_list = []
         self.value_list = []
+
+    def dump_cache(self):
+        if not self.filename:
+            raise RuntimeError("in-memory cache can not be saved")
+        
+        with open(self.filename, 'wb') as f:
+            pickle.dump(self, f)
+        
+    @classmethod
+    def load_cache(self, filename):
+        with open(filename, 'rb') as f:
+            return pickle.load(f)
 
 
 # === cache END
@@ -507,15 +465,18 @@ instead of dropping the incompatible equations, we will drop the incompatible tr
 """
 if True:
     equation_cache = CACHE()
-    alpha_lst_cache = CACHE()
+    
+    alpha_cache_filename = "alpha.cache"
+    try:
+        alpha_lst_cache = CACHE.load_cache(alpha_cache_filename)
+    except:
+        alpha_lst_cache = CACHE(filename=alpha_cache_filename)
     
     for initial_transistor in transistor_list:
         
         EQ_DIFF_NORMAL_EQ = 1.2     # +20%
         # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
         equation_list = []
-        
-        
 
         # generate all equations possible, and calculate how much lifeitme each get
         BIT_COUNT = 4
@@ -550,9 +511,12 @@ if True:
             else:
                 equation_cache.add_cache(equation)
 
-                optimizer_equation[0] = equation
-                alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
-                alpha_lst_cache.add_cache(equation, alpha_lst)
+                if not alpha_lst_cache.hit_cache(equation):
+                    optimizer_equation[0] = equation
+                    alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+                    alpha_lst_cache.add_cache(equation, alpha_lst)
+                else:
+                    alpha_lst = alpha_lst_cache.get_cache(equation)
 
                 fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
                 eq_lifetime = fail_transistor["t_week"]
@@ -566,15 +530,14 @@ if True:
 
 
             # log.println(f"{bit_pattern} \t>>> {equation} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
-            log.println(f"{"..."} \t>>> {equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
+            eq_log.println(f"{"..."} \t>>> {equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
         log.println(f"bit pattern process DONE")
 
 
 
 
-        log.println(f"GROUPING PROCESS >>> keeping the equations and dropping the transistors")
+        log.println(f"GROUPING PROCESS >>> initial transistor \t {(fa_i, fa_j, t_index)}")
         for eq in equation_list:
-            log.println(f"equation:\t{eq}")
             
             if alpha_lst_cache.hit_cache(eq):
                 alpha_lst = alpha_lst_cache.get_cache(eq)
@@ -602,7 +565,6 @@ if True:
                 
                 # log.println(f"{(fa_i, fa_j, t_index)} \t>>> {eq_lifetime} > {normal_eq_lifetime} \t>>> {description}")
 
-            log.println()
             log.println(f"{eq} >>> works for {len(added_t_list):3}/{len(transistor_list):3}")
             log_str = "transistor list: "
             for t in added_t_list:
