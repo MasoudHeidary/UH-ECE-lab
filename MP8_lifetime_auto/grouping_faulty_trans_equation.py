@@ -464,7 +464,7 @@ if False:
 NOTE:
 instead of dropping the incompatible equations, we will drop the incompatible transistors
 """
-if True:
+if False:
     equation_cache = CACHE()
     
     alpha_cache_filename = "alpha.cache"
@@ -574,10 +574,77 @@ if True:
 
 
 
+"""
+NOTE:
+choosing the best equations based on how many equations is needed
+"""
+if True:
+    
+    def parse_equation_file(filename):
+        data = []
 
+        with open(filename, 'r') as file:
+            lines = file.readlines()
 
+        current_equation = None
+        current_transistors = []
+
+        for line in lines:
+            equation_match = re.match(r".*>>\s+([^>]+)>>> works for.*", line)
+            if equation_match:
+                if current_equation and current_transistors:
+                    data.append({"equation": current_equation, "transistors": current_transistors})
+
+                current_equation = equation_match.group(1)
+                current_transistors = []
+            
+            transistor_match = re.match(r"\s*\[\d+]\s*\((\d+, \d+, \d+)\)", line)
+            if transistor_match:
+                transistor_location = tuple(map(int, transistor_match.group(1).split(", ")))
+                current_transistors.append(transistor_location)
+
+        # if current_equation and current_transistors:
+        #     data.append({"equation": current_equation, "transistors": current_equation})
+
+        return data
+    
+
+    equation_file = parse_equation_file(log_filename)
+    equation_list = [i["equation"] for i in equation_file]
+    transistor_list = [i["transistors"] for i in equation_file]
+
+    def get_best_equations(eq_count_needed):
+        r_eq = []
+        r_t = []
+
+        for _ in range(eq_count_needed):
+            max_t_lst = []
+            max_eq = None
+            for i, eq in enumerate(equation_list):
+                next_t_lst = list(set(r_t + transistor_list[i]))
+
+                if len(next_t_lst) > len(max_t_lst):
+                    max_t_lst = next_t_lst.copy()
+                    max_eq = eq
+            
+            r_eq.append(max_eq)
+            r_t = max_t_lst.copy()
+    
+        return (r_eq, r_t)
+        
 
             
+    
+    COUNT_EQ = 2
+    top_eq = get_best_equations(COUNT_EQ)
+    print(top_eq[0])
+    print(top_eq[1])
+    print(f"covered: {len(top_eq[1])}")
+
+    # for i in range(len(equation_list)):
+    #     print(equation_list[i])
+    #     print(transistor_list[i])
+    #     print('-'*40)
 
 
 
