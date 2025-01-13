@@ -17,7 +17,8 @@ from random import randint
 import pickle
 
 
-log = Log(f"{__file__}.log")
+log_filename = f"{__file__}.log"
+log = Log(log_filename)
 eq_log = Log(f"{__file__}.equations.log")
 
 transistor_list = [
@@ -474,7 +475,7 @@ if True:
     
     for initial_transistor in transistor_list:
         
-        EQ_DIFF_NORMAL_EQ = 1.2     # +20%
+        EQ_DIFF_NORMAL_EQ = 1.1     # +10%
         # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
         equation_list = []
 
@@ -559,7 +560,7 @@ if True:
                 description = str()
                 if(eq_lifetime > normal_eq_lifetime * EQ_DIFF_NORMAL_EQ) or (eq_lifetime >= dataset_lifetime):
                     description = "TRANSISTOR ADDED"
-                    added_t_list.append(t)
+                    added_t_list.append([t, eq_lifetime])
                 else:
                     description = "TRANSISTOR SKIPPED"
                 
@@ -568,7 +569,7 @@ if True:
             log.println(f"{eq} >>> works for {len(added_t_list):3}/{len(transistor_list):3}")
             log_str = "transistor list: "
             for t in added_t_list:
-                log_str += f"\n [{transistor_list.index(t)}] {t[0]}"
+                log_str += f"\n [{transistor_list.index(t[0])}] {t[0][0]} \t {t[1]} <- {t[0][1]}"
             log.println(log_str)
 
 
