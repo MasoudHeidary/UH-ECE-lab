@@ -464,7 +464,7 @@ if False:
 NOTE:
 instead of dropping the incompatible equations, we will drop the incompatible transistors
 """
-if False:
+if True:
     equation_cache = CACHE()
     
     alpha_cache_filename = "alpha.cache"
@@ -473,7 +473,8 @@ if False:
     except:
         alpha_lst_cache = CACHE(filename=alpha_cache_filename)
     
-    for initial_transistor in transistor_list:
+    # TODO: delete the range number
+    for initial_transistor in transistor_list[34+1:78]:
         
         EQ_DIFF_NORMAL_EQ = 1.1     # +10%
         # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
@@ -578,7 +579,7 @@ if False:
 NOTE:
 choosing the best equations based on how many equations is needed
 """
-if True:
+if False:
     
     def parse_equation_file(filename):
         data = []
