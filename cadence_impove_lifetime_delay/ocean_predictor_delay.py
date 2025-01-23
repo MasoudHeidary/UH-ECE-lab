@@ -1,6 +1,11 @@
 import subprocess
 from tool.log import Log
 
+"""
+NOTE:
+normal equation: "(A6 | B0) & (B0 | B1) & (~A6 | ~A7) & (~A6 | ~B0 | ~B1)"
+purpose: finding the delay
+"""
 
 log = Log("tlog.txt")
 
