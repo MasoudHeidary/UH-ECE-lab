@@ -79,6 +79,23 @@ if False:
     plt.grid(True)
     plt.show()
 
+if True:
+    plt.figure(figsize=(13, 10))
+
+    plt.plot(x, modified_delay, label="Attacked", linewidth=5)
+    plt.plot(x, normal_delay, label="Normal", linewidth=5)
+
+    plt.xlabel('Time(weeks)', fontsize=36, fontweight='bold')
+    plt.xticks(fontsize=36, fontweight='bold')
+
+    plt.ylabel('Normalized Execution Time', fontsize=36, fontweight='bold')
+    plt.yticks(fontsize=36, fontweight='bold')
+
+    # plt.title('Delay', fontsize=16)
+    # plt.tick_params(axis='both', labelsize=16)
+    plt.legend(fontsize=36)
+    plt.grid(True)
+    plt.show()
 
 
 # compare aging to normal aging
