@@ -464,7 +464,7 @@ if False:
 NOTE:
 instead of dropping the incompatible equations, we will drop the incompatible transistors
 """
-if True:
+if False:
     equation_cache = CACHE()
     
     alpha_cache_filename = "alpha.cache"
@@ -579,7 +579,7 @@ if True:
 NOTE:
 choosing the best equations based on how many equations is needed
 """
-if False:
+if True:
     
     def parse_equation_file(filename):
         data = []
