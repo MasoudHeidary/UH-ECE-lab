@@ -1,8 +1,19 @@
+
+"""
+NOTE:
+
+131 * 126
+delay: 1.4484 ns
+power: 26.46 uW
+
+"""
+
 import subprocess
 from tool.log import Log
 import random
+import re
 
-log = Log("tlog.txt")
+log = Log(f"{__file__}.log")
 
 NETLIST = "/home/mheidary/simulation/delay_MP8_simp/spectre/schematic/netlist/netlist"
 SCHEMATIC = "/home/mheidary/simulation/delay_MP8_simp/spectre/schematic"
@@ -351,36 +362,55 @@ def b(num: int, bit_len: int):
     bit_num = list(map(int, reversed(format(num_cpy, f'0{bit_len}b'))))
     return bit_num
 
+
+def extract_delays_and_power(text):
+    delay_pattern = r"(\w+)\s+([\d\.]+[a-z])"
+    delays = {match[0]: match[1] for match in re.findall(delay_pattern, text) if match[0] != "power"}
+
+    power_pattern = r"power\s+([\d\.]+[a-z])"
+    power_values = re.findall(power_pattern, text)
+
+    return {
+        "delays": delays,
+        "power": power_values
+    }
+
+
 if __name__ == "__main__":
 
 
     # running random patterns to find worst case
-    if False:
+    if True:
+        bit_len = 8
         input_stack = []
         
-        while len(input_stack) < 1000:
-                A = random.randint(0, 255)
-                B = random.randint(0, 255)
+        while len(input_stack) < 5000:
+                A = random.randint(0, 2**bit_len-1)
+                B = random.randint(0, 2**bit_len-1)
 
-                A_bin = b(A, 8)
-                B_bin = b(B, 8)
+                A_bin = b(A, bit_len)
+                B_bin = b(B, bit_len)
 
-                if (b(A*B, 16)[14:] != [0,0]) and ((A,B) not in input_stack):
+                if (b(A*B, 2*bit_len)[14:] != [0,0]) and ((A,B) not in input_stack):
                     input_stack += [(A,B)]
-                    log.println(f"{A} {B} {b(A*B, 16)} DONE.")
                     update_netlist(NETLIST, A_bin, B_bin)
 
                     log_name = f"log/log-MP8-delay-{A}-{B}.txt"
                     update_ocean(OCEAN, log_name)
                     run_ocean_script(OCEAN)
 
+                    result = extract_delays_and_power(
+                        open(log_name, 'r').read()
+                    )
+                    log.println(f"MP8_simp\t: {A} {B} =>\t {result}")
 
-                else:
-                    log.println(f"{A} {B} ignored!")
+
+                # else:
+                #     log.println(f"{A} {B} ignored!")
 
     
     # running the standard worst case
-    if True:
+    if False:
         A = 83
         B = 199
         A_bin = b(A, 8)
