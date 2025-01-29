@@ -21,18 +21,18 @@ transformer = [90.4, 50.1125, 50.1425, 50.1425, 50.63, 50.63, 50.175, 50.175, 49
 transformer = [i/100 for i in transformer]
 
 datasets = [
-    ('Darknet', darknetMani_delta2, 25, 0.05),
+    ('Darknet', darknetMani_delta2, 25, -0.03),
     ('Squeeze', squeezenetMani_delta2, 18, 0.05),
-    ('ResNet', resnet18Mani_delta2, 62, 0.05),
-    ('VGG11', vgg11Mani_delta2, 43, -0.02),
-    ('VGG19', vgg19Mani_delta2, 38, 0.05),
+    ('ResNet', resnet18Mani_delta2, 62, 0.06),
+    ('VGG11', vgg11Mani_delta2, 43, -0.03),
+    ('VGG19', vgg19Mani_delta2, 38, 0.10),
     ('Transformer', transformer, 15, 0.05),
 ]
 plt.figure(figsize=(13, 10))
 
 for label, data, week_50p, yp in datasets:
     # Plot the lines
-    plt.plot(manipulate_percentage, data, linewidth=5, label=label)
+    plt.plot(manipulate_percentage, data, linewidth=8, label=label)
 
     # Find half of the initial value
     half_value = data[0] / 2
@@ -53,28 +53,28 @@ for label, data, week_50p, yp in datasets:
         interpolated_x = x_above + (half_value - y_above) * (x_below - x_above) / (y_below - y_above)
 
         # Plot the 'x' marker at the interpolated point
-        plt.plot(interpolated_x, half_value, '*', markersize=20, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
+        plt.plot(interpolated_x, half_value, '*', markersize=30, markeredgewidth=5, color=plt.gca().lines[-1].get_color())
         # Add text next to the 'x' marker
-        plt.text(interpolated_x - 0.2, half_value-yp, f't={week_50p}w', fontweight='bold', fontsize=26)
+        plt.text(interpolated_x - 0.2, half_value-yp, f't={week_50p}w', fontweight='bold', fontsize=30)
     except:
         pass
 
     if label == "Transformer":
-        plt.plot(0.5, 0.5, '*', markersize=20, markeredgewidth=3, color=plt.gca().lines[-1].get_color())
-        plt.text(0.5 - 0.1, 0.5-yp, f't={week_50p}w', fontweight='bold', fontsize=26, color='black')
+        plt.plot(0.5, 0.5, '*', markersize=30, markeredgewidth=5, color=plt.gca().lines[-1].get_color())
+        plt.text(0.5 - 0.1, 0.5-yp, f't={week_50p}w', fontweight='bold', fontsize=30, color='black')
 
 
 # Set labels and styling
-plt.xlabel('Number of Errors (%)', fontsize=28, fontweight='bold')
-plt.xticks(fontsize=28, fontweight='bold')
+plt.xlabel('Number of Errors (%)', fontsize=36, fontweight='bold')
+plt.xticks(fontsize=36, fontweight='bold')
 
-plt.ylabel('Network Accuracy (CIFAR10)', fontsize=28, fontweight='bold')
-plt.yticks(fontsize=28, fontweight='bold')
+plt.ylabel('Network Accuracy (CIFAR10)', fontsize=36, fontweight='bold')
+plt.yticks(fontsize=36, fontweight='bold')
 
 plt.grid(True)
 plt.legend(fontsize=28)
 
-plt.savefig('_cifar10.png', dpi=800, bbox_inches='tight')
+plt.savefig('_cifar10.png', dpi=2000, bbox_inches='tight')
 
 plt.show()
 

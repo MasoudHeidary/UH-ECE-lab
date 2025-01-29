@@ -82,8 +82,8 @@ if False:
 if True:
     plt.figure(figsize=(13, 10))
 
-    plt.plot(x, modified_delay, label="Attacked", linewidth=5)
-    plt.plot(x, normal_delay, label="Normal", linewidth=5)
+    plt.plot(x, modified_delay, label="Attacked", linewidth=8)
+    plt.plot(x, normal_delay, label="Normal", linewidth=8)
 
     plt.xlabel('Time(weeks)', fontsize=36, fontweight='bold')
     plt.xticks(fontsize=36, fontweight='bold')
