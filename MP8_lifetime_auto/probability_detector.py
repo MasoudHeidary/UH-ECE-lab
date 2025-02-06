@@ -483,6 +483,51 @@ def multi_process_best_pattern_finder(
     return best_accuracy_pattern
 
 
+# =================================
+
+
+def eq_optimizer_trigger(mp: MPn_v3, A, B):
+    return True
+
+def convert_logical_expression(expression):
+    """Convert bitwise operators to Python logical operators."""
+    return (expression
+            .replace("&", "and")
+            .replace("|", "or")
+            .replace("~", "not "))
+
+optimizer_equation = [""]
+def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
+    "normal aging equation"
+    "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+
+    global optimizer_equation
+    # eq = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+    
+    eq = optimizer_equation[0]
+    logical_expression = convert_logical_expression(eq)
+
+    variables = {
+        'B0': bin_B[0],
+        'B1': bin_B[1],
+        'B2': bin_B[2],
+        'B3': bin_B[3],
+        'B4': bin_B[4],
+        'B5': bin_B[5],
+        'B6': bin_B[6],
+        'B7': bin_B[7],
+        'A0': bin_A[0],
+        'A1': bin_A[1],
+        'A2': bin_A[2],
+        'A3': bin_A[3],
+        'A4': bin_A[4],
+        'A5': bin_A[5],
+        'A6': bin_A[6],
+        'A7': bin_A[7],
+    }
+
+    result = eval(logical_expression, {}, variables)
+    return result
 
 
 # =========================================================================================================
@@ -514,7 +559,26 @@ if True:
         log.println(f"{r}")
         
         _end_time = time.time()
-        log.println(f"execution time: {_end_time - _start_time}\n\n")
+        log.println(f"time: \t{_end_time - _start_time} s")
+
+        TT = truth_table(
+            input_data=input_data,
+            A_bit_pattern=r['A'],
+            B_bit_pattern=r['B'],
+            log_obj=False
+        )
+
+        eq = generate_optimized_equation_with_or(TT)
+        log.println(f"equation: \t{eq}")
+
+        f1_score = calc_f1_score(TT, log_obj=False)
+        log.println(f"F1 score: {f1_score}")
+
+        optimizer_equation[0] = eq
+        alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+
+        fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor=False)
+        log.println(f"fail_transistor: \t{fail_transistor} \n\n")
 
 
     exit()
