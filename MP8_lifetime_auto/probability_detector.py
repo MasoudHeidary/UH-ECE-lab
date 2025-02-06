@@ -289,6 +289,32 @@ def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
     return accu, true_positive, true_negative, false_positive, false_negative
 
 
+def calc_f1_score(TT, log_obj=False):
+    ML_table = TT
+
+    true_positive = 0
+    true_negative = 0
+    false_positive = 0
+    false_negative = 0
+
+    for data in input_data:
+        y_pred = interface(ML_table, data)
+        d_out = data[2]
+
+        if (y_pred == d_out) and (y_pred == True):
+            true_positive += 1
+        elif (y_pred == d_out) and (y_pred == False):
+            true_negative += 1
+        elif (y_pred != d_out) and (y_pred == True):
+            false_positive += 1
+        elif (y_pred != d_out) and (y_pred == False):
+            false_negative += 1
+
+    precision = true_positive / ((true_positive + false_positive) or 1)
+    recall = true_positive / ((true_positive + false_negative) or 1)
+    f1_score = 2 * (precision * recall) / ((precision + recall) or 1)
+    return f1_score
+
 
 
 # def multi_process_best_pattern_finder(
