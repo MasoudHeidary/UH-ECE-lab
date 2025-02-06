@@ -37,7 +37,7 @@ TRAINING...
 Accuracy:  0.993, TP: 24256, TN: 40832, FP(not suppose compliment): 320, FN(lost compliments):128,
 
 
-
+(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)
 
 """
 
@@ -463,8 +463,10 @@ def multi_process_best_pattern_finder(
 # =========================================================================================================
 # =========================================================================================================
 
-if False:
-    # normal agine, fine logical optimizer
+if True:
+    # healthy optimizer, find the best bit pattern with showing accuracy and TP params
+    log = Log(f"{__file__}.log")
+
     log_filepath = 'pattern.txt'
     input_data = load_pattern_file(log_filepath)
 
@@ -474,43 +476,48 @@ if False:
     log.println(f"number of TRUE patterns: {count}")
 
 
-    _start_time = time.time()
 
-    r = multi_process_best_pattern_finder(
-            input_data,
-            [2],
-            [2],
-            log_obj=False,
-        )
-    log.println(f"{r}")
+    for bit_length in range(0, 8):
+        _start_time = time.time()
+        
+        r = multi_process_best_pattern_finder(
+                input_data,
+                count_bit_pattern=bit_length,
+                log_obj=False
+            )
+        log.println(f"{r}")
+        
+        _end_time = time.time()
+        log.println(f"execution time: {_end_time - _start_time}\n\n")
 
-    _end_time = time.time()
-    log.println(f"execution time: {_end_time - _start_time}")
 
     exit()
 
-# input_data = load_pattern_file(f"pattern.txt")
-# log = Log(f"{__file__}.{0}.{0}.{1}.txt")
 
-# TT = truth_table(
-#         input_data,
-#         ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'],
-#         ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
-#         log_obj=log
-#     )
+if False:
+    # generate the equation for healthy optimizer from bit configuration
 
-# r = generate_optimized_equation_with_or(TT)
-# log.println(f"{r}")
-# r = generate_optimized_equation_with_and(TT)
-# log.println(f"{r}")
+    input_data = load_pattern_file(f"pattern.txt")
+    log = Log(f"{__file__}.log")
 
-# exit()
+    TT = truth_table(
+            input_data,
+            ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'],
+            ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x'],
+            log_obj=log
+        )
+
+    r = generate_optimized_equation_with_or(TT)
+    log.println(f"{r}")
+    r = generate_optimized_equation_with_and(TT)
+    log.println(f"{r}")
+
 
 
 if False:
     # finding the best patterns for each faulty transistor
     bit_len = 8
-    MULTI_COMPUTER = True
+    MULTI_COMPUTER = False
     MAX_COMPUTER = 3
     CURRENT_COMPUTER = 0
 
@@ -577,7 +584,7 @@ if False:
 
 
 
-if True:
+if False:
     # generate logical equation for each faulty transistor using the best pattern log file
     
     input_data = []
