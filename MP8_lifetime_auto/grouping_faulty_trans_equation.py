@@ -475,14 +475,15 @@ if True:
         alpha_lst_cache = CACHE(filename=alpha_cache_filename)
     
     # TODO: delete the range number
-    for initial_transistor in transistor_list[62+1:78]:
+    # for initial_transistor in transistor_list[62+1:78]:
+    for initial_transistor in transistor_list[0:]:
         
         EQ_DIFF_NORMAL_EQ = 1.1     # +10%
         # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
         equation_list = []
 
         # generate all equations possible, and calculate how much lifeitme each get
-        BIT_COUNT = 4
+        BIT_COUNT = 3
         bit_pattern_list = generate_all_bit_pattern(BIT_COUNT)
 
         log.println(f"initial transistor: {initial_transistor[0]}")
