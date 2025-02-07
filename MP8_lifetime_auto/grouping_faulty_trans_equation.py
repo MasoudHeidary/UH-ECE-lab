@@ -462,9 +462,10 @@ if False:
 # GROUPING MOST COMPATIBLE ONES
 """
 NOTE:
+*** last method (v2)
 instead of dropping the incompatible equations, we will drop the incompatible transistors
 """
-if False:
+if True:
     equation_cache = CACHE()
     
     alpha_cache_filename = "alpha.cache"
@@ -474,7 +475,7 @@ if False:
         alpha_lst_cache = CACHE(filename=alpha_cache_filename)
     
     # TODO: delete the range number
-    for initial_transistor in transistor_list[34+1:78]:
+    for initial_transistor in transistor_list[62+1:78]:
         
         EQ_DIFF_NORMAL_EQ = 1.1     # +10%
         # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
@@ -636,7 +637,7 @@ if True:
 
             
     
-    COUNT_EQ = 2
+    COUNT_EQ = 1
     top_eq = get_best_equations(COUNT_EQ)
     print(top_eq[0])
     print(top_eq[1])
