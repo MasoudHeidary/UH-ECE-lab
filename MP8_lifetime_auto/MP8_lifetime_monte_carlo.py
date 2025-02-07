@@ -230,7 +230,7 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
 
 if True:
     log = Log(f"{__file__}.log", terminal=True)
-    SAMPLE = 10
+    SAMPLE = 1000
     DETAIL_LOG = True
 
     # loading alpha cache
@@ -239,7 +239,8 @@ if True:
     except:
         alpha_cache = CACHE(filename=f"{__file__}.alpha.cache")
 
-    sum_lifetime = 0
+    base_sum_lifetime = 0
+    optimize_sum_lifetime = 0
 
     # base alpha
     base_alpha = None
@@ -265,6 +266,7 @@ if True:
         random_vth_matrix = generate_random_vth_base()
         base_fail_transistor = get_monte_carlo_life_expect(base_alpha, random_vth_matrix, bit_len)
         base_lifetime = base_fail_transistor["t_week"]
+        base_sum_lifetime += base_lifetime
 
         # choose optimizer
         optimize_equation = None
@@ -277,6 +279,7 @@ if True:
 
         optimized_fail_transistor = get_monte_carlo_life_expect(optimize_alpha, random_vth_matrix, bit_len)
         optimized_lifetime = optimized_fail_transistor['t_week']
+        optimize_sum_lifetime += optimized_lifetime
 
 
         if DETAIL_LOG:
@@ -285,5 +288,5 @@ if True:
         
     # final result
     log.println(f"conf:\n{equation_conf}\n")
-    log.println(f"final result >>> sum lifetime {sum_lifetime} / samples {SAMPLE} = {sum_lifetime/SAMPLE}")
+    log.println(f"final result [{SAMPLE}] samples: \t {base_sum_lifetime/SAMPLE} => {optimize_sum_lifetime/SAMPLE}")
 
