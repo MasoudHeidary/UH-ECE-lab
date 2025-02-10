@@ -465,7 +465,7 @@ NOTE:
 *** last method (v2)
 instead of dropping the incompatible equations, we will drop the incompatible transistors
 """
-if True:
+if False:
     equation_cache = CACHE()
     
     alpha_cache_filename = "alpha.cache"
@@ -676,7 +676,7 @@ if True:
 
             
     
-    COUNT_EQ = 1
+    COUNT_EQ = 5
     top_eq = get_best_equations(COUNT_EQ)
     print(top_eq[0])
     print(top_eq[1])
@@ -686,7 +686,7 @@ if True:
     
     # statistic of the transistors
     # how many equation does cover each transistor
-    if True:
+    if False:
         transistor_eq_count = [0 for _ in transistor_list]
 
         for i, eq in enumerate(equation_list):
