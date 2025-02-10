@@ -636,14 +636,53 @@ if True:
         return (r_eq, r_t)
         
 
+    def get_transistor_split(eq_list, t_list):
+        alpha_cache_filename = "alpha.cache"
+        try:
+            alpha_lst_cache = CACHE.load_cache(alpha_cache_filename)
+        except:
+            alpha_lst_cache = CACHE(filename=alpha_cache_filename)
+
+
+        for t_i, t in enumerate(t_list):
+
+            # which equation does better on this transistor
+            max_lifetime = 0
+            max_equation = 0
+
+            for eq in eq_list:
+                # load alpha
+                if alpha_lst_cache.hit_cache(eq):
+                    alpha_lst = alpha_lst_cache.get_cache(eq)
+                else:
+                    print(f"CACHE ERROR: alpha list MISS {eq}")
+                    optimizer_equation[0] = eq
+                    alpha_lst = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+                    alpha_lst_cache.add_cache(eq, alpha_lst)
+
+                fa_i, fa_j, t_index = t
+                faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+                fail_transistor = get_life_expect(alpha_lst, 8, faulty_transistor)
+                if (fail_transistor["t_week"] > max_lifetime):
+                    max_lifetime = fail_transistor["t_week"]
+                    max_equation = eq
+            
+            print(f"{t}\t:\t{max_equation}")
+
+        # other transistors we will use normal equation
+        for t in transistor_list:
+            if t[0] not in t_list:
+                print(f"{t[0]}\t:\t{"normal"}")
+
             
     
-    COUNT_EQ = 3
+    COUNT_EQ = 1
     top_eq = get_best_equations(COUNT_EQ)
     print(top_eq[0])
     print(top_eq[1])
     print(f"covered: {len(top_eq[1])}")
 
+    get_transistor_split(top_eq[0], top_eq[1])
     
     # statistic of the transistors
     # how many equation does cover each transistor

@@ -13016,6 +13016,7 @@
 ##########################################
 ### =============== 3bit equation grouping
 ##########################################
+
 [Fri Feb  7 10:30:42 2025] >> initial transistor: (2, 7, 1)
 [Fri Feb  7 10:30:42 2025] >> total bit pattern: 560, bit count: 3
 [Fri Feb  7 10:30:43 2025] >> transistor: (2, 7, 1)
@@ -15947,3 +15948,948 @@
 [Sat Feb  8 23:00:26 2025] >> B4 | ~B0 | ~B1 >>> works for   1/ 93
 [Sat Feb  8 23:00:26 2025] >> transistor list: 
  [92] (4, 6, 1) 	 132 <- 94
+
+
+
+
+
+
+##########################################
+### =============== 2bit equation grouping
+##########################################
+
+[Mon Feb 10 09:58:52 2025] >> initial transistor: (2, 7, 1)
+[Mon Feb 10 09:58:52 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 09:58:53 2025] >> transistor: (2, 7, 1)
+[Mon Feb 10 09:59:31 2025] >> bit pattern process DONE
+[Mon Feb 10 09:59:31 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 7, 1)
+[Mon Feb 10 09:59:40 2025] >> A5 & ~A7 >>> works for  17/ 93
+[Mon Feb 10 09:59:40 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 84 <- 63
+ [1] (0, 6, 1) 	 68 <- 51
+ [4] (1, 7, 2) 	 68 <- 51
+ [5] (1, 7, 5) 	 68 <- 51
+ [6] (2, 7, 2) 	 68 <- 51
+ [7] (2, 7, 5) 	 68 <- 51
+ [8] (3, 7, 2) 	 68 <- 51
+ [9] (3, 7, 5) 	 68 <- 51
+ [10] (4, 7, 2) 	 68 <- 51
+ [11] (4, 7, 5) 	 68 <- 51
+ [12] (5, 7, 2) 	 68 <- 51
+ [13] (5, 7, 5) 	 68 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 84 <- 62
+ [39] (0, 6, 3) 	 84 <- 68
+ [40] (0, 6, 4) 	 84 <- 68
+[Mon Feb 10 09:59:48 2025] >> A6 & ~A7 >>> works for  15/ 93
+[Mon Feb 10 09:59:48 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 83 <- 63
+ [1] (0, 6, 1) 	 68 <- 51
+ [4] (1, 7, 2) 	 68 <- 51
+ [5] (1, 7, 5) 	 68 <- 51
+ [6] (2, 7, 2) 	 68 <- 51
+ [7] (2, 7, 5) 	 68 <- 51
+ [8] (3, 7, 2) 	 68 <- 51
+ [9] (3, 7, 5) 	 68 <- 51
+ [10] (4, 7, 2) 	 68 <- 51
+ [11] (4, 7, 5) 	 68 <- 51
+ [12] (5, 7, 2) 	 68 <- 51
+ [13] (5, 7, 5) 	 68 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 74 <- 62
+[Mon Feb 10 09:59:58 2025] >> ~A7 & ~B2 >>> works for  24/ 93
+[Mon Feb 10 09:59:58 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 85 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 65 <- 51
+ [5] (1, 7, 5) 	 65 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [22] (2, 6, 0) 	 105 <- 83
+ [38] (3, 5, 0) 	 114 <- 100
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [41] (3, 6, 0) 	 129 <- 111
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 09:59:58 2025] >> initial transistor: (0, 6, 1)
+[Mon Feb 10 09:59:58 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 09:59:59 2025] >> transistor: (0, 6, 1)
+[Mon Feb 10 10:00:37 2025] >> bit pattern process DONE
+[Mon Feb 10 10:00:37 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 6, 1)
+[Mon Feb 10 10:00:48 2025] >> B0 & ~A7 >>> works for  26/ 93
+[Mon Feb 10 10:00:48 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 82 <- 63
+ [1] (0, 6, 1) 	 112 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 132 <- 62
+ [39] (0, 6, 3) 	 112 <- 68
+ [40] (0, 6, 4) 	 112 <- 68
+ [57] (2, 4, 1) 	 132 <- 82
+ [59] (1, 5, 3) 	 121 <- 88
+ [60] (1, 5, 4) 	 121 <- 88
+ [77] (2, 4, 3) 	 121 <- 100
+ [78] (2, 4, 4) 	 121 <- 100
+ [79] (3, 3, 1) 	 125 <- 95
+ [81] (3, 3, 3) 	 117 <- 105
+ [82] (3, 3, 4) 	 117 <- 105
+ [83] (4, 2, 1) 	 121 <- 103
+[Mon Feb 10 10:00:48 2025] >> initial transistor: (0, 7, 2)
+[Mon Feb 10 10:00:48 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:00:48 2025] >> transistor: (0, 7, 2)
+[Mon Feb 10 10:01:27 2025] >> bit pattern process DONE
+[Mon Feb 10 10:01:27 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 7, 2)
+[Mon Feb 10 10:01:27 2025] >> initial transistor: (0, 7, 5)
+[Mon Feb 10 10:01:27 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:01:27 2025] >> transistor: (0, 7, 5)
+[Mon Feb 10 10:02:06 2025] >> bit pattern process DONE
+[Mon Feb 10 10:02:06 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 7, 5)
+[Mon Feb 10 10:02:06 2025] >> initial transistor: (1, 7, 2)
+[Mon Feb 10 10:02:06 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:02:06 2025] >> transistor: (1, 7, 2)
+[Mon Feb 10 10:02:45 2025] >> bit pattern process DONE
+[Mon Feb 10 10:02:45 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 7, 2)
+[Mon Feb 10 10:02:54 2025] >> B2 & ~A7 >>> works for  21/ 93
+[Mon Feb 10 10:02:54 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 74 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 70 <- 51
+ [5] (1, 7, 5) 	 70 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:02:55 2025] >> initial transistor: (1, 7, 5)
+[Mon Feb 10 10:02:55 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:02:55 2025] >> transistor: (1, 7, 5)
+[Mon Feb 10 10:03:34 2025] >> bit pattern process DONE
+[Mon Feb 10 10:03:34 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 7, 5)
+[Mon Feb 10 10:03:34 2025] >> initial transistor: (2, 7, 2)
+[Mon Feb 10 10:03:34 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:03:34 2025] >> transistor: (2, 7, 2)
+[Mon Feb 10 10:04:13 2025] >> bit pattern process DONE
+[Mon Feb 10 10:04:13 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 7, 2)
+[Mon Feb 10 10:04:23 2025] >> B3 & ~A7 >>> works for  29/ 93
+[Mon Feb 10 10:04:23 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 79 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 81 <- 51
+ [7] (2, 7, 5) 	 81 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [26] (3, 6, 2) 	 125 <- 108
+ [27] (3, 6, 5) 	 125 <- 108
+ [30] (4, 6, 2) 	 120 <- 107
+ [31] (4, 6, 5) 	 120 <- 107
+ [32] (5, 6, 2) 	 118 <- 107
+ [33] (5, 6, 5) 	 118 <- 107
+ [34] (6, 6, 3) 	 117 <- 106
+ [35] (6, 6, 4) 	 117 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:04:23 2025] >> initial transistor: (2, 7, 5)
+[Mon Feb 10 10:04:23 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:04:23 2025] >> transistor: (2, 7, 5)
+[Mon Feb 10 10:05:02 2025] >> bit pattern process DONE
+[Mon Feb 10 10:05:02 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 7, 5)
+[Mon Feb 10 10:05:02 2025] >> initial transistor: (3, 7, 2)
+[Mon Feb 10 10:05:02 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:05:02 2025] >> transistor: (3, 7, 2)
+[Mon Feb 10 10:05:41 2025] >> bit pattern process DONE
+[Mon Feb 10 10:05:41 2025] >> GROUPING PROCESS >>> initial transistor 	 (3, 7, 2)
+[Mon Feb 10 10:05:51 2025] >> B4 & ~A7 >>> works for  27/ 93
+[Mon Feb 10 10:05:51 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 79 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 91 <- 51
+ [9] (3, 7, 5) 	 91 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [30] (4, 6, 2) 	 130 <- 107
+ [31] (4, 6, 5) 	 130 <- 107
+ [32] (5, 6, 2) 	 122 <- 107
+ [33] (5, 6, 5) 	 122 <- 107
+ [34] (6, 6, 3) 	 119 <- 106
+ [35] (6, 6, 4) 	 119 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:05:51 2025] >> initial transistor: (3, 7, 5)
+[Mon Feb 10 10:05:51 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:05:52 2025] >> transistor: (3, 7, 5)
+[Mon Feb 10 10:06:31 2025] >> bit pattern process DONE
+[Mon Feb 10 10:06:31 2025] >> GROUPING PROCESS >>> initial transistor 	 (3, 7, 5)
+[Mon Feb 10 10:06:31 2025] >> initial transistor: (4, 7, 2)
+[Mon Feb 10 10:06:31 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:06:31 2025] >> transistor: (4, 7, 2)
+[Mon Feb 10 10:07:10 2025] >> bit pattern process DONE
+[Mon Feb 10 10:07:10 2025] >> GROUPING PROCESS >>> initial transistor 	 (4, 7, 2)
+[Mon Feb 10 10:07:20 2025] >> B5 & ~A7 >>> works for  29/ 93
+[Mon Feb 10 10:07:20 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 79 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 99 <- 51
+ [11] (4, 7, 5) 	 99 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [30] (4, 6, 2) 	 122 <- 107
+ [31] (4, 6, 5) 	 122 <- 107
+ [32] (5, 6, 2) 	 133 <- 107
+ [33] (5, 6, 5) 	 133 <- 107
+ [34] (6, 6, 3) 	 122 <- 106
+ [35] (6, 6, 4) 	 122 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [51] (6, 5, 3) 	 130 <- 113
+ [52] (6, 5, 4) 	 130 <- 113
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:07:20 2025] >> initial transistor: (4, 7, 5)
+[Mon Feb 10 10:07:20 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:07:21 2025] >> transistor: (4, 7, 5)
+[Mon Feb 10 10:08:00 2025] >> bit pattern process DONE
+[Mon Feb 10 10:08:00 2025] >> GROUPING PROCESS >>> initial transistor 	 (4, 7, 5)
+[Mon Feb 10 10:08:00 2025] >> initial transistor: (5, 7, 2)
+[Mon Feb 10 10:08:00 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:08:00 2025] >> transistor: (5, 7, 2)
+[Mon Feb 10 10:08:39 2025] >> bit pattern process DONE
+[Mon Feb 10 10:08:39 2025] >> GROUPING PROCESS >>> initial transistor 	 (5, 7, 2)
+[Mon Feb 10 10:08:49 2025] >> B6 & ~A7 >>> works for  25/ 93
+[Mon Feb 10 10:08:49 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 79 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 104 <- 51
+ [13] (5, 7, 5) 	 104 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [32] (5, 6, 2) 	 127 <- 107
+ [33] (5, 6, 5) 	 127 <- 107
+ [34] (6, 6, 3) 	 134 <- 106
+ [35] (6, 6, 4) 	 134 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:08:50 2025] >> initial transistor: (5, 7, 5)
+[Mon Feb 10 10:08:50 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:08:50 2025] >> transistor: (5, 7, 5)
+[Mon Feb 10 10:09:29 2025] >> bit pattern process DONE
+[Mon Feb 10 10:09:29 2025] >> GROUPING PROCESS >>> initial transistor 	 (5, 7, 5)
+[Mon Feb 10 10:09:29 2025] >> initial transistor: (6, 7, 3)
+[Mon Feb 10 10:09:29 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:09:29 2025] >> transistor: (6, 7, 3)
+[Mon Feb 10 10:10:08 2025] >> bit pattern process DONE
+[Mon Feb 10 10:10:08 2025] >> GROUPING PROCESS >>> initial transistor 	 (6, 7, 3)
+[Mon Feb 10 10:10:19 2025] >> B7 & ~A7 >>> works for  23/ 93
+[Mon Feb 10 10:10:19 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 79 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 107 <- 51
+ [15] (6, 7, 4) 	 107 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [34] (6, 6, 3) 	 131 <- 106
+ [35] (6, 6, 4) 	 131 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:10:19 2025] >> initial transistor: (6, 7, 4)
+[Mon Feb 10 10:10:19 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:10:19 2025] >> transistor: (6, 7, 4)
+[Mon Feb 10 10:10:58 2025] >> bit pattern process DONE
+[Mon Feb 10 10:10:58 2025] >> GROUPING PROCESS >>> initial transistor 	 (6, 7, 4)
+[Mon Feb 10 10:10:58 2025] >> initial transistor: (1, 6, 2)
+[Mon Feb 10 10:10:58 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:10:59 2025] >> transistor: (1, 6, 2)
+[Mon Feb 10 10:11:37 2025] >> bit pattern process DONE
+[Mon Feb 10 10:11:37 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 6, 2)
+[Mon Feb 10 10:11:37 2025] >> initial transistor: (1, 6, 5)
+[Mon Feb 10 10:11:37 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:11:38 2025] >> transistor: (1, 6, 5)
+[Mon Feb 10 10:12:16 2025] >> bit pattern process DONE
+[Mon Feb 10 10:12:16 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 6, 5)
+[Mon Feb 10 10:12:16 2025] >> initial transistor: (1, 5, 1)
+[Mon Feb 10 10:12:16 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:12:16 2025] >> transistor: (1, 5, 1)
+[Mon Feb 10 10:12:55 2025] >> bit pattern process DONE
+[Mon Feb 10 10:12:55 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 5, 1)
+[Mon Feb 10 10:13:06 2025] >> B1 & ~A7 >>> works for  21/ 93
+[Mon Feb 10 10:13:06 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 78 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [79] (3, 3, 1) 	 112 <- 95
+[Mon Feb 10 10:13:06 2025] >> initial transistor: (2, 6, 2)
+[Mon Feb 10 10:13:06 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:13:06 2025] >> transistor: (2, 6, 2)
+[Mon Feb 10 10:13:45 2025] >> bit pattern process DONE
+[Mon Feb 10 10:13:45 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 6, 2)
+[Mon Feb 10 10:13:45 2025] >> initial transistor: (2, 6, 5)
+[Mon Feb 10 10:13:45 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:13:45 2025] >> transistor: (2, 6, 5)
+[Mon Feb 10 10:14:23 2025] >> bit pattern process DONE
+[Mon Feb 10 10:14:23 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 6, 5)
+[Mon Feb 10 10:14:23 2025] >> initial transistor: (1, 3, 0)
+[Mon Feb 10 10:14:23 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:14:24 2025] >> transistor: (1, 3, 0)
+[Mon Feb 10 10:15:03 2025] >> bit pattern process DONE
+[Mon Feb 10 10:15:03 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 3, 0)
+[Mon Feb 10 10:15:11 2025] >> A0 & ~A4 >>> works for   7/ 93
+[Mon Feb 10 10:15:11 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 88 <- 68
+ [24] (0, 3, 0) 	 68 <- 38
+ [28] (1, 2, 0) 	 94 <- 68
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+ [53] (0, 3, 2) 	 88 <- 68
+ [54] (0, 3, 5) 	 88 <- 68
+[Mon Feb 10 10:15:19 2025] >> ~A5 >>> works for   4/ 93
+[Mon Feb 10 10:15:19 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 82 <- 68
+ [25] (0, 4, 0) 	 82 <- 38
+ [48] (0, 4, 2) 	 82 <- 68
+ [49] (0, 4, 5) 	 82 <- 68
+[Mon Feb 10 10:15:27 2025] >> A1 & ~A4 >>> works for   7/ 93
+[Mon Feb 10 10:15:27 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 88 <- 68
+ [24] (0, 3, 0) 	 68 <- 38
+ [28] (1, 2, 0) 	 93 <- 68
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+ [53] (0, 3, 2) 	 88 <- 68
+ [54] (0, 3, 5) 	 88 <- 68
+[Mon Feb 10 10:15:35 2025] >> ~A4 & ~A5 >>> works for   8/ 93
+[Mon Feb 10 10:15:35 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 87 <- 68
+ [24] (0, 3, 0) 	 66 <- 38
+ [25] (0, 4, 0) 	 66 <- 38
+ [28] (1, 2, 0) 	 87 <- 68
+ [48] (0, 4, 2) 	 87 <- 68
+ [49] (0, 4, 5) 	 87 <- 68
+ [53] (0, 3, 2) 	 85 <- 68
+ [54] (0, 3, 5) 	 85 <- 68
+[Mon Feb 10 10:15:43 2025] >> A6 & ~A4 >>> works for   7/ 93
+[Mon Feb 10 10:15:43 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 84 <- 68
+ [24] (0, 3, 0) 	 66 <- 38
+ [28] (1, 2, 0) 	 84 <- 68
+ [48] (0, 4, 2) 	 84 <- 68
+ [49] (0, 4, 5) 	 84 <- 68
+ [53] (0, 3, 2) 	 84 <- 68
+ [54] (0, 3, 5) 	 84 <- 68
+[Mon Feb 10 10:15:53 2025] >> ~A4 & ~A7 >>> works for  43/ 93
+[Mon Feb 10 10:15:53 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 76 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [21] (1, 3, 0) 	 86 <- 68
+ [24] (0, 3, 0) 	 66 <- 38
+ [28] (1, 2, 0) 	 93 <- 68
+ [30] (4, 6, 2) 	 118 <- 107
+ [31] (4, 6, 5) 	 118 <- 107
+ [32] (5, 6, 2) 	 119 <- 107
+ [33] (5, 6, 5) 	 119 <- 107
+ [34] (6, 6, 3) 	 119 <- 106
+ [35] (6, 6, 4) 	 119 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [48] (0, 4, 2) 	 86 <- 68
+ [49] (0, 4, 5) 	 86 <- 68
+ [53] (0, 3, 2) 	 85 <- 68
+ [54] (0, 3, 5) 	 85 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [63] (2, 2, 0) 	 103 <- 88
+ [66] (2, 1, 0) 	 106 <- 88
+ [67] (1, 3, 2) 	 98 <- 88
+ [68] (1, 3, 5) 	 98 <- 88
+ [77] (2, 4, 3) 	 116 <- 100
+ [78] (2, 4, 4) 	 116 <- 100
+ [79] (3, 3, 1) 	 118 <- 95
+ [83] (4, 2, 1) 	 118 <- 103
+ [84] (3, 1, 0) 	 109 <- 99
+ [85] (3, 0, 0) 	 113 <- 99
+[Mon Feb 10 10:16:01 2025] >> A6 & ~A5 >>> works for   4/ 93
+[Mon Feb 10 10:16:01 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 84 <- 68
+ [25] (0, 4, 0) 	 67 <- 38
+ [48] (0, 4, 2) 	 84 <- 68
+ [49] (0, 4, 5) 	 84 <- 68
+[Mon Feb 10 10:16:12 2025] >> ~A5 & ~A7 >>> works for  43/ 93
+[Mon Feb 10 10:16:12 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 70 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 94 <- 62
+ [21] (1, 3, 0) 	 93 <- 68
+ [25] (0, 4, 0) 	 67 <- 38
+ [26] (3, 6, 2) 	 120 <- 108
+ [27] (3, 6, 5) 	 120 <- 108
+ [30] (4, 6, 2) 	 121 <- 107
+ [31] (4, 6, 5) 	 121 <- 107
+ [32] (5, 6, 2) 	 122 <- 107
+ [33] (5, 6, 5) 	 122 <- 107
+ [34] (6, 6, 3) 	 122 <- 106
+ [35] (6, 6, 4) 	 122 <- 106
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [48] (0, 4, 2) 	 86 <- 68
+ [49] (0, 4, 5) 	 86 <- 68
+ [51] (6, 5, 3) 	 126 <- 113
+ [52] (6, 5, 4) 	 126 <- 113
+ [57] (2, 4, 1) 	 121 <- 82
+ [59] (1, 5, 3) 	 116 <- 88
+ [60] (1, 5, 4) 	 116 <- 88
+ [62] (5, 5, 0) 	 149 <- 134
+ [63] (2, 2, 0) 	 106 <- 88
+ [67] (1, 3, 2) 	 101 <- 88
+ [68] (1, 3, 5) 	 101 <- 88
+ [77] (2, 4, 3) 	 116 <- 100
+ [78] (2, 4, 4) 	 116 <- 100
+ [79] (3, 3, 1) 	 121 <- 95
+ [83] (4, 2, 1) 	 119 <- 103
+ [84] (3, 1, 0) 	 111 <- 99
+[Mon Feb 10 10:16:20 2025] >> B0 & ~A5 >>> works for   4/ 93
+[Mon Feb 10 10:16:20 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 82 <- 68
+ [25] (0, 4, 0) 	 82 <- 38
+ [48] (0, 4, 2) 	 82 <- 68
+ [49] (0, 4, 5) 	 82 <- 68
+[Mon Feb 10 10:16:20 2025] >> initial transistor: (2, 6, 0)
+[Mon Feb 10 10:16:20 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:16:20 2025] >> transistor: (2, 6, 0)
+[Mon Feb 10 10:17:00 2025] >> bit pattern process DONE
+[Mon Feb 10 10:17:00 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 6, 0)
+[Mon Feb 10 10:17:00 2025] >> initial transistor: (1, 4, 0)
+[Mon Feb 10 10:17:00 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:17:01 2025] >> transistor: (1, 4, 0)
+[Mon Feb 10 10:17:39 2025] >> bit pattern process DONE
+[Mon Feb 10 10:17:39 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 4, 0)
+[Mon Feb 10 10:17:39 2025] >> initial transistor: (0, 3, 0)
+[Mon Feb 10 10:17:39 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:17:39 2025] >> transistor: (0, 3, 0)
+[Mon Feb 10 10:18:18 2025] >> bit pattern process DONE
+[Mon Feb 10 10:18:18 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 3, 0)
+[Mon Feb 10 10:18:26 2025] >> ~A4 >>> works for   7/ 93
+[Mon Feb 10 10:18:26 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 90 <- 68
+ [24] (0, 3, 0) 	 90 <- 38
+ [28] (1, 2, 0) 	 90 <- 68
+ [48] (0, 4, 2) 	 90 <- 68
+ [49] (0, 4, 5) 	 90 <- 68
+ [53] (0, 3, 2) 	 90 <- 68
+ [54] (0, 3, 5) 	 90 <- 68
+[Mon Feb 10 10:18:35 2025] >> B0 & ~A4 >>> works for   4/ 93
+[Mon Feb 10 10:18:35 2025] >> transistor list: 
+ [24] (0, 3, 0) 	 90 <- 38
+ [28] (1, 2, 0) 	 90 <- 68
+ [53] (0, 3, 2) 	 90 <- 68
+ [54] (0, 3, 5) 	 90 <- 68
+[Mon Feb 10 10:18:35 2025] >> initial transistor: (0, 4, 0)
+[Mon Feb 10 10:18:35 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:18:35 2025] >> transistor: (0, 4, 0)
+[Mon Feb 10 10:19:13 2025] >> bit pattern process DONE
+[Mon Feb 10 10:19:13 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 4, 0)
+[Mon Feb 10 10:19:13 2025] >> initial transistor: (3, 6, 2)
+[Mon Feb 10 10:19:13 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:19:14 2025] >> transistor: (3, 6, 2)
+[Mon Feb 10 10:19:52 2025] >> bit pattern process DONE
+[Mon Feb 10 10:19:52 2025] >> GROUPING PROCESS >>> initial transistor 	 (3, 6, 2)
+[Mon Feb 10 10:19:52 2025] >> initial transistor: (3, 6, 5)
+[Mon Feb 10 10:19:52 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:19:52 2025] >> transistor: (3, 6, 5)
+[Mon Feb 10 10:20:30 2025] >> bit pattern process DONE
+[Mon Feb 10 10:20:30 2025] >> GROUPING PROCESS >>> initial transistor 	 (3, 6, 5)
+[Mon Feb 10 10:20:30 2025] >> initial transistor: (1, 2, 0)
+[Mon Feb 10 10:20:30 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:20:31 2025] >> transistor: (1, 2, 0)
+[Mon Feb 10 10:21:10 2025] >> bit pattern process DONE
+[Mon Feb 10 10:21:10 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 2, 0)
+[Mon Feb 10 10:21:18 2025] >> A0 & ~A3 >>> works for   7/ 93
+[Mon Feb 10 10:21:18 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 88 <- 68
+ [36] (0, 2, 0) 	 68 <- 38
+ [50] (1, 1, 0) 	 88 <- 68
+ [53] (0, 3, 2) 	 88 <- 68
+ [54] (0, 3, 5) 	 88 <- 68
+ [72] (0, 2, 2) 	 88 <- 68
+ [73] (0, 2, 5) 	 88 <- 68
+[Mon Feb 10 10:21:26 2025] >> A1 & ~A3 >>> works for   7/ 93
+[Mon Feb 10 10:21:26 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 88 <- 68
+ [36] (0, 2, 0) 	 68 <- 38
+ [50] (1, 1, 0) 	 96 <- 68
+ [53] (0, 3, 2) 	 88 <- 68
+ [54] (0, 3, 5) 	 88 <- 68
+ [72] (0, 2, 2) 	 88 <- 68
+ [73] (0, 2, 5) 	 88 <- 68
+[Mon Feb 10 10:21:35 2025] >> A2 & ~A3 >>> works for   4/ 93
+[Mon Feb 10 10:21:35 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 88 <- 68
+ [36] (0, 2, 0) 	 68 <- 38
+ [53] (0, 3, 2) 	 88 <- 68
+ [54] (0, 3, 5) 	 88 <- 68
+[Mon Feb 10 10:21:43 2025] >> A2 & ~A4 >>> works for   7/ 93
+[Mon Feb 10 10:21:43 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 88 <- 68
+ [24] (0, 3, 0) 	 68 <- 38
+ [28] (1, 2, 0) 	 95 <- 68
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+ [53] (0, 3, 2) 	 88 <- 68
+ [54] (0, 3, 5) 	 88 <- 68
+[Mon Feb 10 10:21:52 2025] >> ~A3 & ~A4 >>> works for  11/ 93
+[Mon Feb 10 10:21:52 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 85 <- 68
+ [24] (0, 3, 0) 	 63 <- 38
+ [28] (1, 2, 0) 	 92 <- 68
+ [36] (0, 2, 0) 	 63 <- 38
+ [48] (0, 4, 2) 	 85 <- 68
+ [49] (0, 4, 5) 	 85 <- 68
+ [50] (1, 1, 0) 	 88 <- 68
+ [53] (0, 3, 2) 	 92 <- 68
+ [54] (0, 3, 5) 	 92 <- 68
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+[Mon Feb 10 10:22:00 2025] >> A5 & ~A3 >>> works for   7/ 93
+[Mon Feb 10 10:22:00 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 85 <- 68
+ [36] (0, 2, 0) 	 63 <- 38
+ [50] (1, 1, 0) 	 87 <- 68
+ [53] (0, 3, 2) 	 85 <- 68
+ [54] (0, 3, 5) 	 85 <- 68
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+[Mon Feb 10 10:22:07 2025] >> A6 & ~A3 >>> works for   7/ 93
+[Mon Feb 10 10:22:07 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 84 <- 68
+ [36] (0, 2, 0) 	 63 <- 38
+ [50] (1, 1, 0) 	 84 <- 68
+ [53] (0, 3, 2) 	 84 <- 68
+ [54] (0, 3, 5) 	 84 <- 68
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+[Mon Feb 10 10:22:18 2025] >> ~A3 & ~A7 >>> works for  36/ 93
+[Mon Feb 10 10:22:18 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 78 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 94 <- 62
+ [28] (1, 2, 0) 	 85 <- 68
+ [34] (6, 6, 3) 	 117 <- 106
+ [35] (6, 6, 4) 	 117 <- 106
+ [36] (0, 2, 0) 	 63 <- 38
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [50] (1, 1, 0) 	 88 <- 68
+ [53] (0, 3, 2) 	 85 <- 68
+ [54] (0, 3, 5) 	 85 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 102 <- 88
+ [60] (1, 5, 4) 	 102 <- 88
+ [63] (2, 2, 0) 	 98 <- 88
+ [66] (2, 1, 0) 	 99 <- 88
+ [67] (1, 3, 2) 	 98 <- 88
+ [68] (1, 3, 5) 	 98 <- 88
+ [69] (2, 0, 0) 	 99 <- 88
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+ [79] (3, 3, 1) 	 110 <- 95
+ [83] (4, 2, 1) 	 116 <- 103
+[Mon Feb 10 10:22:18 2025] >> initial transistor: (0, 1, 0)
+[Mon Feb 10 10:22:18 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:22:18 2025] >> transistor: (0, 1, 0)
+[Mon Feb 10 10:22:58 2025] >> bit pattern process DONE
+[Mon Feb 10 10:22:58 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 1, 0)
+[Mon Feb 10 10:23:06 2025] >> B0 & ~A2 >>> works for   4/ 93
+[Mon Feb 10 10:23:06 2025] >> transistor list: 
+ [29] (0, 1, 0) 	 88 <- 38
+ [64] (1, 0, 0) 	 96 <- 68
+ [90] (0, 1, 2) 	 88 <- 68
+ [91] (0, 1, 5) 	 88 <- 68
+[Mon Feb 10 10:23:06 2025] >> initial transistor: (4, 6, 2)
+[Mon Feb 10 10:23:06 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:23:07 2025] >> transistor: (4, 6, 2)
+[Mon Feb 10 10:23:44 2025] >> bit pattern process DONE
+[Mon Feb 10 10:23:44 2025] >> GROUPING PROCESS >>> initial transistor 	 (4, 6, 2)
+[Mon Feb 10 10:23:44 2025] >> initial transistor: (4, 6, 5)
+[Mon Feb 10 10:23:44 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:23:45 2025] >> transistor: (4, 6, 5)
+[Mon Feb 10 10:24:23 2025] >> bit pattern process DONE
+[Mon Feb 10 10:24:23 2025] >> GROUPING PROCESS >>> initial transistor 	 (4, 6, 5)
+[Mon Feb 10 10:24:23 2025] >> initial transistor: (5, 6, 2)
+[Mon Feb 10 10:24:23 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:24:23 2025] >> transistor: (5, 6, 2)
+[Mon Feb 10 10:25:02 2025] >> bit pattern process DONE
+[Mon Feb 10 10:25:02 2025] >> GROUPING PROCESS >>> initial transistor 	 (5, 6, 2)
+[Mon Feb 10 10:25:02 2025] >> initial transistor: (5, 6, 5)
+[Mon Feb 10 10:25:02 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:25:03 2025] >> transistor: (5, 6, 5)
+[Mon Feb 10 10:25:41 2025] >> bit pattern process DONE
+[Mon Feb 10 10:25:41 2025] >> GROUPING PROCESS >>> initial transistor 	 (5, 6, 5)
+[Mon Feb 10 10:25:41 2025] >> initial transistor: (6, 6, 3)
+[Mon Feb 10 10:25:41 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:25:41 2025] >> transistor: (6, 6, 3)
+[Mon Feb 10 10:26:19 2025] >> bit pattern process DONE
+[Mon Feb 10 10:26:19 2025] >> GROUPING PROCESS >>> initial transistor 	 (6, 6, 3)
+[Mon Feb 10 10:26:19 2025] >> initial transistor: (6, 6, 4)
+[Mon Feb 10 10:26:19 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:26:20 2025] >> transistor: (6, 6, 4)
+[Mon Feb 10 10:26:58 2025] >> bit pattern process DONE
+[Mon Feb 10 10:26:58 2025] >> GROUPING PROCESS >>> initial transistor 	 (6, 6, 4)
+[Mon Feb 10 10:26:58 2025] >> initial transistor: (0, 2, 0)
+[Mon Feb 10 10:26:58 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:26:58 2025] >> transistor: (0, 2, 0)
+[Mon Feb 10 10:27:38 2025] >> bit pattern process DONE
+[Mon Feb 10 10:27:38 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 2, 0)
+[Mon Feb 10 10:27:47 2025] >> ~A3 >>> works for   7/ 93
+[Mon Feb 10 10:27:47 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 94 <- 68
+ [36] (0, 2, 0) 	 94 <- 38
+ [50] (1, 1, 0) 	 94 <- 68
+ [53] (0, 3, 2) 	 94 <- 68
+ [54] (0, 3, 5) 	 94 <- 68
+ [72] (0, 2, 2) 	 94 <- 68
+ [73] (0, 2, 5) 	 94 <- 68
+[Mon Feb 10 10:27:55 2025] >> B0 & ~A3 >>> works for   4/ 93
+[Mon Feb 10 10:27:55 2025] >> transistor list: 
+ [36] (0, 2, 0) 	 94 <- 38
+ [50] (1, 1, 0) 	 94 <- 68
+ [72] (0, 2, 2) 	 94 <- 68
+ [73] (0, 2, 5) 	 94 <- 68
+[Mon Feb 10 10:27:55 2025] >> initial transistor: (2, 5, 0)
+[Mon Feb 10 10:27:55 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:27:56 2025] >> transistor: (2, 5, 0)
+[Mon Feb 10 10:28:35 2025] >> bit pattern process DONE
+[Mon Feb 10 10:28:35 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 5, 0)
+[Mon Feb 10 10:28:35 2025] >> initial transistor: (3, 5, 0)
+[Mon Feb 10 10:28:35 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:28:35 2025] >> transistor: (3, 5, 0)
+[Mon Feb 10 10:29:14 2025] >> bit pattern process DONE
+[Mon Feb 10 10:29:14 2025] >> GROUPING PROCESS >>> initial transistor 	 (3, 5, 0)
+[Mon Feb 10 10:29:14 2025] >> initial transistor: (0, 6, 3)
+[Mon Feb 10 10:29:14 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:29:15 2025] >> transistor: (0, 6, 3)
+[Mon Feb 10 10:29:53 2025] >> bit pattern process DONE
+[Mon Feb 10 10:29:53 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 6, 3)
+[Mon Feb 10 10:29:53 2025] >> initial transistor: (0, 6, 4)
+[Mon Feb 10 10:29:53 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:29:54 2025] >> transistor: (0, 6, 4)
+[Mon Feb 10 10:30:33 2025] >> bit pattern process DONE
+[Mon Feb 10 10:30:33 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 6, 4)
+[Mon Feb 10 10:30:33 2025] >> initial transistor: (3, 6, 0)
+[Mon Feb 10 10:30:33 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:30:33 2025] >> transistor: (3, 6, 0)
+[Mon Feb 10 10:31:12 2025] >> bit pattern process DONE
+[Mon Feb 10 10:31:12 2025] >> GROUPING PROCESS >>> initial transistor 	 (3, 6, 0)
+[Mon Feb 10 10:31:12 2025] >> initial transistor: (2, 5, 2)
+[Mon Feb 10 10:31:12 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:31:13 2025] >> transistor: (2, 5, 2)
+[Mon Feb 10 10:31:52 2025] >> bit pattern process DONE
+[Mon Feb 10 10:31:52 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 5, 2)
+[Mon Feb 10 10:31:52 2025] >> initial transistor: (2, 5, 5)
+[Mon Feb 10 10:31:52 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:31:53 2025] >> transistor: (2, 5, 5)
+[Mon Feb 10 10:32:30 2025] >> bit pattern process DONE
+[Mon Feb 10 10:32:30 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 5, 5)
+[Mon Feb 10 10:32:30 2025] >> initial transistor: (0, 5, 2)
+[Mon Feb 10 10:32:30 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:32:31 2025] >> transistor: (0, 5, 2)
+[Mon Feb 10 10:33:10 2025] >> bit pattern process DONE
+[Mon Feb 10 10:33:10 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 5, 2)
+[Mon Feb 10 10:33:10 2025] >> initial transistor: (0, 5, 5)
+[Mon Feb 10 10:33:10 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:33:10 2025] >> transistor: (0, 5, 5)
+[Mon Feb 10 10:33:49 2025] >> bit pattern process DONE
+[Mon Feb 10 10:33:49 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 5, 5)
+[Mon Feb 10 10:33:49 2025] >> initial transistor: (2, 3, 0)
+[Mon Feb 10 10:33:49 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:33:50 2025] >> transistor: (2, 3, 0)
+[Mon Feb 10 10:34:29 2025] >> bit pattern process DONE
+[Mon Feb 10 10:34:29 2025] >> GROUPING PROCESS >>> initial transistor 	 (2, 3, 0)
+[Mon Feb 10 10:34:29 2025] >> initial transistor: (1, 6, 0)
+[Mon Feb 10 10:34:29 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:34:29 2025] >> transistor: (1, 6, 0)
+[Mon Feb 10 10:35:10 2025] >> bit pattern process DONE
+[Mon Feb 10 10:35:10 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 6, 0)
+[Mon Feb 10 10:35:10 2025] >> initial transistor: (0, 4, 2)
+[Mon Feb 10 10:35:10 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:35:10 2025] >> transistor: (0, 4, 2)
+[Mon Feb 10 10:35:49 2025] >> bit pattern process DONE
+[Mon Feb 10 10:35:49 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 4, 2)
+[Mon Feb 10 10:35:57 2025] >> A1 & ~A5 >>> works for   4/ 93
+[Mon Feb 10 10:35:57 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 90 <- 68
+ [25] (0, 4, 0) 	 68 <- 38
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+[Mon Feb 10 10:36:06 2025] >> A2 & ~A5 >>> works for   4/ 93
+[Mon Feb 10 10:36:06 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 90 <- 68
+ [25] (0, 4, 0) 	 68 <- 38
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+[Mon Feb 10 10:36:14 2025] >> A3 & ~A4 >>> works for   5/ 93
+[Mon Feb 10 10:36:14 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 88 <- 68
+ [24] (0, 3, 0) 	 68 <- 38
+ [28] (1, 2, 0) 	 75 <- 68
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+[Mon Feb 10 10:36:23 2025] >> A3 & ~A5 >>> works for   5/ 93
+[Mon Feb 10 10:36:23 2025] >> transistor list: 
+ [21] (1, 3, 0) 	 92 <- 68
+ [25] (0, 4, 0) 	 68 <- 38
+ [48] (0, 4, 2) 	 88 <- 68
+ [49] (0, 4, 5) 	 88 <- 68
+ [57] (2, 4, 1) 	 92 <- 82
+[Mon Feb 10 10:36:23 2025] >> initial transistor: (0, 4, 5)
+[Mon Feb 10 10:36:23 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:36:23 2025] >> transistor: (0, 4, 5)
+[Mon Feb 10 10:37:01 2025] >> bit pattern process DONE
+[Mon Feb 10 10:37:01 2025] >> GROUPING PROCESS >>> initial transistor 	 (0, 4, 5)
+[Mon Feb 10 10:37:01 2025] >> initial transistor: (1, 1, 0)
+[Mon Feb 10 10:37:01 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:37:02 2025] >> transistor: (1, 1, 0)
+[Mon Feb 10 10:37:42 2025] >> bit pattern process DONE
+[Mon Feb 10 10:37:42 2025] >> GROUPING PROCESS >>> initial transistor 	 (1, 1, 0)
+[Mon Feb 10 10:37:51 2025] >> A0 & ~A2 >>> works for   9/ 93
+[Mon Feb 10 10:37:51 2025] >> transistor list: 
+ [29] (0, 1, 0) 	 68 <- 38
+ [50] (1, 1, 0) 	 88 <- 68
+ [64] (1, 0, 0) 	 97 <- 68
+ [66] (2, 1, 0) 	 97 <- 88
+ [69] (2, 0, 0) 	 97 <- 88
+ [72] (0, 2, 2) 	 88 <- 68
+ [73] (0, 2, 5) 	 88 <- 68
+ [90] (0, 1, 2) 	 88 <- 68
+ [91] (0, 1, 5) 	 88 <- 68
+[Mon Feb 10 10:37:59 2025] >> A1 & ~A2 >>> works for   6/ 93
+[Mon Feb 10 10:37:59 2025] >> transistor list: 
+ [29] (0, 1, 0) 	 68 <- 38
+ [50] (1, 1, 0) 	 88 <- 68
+ [64] (1, 0, 0) 	 77 <- 68
+ [66] (2, 1, 0) 	 97 <- 88
+ [72] (0, 2, 2) 	 88 <- 68
+ [73] (0, 2, 5) 	 88 <- 68
+[Mon Feb 10 10:38:08 2025] >> ~A2 & ~A3 >>> works for  11/ 93
+[Mon Feb 10 10:38:08 2025] >> transistor list: 
+ [28] (1, 2, 0) 	 82 <- 68
+ [29] (0, 1, 0) 	 59 <- 38
+ [36] (0, 2, 0) 	 59 <- 38
+ [50] (1, 1, 0) 	 95 <- 68
+ [53] (0, 3, 2) 	 82 <- 68
+ [54] (0, 3, 5) 	 82 <- 68
+ [64] (1, 0, 0) 	 88 <- 68
+ [72] (0, 2, 2) 	 95 <- 68
+ [73] (0, 2, 5) 	 95 <- 68
+ [90] (0, 1, 2) 	 77 <- 68
+ [91] (0, 1, 5) 	 77 <- 68
+[Mon Feb 10 10:38:15 2025] >> A6 & ~A2 >>> works for   7/ 93
+[Mon Feb 10 10:38:15 2025] >> transistor list: 
+ [29] (0, 1, 0) 	 59 <- 38
+ [50] (1, 1, 0) 	 82 <- 68
+ [64] (1, 0, 0) 	 84 <- 68
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+ [90] (0, 1, 2) 	 77 <- 68
+ [91] (0, 1, 5) 	 77 <- 68
+[Mon Feb 10 10:38:26 2025] >> ~A2 & ~A7 >>> works for  29/ 93
+[Mon Feb 10 10:38:26 2025] >> transistor list: 
+ [0] (2, 7, 1) 	 78 <- 63
+ [1] (0, 6, 1) 	 67 <- 51
+ [4] (1, 7, 2) 	 67 <- 51
+ [5] (1, 7, 5) 	 67 <- 51
+ [6] (2, 7, 2) 	 67 <- 51
+ [7] (2, 7, 5) 	 67 <- 51
+ [8] (3, 7, 2) 	 67 <- 51
+ [9] (3, 7, 5) 	 67 <- 51
+ [10] (4, 7, 2) 	 67 <- 51
+ [11] (4, 7, 5) 	 67 <- 51
+ [12] (5, 7, 2) 	 67 <- 51
+ [13] (5, 7, 5) 	 67 <- 51
+ [14] (6, 7, 3) 	 67 <- 51
+ [15] (6, 7, 4) 	 67 <- 51
+ [18] (1, 5, 1) 	 95 <- 62
+ [29] (0, 1, 0) 	 59 <- 38
+ [39] (0, 6, 3) 	 87 <- 68
+ [40] (0, 6, 4) 	 87 <- 68
+ [50] (1, 1, 0) 	 82 <- 68
+ [57] (2, 4, 1) 	 107 <- 82
+ [59] (1, 5, 3) 	 103 <- 88
+ [60] (1, 5, 4) 	 103 <- 88
+ [64] (1, 0, 0) 	 88 <- 68
+ [69] (2, 0, 0) 	 99 <- 88
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+ [79] (3, 3, 1) 	 112 <- 95
+ [90] (0, 1, 2) 	 77 <- 68
+ [91] (0, 1, 5) 	 77 <- 68
+[Mon Feb 10 10:38:34 2025] >> A4 & ~A3 >>> works for   4/ 93
+[Mon Feb 10 10:38:34 2025] >> transistor list: 
+ [36] (0, 2, 0) 	 63 <- 38
+ [50] (1, 1, 0) 	 88 <- 68
+ [72] (0, 2, 2) 	 82 <- 68
+ [73] (0, 2, 5) 	 82 <- 68
+[Mon Feb 10 10:38:34 2025] >> initial transistor: (6, 5, 3)
+[Mon Feb 10 10:38:34 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:38:35 2025] >> transistor: (6, 5, 3)
+
+##########################################
+### =============== special transistor running, low statistics transistors
+##########################################
+
+[Mon Feb 10 10:40:24 2025] >> initial transistor: (4, 3, 0)
+[Mon Feb 10 10:40:24 2025] >> total bit pattern: 120, bit count: 2
+[Mon Feb 10 10:40:24 2025] >> transistor: (4, 3, 0)
+[Mon Feb 10 10:41:05 2025] >> bit pattern process DONE
+[Mon Feb 10 10:41:05 2025] >> GROUPING PROCESS >>> initial transistor 	 (4, 3, 0)
+
