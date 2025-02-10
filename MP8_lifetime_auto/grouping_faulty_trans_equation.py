@@ -475,15 +475,15 @@ if True:
         alpha_lst_cache = CACHE(filename=alpha_cache_filename)
     
     # TODO: delete the range number
-    # for initial_transistor in transistor_list[62+1:78]:
-    for initial_transistor in transistor_list[0:]:
+    for initial_transistor in [((4, 3, 0), 107, 168)]:
+    # for initial_transistor in transistor_list[0:]:
         
         EQ_DIFF_NORMAL_EQ = 1.1     # +10%
         # note: the false_equation_list is designed for caching prupose to skip recomputing the repeating equations
         equation_list = []
 
         # generate all equations possible, and calculate how much lifeitme each get
-        BIT_COUNT = 3
+        BIT_COUNT = 2
         bit_pattern_list = generate_all_bit_pattern(BIT_COUNT)
 
         log.println(f"initial transistor: {initial_transistor[0]}")
@@ -499,7 +499,7 @@ if True:
         input_data = load_pattern_file(f"dataset/fa_i-{fa_i}-fa_j-{fa_j}-t_index-{t_index}.txt")
         log.println(f"transistor: {(fa_i, fa_j, t_index)}")
 
-        for bit_pattern in bit_pattern_list:
+        for index, bit_pattern in enumerate(bit_pattern_list):
             TT = truth_table(input_data, bit_pattern[0], bit_pattern[1], log_obj=False)
             equation = generate_optimized_equation_with_or(TT)
 
@@ -534,7 +534,7 @@ if True:
 
 
             # log.println(f"{bit_pattern} \t>>> {equation} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
-            eq_log.println(f"{"..."} \t>>> {equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
+            eq_log.println(f"{index}/{len(bit_pattern_list)}\t {"..."} \t>>> {equation:60} \t>>> {eq_lifetime} [{normal_eq_lifetime}, {dataset_lifetime}] \t[{description}]")
         log.println(f"bit pattern process DONE")
 
 
@@ -614,7 +614,7 @@ if True:
 
     equation_file = parse_equation_file(log_filename)
     equation_list = [i["equation"] for i in equation_file]
-    transistor_list = [i["transistors"] for i in equation_file]
+    equation_transistor_list = [i["transistors"] for i in equation_file]
 
     def get_best_equations(eq_count_needed):
         r_eq = []
@@ -624,7 +624,7 @@ if True:
             max_t_lst = []
             max_eq = None
             for i, eq in enumerate(equation_list):
-                next_t_lst = list(set(r_t + transistor_list[i]))
+                next_t_lst = list(set(r_t + equation_transistor_list[i]))
 
                 if len(next_t_lst) > len(max_t_lst):
                     max_t_lst = next_t_lst.copy()
@@ -638,16 +638,28 @@ if True:
 
             
     
-    COUNT_EQ = 1
+    COUNT_EQ = 3
     top_eq = get_best_equations(COUNT_EQ)
     print(top_eq[0])
     print(top_eq[1])
     print(f"covered: {len(top_eq[1])}")
 
-    # for i in range(len(equation_list)):
-    #     print(equation_list[i])
-    #     print(transistor_list[i])
-    #     print('-'*40)
+    
+    # statistic of the transistors
+    # how many equation does cover each transistor
+    if True:
+        transistor_eq_count = [0 for _ in transistor_list]
+
+        for i, eq in enumerate(equation_list):
+
+            for t_i, t in enumerate(transistor_list):
+                if t[0] in equation_transistor_list[i]:
+                  transistor_eq_count[t_i] += 1
+
+        print(f"{len(equation_list)} equations in total found")
+        for t_i, t in enumerate(transistor_list):
+            print(f"{t}\t:\t{transistor_eq_count[t_i]}")
+            
 
 
 
