@@ -85,66 +85,86 @@ def get_faulty_transistor_equation_data(filename) -> List[Dict]:
 filename = "probability_detector.py.faulty_transistor_equation.log"
 transistors = get_faulty_transistor_equation_data(filename)
 
+
+# check see if any transistor is missing
+# matrix = [[[0 for _ in range(6)] for _ in range(8)] for _ in range(7)]
+# for t in transistors:
+#     i, j, index = t["transistor"]
+#     matrix[i][j][index] += 1
+
+# print(matrix)
+# for i in range(7):
+#     for j in range(8):
+#         for index in range(6):
+#             if matrix[i][j][index] == 0:
+#                 print("ZERO ERROR")
+    
 if False:
     for t in transistors:
-        print(t)
+        # print(t)
+        # print(t['transistor'])
+        print(t['normal_eq_lifetime'])
 
 
 
 
+if True:
+    # anylysis
+    _tmp = []
+    eq_count = 0
+    NORMAL_DIFF_EQUATION_PERCENTAGE = 1.11    # normal equation + 10% > max equation 
+    for t in transistors:
+        transistor = t["transistor"]
+        unoptimized_lifetime = t["unoptimized_lifetime"]
+        normal_eq_lifetimme = t["normal_eq_lifetime"]
+        # dataset_lifetime = t["dataset_lifetime"]
 
-# anylysis
-_tmp = []
-eq_count = 0
-NORMAL_DIFF_EQUATION_PERCENTAGE = 1.11    # normal equation + 10% > max equation 
-for t in transistors:
-    transistor = t["transistor"]
-    unoptimized_lifetime = t["unoptimized_lifetime"]
-    normal_eq_lifetimme = t["normal_eq_lifetime"]
-    # dataset_lifetime = t["dataset_lifetime"]
-
-    lifetime_1bit = t["1"] or -1
-    lifetime_2bit = t["2"] or -1
-    lifetime_3bit = t["3"] or -1
-    lifetime_4bit = t["4"] or -1
-    lifetime_5bit = t["5"] or -1
-    max_equation_lifetime = max(
-        lifetime_1bit, lifetime_2bit, lifetime_3bit, lifetime_4bit, lifetime_5bit
-    )
-    
-
-    # normal equation is doing better than equation and is preffered
-    if False and (normal_eq_lifetimme * NORMAL_DIFF_EQUATION_PERCENTAGE >= max_equation_lifetime) and (normal_eq_lifetimme > unoptimized_lifetime):
-        print(f"{transistor} \tnormal EQ is better [{normal_eq_lifetimme} > {max_equation_lifetime, unoptimized_lifetime}]")
-        eq_count += 1
-
-    # no optimization can not be done on these transistors
-    if False and max(max_equation_lifetime, normal_eq_lifetimme) <= unoptimized_lifetime:
-        print(f"{transistor} \tunimproved unoptimized lifetime \t[{max(max_equation_lifetime, normal_eq_lifetimme)} !> {unoptimized_lifetime}]")
-        eq_count += 1
+        lifetime_1bit = t["1"] or -1
+        lifetime_2bit = t["2"] or -1
+        lifetime_3bit = t["3"] or -1
+        lifetime_4bit = t["4"] or -1
+        lifetime_5bit = t["5"] or -1
+        max_equation_lifetime = max(
+            lifetime_1bit, lifetime_2bit, lifetime_3bit, lifetime_4bit, lifetime_5bit
+        )
         
-    # normal (healthy) optimizer is not enough, and we should use a special optimizer mostly
-    if True and (max_equation_lifetime > normal_eq_lifetimme * NORMAL_DIFF_EQUATION_PERCENTAGE) and (max_equation_lifetime > unoptimized_lifetime):
-        eq_diff_unoptimized = (max_equation_lifetime - unoptimized_lifetime) / unoptimized_lifetime * 100
-        eq_diff_normal = (max_equation_lifetime - normal_eq_lifetimme) / normal_eq_lifetimme * 100
-        # print(f"{transistor} \tEQuation is needed \t[{max_equation_lifetime} > {normal_eq_lifetimme},{unoptimized_lifetime}] \t({eq_diff_normal:2.0f}, {eq_diff_unoptimized:2.0f})% \t{"!!" if eq_diff_normal<11 else ""} \t{"!!" if eq_diff_unoptimized<11 else ""}")
-        print(f"{transistor} \tEQuation is needed \t[{max_equation_lifetime} > {normal_eq_lifetimme},{unoptimized_lifetime}] \t({eq_diff_normal:2.0f}, {eq_diff_unoptimized:2.0f})%")
-        
-        _tmp.append(t)
-        eq_count += 1
 
-print(f"count: {eq_count}")
+        # normal equation is doing better than equation and is preffered
+        if True and (normal_eq_lifetimme * NORMAL_DIFF_EQUATION_PERCENTAGE >= max_equation_lifetime) and (normal_eq_lifetimme > unoptimized_lifetime):
+            print(f"{transistor} \tnormal EQ is better [{normal_eq_lifetimme} > {max_equation_lifetime, unoptimized_lifetime}]")
+            eq_count += 1
 
-print("+"*20 + "\t sorted data")
-_tmp = sorted(_tmp, reverse=True, key=lambda x: (x["dataset_lifetime"] - x["unoptimized_lifetime"])/x["unoptimized_lifetime"])
-for t in _tmp:
-    dataset_diff_normal = (t['dataset_lifetime'] - t['normal_eq_lifetime']) / t['normal_eq_lifetime'] * 100
+        # no optimization can not be done on these transistors
+        elif False and max(max_equation_lifetime, normal_eq_lifetimme) <= unoptimized_lifetime:
+            print(f"{transistor} \tunimproved unoptimized lifetime \t[{max(max_equation_lifetime, normal_eq_lifetimme)} !> {unoptimized_lifetime}]")
+            eq_count += 1
+            
+        # normal (healthy) optimizer is not enough, and we should use a special optimizer mostly
+        elif False and (max_equation_lifetime > normal_eq_lifetimme * NORMAL_DIFF_EQUATION_PERCENTAGE) and (max_equation_lifetime > unoptimized_lifetime):
+            eq_diff_unoptimized = (max_equation_lifetime - unoptimized_lifetime) / unoptimized_lifetime * 100
+            eq_diff_normal = (max_equation_lifetime - normal_eq_lifetimme) / normal_eq_lifetimme * 100
+            # print(f"{transistor} \tEQuation is needed \t[{max_equation_lifetime} > {normal_eq_lifetimme},{unoptimized_lifetime}] \t({eq_diff_normal:2.0f}, {eq_diff_unoptimized:2.0f})% \t{"!!" if eq_diff_normal<11 else ""} \t{"!!" if eq_diff_unoptimized<11 else ""}")
+            print(f"{transistor} \tEQuation is needed \t[{max_equation_lifetime} > {normal_eq_lifetimme},{unoptimized_lifetime}] \t({eq_diff_normal:2.0f}, {eq_diff_unoptimized:2.0f})%")
+            
+            _tmp.append(t)
+            eq_count += 1
 
-    print(f"{t['transistor']} \tdataset:{t['dataset_lifetime']:3.0f} <- {t['unoptimized_lifetime']} \tnormal:{t['normal_eq_lifetime']} ")
-    # if not dataset_diff_normal < 16:
-    #     print(f"{t['transistor']} \t{t['dataset_lifetime']:3.0f} <- {t['unoptimized_lifetime']} \tnormal:{t['normal_eq_lifetime']} ")
-    # else:
-    #     print(f"!!!{t['transistor']} \t{t['dataset_lifetime']:3.0f} <- {t['unoptimized_lifetime']} \tnormal:{t['normal_eq_lifetime']} ")
+        else:
+            # print(f" LEFT OVER >>> {t}")
+            pass
+
+    print(f"count: {eq_count}")
+
+    print("+"*20 + "\t sorted data")
+    _tmp = sorted(_tmp, reverse=True, key=lambda x: (x["dataset_lifetime"] - x["unoptimized_lifetime"])/x["unoptimized_lifetime"])
+    for t in _tmp:
+        dataset_diff_normal = (t['dataset_lifetime'] - t['normal_eq_lifetime']) / t['normal_eq_lifetime'] * 100
+
+        print(f"{t['transistor']} \tdataset:{t['dataset_lifetime']:3.0f} <- {t['unoptimized_lifetime']} \tnormal:{t['normal_eq_lifetime']} ")
+        # if not dataset_diff_normal < 16:
+        #     print(f"{t['transistor']} \t{t['dataset_lifetime']:3.0f} <- {t['unoptimized_lifetime']} \tnormal:{t['normal_eq_lifetime']} ")
+        # else:
+        #     print(f"!!!{t['transistor']} \t{t['dataset_lifetime']:3.0f} <- {t['unoptimized_lifetime']} \tnormal:{t['normal_eq_lifetime']} ")
 
 
 # analysis output
@@ -169,242 +189,250 @@ total: 337
 """
 normal equation lifetime + 10% > equation lifetime
 
-(0, 0, 1) 	normal EQ is better [169 > (115, 98)]
-(0, 0, 1) 	normal EQ is better [169 > (169, 98)]
-(0, 0, 3) 	normal EQ is better [169 > (169, 98)]
-(0, 0, 4) 	normal EQ is better [169 > (169, 98)]
-(0, 1, 1) 	normal EQ is better [169 > (169, 98)]
-(0, 1, 3) 	normal EQ is better [169 > (169, 98)]
-(0, 1, 4) 	normal EQ is better [169 > (169, 98)]
-(0, 2, 1) 	normal EQ is better [169 > (169, 98)]
-(0, 2, 3) 	normal EQ is better [169 > (169, 98)]
-(0, 2, 4) 	normal EQ is better [169 > (169, 98)]
-(0, 3, 1) 	normal EQ is better [169 > (169, 98)]
-(0, 3, 3) 	normal EQ is better [169 > (169, 98)]
-(0, 3, 4) 	normal EQ is better [169 > (169, 98)]
-(0, 4, 1) 	normal EQ is better [169 > (169, 98)]
-(0, 4, 3) 	normal EQ is better [169 > (169, 98)]
-(0, 4, 4) 	normal EQ is better [169 > (169, 98)]
-(0, 5, 0) 	normal EQ is better [87 > (87, 38)]
-(0, 5, 1) 	normal EQ is better [146 > (146, 98)]
-(0, 5, 3) 	normal EQ is better [129 > (129, 98)]
-(0, 5, 4) 	normal EQ is better [129 > (129, 98)]
-(0, 6, 0) 	normal EQ is better [169 > (169, 98)]
-(0, 6, 2) 	normal EQ is better [169 > (169, 98)]
-(0, 6, 5) 	normal EQ is better [169 > (169, 98)]
-(0, 7, 0) 	normal EQ is better [169 > (169, 98)]
-(0, 7, 1) 	normal EQ is better [113 > (113, 98)]
-(0, 7, 3) 	normal EQ is better [169 > (169, 98)]
-(0, 7, 4) 	normal EQ is better [169 > (169, 98)]
-(1, 0, 1) 	normal EQ is better [169 > (169, 98)]
-(1, 0, 3) 	normal EQ is better [145 > (145, 98)]
-(1, 0, 4) 	normal EQ is better [145 > (145, 98)]
-(1, 1, 1) 	normal EQ is better [169 > (169, 98)]
-(1, 1, 3) 	normal EQ is better [145 > (145, 98)]
-(1, 1, 4) 	normal EQ is better [145 > (145, 98)]
-(1, 2, 1) 	normal EQ is better [169 > (169, 98)]
-(1, 2, 3) 	normal EQ is better [145 > (152, 98)]
-(1, 2, 4) 	normal EQ is better [145 > (152, 98)]
-(1, 3, 1) 	normal EQ is better [169 > (169, 98)]
-(1, 3, 3) 	normal EQ is better [145 > (145, 98)]
-(1, 3, 4) 	normal EQ is better [145 > (145, 98)]
-(1, 4, 1) 	normal EQ is better [113 > (115, 98)]
-(1, 4, 3) 	normal EQ is better [114 > (115, 98)]
-(1, 4, 4) 	normal EQ is better [114 > (115, 98)]
-(1, 5, 0) 	normal EQ is better [169 > (169, 98)]
-(1, 5, 2) 	normal EQ is better [145 > (145, 98)]
-(1, 5, 5) 	normal EQ is better [145 > (145, 98)]
-(1, 6, 1) 	normal EQ is better [169 > (169, 98)]
-(1, 6, 3) 	normal EQ is better [113 > (98, 98)]
-(1, 6, 4) 	normal EQ is better [113 > (98, 98)]
-(1, 7, 0) 	normal EQ is better [169 > (169, 98)]
-(1, 7, 1) 	normal EQ is better [34 > (34, 20)]
-(1, 7, 3) 	normal EQ is better [169 > (169, 98)]
-(1, 7, 4) 	normal EQ is better [169 > (169, 98)]
-(2, 0, 1) 	normal EQ is better [145 > (145, 98)]
-(2, 0, 2) 	normal EQ is better [99 > (99, 98)]
-(2, 0, 3) 	normal EQ is better [127 > (127, 98)]
-(2, 0, 4) 	normal EQ is better [127 > (127, 98)]
-(2, 0, 5) 	normal EQ is better [99 > (99, 98)]
-(2, 1, 1) 	normal EQ is better [145 > (145, 98)]
-(2, 1, 2) 	normal EQ is better [99 > (99, 98)]
-(2, 1, 3) 	normal EQ is better [127 > (127, 98)]
-(2, 1, 4) 	normal EQ is better [127 > (127, 98)]
-(2, 1, 5) 	normal EQ is better [99 > (99, 98)]
-(2, 2, 1) 	normal EQ is better [145 > (84, 98)]
-(2, 2, 2) 	normal EQ is better [99 > (107, 98)]
-(2, 2, 3) 	normal EQ is better [127 > (132, 98)]
-(2, 2, 4) 	normal EQ is better [127 > (132, 98)]
-(2, 2, 5) 	normal EQ is better [99 > (107, 98)]
-(2, 3, 1) 	normal EQ is better [107 > (115, 98)]
-(2, 3, 2) 	normal EQ is better [114 > (114, 98)]
-(2, 3, 3) 	normal EQ is better [111 > (106, 98)]
-(2, 3, 4) 	normal EQ is better [111 > (106, 98)]
-(2, 3, 5) 	normal EQ is better [114 > (114, 98)]
-(2, 4, 0) 	normal EQ is better [154 > (154, 98)]
-(2, 5, 1) 	normal EQ is better [147 > (158, 98)]
-(2, 5, 3) 	normal EQ is better [113 > (123, 98)]
-(2, 5, 4) 	normal EQ is better [113 > (123, 98)]
-(2, 6, 1) 	normal EQ is better [153 > (153, 98)]
-(2, 6, 3) 	normal EQ is better [117 > (83, 98)]
-(2, 6, 4) 	normal EQ is better [117 > (83, 98)]
-(2, 7, 0) 	normal EQ is better [169 > (169, 98)]
-(2, 7, 3) 	normal EQ is better [169 > (169, 98)]
-(2, 7, 4) 	normal EQ is better [169 > (169, 98)]
-(3, 0, 1) 	normal EQ is better [127 > (128, 98)]
-(3, 0, 2) 	normal EQ is better [106 > (106, 98)]
-(3, 0, 3) 	normal EQ is better [120 > (120, 98)]
-(3, 0, 4) 	normal EQ is better [120 > (120, 98)]
-(3, 0, 5) 	normal EQ is better [106 > (106, 98)]
-(3, 1, 1) 	normal EQ is better [127 > (127, 98)]
-(3, 1, 2) 	normal EQ is better [106 > (106, 98)]
-(3, 1, 3) 	normal EQ is better [120 > (120, 98)]
-(3, 1, 4) 	normal EQ is better [120 > (120, 98)]
-(3, 1, 5) 	normal EQ is better [106 > (106, 98)]
-(3, 2, 0) 	normal EQ is better [118 > (123, 98)]
-(3, 2, 1) 	normal EQ is better [107 > (83, 98)]
-(3, 2, 2) 	normal EQ is better [113 > (114, 98)]
-(3, 2, 3) 	normal EQ is better [112 > (106, 98)]
-(3, 2, 4) 	normal EQ is better [112 > (106, 98)]
-(3, 2, 5) 	normal EQ is better [113 > (114, 98)]
-(3, 4, 1) 	normal EQ is better [126 > (131, 98)]
-(3, 4, 3) 	normal EQ is better [109 > (94, 98)]
-(3, 4, 4) 	normal EQ is better [109 > (94, 98)]
-(3, 5, 1) 	normal EQ is better [126 > (94, 98)]
-(3, 5, 2) 	normal EQ is better [109 > (112, 93)]
-(3, 5, 3) 	normal EQ is better [116 > (94, 98)]
-(3, 5, 4) 	normal EQ is better [116 > (94, 98)]
-(3, 5, 5) 	normal EQ is better [109 > (112, 93)]
-(3, 6, 1) 	normal EQ is better [114 > (107, 98)]
-(3, 6, 3) 	normal EQ is better [117 > (95, 98)]
-(3, 6, 4) 	normal EQ is better [117 > (95, 98)]
-(3, 7, 0) 	normal EQ is better [132 > (98, 98)]
-(3, 7, 1) 	normal EQ is better [96 > (65, 65)]
-(3, 7, 3) 	normal EQ is better [169 > (169, 98)]
-(3, 7, 4) 	normal EQ is better [169 > (169, 98)]
-(4, 0, 0) 	normal EQ is better [106 > (113, 98)]
-(4, 0, 1) 	normal EQ is better [120 > (132, 98)]
-(4, 0, 2) 	normal EQ is better [109 > (109, 98)]
-(4, 0, 3) 	normal EQ is better [116 > (116, 98)]
-(4, 0, 4) 	normal EQ is better [116 > (116, 98)]
-(4, 0, 5) 	normal EQ is better [109 > (109, 98)]
-(4, 1, 0) 	normal EQ is better [117 > (119, 98)]
-(4, 1, 1) 	normal EQ is better [108 > (83, 98)]
-(4, 1, 2) 	normal EQ is better [113 > (109, 98)]
-(4, 1, 3) 	normal EQ is better [112 > (116, 98)]
-(4, 1, 4) 	normal EQ is better [112 > (116, 98)]
-(4, 1, 5) 	normal EQ is better [113 > (109, 98)]
-(4, 2, 0) 	normal EQ is better [123 > (135, 98)]
-(4, 2, 2) 	normal EQ is better [116 > (126, 98)]
-(4, 2, 3) 	normal EQ is better [110 > (115, 98)]
-(4, 2, 4) 	normal EQ is better [110 > (115, 98)]
-(4, 2, 5) 	normal EQ is better [116 > (126, 98)]
-(4, 3, 1) 	normal EQ is better [118 > (110, 98)]
-(4, 3, 2) 	normal EQ is better [115 > (126, 98)]
-(4, 3, 3) 	normal EQ is better [110 > (83, 98)]
-(4, 3, 4) 	normal EQ is better [110 > (83, 98)]
-(4, 3, 5) 	normal EQ is better [115 > (126, 98)]
-(4, 4, 1) 	normal EQ is better [117 > (107, 98)]
-(4, 4, 2) 	normal EQ is better [114 > (112, 98)]
-(4, 4, 3) 	normal EQ is better [111 > (83, 98)]
-(4, 4, 4) 	normal EQ is better [111 > (83, 98)]
-(4, 4, 5) 	normal EQ is better [114 > (112, 98)]
-(4, 5, 1) 	normal EQ is better [106 > (83, 98)]
-(4, 5, 2) 	normal EQ is better [113 > (117, 95)]
-(4, 5, 3) 	normal EQ is better [112 > (106, 98)]
-(4, 5, 4) 	normal EQ is better [112 > (106, 98)]
-(4, 5, 5) 	normal EQ is better [113 > (117, 95)]
-(4, 6, 0) 	normal EQ is better [135 > (84, 89)]
-(4, 6, 3) 	normal EQ is better [118 > (95, 98)]
-(4, 6, 4) 	normal EQ is better [118 > (95, 98)]
-(4, 7, 0) 	normal EQ is better [101 > (82, 98)]
-(4, 7, 1) 	normal EQ is better [125 > (83, 83)]
-(4, 7, 3) 	normal EQ is better [169 > (169, 98)]
-(4, 7, 4) 	normal EQ is better [169 > (169, 98)]
-(5, 0, 0) 	normal EQ is better [116 > (121, 98)]
-(5, 0, 1) 	normal EQ is better [109 > (116, 98)]
-(5, 0, 2) 	normal EQ is better [111 > (111, 98)]
-(5, 0, 3) 	normal EQ is better [114 > (114, 98)]
-(5, 0, 4) 	normal EQ is better [114 > (114, 98)]
-(5, 0, 5) 	normal EQ is better [111 > (111, 98)]
-(5, 1, 1) 	normal EQ is better [107 > (117, 98)]
-(5, 1, 2) 	normal EQ is better [115 > (115, 98)]
-(5, 1, 3) 	normal EQ is better [110 > (112, 98)]
-(5, 1, 4) 	normal EQ is better [110 > (112, 98)]
-(5, 1, 5) 	normal EQ is better [115 > (115, 98)]
-(5, 2, 0) 	normal EQ is better [110 > (121, 98)]
-(5, 2, 1) 	normal EQ is better [115 > (111, 98)]
-(5, 2, 2) 	normal EQ is better [114 > (119, 98)]
-(5, 2, 3) 	normal EQ is better [111 > (106, 98)]
-(5, 2, 4) 	normal EQ is better [111 > (106, 98)]
-(5, 2, 5) 	normal EQ is better [114 > (119, 98)]
-(5, 3, 1) 	normal EQ is better [114 > (83, 98)]
-(5, 3, 2) 	normal EQ is better [113 > (112, 98)]
-(5, 3, 3) 	normal EQ is better [112 > (83, 98)]
-(5, 3, 4) 	normal EQ is better [112 > (83, 98)]
-(5, 3, 5) 	normal EQ is better [113 > (112, 98)]
-(5, 4, 0) 	normal EQ is better [119 > (108, 98)]
-(5, 4, 1) 	normal EQ is better [106 > (83, 98)]
-(5, 4, 2) 	normal EQ is better [114 > (114, 98)]
-(5, 4, 3) 	normal EQ is better [111 > (83, 98)]
-(5, 4, 4) 	normal EQ is better [111 > (83, 98)]
-(5, 4, 5) 	normal EQ is better [114 > (114, 98)]
-(5, 5, 2) 	normal EQ is better [113 > (117, 95)]
-(5, 5, 3) 	normal EQ is better [112 > (83, 98)]
-(5, 5, 4) 	normal EQ is better [112 > (83, 98)]
-(5, 5, 5) 	normal EQ is better [113 > (117, 95)]
-(5, 6, 0) 	normal EQ is better [154 > (70, 98)]
-(5, 6, 3) 	normal EQ is better [119 > (107, 98)]
-(5, 6, 4) 	normal EQ is better [119 > (107, 98)]
-(5, 7, 1) 	normal EQ is better [149 > (95, 95)]
-(5, 7, 3) 	normal EQ is better [169 > (169, 98)]
-(5, 7, 4) 	normal EQ is better [169 > (169, 98)]
-(6, 0, 0) 	normal EQ is better [116 > (123, 98)]
-(6, 0, 1) 	normal EQ is better [109 > (117, 98)]
-(6, 0, 2) 	normal EQ is better [112 > (112, 98)]
-(6, 0, 3) 	normal EQ is better [113 > (113, 98)]
-(6, 0, 4) 	normal EQ is better [113 > (113, 98)]
-(6, 0, 5) 	normal EQ is better [112 > (112, 98)]
-(6, 1, 0) 	normal EQ is better [112 > (115, 98)]
-(6, 1, 1) 	normal EQ is better [113 > (112, 98)]
-(6, 1, 2) 	normal EQ is better [112 > (108, 98)]
-(6, 1, 3) 	normal EQ is better [113 > (114, 98)]
-(6, 1, 4) 	normal EQ is better [113 > (114, 98)]
-(6, 1, 5) 	normal EQ is better [112 > (108, 98)]
-(6, 2, 0) 	normal EQ is better [112 > (119, 98)]
-(6, 2, 1) 	normal EQ is better [113 > (105, 98)]
-(6, 2, 2) 	normal EQ is better [112 > (115, 98)]
-(6, 2, 3) 	normal EQ is better [113 > (115, 98)]
-(6, 2, 4) 	normal EQ is better [113 > (115, 98)]
-(6, 2, 5) 	normal EQ is better [112 > (115, 98)]
-(6, 3, 0) 	normal EQ is better [118 > (85, 98)]
-(6, 3, 1) 	normal EQ is better [108 > (83, 98)]
-(6, 3, 2) 	normal EQ is better [111 > (83, 98)]
-(6, 3, 3) 	normal EQ is better [114 > (112, 98)]
-(6, 3, 4) 	normal EQ is better [114 > (112, 98)]
-(6, 3, 5) 	normal EQ is better [111 > (83, 98)]
-(6, 4, 0) 	normal EQ is better [127 > (117, 98)]
-(6, 4, 1) 	normal EQ is better [100 > (83, 98)]
-(6, 4, 2) 	normal EQ is better [111 > (83, 98)]
-(6, 4, 3) 	normal EQ is better [114 > (112, 98)]
-(6, 4, 4) 	normal EQ is better [114 > (112, 98)]
-(6, 4, 5) 	normal EQ is better [111 > (83, 98)]
-(6, 5, 0) 	normal EQ is better [143 > (117, 98)]
-(6, 5, 2) 	normal EQ is better [112 > (83, 98)]
-(6, 5, 5) 	normal EQ is better [112 > (83, 98)]
-(6, 6, 0) 	normal EQ is better [167 > (31, 98)]
-(6, 6, 2) 	normal EQ is better [119 > (107, 98)]
-(6, 6, 5) 	normal EQ is better [119 > (107, 98)]
-(6, 7, 1) 	normal EQ is better [165 > (165, 98)]
-(6, 7, 2) 	normal EQ is better [169 > (169, 98)]
-count: 228
+(0, 0, 1)       normal EQ is better [169 > (169, 98)]
+(0, 0, 3)       normal EQ is better [169 > (169, 98)]
+(0, 0, 4)       normal EQ is better [169 > (169, 98)]
+(0, 1, 1)       normal EQ is better [169 > (169, 98)]
+(0, 1, 3)       normal EQ is better [169 > (169, 98)]
+(0, 1, 4)       normal EQ is better [169 > (169, 98)]
+(0, 2, 1)       normal EQ is better [169 > (169, 98)]
+(0, 2, 3)       normal EQ is better [169 > (169, 98)]
+(0, 2, 4)       normal EQ is better [169 > (169, 98)]
+(0, 3, 1)       normal EQ is better [169 > (169, 98)]
+(0, 3, 3)       normal EQ is better [169 > (169, 98)]
+(0, 3, 4)       normal EQ is better [169 > (169, 98)]
+(0, 4, 1)       normal EQ is better [169 > (169, 98)]
+(0, 4, 3)       normal EQ is better [169 > (169, 98)]
+(0, 4, 4)       normal EQ is better [169 > (169, 98)]
+(0, 5, 0)       normal EQ is better [87 > (87, 38)]
+(0, 5, 1)       normal EQ is better [146 > (146, 98)]
+(0, 5, 3)       normal EQ is better [129 > (129, 98)]
+(0, 5, 4)       normal EQ is better [129 > (129, 98)]
+(0, 6, 0)       normal EQ is better [169 > (169, 98)]
+(0, 6, 2)       normal EQ is better [169 > (169, 98)]
+(0, 6, 5)       normal EQ is better [169 > (169, 98)]
+(0, 7, 0)       normal EQ is better [169 > (169, 98)]
+(0, 7, 1)       normal EQ is better [113 > (113, 98)]
+(0, 7, 3)       normal EQ is better [169 > (169, 98)]
+(0, 7, 4)       normal EQ is better [169 > (169, 98)]
+(1, 0, 1)       normal EQ is better [169 > (169, 98)]
+(1, 0, 3)       normal EQ is better [145 > (145, 98)]
+(1, 0, 4)       normal EQ is better [145 > (145, 98)]
+(1, 1, 1)       normal EQ is better [169 > (169, 98)]
+(1, 1, 3)       normal EQ is better [145 > (145, 98)]
+(1, 1, 4)       normal EQ is better [145 > (145, 98)]
+(1, 2, 1)       normal EQ is better [169 > (169, 98)]
+(1, 2, 3)       normal EQ is better [145 > (152, 98)]
+(1, 2, 4)       normal EQ is better [145 > (152, 98)]
+(1, 3, 1)       normal EQ is better [169 > (169, 98)]
+(1, 3, 3)       normal EQ is better [145 > (145, 98)]
+(1, 3, 4)       normal EQ is better [145 > (145, 98)]
+(1, 4, 1)       normal EQ is better [113 > (115, 98)]
+(1, 4, 3)       normal EQ is better [114 > (115, 98)]
+(1, 4, 4)       normal EQ is better [114 > (115, 98)]
+(1, 5, 0)       normal EQ is better [169 > (169, 98)]
+(1, 5, 2)       normal EQ is better [145 > (145, 98)]
+(1, 5, 5)       normal EQ is better [145 > (145, 98)]
+(1, 6, 1)       normal EQ is better [169 > (169, 98)]
+(1, 6, 3)       normal EQ is better [113 > (98, 98)]
+(1, 6, 4)       normal EQ is better [113 > (98, 98)]
+(1, 7, 0)       normal EQ is better [169 > (169, 98)]
+(1, 7, 1)       normal EQ is better [34 > (34, 20)]
+(1, 7, 3)       normal EQ is better [169 > (169, 98)]
+(1, 7, 4)       normal EQ is better [169 > (169, 98)]
+(2, 0, 1)       normal EQ is better [145 > (145, 98)]
+(2, 0, 2)       normal EQ is better [99 > (99, 98)]
+(2, 0, 3)       normal EQ is better [127 > (127, 98)]
+(2, 0, 4)       normal EQ is better [127 > (127, 98)]
+(2, 0, 5)       normal EQ is better [99 > (99, 98)]
+(2, 1, 1)       normal EQ is better [145 > (145, 98)]
+(2, 1, 2)       normal EQ is better [99 > (99, 98)]
+(2, 1, 3)       normal EQ is better [127 > (127, 98)]
+(2, 1, 4)       normal EQ is better [127 > (127, 98)]
+(2, 1, 5)       normal EQ is better [99 > (99, 98)]
+(2, 2, 1)       normal EQ is better [145 > (84, 98)]
+(2, 2, 2)       normal EQ is better [99 > (107, 98)]
+(2, 2, 3)       normal EQ is better [127 > (132, 98)]
+(2, 2, 4)       normal EQ is better [127 > (132, 98)]
+(2, 2, 5)       normal EQ is better [99 > (107, 98)]
+(2, 3, 1)       normal EQ is better [107 > (115, 98)]
+(2, 3, 2)       normal EQ is better [114 > (114, 98)]
+(2, 3, 3)       normal EQ is better [111 > (106, 98)]
+(2, 3, 4)       normal EQ is better [111 > (106, 98)]
+(2, 3, 5)       normal EQ is better [114 > (114, 98)]
+(2, 4, 0)       normal EQ is better [154 > (154, 98)]
+(2, 5, 1)       normal EQ is better [147 > (158, 98)]
+(2, 5, 3)       normal EQ is better [113 > (123, 98)]
+(2, 5, 4)       normal EQ is better [113 > (123, 98)]
+(2, 6, 1)       normal EQ is better [153 > (153, 98)]
+(2, 6, 3)       normal EQ is better [117 > (83, 98)]
+(2, 6, 4)       normal EQ is better [117 > (83, 98)]
+(2, 7, 0)       normal EQ is better [169 > (169, 98)]
+(2, 7, 3)       normal EQ is better [169 > (169, 98)]
+(2, 7, 4)       normal EQ is better [169 > (169, 98)]
+(3, 0, 1)       normal EQ is better [127 > (128, 98)]
+(3, 0, 2)       normal EQ is better [106 > (106, 98)]
+(3, 0, 3)       normal EQ is better [120 > (120, 98)]
+(3, 0, 4)       normal EQ is better [120 > (120, 98)]
+(3, 0, 5)       normal EQ is better [106 > (106, 98)]
+(3, 1, 1)       normal EQ is better [127 > (127, 98)]
+(3, 1, 2)       normal EQ is better [106 > (106, 98)]
+(3, 1, 3)       normal EQ is better [120 > (120, 98)]
+(3, 1, 4)       normal EQ is better [120 > (120, 98)]
+(3, 1, 5)       normal EQ is better [106 > (106, 98)]
+(3, 2, 0)       normal EQ is better [118 > (123, 98)]
+(3, 2, 1)       normal EQ is better [107 > (83, 98)]
+(3, 2, 2)       normal EQ is better [113 > (114, 98)]
+(3, 2, 3)       normal EQ is better [112 > (106, 98)]
+(3, 2, 4)       normal EQ is better [112 > (106, 98)]
+(3, 2, 5)       normal EQ is better [113 > (114, 98)]
+(3, 3, 2)       normal EQ is better [120 > (133, 98)]
+(3, 3, 5)       normal EQ is better [120 > (133, 98)]
+(3, 4, 1)       normal EQ is better [126 > (131, 98)]
+(3, 4, 3)       normal EQ is better [109 > (94, 98)]
+(3, 4, 4)       normal EQ is better [109 > (94, 98)]
+(3, 5, 1)       normal EQ is better [126 > (94, 98)]
+(3, 5, 2)       normal EQ is better [109 > (112, 93)]
+(3, 5, 3)       normal EQ is better [116 > (94, 98)]
+(3, 5, 4)       normal EQ is better [116 > (94, 98)]
+(3, 5, 5)       normal EQ is better [109 > (112, 93)]
+(3, 6, 1)       normal EQ is better [114 > (107, 98)]
+(3, 6, 3)       normal EQ is better [117 > (95, 98)]
+(3, 6, 4)       normal EQ is better [117 > (95, 98)]
+(3, 7, 0)       normal EQ is better [132 > (98, 98)]
+(3, 7, 1)       normal EQ is better [96 > (65, 65)]
+(3, 7, 3)       normal EQ is better [169 > (169, 98)]
+(3, 7, 4)       normal EQ is better [169 > (169, 98)]
+(4, 0, 0)       normal EQ is better [106 > (113, 98)]
+(4, 0, 1)       normal EQ is better [120 > (132, 98)]
+(4, 0, 2)       normal EQ is better [109 > (109, 98)]
+(4, 0, 3)       normal EQ is better [116 > (116, 98)]
+(4, 0, 4)       normal EQ is better [116 > (116, 98)]
+(4, 0, 5)       normal EQ is better [109 > (109, 98)]
+(4, 1, 0)       normal EQ is better [117 > (119, 98)]
+(4, 1, 1)       normal EQ is better [108 > (83, 98)]
+(4, 1, 2)       normal EQ is better [113 > (109, 98)]
+(4, 1, 3)       normal EQ is better [112 > (116, 98)]
+(4, 1, 4)       normal EQ is better [112 > (116, 98)]
+(4, 1, 5)       normal EQ is better [113 > (109, 98)]
+(4, 2, 0)       normal EQ is better [123 > (135, 98)]
+(4, 2, 2)       normal EQ is better [116 > (126, 98)]
+(4, 2, 3)       normal EQ is better [110 > (115, 98)]
+(4, 2, 4)       normal EQ is better [110 > (115, 98)]
+(4, 2, 5)       normal EQ is better [116 > (126, 98)]
+(4, 3, 1)       normal EQ is better [118 > (110, 98)]
+(4, 3, 2)       normal EQ is better [115 > (126, 98)]
+(4, 3, 3)       normal EQ is better [110 > (83, 98)]
+(4, 3, 4)       normal EQ is better [110 > (83, 98)]
+(4, 3, 5)       normal EQ is better [115 > (126, 98)]
+(4, 4, 1)       normal EQ is better [117 > (107, 98)]
+(4, 4, 2)       normal EQ is better [114 > (112, 98)]
+(4, 4, 3)       normal EQ is better [111 > (83, 98)]
+(4, 4, 4)       normal EQ is better [111 > (83, 98)]
+(4, 4, 5)       normal EQ is better [114 > (112, 98)]
+(4, 5, 1)       normal EQ is better [106 > (83, 98)]
+(4, 5, 2)       normal EQ is better [113 > (117, 95)]
+(4, 5, 3)       normal EQ is better [112 > (106, 98)]
+(4, 5, 4)       normal EQ is better [112 > (106, 98)]
+(4, 5, 5)       normal EQ is better [113 > (117, 95)]
+(4, 6, 0)       normal EQ is better [135 > (84, 89)]
+(4, 6, 3)       normal EQ is better [118 > (95, 98)]
+(4, 6, 4)       normal EQ is better [118 > (95, 98)]
+(4, 7, 0)       normal EQ is better [101 > (82, 98)]
+(4, 7, 1)       normal EQ is better [125 > (83, 83)]
+(4, 7, 3)       normal EQ is better [169 > (169, 98)]
+(4, 7, 4)       normal EQ is better [169 > (169, 98)]
+(5, 0, 0)       normal EQ is better [116 > (121, 98)]
+(5, 0, 1)       normal EQ is better [109 > (116, 98)]
+(5, 0, 2)       normal EQ is better [111 > (111, 98)]
+(5, 0, 3)       normal EQ is better [114 > (114, 98)]
+(5, 0, 4)       normal EQ is better [114 > (114, 98)]
+(5, 0, 5)       normal EQ is better [111 > (111, 98)]
+(5, 1, 1)       normal EQ is better [107 > (117, 98)]
+(5, 1, 2)       normal EQ is better [115 > (115, 98)]
+(5, 1, 3)       normal EQ is better [110 > (112, 98)]
+(5, 1, 4)       normal EQ is better [110 > (112, 98)]
+(5, 1, 5)       normal EQ is better [115 > (115, 98)]
+(5, 2, 0)       normal EQ is better [110 > (121, 98)]
+(5, 2, 1)       normal EQ is better [115 > (111, 98)]
+(5, 2, 2)       normal EQ is better [114 > (119, 98)]
+(5, 2, 3)       normal EQ is better [111 > (106, 98)]
+(5, 2, 4)       normal EQ is better [111 > (106, 98)]
+(5, 2, 5)       normal EQ is better [114 > (119, 98)]
+(5, 3, 1)       normal EQ is better [114 > (83, 98)]
+(5, 3, 2)       normal EQ is better [113 > (112, 98)]
+(5, 3, 3)       normal EQ is better [112 > (83, 98)]
+(5, 3, 4)       normal EQ is better [112 > (83, 98)]
+(5, 3, 5)       normal EQ is better [113 > (112, 98)]
+(5, 4, 0)       normal EQ is better [119 > (108, 98)]
+(5, 4, 1)       normal EQ is better [106 > (83, 98)]
+(5, 4, 2)       normal EQ is better [114 > (114, 98)]
+(5, 4, 3)       normal EQ is better [111 > (83, 98)]
+(5, 4, 4)       normal EQ is better [111 > (83, 98)]
+(5, 4, 5)       normal EQ is better [114 > (114, 98)]
+(5, 5, 2)       normal EQ is better [113 > (117, 95)]
+(5, 5, 3)       normal EQ is better [112 > (83, 98)]
+(5, 5, 4)       normal EQ is better [112 > (83, 98)]
+(5, 5, 5)       normal EQ is better [113 > (117, 95)]
+(5, 6, 0)       normal EQ is better [154 > (70, 98)]
+(5, 6, 3)       normal EQ is better [119 > (107, 98)]
+(5, 6, 4)       normal EQ is better [119 > (107, 98)]
+(5, 7, 1)       normal EQ is better [149 > (95, 95)]
+(5, 7, 3)       normal EQ is better [169 > (169, 98)]
+(5, 7, 4)       normal EQ is better [169 > (169, 98)]
+(6, 0, 0)       normal EQ is better [116 > (123, 98)]
+(6, 0, 1)       normal EQ is better [109 > (117, 98)]
+(6, 0, 2)       normal EQ is better [112 > (112, 98)]
+(6, 0, 3)       normal EQ is better [113 > (113, 98)]
+(6, 0, 4)       normal EQ is better [113 > (113, 98)]
+(6, 0, 5)       normal EQ is better [112 > (112, 98)]
+(6, 1, 0)       normal EQ is better [112 > (115, 98)]
+(6, 1, 1)       normal EQ is better [113 > (112, 98)]
+(6, 1, 2)       normal EQ is better [112 > (108, 98)]
+(6, 1, 3)       normal EQ is better [113 > (114, 98)]
+(6, 1, 4)       normal EQ is better [113 > (114, 98)]
+(6, 1, 5)       normal EQ is better [112 > (108, 98)]
+(6, 2, 0)       normal EQ is better [112 > (119, 98)]
+(6, 2, 1)       normal EQ is better [113 > (105, 98)]
+(6, 2, 2)       normal EQ is better [112 > (115, 98)]
+(6, 2, 3)       normal EQ is better [113 > (115, 98)]
+(6, 2, 4)       normal EQ is better [113 > (115, 98)]
+(6, 2, 5)       normal EQ is better [112 > (115, 98)]
+(6, 3, 0)       normal EQ is better [118 > (85, 98)]
+(6, 3, 1)       normal EQ is better [108 > (83, 98)]
+(6, 3, 2)       normal EQ is better [111 > (83, 98)]
+(6, 3, 3)       normal EQ is better [114 > (112, 98)]
+(6, 3, 4)       normal EQ is better [114 > (112, 98)]
+(6, 3, 5)       normal EQ is better [111 > (83, 98)]
+(6, 4, 0)       normal EQ is better [127 > (117, 98)]
+(6, 4, 1)       normal EQ is better [100 > (83, 98)]
+(6, 4, 2)       normal EQ is better [111 > (83, 98)]
+(6, 4, 3)       normal EQ is better [114 > (112, 98)]
+(6, 4, 4)       normal EQ is better [114 > (112, 98)]
+(6, 4, 5)       normal EQ is better [111 > (83, 98)]
+(6, 5, 0)       normal EQ is better [143 > (117, 98)]
+(6, 5, 2)       normal EQ is better [112 > (83, 98)]
+(6, 5, 5)       normal EQ is better [112 > (83, 98)]
+(6, 6, 0)       normal EQ is better [167 > (31, 98)]
+(6, 6, 2)       normal EQ is better [119 > (107, 98)]
+(6, 6, 5)       normal EQ is better [119 > (107, 98)]
+(6, 7, 1)       normal EQ is better [165 > (165, 98)]
+(6, 7, 2)       normal EQ is better [169 > (169, 98)]
+(6, 7, 5)       normal EQ is better [169 > (169, 98)]
+
+(1, 1, 2)
+(1, 1, 5)
+(1, 2, 2)
+(1, 2, 5)
+
+count: 230 + 4
 """
+
 
 
 """
 transistors that need special optimizer, data is sorted with percentage of lifetime increase in the top
 
-(0, 0, 0) 	EQuation is needed 	[68 > 38,38] 	(79, 79)%
 (0, 0, 0) 	EQuation is needed 	[68 > 38,38] 	(79, 79)%
 (0, 1, 0) 	EQuation is needed 	[88 > 38,38] 	(132, 132)%
 (0, 1, 2) 	EQuation is needed 	[98 > 68,68] 	(44, 44)%
@@ -497,7 +525,7 @@ transistors that need special optimizer, data is sorted with percentage of lifet
 (6, 6, 4) 	EQuation is needed 	[174 > 106,82] 	(64, 112)%
 (6, 7, 3) 	EQuation is needed 	[107 > 51,38] 	(110, 182)%
 (6, 7, 4) 	EQuation is needed 	[107 > 51,38] 	(110, 182)%
-count: 93
+count: 92
 ++++++++++++++++++++	 sorted data
 (2, 7, 1) 	dataset:137 <- 43 	normal:63 
 (0, 6, 1) 	dataset:112 <- 38 	normal:51 
@@ -573,7 +601,6 @@ count: 93
 (3, 4, 5) 	dataset:178 <- 98 	normal:116 
 (0, 2, 2) 	dataset:123 <- 68 	normal:68 
 (0, 2, 5) 	dataset:123 <- 68 	normal:68 
-(0, 0, 0) 	dataset: 68 <- 38 	normal:38 
 (0, 0, 0) 	dataset: 68 <- 38 	normal:38 
 (5, 3, 0) 	dataset:172 <- 98 	normal:111 
 (2, 4, 3) 	dataset:171 <- 98 	normal:100 
