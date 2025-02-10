@@ -4768,3 +4768,4 @@
 [Mon Dec 30 03:15:31 2024] >> 3 >>> equation: (B0 & ~A6) | (B0 & ~A7) [115 weeks] ({'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 115})
 [Mon Dec 30 03:15:31 2024] >> transistor: (6, 7, 5) >>> ['x', 'x', 'x', 'x', 'x', 'x', 'b', 'b'] ['b', 'b', 'x', 'x', 'x', 'x', 'x', 'x']
 [Mon Dec 30 03:20:15 2024] >> 4 >>> equation: (B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0) [169 weeks] ({'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169})
+
