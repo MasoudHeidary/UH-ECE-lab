@@ -1,7 +1,7 @@
 import tool.NBTI_formula as NBTI
 import tool.vth_body_map as VTH
 from tool.map_pb_to_current import get_current_from_pb, get_pb_from_current
-
+import random
 
 def generate_body_voltage(alpha_lst, t_sec, bit_len, faulty_transistor):
     # equation starts from 1s
@@ -67,3 +67,44 @@ def get_life_expect(alpha_lst, bit_len, faulty_transistor=False):
                             "t_index": t_index,
                             "t_week": t_week,
                         }
+
+
+
+
+def generate_random_vth_base(bit_len=8, neg_factor=-0.1, pos_factor=0.1, base_vth=abs(NBTI.Vth)):
+    vth = [
+        [[base_vth for _ in range(6)] for _ in range(bit_len)] for _ in range(bit_len-1)
+    ]
+
+    for fa_i in range(bit_len-1):
+        for fa_j in range(bit_len):
+            for t_index in range(6):
+                vth[fa_i][fa_j][t_index] *= (1 + random.uniform(neg_factor, pos_factor))
+
+    return vth
+
+
+def generate_body_voltage_from_base(alpha_lst, t_sec, bit_len, vth_matrix):
+    if t_sec <= 10:
+        t_sec = 10
+
+    body_voltage = [
+        [[0 for _ in range(6)] for _ in range(bit_len)] for _ in range(bit_len-1)
+    ]
+
+    for fa_i in range(bit_len-1):
+        for fa_j in range(bit_len):
+            for t_index in range(6):
+                vth_growth = NBTI.delta_vth(
+                    NBTI.Vdef,
+                    NBTI.T,
+                    alpha_lst[fa_i][fa_j][t_index],
+                    NBTI.Tclk,
+                    t_sec
+                )
+
+                body_voltage[fa_i][fa_j][t_index] = VTH.get_body_voltage(
+                    vth_matrix[fa_i][fa_j][t_index] + vth_growth
+                )
+
+    return body_voltage

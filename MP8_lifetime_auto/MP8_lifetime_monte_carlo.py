@@ -153,7 +153,7 @@ equation_conf = [
 
 if False:
     log = Log(f"{__file__}.log", terminal=True)
-    DETAIL_LOG = False
+    DETAIL_LOG = True
 
     try:
         alpha_cache = CACHE.load_cache(f"{__file__}.alpha.cache")
@@ -230,7 +230,7 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
 
 if True:
     log = Log(f"{__file__}.log", terminal=True)
-    SAMPLE = 1000
+    SAMPLE = 100
     DETAIL_LOG = True
 
     # loading alpha cache

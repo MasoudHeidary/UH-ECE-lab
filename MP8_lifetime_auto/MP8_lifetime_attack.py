@@ -7,17 +7,13 @@ from get_life_expect import get_life_expect
 
 from tool.log import Log
 log = Log(f"{__file__}.log", terminal=True)
-# log.println("START...")
 
 bit_len = 8
-# faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
-# faulty_transistor = {'fa_i': random.randint(0, bit_len-1-1), 'fa_j': random.randint(0, bit_len-1), 't_index': random.randint(0, 5), 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
-# faulty_transistor = False
 faulty_transistor = []
 
 lst_transistor_optimize = []
 
-# true if any of trans optimize is under stress
+# true if any of trans optimize is not under stress
 def optimizer_trigger(mp: MPn_v3, _a, _b):
     for transistor in lst_transistor_optimize:
         fa_i:int = transistor['fa_i']
@@ -30,15 +26,15 @@ def optimizer_trigger(mp: MPn_v3, _a, _b):
         fa:FA = mp.gfa[fa_i][fa_j]
 
         if _p == 0:
-            if fa.tgate[_tgate].p0.gate == L:
+            if fa.tgate[_tgate].p0.gate == H:
                 return True
         else:
-            if fa.tgate[_tgate].p1.gate == L:
+            if fa.tgate[_tgate].p1.gate == H:
                 return True
 
     return False
 
-# true if any of transistor is not under stree
+# true if any of transistor is under stree
 def optimizer_accept(neg_mp: MPn_v3, _a, _b):
     for transistor in lst_transistor_optimize:
         fa_i:int = transistor['fa_i']
@@ -52,30 +48,29 @@ def optimizer_accept(neg_mp: MPn_v3, _a, _b):
         
         ### OR
         if _p == 0:
-            if fa.tgate[_tgate].p0.gate == H:
+            if fa.tgate[_tgate].p0.gate == L:
                 return True
         else:
-            if fa.tgate[_tgate].p1.gate == H:
+            if fa.tgate[_tgate].p1.gate == L:
                 return True
     return False
 
 
 
 
-# specific optimization
 if True:
-    # lst_transistor_optimize = []
-    # lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}]
-    lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
-
+    # specific optimization
+    
+    # lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
+    lst_transistor_optimize = [
+        {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98},
+    ]
+    
     alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=False)
-    print(f"alpha lst: \n{alpha_lst}")
     fail_transistor = get_life_expect(alpha_lst, bit_len, False)
-
-    # log.println("fault age of circuit")
     log.println(f"failed transistor: {fail_transistor}")
 
-# DONE
+
 
 if False:
     log.println(f"faulty transistor: {faulty_transistor}")
