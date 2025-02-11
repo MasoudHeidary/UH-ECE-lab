@@ -153,7 +153,7 @@ if False:
 
 
 # +1 equation, cover 58 transistors
-if False:
+if True:
     eq1_list = [
         (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (1, 1, 0), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 7, 5), (0, 6, 3), (0, 7, 2), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (0, 4, 5), (4, 6, 5), (3, 6, 2), (0, 2, 5), (3, 6, 5), (0, 2, 2), (0, 4, 2), 
     ]
@@ -172,7 +172,7 @@ if False:
 
 
 # +2 equation, cover 66 transistors
-if True:
+if False:
     eq1_list = [
         (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (0, 2, 5), (1, 1, 0), (3, 0, 0), (0, 4, 2), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (2, 4, 3), (3, 6, 5), (0, 2, 2), (0, 4, 5), 
     ]
@@ -327,11 +327,37 @@ if False:
     ]
 
 
+def preload_alpha():
+    # loading alpha cache
+    try:
+        alpha_cache = CACHE.load_cache(f"{__file__}.alpha.cache")
+    except:
+        alpha_cache = CACHE(filename=f"{__file__}.alpha.cache")
+
+    # base alpha
+    if not alpha_cache.hit_cache('0'):
+        optimizer_equation[0] = "0"
+        base_alpha = MultiplierStressTest(bit_len, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+        alpha_cache.add_cache('0', base_alpha)
+
+    # preload equations alpha
+    for conf in equation_conf:
+        equation = conf["equation"]
+        if not alpha_cache.hit_cache(equation):
+            optimizer_equation[0] = equation
+            conf['alpha'] = MultiplierStressTest(bit_len, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+            alpha_cache.add_cache(equation, alpha)
+        else:
+            conf['alpha'] = alpha_cache.get_cache(equation)
+
+    return alpha_cache
+
+
 ##############################
 ### ideal computations
 ##############################
 
-if True:
+if False:
     log = Log(f"{__file__}.log", terminal=True)
     DETAIL_LOG = False
 
@@ -408,59 +434,63 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
                         }
 
 
-if False:
+if True:
     log = Log(f"{__file__}.log", terminal=True)
-    SAMPLE = 100
+    SAMPLE = 2
     DETAIL_LOG = True
 
-    # loading alpha cache
-    try:
-        alpha_cache = CACHE.load_cache(f"{__file__}.alpha.cache")
-    except:
-        alpha_cache = CACHE(filename=f"{__file__}.alpha.cache")
+    alpha_cache = preload_alpha()
+    log.println(f"preload_alpha DONE + equations alphas")
 
     base_sum_lifetime = 0
     optimize_sum_lifetime = 0
 
     # base alpha
-    base_alpha = None
-    if not alpha_cache.hit_cache('0'):
-        optimizer_equation[0] = "0"
-        base_alpha = MultiplierStressTest(bit_len, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
-        log.println("Normal alpha calculated")
-    else:
-        base_alpha = alpha_cache.get_cache("0")
-        log.println(f"Normal alpha loaded")
-
-    # preload equations alpha
-    for conf in equation_conf:
-        if not alpha_cache.hit_cache(conf["equation"]):
-            optimizer_equation[0] = conf["equation"]
-            conf['alpha'] = MultiplierStressTest(bit_len, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
-        else:
-            conf['alpha'] = alpha_cache.get_cache(conf["equation"])
-    log.println("equation alpha loaded")
+    base_alpha = alpha_cache.get_cache("0")
 
     for sample_index in range(SAMPLE):
-
+        
+        # find unoptimized failed transistor
         random_vth_matrix = generate_random_vth_base()
         base_fail_transistor = get_monte_carlo_life_expect(base_alpha, random_vth_matrix, bit_len)
         base_lifetime = base_fail_transistor["t_week"]
         base_sum_lifetime += base_lifetime
 
-        # choose optimizer
-        optimize_equation = None
-        optimize_alpha = None
-        for conf in equation_conf:
-            if (base_fail_transistor['fa_i'], base_fail_transistor['fa_j'], base_fail_transistor['t_index']) in conf['transistor_list']:
-                optimize_equation = conf['equation']
-                optimize_alpha = conf['alpha']
-                break
-
-        optimized_fail_transistor = get_monte_carlo_life_expect(optimize_alpha, random_vth_matrix, bit_len)
-        optimized_lifetime = optimized_fail_transistor['t_week']
-        optimize_sum_lifetime += optimized_lifetime
-
+        if False:
+            # choose optimizer based on unoptimized failed transistor
+            optimize_equation = None
+            optimize_alpha = None
+            for conf in equation_conf:
+                if (base_fail_transistor['fa_i'], base_fail_transistor['fa_j'], base_fail_transistor['t_index']) in conf['transistor_list']:
+                    optimize_equation = conf['equation']
+                    optimize_alpha = conf['alpha']
+                    break
+        
+            # failed transistor after optimization
+            optimized_fail_transistor = get_monte_carlo_life_expect(optimize_alpha, random_vth_matrix, bit_len)
+            optimized_lifetime = optimized_fail_transistor['t_week']
+            optimize_sum_lifetime += optimized_lifetime
+        
+        else:
+            # choose optimizer based on which one gives higher lifetime
+            optimize_equation = None
+            optimize_alpha = None
+            max_optimizer_lifetime = 0
+            max_failed_transistor = None
+            for conf in equation_conf:
+                alpha = conf['alpha']
+                fail_transistor = get_monte_carlo_life_expect(alpha, random_vth_matrix, bit_len)
+                lifetime = fail_transistor["t_week"]
+                if lifetime > max_optimizer_lifetime:
+                    max_optimizer_lifetime = lifetime
+                    max_failed_transistor = fail_transistor
+                    optimize_equation = conf["equation"]
+                    optimize_alpha = alpha
+            
+            optimized_fail_transistor = max_failed_transistor
+            optimized_lifetime = max_optimizer_lifetime
+            optimize_sum_lifetime += optimized_lifetime
+            
 
         if DETAIL_LOG:
             log.println(f"[{base_lifetime:3d}] -> [{optimized_lifetime:3d}] \t|| {base_fail_transistor} => {optimize_equation} => {optimized_fail_transistor}")
