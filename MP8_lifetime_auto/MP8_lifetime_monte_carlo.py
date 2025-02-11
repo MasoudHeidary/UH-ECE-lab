@@ -13,6 +13,7 @@ import tool.NBTI_formula as NBTI
 import tool.vth_body_map as VTH
 from tool.map_pb_to_current import get_current_from_pb, get_pb_from_current
 
+import itertools
 
 # cache
 import pickle
@@ -122,38 +123,217 @@ def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 ##############################
 
 bit_len = 8
+full_list = list(itertools.product(range(bit_len-1), range(bit_len), range(6)))
+
 
 ### no optimization
-# equation_conf = [
-#     {
-#         'equation': '0',
-#         'transistor_list': [
-#             (fa_i, fa_j, t_index) for fa_i in range(bit_len-1) for fa_j in range(bit_len) for t_index in range(6)
-#         ],
-#         'alpha': None
-#     }
-# ]
+if False:
+    equation_conf = [
+        {
+            'equation': '0',
+            'transistor_list': [
+                (fa_i, fa_j, t_index) for fa_i in range(bit_len-1) for fa_j in range(bit_len) for t_index in range(6)
+            ],
+            'alpha': None
+        }
+    ]
 
-### healthy optimizer
-equation_conf = [
-    {
-        'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
-        'transistor_list': [
-            (fa_i, fa_j, t_index) for fa_i in range(bit_len-1) for fa_j in range(bit_len) for t_index in range(6)
-        ],
-        'alpha': None
-    }
-]
 
+### only healthy optimizer
+if False:
+    equation_conf = [
+        {
+            'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
+            'transistor_list': [
+                (fa_i, fa_j, t_index) for fa_i in range(bit_len-1) for fa_j in range(bit_len) for t_index in range(6)
+            ],
+            'alpha': None
+        }
+    ]
+
+
+# +1 equation, cover 58 transistors
+if False:
+    eq1_list = [
+        (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (1, 1, 0), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 7, 5), (0, 6, 3), (0, 7, 2), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (0, 4, 5), (4, 6, 5), (3, 6, 2), (0, 2, 5), (3, 6, 5), (0, 2, 2), (0, 4, 2), 
+    ]
+    equation_conf = [
+        {
+            'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
+            'transistor_list': eq1_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
+            'transistor_list': [t for t in full_list if t not in eq1_list],
+            'alpha': None
+        }
+    ]
+
+
+# +2 equation, cover 66 transistors
+if True:
+    eq1_list = [
+        (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (0, 2, 5), (1, 1, 0), (3, 0, 0), (0, 4, 2), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (2, 4, 3), (3, 6, 5), (0, 2, 2), (0, 4, 5), 
+    ]
+    eq2_list = [
+        (1, 6, 0), (1, 6, 2), (1, 6, 5), (2, 5, 0), (3, 4, 0), (0, 4, 0), (0, 7, 5), (0, 7, 2), (2, 5, 2), (2, 5, 5), 
+    ]
+    equation_conf = [
+        {
+            'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
+            'transistor_list': eq1_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
+            'transistor_list': eq2_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
+            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list],
+            'alpha': None
+        }
+    ]
+
+
+# +3 equation, cover 72 transistors
+if False:
+    eq1_list = [
+        (6, 7, 3), (1, 5, 1), (5, 6, 5), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (3, 6, 5), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (0, 4, 2), (0, 4, 5), 
+    ]
+    eq2_list = [
+        (1, 6, 0), (1, 6, 2), (1, 6, 5), (2, 5, 0), (3, 4, 0), (0, 4, 0), (0, 7, 5), (0, 7, 2), (2, 5, 2), (2, 5, 5), 
+    ]
+    eq3_list = [
+        (0, 1, 0), (4, 6, 1), (1, 1, 0), (0, 1, 2), (0, 1, 5), (0, 0, 0), (1, 0, 0), (2, 0, 0), (0, 2, 5), (0, 2, 2), 
+    ]
+    equation_conf = [
+        {
+            'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
+            'transistor_list': eq1_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
+            'transistor_list': eq2_list,
+            'alpha': None
+        },
+        {
+            'equation': '(A1 & A6 & ~A2) | (A0 & ~A1 & ~A2) | (A2 & A6 & ~A0 & ~A1)',
+            'transistor_list': eq3_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
+            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list+eq3_list],
+            'alpha': None
+        }
+    ]
+
+
+# +4 equation, cover 77 transistors
+if False:
+    eq1_list = [
+        (6, 6, 4), (2, 6, 5), (0, 3, 5), (6, 5, 3), (4, 6, 2), (5, 6, 5), (0, 3, 0), (2, 6, 2), (5, 5, 0), (3, 6, 5), (3, 0, 0), (6, 5, 4), (6, 6, 3), (0, 3, 2), (0, 2, 0), (3, 6, 0), (1, 2, 0), (3, 6, 2), (5, 6, 2), (2, 1, 0), (4, 5, 0), (4, 6, 5), 
+    ]
+    eq2_list = [
+        (1, 6, 5), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 4, 0), (0, 7, 5), (2, 5, 2), 
+    ]
+    eq3_list = [
+        (1, 1, 0), (0, 0, 0), (0, 1, 5), (2, 0, 0), (0, 2, 5), (0, 1, 0), (4, 6, 1), (1, 0, 0), (0, 1, 2), (0, 2, 2), 
+    ]
+    eq4_list = [
+        (3, 5, 0), (1, 3, 0), (0, 6, 4), (1, 3, 2), (5, 7, 2), (3, 3, 4), (2, 2, 0), (2, 6, 0), (3, 1, 0), (6, 7, 3), (1, 5, 4), (2, 7, 1), (0, 6, 1), (3, 7, 5), (4, 7, 5), (3, 3, 1), (0, 6, 3), (2, 7, 5), (3, 3, 3), (1, 5, 1), (4, 7, 2), (2, 4, 4), (6, 7, 4), (1, 7, 5), (2, 7, 2), (0, 4, 5), (4, 2, 1), (1, 5, 3), (3, 7, 2), (1, 3, 5), (5, 7, 5), (2, 4, 1), (1, 7, 2), (2, 4, 3), (0, 4, 2), 
+    ]
+    equation_conf = [
+        {
+            'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
+            'transistor_list': eq1_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
+            'transistor_list': eq2_list,
+            'alpha': None
+        },
+        {
+            'equation': '(A1 & A6 & ~A2) | (A0 & ~A1 & ~A2) | (A2 & A6 & ~A0 & ~A1)',
+            'transistor_list': eq3_list,
+            'alpha': None
+        },
+        {
+            'equation': '(~A4 & ~A7) | (~A5 & ~A7)',
+            'transistor_list': eq4_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
+            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list+eq3_list+eq4_list],
+            'alpha': None
+        }
+    ]
+
+
+# +5 equation, cover 80 transistors
+if False:
+    eq1_list = [
+        (6, 6, 4), (2, 6, 5), (0, 3, 5), (6, 5, 3), (4, 6, 2), (5, 6, 5), (0, 3, 0), (2, 6, 2), (5, 5, 0), (3, 6, 5), (3, 0, 0), (6, 5, 4), (6, 6, 3), (0, 3, 2), (0, 2, 0), (3, 6, 0), (1, 2, 0), (3, 6, 2), (5, 6, 2), (2, 1, 0), (4, 5, 0), (4, 6, 5), 
+    ]
+    eq2_list = [
+        (1, 6, 5), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 7, 5), (2, 5, 2), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 7, 5), (2, 5, 2), (1, 6, 5), 
+    ]
+    eq3_list = [
+        (1, 1, 0), (0, 0, 0), (0, 1, 5), (2, 0, 0), (0, 2, 5), (0, 1, 0), (0, 1, 2), (0, 2, 2), (1, 0, 0), 
+    ]
+    eq4_list = [
+        (3, 5, 0), (0, 6, 4), (5, 7, 2), (3, 3, 4), (2, 6, 0), (6, 7, 3), (1, 5, 4), (2, 7, 1), (0, 6, 1), (3, 7, 5), (4, 7, 5), (3, 3, 1), (0, 6, 3), (2, 7, 5), (3, 3, 3), (1, 5, 1), (4, 7, 2), (2, 4, 4), (6, 7, 4), (1, 7, 5), (2, 7, 2), (0, 4, 5), (4, 2, 1), (1, 5, 3), (3, 7, 2), (5, 7, 5), (2, 4, 1), (1, 7, 2), (2, 4, 3), (0, 4, 2), 
+    ]
+    eq5_list = [
+        (1, 3, 0), (2, 4, 5), (1, 3, 2), (2, 2, 0), (3, 1, 0), (2, 4, 2), (4, 6, 1), (1, 3, 5), (0, 4, 0), (3, 3, 0), 
+    ]
+    equation_conf = [
+        {
+            'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
+            'transistor_list': eq1_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
+            'transistor_list': eq2_list,
+            'alpha': None
+        },
+        {
+            'equation': '(A1 & A6 & ~A2) | (A0 & ~A1 & ~A2) | (A2 & A6 & ~A0 & ~A1)',
+            'transistor_list': eq3_list,
+            'alpha': None
+        },
+        {
+            'equation': '(~A4 & ~A7) | (~A5 & ~A7)',
+            'transistor_list': eq4_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A5) | (B0 & ~B1) | (A6 & B1 & ~B0)',
+            'transistor_list': eq5_list,
+            'alpha': None
+        },
+        {
+            'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
+            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list+eq3_list+eq4_list+eq5_list],
+            'alpha': None
+        }
+    ]
 
 
 ##############################
 ### ideal computations
 ##############################
 
-if False:
+if True:
     log = Log(f"{__file__}.log", terminal=True)
-    DETAIL_LOG = True
+    DETAIL_LOG = False
 
     try:
         alpha_cache = CACHE.load_cache(f"{__file__}.alpha.cache")
@@ -166,7 +346,7 @@ if False:
 
     for conf_index, conf in enumerate(equation_conf):
         len_transistor += len(conf['transistor_list'])
-        log.println(f"conf/{conf_index} transistor len: {len_transistor}")
+        log.println(f"conf/{conf_index} += transistor len: {len_transistor}")
 
         equation = conf['equation']
         log.println(f"equation: {equation}")
@@ -193,7 +373,7 @@ if False:
     # final result
     log.println(f"conf:\n{equation_conf}")
     log.println(f"final result >>> sum lifetime {sum_lifetime} / transistor len {len_transistor} = {sum_lifetime/len_transistor}")
-
+    log.println(f"\n")
 
 
 
@@ -228,7 +408,7 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
                         }
 
 
-if True:
+if False:
     log = Log(f"{__file__}.log", terminal=True)
     SAMPLE = 100
     DETAIL_LOG = True
