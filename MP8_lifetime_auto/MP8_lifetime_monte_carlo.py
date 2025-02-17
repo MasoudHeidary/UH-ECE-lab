@@ -19,6 +19,8 @@ import itertools
 import pickle
 from random import randint
 
+import multiprocessing
+
 
 ##################### CACHE
 class CACHE():
@@ -153,7 +155,7 @@ if False:
 
 
 # +1 equation, cover 58 transistors
-if True:
+if False:
     eq1_list = [
         (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (1, 1, 0), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 7, 5), (0, 6, 3), (0, 7, 2), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (0, 4, 5), (4, 6, 5), (3, 6, 2), (0, 2, 5), (3, 6, 5), (0, 2, 2), (0, 4, 2), 
     ]
@@ -434,7 +436,7 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
                         }
 
 
-if True:
+if False:
     log = Log(f"{__file__}.log", terminal=True)
     SAMPLE = 2
     DETAIL_LOG = True
@@ -490,7 +492,7 @@ if True:
             optimized_fail_transistor = max_failed_transistor
             optimized_lifetime = max_optimizer_lifetime
             optimize_sum_lifetime += optimized_lifetime
-            
+
 
         if DETAIL_LOG:
             log.println(f"[{base_lifetime:3d}] -> [{optimized_lifetime:3d}] \t|| {base_fail_transistor} => {optimize_equation} => {optimized_fail_transistor}")
@@ -500,3 +502,65 @@ if True:
     log.println(f"conf:\n{equation_conf}\n")
     log.println(f"final result [{SAMPLE}] samples: \t {base_sum_lifetime/SAMPLE} => {optimize_sum_lifetime/SAMPLE}")
 
+
+
+# multi process monte carlo real simulation
+if True:
+
+    PROCESS_POOL = 30
+
+
+    def process_sample(sample_index, base_alpha, equation_conf, bit_len):
+        """Function to process a single sample in parallel"""
+        random_vth_matrix = generate_random_vth_base()
+        base_fail_transistor = get_monte_carlo_life_expect(base_alpha, random_vth_matrix, bit_len)
+        base_lifetime = base_fail_transistor["t_week"]
+
+        optimize_equation = None
+        optimize_alpha = None
+        max_optimizer_lifetime = 0
+        max_failed_transistor = None
+
+        for conf in equation_conf:
+            alpha = conf['alpha']
+            fail_transistor = get_monte_carlo_life_expect(alpha, random_vth_matrix, bit_len)
+            lifetime = fail_transistor["t_week"]
+            if lifetime > max_optimizer_lifetime:
+                max_optimizer_lifetime = lifetime
+                max_failed_transistor = fail_transistor
+                optimize_equation = conf["equation"]
+                optimize_alpha = alpha
+
+        optimized_fail_transistor = max_failed_transistor
+        optimized_lifetime = max_optimizer_lifetime
+
+        return base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor
+
+
+    log = Log(f"{__file__}.log", terminal=True)
+    SAMPLE = 100_000
+    DETAIL_LOG = False
+
+    alpha_cache = preload_alpha()
+    log.println(f"preload_alpha DONE + equations alphas")
+
+    base_alpha = alpha_cache.get_cache("0")
+
+    base_sum_lifetime = multiprocessing.Value('d', 0.0)
+    optimize_sum_lifetime = multiprocessing.Value('d', 0.0)
+    lock = multiprocessing.Lock()
+
+    with multiprocessing.Pool(processes=PROCESS_POOL) as pool:
+        results = pool.starmap(process_sample, [(i, base_alpha, equation_conf, bit_len) for i in range(SAMPLE)])
+
+    for base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor in results:
+        with lock:
+            base_sum_lifetime.value += base_lifetime
+            optimize_sum_lifetime.value += optimized_lifetime
+
+        if DETAIL_LOG:
+            log.println(f"[{base_lifetime:3d}] -> [{optimized_lifetime:3d}] \t|| {base_fail_transistor} => {optimize_equation} => {optimized_fail_transistor}")
+
+    # final result
+    log.println(f"conf:\n{equation_conf}\n")
+    log.println(f"final result [{SAMPLE}] samples: \t {base_sum_lifetime.value / SAMPLE} => {optimize_sum_lifetime.value / SAMPLE}")
