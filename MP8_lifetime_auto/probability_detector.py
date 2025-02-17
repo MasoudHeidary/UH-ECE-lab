@@ -544,11 +544,11 @@ if True:
     count = 0
     for data in input_data:
         count += 1 if data[2] else 0
-    log.println(f"number of TRUE patterns: {count}")
+    log.println(f"total number of TRUE patterns: {count} \n")
 
 
 
-    for bit_length in range(0, 8):
+    for bit_length in range(16+1):
         _start_time = time.time()
         
         r = multi_process_best_pattern_finder(
@@ -735,8 +735,8 @@ if False:
         return result
     
     def normal_eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
-        # eq = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
-        eq = "(A6 | B0) & (B0 | B1) & (~A6 | ~A7) & (~A6 | ~B0 | ~B1)"
+        eq = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+        # eq = "(A6 | B0) & (B0 | B1) & (~A6 | ~A7) & (~A6 | ~B0 | ~B1)"
         logical_expression = convert_logical_expression(eq)
         variables = {
             'B0': bin_B[0],
