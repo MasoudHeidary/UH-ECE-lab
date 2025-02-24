@@ -257,8 +257,10 @@ def generate_optimized_equation_with_and(truth_table):
     return str(optimized_equation) if optimized_equation else "1"
 
 
-def calc_accuracy(input_data, A_bit_pattern, B_bit_pattern, log_obj=False):
-    ML_table = truth_table(input_data, A_bit_pattern, B_bit_pattern, log_obj)
+def calc_accuracy(input_data, A_bit_pattern=False, B_bit_pattern=False, log_obj=False, TT=False):
+    ML_table = TT
+    if not TT:
+        ML_table = truth_table(input_data, A_bit_pattern, B_bit_pattern, log_obj)
 
     if log_obj:
         log_obj.println(f"Calc Accuracy >> testing")
@@ -537,6 +539,9 @@ def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 if True:
     # healthy optimizer, find the best bit pattern with showing accuracy and TP params
     log = Log(f"{__file__}.log")
+    PROCESS_COUNT = 40
+    START_BIT = 0
+    END_BIT = 16 + 1
 
     log_filepath = 'pattern.txt'
     input_data = load_pattern_file(log_filepath)
@@ -548,18 +553,20 @@ if True:
 
 
 
-    for bit_length in range(16+1):
+    for bit_length in range(START_BIT, END_BIT):
         _start_time = time.time()
         
         r = multi_process_best_pattern_finder(
                 input_data,
                 count_bit_pattern=bit_length,
+                max_process_count=PROCESS_COUNT,
                 log_obj=False
             )
+        log.println(f"equation bit length: {bit_length}")
         log.println(f"{r}")
         
         _end_time = time.time()
-        log.println(f"time: \t{_end_time - _start_time} s")
+        log.println(f"time: \t{_end_time - _start_time} s | {PROCESS_COUNT} processes")
 
         TT = truth_table(
             input_data=input_data,
