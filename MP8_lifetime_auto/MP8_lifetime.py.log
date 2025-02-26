@@ -1355,3 +1355,6 @@
 
 
 
+[Tue Feb 25 10:43:44 2025] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}
+[Tue Feb 25 10:47:47 2025] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 141}
+[Tue Feb 25 10:49:23 2025] >> failed transistor: {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 68}
