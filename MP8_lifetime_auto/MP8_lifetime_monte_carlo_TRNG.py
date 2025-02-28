@@ -1,6 +1,21 @@
 """
 RESULT:
     for TRNG with different bias values without considering is the number is positive or negative, no change in lifetime observed
+
+activation function: (A > 0) and (B > 0)
+final result [5000] samples, bias 0.0: 	 57.3712 weeks
+final result [5000] samples, bias 0.1: 	 59.284 weeks
+final result [5000] samples, bias 0.2: 	 61.7998 weeks
+final result [5000] samples, bias 0.3: 	 63.5816 weeks
+final result [5000] samples, bias 0.4: 	 65.094 weeks
+final result [5000] samples, bias 0.5: 	 66.3648 weeks
+final result [5000] samples, bias 0.6: 	 67.8632 weeks
+final result [5000] samples, bias 0.7: 	 68.9912 weeks
+final result [5000] samples, bias 0.8: 	 69.6658 weeks
+final result [5000] samples, bias 1.0: 	 70.5918 weeks
+final result [5000] samples, bias 0.9: 	 70.3436 weeks
+
+
 """
 
 
@@ -29,12 +44,15 @@ import multiprocessing
 bit_len = 8
 transistor_full_list = list(itertools.product(range(bit_len-1), range(bit_len), range(6)))
 
+
 def random_optimizer_trigger(mp: MPn_v3, A, B):
-    return True
+    # return True
+    return (A > 0) and (B > 0)
+    # return (A > 0)
 
 
 
-optimizer_random_bias = [0.5]
+optimizer_random_bias = [0.1]
 def random_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
     global optimizer_random_bias
     bias = optimizer_random_bias[0]
@@ -42,63 +60,6 @@ def random_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
     if random.random() < bias:
         return True
     return False
-
-
-##############################
-### ideal computations (without variation)
-##############################
-
-if False:
-    log = Log(f"{__file__}.log", terminal=True)
-
-
-    for bias in range(0, 100+1, 20):
-
-        log.println(f"bias {bias:3}%")
-        log.println(f"Processing alpha")
-        optimizer_random_bias[0] = bias/100
-        alpha = MultiplierStressTest(bit_len, random_optimizer_trigger, random_optimizer_accept).run(log_obj=False)
-
-
-
-        failed_transistor = get_life_expect(alpha, bit_len, faulty_transistor=False)
-        log.println(f"faulty_transistor: \t{False} => failed_transistor: \t {failed_transistor}")
-        log.println(f"\n")
-
-
-##############################
-### ideal computations (with variation)
-##############################
-
-if False:
-    log = Log(f"{__file__}.log", terminal=True)
-    DETAIL_LOG = False
-
-
-    for bias in range(0, 100+1, 20):
-
-        log.println(f"bias {bias:3}%")
-        log.println(f"Processing alpha")
-        optimizer_random_bias[0] = bias/100
-        alpha = MultiplierStressTest(bit_len, random_optimizer_trigger, random_optimizer_accept).run(log_obj=False)
-
-
-        sum_lifetime = 0
-
-        for t in transistor_full_list:
-            faulty_transistor = {'fa_i': t[0], 'fa_j': t[1], 't_index': t[2], 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
-            failed_transistor = get_life_expect(alpha, bit_len, faulty_transistor)
-            sum_lifetime += failed_transistor["t_week"]
-
-            if DETAIL_LOG:
-                log.println(f"faulty_transistor: \t{faulty_transistor} => failed_transistor: \t {failed_transistor}")
-
-        len_transistor = len(transistor_full_list)
-        log.println(f"final result >>> sum lifetime {sum_lifetime} / transistor len {len_transistor} = {sum_lifetime/len_transistor}")
-        log.println(f"\n")
-
-
-
 
 
 
@@ -130,29 +91,82 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
                         }
 
 
-if True:
-    log = Log(f"{__file__}.log", terminal=True)
-    BIAS = 0.1
-    SAMPLE = 100
-    DETAIL_LOG = True
-
+def monte_carlo_lifetime(
+    bias,
+    sample_count,
+    new_alpha_step,
+    log_obj = False
+):
     sum_lifetime = 0
-    for sample_index in range(SAMPLE):
+    alpha = None
+    for sample_index in range(sample_count):
         
-        optimizer_random_bias[0] = BIAS/100
-        alpha = MultiplierStressTest(bit_len, random_optimizer_trigger, random_optimizer_accept).run(log_obj=False)
-    
-        # find unoptimized failed transistor
+        if sample_index % new_alpha_step == 0:
+            optimizer_random_bias[0] = bias
+            alpha = MultiplierStressTest(bit_len, random_optimizer_trigger, random_optimizer_accept).run(log_obj=False)
+            if log_obj:
+                log_obj.println("Generating new alpha")
+
         random_vth_matrix = generate_random_vth_base()
         fail_transistor = get_monte_carlo_life_expect(alpha, random_vth_matrix, bit_len)
         lifetime = fail_transistor["t_week"]
         sum_lifetime += lifetime
 
-        if DETAIL_LOG:
-            log.println(f"SAMPLE #{sample_index:03} (BIAS:{BIAS}) \tlifetime:{lifetime:3} weeks")
+        if log_obj:
+            log_obj.println(f"SAMPLE #{sample_index:03} (BIAS:{bias}) \tlifetime:{lifetime:3} weeks \\accumulated average {sum_lifetime/(sample_index+1)}")
+            
+    return sum_lifetime / sample_count
 
-        
+
+
+if False:
+    """
+        single run
+    """
+    BIAS = 1.0
+    SAMPLE = 10_000
+    NEW_ALPHA_STEP = 200
+    DETAIL_LOG = True
+    log = Log(f"{__file__}.log", terminal=True)
+
+    lifetime = monte_carlo_lifetime(
+        BIAS,
+        SAMPLE,
+        NEW_ALPHA_STEP,
+        log_obj=log
+    )        
     # final result
-    log.println(f"final result [{SAMPLE}] samples, bias {BIAS}: \t {sum_lifetime/SAMPLE} weeks")
+    log.println(f"final result [{SAMPLE}] samples, bias {BIAS}: \t {lifetime} weeks")
     log.println(f"\n")
 
+
+if True:
+    """
+        Auto run for a range of bias using individual processes
+    """
+    SAMPLE = 5_000
+    NEW_ALPHA_STEP = 200
+    DETAIL_LOG = True
+    log = Log(f"{__file__}.log", terminal=True)
+
+
+    def run_simulation(bias):
+        lifetime = monte_carlo_lifetime(
+            bias,
+            SAMPLE,
+            NEW_ALPHA_STEP,
+            log_obj=log
+        )
+        log.println(f"final result [{SAMPLE}] samples, bias {bias}: \t {lifetime} weeks")
+        log.println(f"\n")
+
+
+
+    processes = []
+    for bias in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
+        p = multiprocessing.Process(target=run_simulation, args=(bias,))
+        processes.append(p)
+        p.start()
+
+    for p in processes:
+        p.join()
