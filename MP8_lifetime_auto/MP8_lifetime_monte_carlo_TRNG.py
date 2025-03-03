@@ -12,9 +12,12 @@ final result [5000] samples, bias 0.5: 	 66.3648 weeks
 final result [5000] samples, bias 0.6: 	 67.8632 weeks
 final result [5000] samples, bias 0.7: 	 68.9912 weeks
 final result [5000] samples, bias 0.8: 	 69.6658 weeks
-final result [5000] samples, bias 1.0: 	 70.5918 weeks
 final result [5000] samples, bias 0.9: 	 70.3436 weeks
+final result [5000] samples, bias 1.0: 	 70.5918 weeks
 
+activation function: (A > 0) or (B > 0)
+activation function: ------- or (B > 0)
+activation function: (A > 0) or -------
 
 """
 
@@ -46,9 +49,7 @@ transistor_full_list = list(itertools.product(range(bit_len-1), range(bit_len), 
 
 
 def random_optimizer_trigger(mp: MPn_v3, A, B):
-    # return True
-    return (A > 0) and (B > 0)
-    # return (A > 0)
+    return (A > 0) or (B > 0)
 
 
 
@@ -144,6 +145,7 @@ if True:
     """
         Auto run for a range of bias using individual processes
     """
+    SINGLE_BIAS_MULTITHREAD = True  #less cpu overhead to keep system operational
     SAMPLE = 5_000
     NEW_ALPHA_STEP = 200
     DETAIL_LOG = True
@@ -155,7 +157,8 @@ if True:
             bias,
             SAMPLE,
             NEW_ALPHA_STEP,
-            log_obj=log
+            # log_obj=log,
+            log_obj=False,
         )
         log.println(f"final result [{SAMPLE}] samples, bias {bias}: \t {lifetime} weeks")
         log.println(f"\n")
@@ -168,5 +171,8 @@ if True:
         processes.append(p)
         p.start()
 
+        if SINGLE_BIAS_MULTITHREAD:
+            p.join()
+    
     for p in processes:
         p.join()
