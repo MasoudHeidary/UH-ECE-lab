@@ -16,8 +16,45 @@ final result [5000] samples, bias 0.9: 	 70.3436 weeks
 final result [5000] samples, bias 1.0: 	 70.5918 weeks
 
 activation function: (A > 0) or (B > 0)
+final result [5000] samples, bias 0.0: 	 57.071 weeks
+final result [5000] samples, bias 0.1: 	 59.3416 weeks
+final result [5000] samples, bias 0.2: 	 61.4156 weeks
+final result [5000] samples, bias 0.3: 	 63.5576 weeks
+final result [5000] samples, bias 0.4: 	 65.5936 weeks
+final result [5000] samples, bias 0.5: 	 66.8154 weeks
+final result [5000] samples, bias 0.6: 	 67.7934 weeks
+final result [5000] samples, bias 0.7: 	 68.6358 weeks
+final result [5000] samples, bias 0.8: 	 69.569 weeks
+final result [5000] samples, bias 0.9: 	 70.4094 weeks
+final result [5000] samples, bias 1.0: 	 70.831 weeks
+
 activation function: ------- or (B > 0)
+final result [5000] samples, bias 0.0: 	 57.3478 weeks
+final result [5000] samples, bias 0.1: 	 56.3246 weeks
+final result [5000] samples, bias 0.2: 	 54.8806 weeks
+final result [5000] samples, bias 0.3: 	 53.6794 weeks
+final result [5000] samples, bias 0.4: 	 50.8676 weeks
+final result [5000] samples, bias 0.5: 	 47.6348 weeks
+final result [5000] samples, bias 0.6: 	 43.3224 weeks
+final result [5000] samples, bias 0.7: 	 37.546 weeks
+final result [5000] samples, bias 0.8: 	 30.4836 weeks
+final result [5000] samples, bias 0.9: 	 21.273 weeks
+final result [5000] samples, bias 1.0: 	 10.9802 weeks
+
+
+
+
 activation function: (A > 0) or -------
+final result [5000] samples, bias 0.1: 	 62.0114 weeks
+final result [5000] samples, bias 0.2: 	 66.6288 weeks
+final result [5000] samples, bias 0.3: 	 69.5916 weeks
+final result [5000] samples, bias 0.4: 	 71.8202 weeks
+final result [5000] samples, bias 0.5: 	 72.8678 weeks
+final result [5000] samples, bias 0.6: 	 71.455 weeks
+final result [5000] samples, bias 0.7: 	 67.137 weeks
+final result [5000] samples, bias 0.8: 	 59.0446 weeks
+final result [5000] samples, bias 0.9: 	 46.663 weeks
+final result [5000] samples, bias 1.0: 	 29.0506 weeks
 
 """
 
@@ -49,7 +86,8 @@ transistor_full_list = list(itertools.product(range(bit_len-1), range(bit_len), 
 
 
 def random_optimizer_trigger(mp: MPn_v3, A, B):
-    return (A > 0) or (B > 0)
+    # return (A > 0) or (B > 0)
+    return (A > 0)
 
 
 
@@ -145,7 +183,7 @@ if True:
     """
         Auto run for a range of bias using individual processes
     """
-    SINGLE_BIAS_MULTITHREAD = True  #less cpu overhead to keep system operational
+    BIAS_MULTITHREAD = 1  #less cpu overhead to keep system operational
     SAMPLE = 5_000
     NEW_ALPHA_STEP = 200
     DETAIL_LOG = True
@@ -166,13 +204,13 @@ if True:
 
 
     processes = []
-    for bias in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
+    for bias in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
         p = multiprocessing.Process(target=run_simulation, args=(bias,))
         processes.append(p)
         p.start()
 
-        if SINGLE_BIAS_MULTITHREAD:
-            p.join()
+        if len(processes) == BIAS_MULTITHREAD:
+            for p in processes:
+                p.join()
+            processes = []
     
-    for p in processes:
-        p.join()
