@@ -5,7 +5,7 @@ from tool.log import Log
 
 from msimulator.get_alpha_class import MultiplierStressTest
 from msimulator.Multiplier import MPn_v3
-from get_life_expect import get_life_expect, generate_random_vth_base, generate_body_voltage_from_base
+from get_life_expect import *
 from sympy import symbols, Or, And, Not, simplify_logic
 from pyeda.inter import expr
 
@@ -127,10 +127,60 @@ def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 bit_len = 8
 full_list = list(itertools.product(range(bit_len-1), range(bit_len), range(6)))
 
+eq1_1_list = [
+    (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (1, 1, 0), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 7, 5), (0, 6, 3), (0, 7, 2), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (0, 4, 5), (4, 6, 5), (3, 6, 2), (0, 2, 5), (3, 6, 5), (0, 2, 2), (0, 4, 2), 
+]
 
-### no optimization
-if False:
-    equation_conf = [
+eq2_1_list = [
+    (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (0, 2, 5), (1, 1, 0), (3, 0, 0), (0, 4, 2), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (2, 4, 3), (3, 6, 5), (0, 2, 2), (0, 4, 5), 
+]
+eq2_2_list = [
+    (1, 6, 0), (1, 6, 2), (1, 6, 5), (2, 5, 0), (3, 4, 0), (0, 4, 0), (0, 7, 5), (0, 7, 2), (2, 5, 2), (2, 5, 5), 
+]
+
+eq3_1_list = [
+    (6, 7, 3), (1, 5, 1), (5, 6, 5), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (3, 6, 5), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (0, 4, 2), (0, 4, 5), 
+]
+eq3_2_list = [
+    (1, 6, 0), (1, 6, 2), (1, 6, 5), (2, 5, 0), (3, 4, 0), (0, 4, 0), (0, 7, 5), (0, 7, 2), (2, 5, 2), (2, 5, 5), 
+]
+eq3_3_list = [
+    (0, 1, 0), (4, 6, 1), (1, 1, 0), (0, 1, 2), (0, 1, 5), (0, 0, 0), (1, 0, 0), (2, 0, 0), (0, 2, 5), (0, 2, 2), 
+]
+
+eq4_1_list = [
+    (6, 6, 4), (2, 6, 5), (0, 3, 5), (6, 5, 3), (4, 6, 2), (5, 6, 5), (0, 3, 0), (2, 6, 2), (5, 5, 0), (3, 6, 5), (3, 0, 0), (6, 5, 4), (6, 6, 3), (0, 3, 2), (0, 2, 0), (3, 6, 0), (1, 2, 0), (3, 6, 2), (5, 6, 2), (2, 1, 0), (4, 5, 0), (4, 6, 5), 
+]
+eq4_2_list = [
+    (1, 6, 5), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 4, 0), (0, 7, 5), (2, 5, 2), 
+]
+eq4_3_list = [
+    (1, 1, 0), (0, 0, 0), (0, 1, 5), (2, 0, 0), (0, 2, 5), (0, 1, 0), (4, 6, 1), (1, 0, 0), (0, 1, 2), (0, 2, 2), 
+]
+eq4_4_list = [
+    (3, 5, 0), (1, 3, 0), (0, 6, 4), (1, 3, 2), (5, 7, 2), (3, 3, 4), (2, 2, 0), (2, 6, 0), (3, 1, 0), (6, 7, 3), (1, 5, 4), (2, 7, 1), (0, 6, 1), (3, 7, 5), (4, 7, 5), (3, 3, 1), (0, 6, 3), (2, 7, 5), (3, 3, 3), (1, 5, 1), (4, 7, 2), (2, 4, 4), (6, 7, 4), (1, 7, 5), (2, 7, 2), (0, 4, 5), (4, 2, 1), (1, 5, 3), (3, 7, 2), (1, 3, 5), (5, 7, 5), (2, 4, 1), (1, 7, 2), (2, 4, 3), (0, 4, 2), 
+]
+
+
+eq5_1_list = [
+    (6, 6, 4), (2, 6, 5), (0, 3, 5), (6, 5, 3), (4, 6, 2), (5, 6, 5), (0, 3, 0), (2, 6, 2), (5, 5, 0), (3, 6, 5), (3, 0, 0), (6, 5, 4), (6, 6, 3), (0, 3, 2), (0, 2, 0), (3, 6, 0), (1, 2, 0), (3, 6, 2), (5, 6, 2), (2, 1, 0), (4, 5, 0), (4, 6, 5), 
+]
+eq5_2_list = [
+    (1, 6, 5), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 7, 5), (2, 5, 2), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 7, 5), (2, 5, 2), (1, 6, 5), 
+]
+eq5_3_list = [
+    (1, 1, 0), (0, 0, 0), (0, 1, 5), (2, 0, 0), (0, 2, 5), (0, 1, 0), (0, 1, 2), (0, 2, 2), (1, 0, 0), 
+]
+eq5_4_list = [
+    (3, 5, 0), (0, 6, 4), (5, 7, 2), (3, 3, 4), (2, 6, 0), (6, 7, 3), (1, 5, 4), (2, 7, 1), (0, 6, 1), (3, 7, 5), (4, 7, 5), (3, 3, 1), (0, 6, 3), (2, 7, 5), (3, 3, 3), (1, 5, 1), (4, 7, 2), (2, 4, 4), (6, 7, 4), (1, 7, 5), (2, 7, 2), (0, 4, 5), (4, 2, 1), (1, 5, 3), (3, 7, 2), (5, 7, 5), (2, 4, 1), (1, 7, 2), (2, 4, 3), (0, 4, 2), 
+]
+eq5_5_list = [
+    (1, 3, 0), (2, 4, 5), (1, 3, 2), (2, 2, 0), (3, 1, 0), (2, 4, 2), (4, 6, 1), (1, 3, 5), (0, 4, 0), (3, 3, 0), 
+]
+
+selector_conf = [
+    ### no optimization
+    [
         {
             'equation': '0',
             'transistor_list': [
@@ -138,12 +188,11 @@ if False:
             ],
             'alpha': None
         }
-    ]
+    ],
 
 
-### only healthy optimizer
-if False:
-    equation_conf = [
+    ### only healthy optimizer
+    [
         {
             'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
             'transistor_list': [
@@ -151,185 +200,136 @@ if False:
             ],
             'alpha': None
         }
-    ]
+    ],
 
 
-# +1 equation, cover 58 transistors
-if False:
-    eq1_list = [
-        (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (1, 1, 0), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 7, 5), (0, 6, 3), (0, 7, 2), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (0, 4, 5), (4, 6, 5), (3, 6, 2), (0, 2, 5), (3, 6, 5), (0, 2, 2), (0, 4, 2), 
-    ]
-    equation_conf = [
+    # +1 equation, cover 58 transistors
+    [
         {
             'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
-            'transistor_list': eq1_list,
+            'transistor_list': eq1_1_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
-            'transistor_list': [t for t in full_list if t not in eq1_list],
+            'transistor_list': [t for t in full_list if t not in eq1_1_list],
             'alpha': None
         }
-    ]
+    ],
 
 
-# +2 equation, cover 66 transistors
-if False:
-    eq1_list = [
-        (6, 7, 3), (1, 5, 1), (5, 6, 5), (0, 1, 0), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (0, 2, 5), (1, 1, 0), (3, 0, 0), (0, 4, 2), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (2, 4, 3), (3, 6, 5), (0, 2, 2), (0, 4, 5), 
-    ]
-    eq2_list = [
-        (1, 6, 0), (1, 6, 2), (1, 6, 5), (2, 5, 0), (3, 4, 0), (0, 4, 0), (0, 7, 5), (0, 7, 2), (2, 5, 2), (2, 5, 5), 
-    ]
-    equation_conf = [
+    # +2 equation, cover 66 transistors
+    [
         {
             'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
-            'transistor_list': eq1_list,
+            'transistor_list': eq2_1_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
-            'transistor_list': eq2_list,
+            'transistor_list': eq2_2_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
-            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list],
+            'transistor_list': [t for t in full_list if t not in eq2_1_list+eq2_2_list],
             'alpha': None
         }
-    ]
+    ],
 
 
-# +3 equation, cover 72 transistors
-if False:
-    eq1_list = [
-        (6, 7, 3), (1, 5, 1), (5, 6, 5), (1, 5, 4), (5, 6, 2), (2, 1, 0), (0, 3, 0), (4, 2, 1), (4, 5, 0), (6, 6, 4), (2, 6, 2), (2, 7, 1), (5, 5, 0), (2, 6, 5), (1, 3, 0), (3, 6, 5), (3, 0, 0), (0, 6, 1), (0, 6, 4), (1, 5, 3), (3, 7, 5), (2, 4, 3), (3, 7, 2), (0, 3, 5), (6, 5, 4), (6, 6, 3), (4, 7, 2), (0, 3, 2), (4, 7, 5), (1, 3, 2), (5, 7, 2), (3, 3, 1), (1, 3, 5), (5, 7, 5), (0, 2, 0), (3, 6, 0), (2, 4, 1), (2, 4, 4), (6, 7, 4), (0, 6, 3), (2, 2, 0), (1, 7, 2), (1, 7, 5), (2, 7, 2), (1, 2, 0), (6, 5, 3), (2, 7, 5), (4, 6, 2), (4, 6, 5), (3, 6, 2), (0, 4, 2), (0, 4, 5), 
-    ]
-    eq2_list = [
-        (1, 6, 0), (1, 6, 2), (1, 6, 5), (2, 5, 0), (3, 4, 0), (0, 4, 0), (0, 7, 5), (0, 7, 2), (2, 5, 2), (2, 5, 5), 
-    ]
-    eq3_list = [
-        (0, 1, 0), (4, 6, 1), (1, 1, 0), (0, 1, 2), (0, 1, 5), (0, 0, 0), (1, 0, 0), (2, 0, 0), (0, 2, 5), (0, 2, 2), 
-    ]
-    equation_conf = [
+    # +3 equation, cover 72 transistors
+    [
         {
             'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
-            'transistor_list': eq1_list,
+            'transistor_list': eq3_1_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
-            'transistor_list': eq2_list,
+            'transistor_list': eq3_2_list,
             'alpha': None
         },
         {
             'equation': '(A1 & A6 & ~A2) | (A0 & ~A1 & ~A2) | (A2 & A6 & ~A0 & ~A1)',
-            'transistor_list': eq3_list,
+            'transistor_list': eq3_3_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
-            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list+eq3_list],
+            'transistor_list': [t for t in full_list if t not in eq3_1_list+eq3_2_list+eq3_3_list],
             'alpha': None
         }
-    ]
+    ],
 
 
-# +4 equation, cover 77 transistors
-if False:
-    eq1_list = [
-        (6, 6, 4), (2, 6, 5), (0, 3, 5), (6, 5, 3), (4, 6, 2), (5, 6, 5), (0, 3, 0), (2, 6, 2), (5, 5, 0), (3, 6, 5), (3, 0, 0), (6, 5, 4), (6, 6, 3), (0, 3, 2), (0, 2, 0), (3, 6, 0), (1, 2, 0), (3, 6, 2), (5, 6, 2), (2, 1, 0), (4, 5, 0), (4, 6, 5), 
-    ]
-    eq2_list = [
-        (1, 6, 5), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 4, 0), (0, 7, 5), (2, 5, 2), 
-    ]
-    eq3_list = [
-        (1, 1, 0), (0, 0, 0), (0, 1, 5), (2, 0, 0), (0, 2, 5), (0, 1, 0), (4, 6, 1), (1, 0, 0), (0, 1, 2), (0, 2, 2), 
-    ]
-    eq4_list = [
-        (3, 5, 0), (1, 3, 0), (0, 6, 4), (1, 3, 2), (5, 7, 2), (3, 3, 4), (2, 2, 0), (2, 6, 0), (3, 1, 0), (6, 7, 3), (1, 5, 4), (2, 7, 1), (0, 6, 1), (3, 7, 5), (4, 7, 5), (3, 3, 1), (0, 6, 3), (2, 7, 5), (3, 3, 3), (1, 5, 1), (4, 7, 2), (2, 4, 4), (6, 7, 4), (1, 7, 5), (2, 7, 2), (0, 4, 5), (4, 2, 1), (1, 5, 3), (3, 7, 2), (1, 3, 5), (5, 7, 5), (2, 4, 1), (1, 7, 2), (2, 4, 3), (0, 4, 2), 
-    ]
-    equation_conf = [
+    # +4 equation, cover 77 transistors
+    [
         {
             'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
-            'transistor_list': eq1_list,
+            'transistor_list': eq4_1_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
-            'transistor_list': eq2_list,
+            'transistor_list': eq4_2_list,
             'alpha': None
         },
         {
             'equation': '(A1 & A6 & ~A2) | (A0 & ~A1 & ~A2) | (A2 & A6 & ~A0 & ~A1)',
-            'transistor_list': eq3_list,
+            'transistor_list': eq4_3_list,
             'alpha': None
         },
         {
             'equation': '(~A4 & ~A7) | (~A5 & ~A7)',
-            'transistor_list': eq4_list,
+            'transistor_list': eq4_4_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
-            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list+eq3_list+eq4_list],
+            'transistor_list': [t for t in full_list if t not in eq4_1_list + eq4_2_list + eq4_3_list + eq4_4_list],
             'alpha': None
         }
-    ]
+    ],
 
 
-# +5 equation, cover 80 transistors
-if False:
-    eq1_list = [
-        (6, 6, 4), (2, 6, 5), (0, 3, 5), (6, 5, 3), (4, 6, 2), (5, 6, 5), (0, 3, 0), (2, 6, 2), (5, 5, 0), (3, 6, 5), (3, 0, 0), (6, 5, 4), (6, 6, 3), (0, 3, 2), (0, 2, 0), (3, 6, 0), (1, 2, 0), (3, 6, 2), (5, 6, 2), (2, 1, 0), (4, 5, 0), (4, 6, 5), 
-    ]
-    eq2_list = [
-        (1, 6, 5), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 7, 5), (2, 5, 2), (3, 4, 0), (0, 7, 2), (1, 6, 0), (1, 6, 2), (2, 5, 5), (2, 5, 0), (0, 7, 5), (2, 5, 2), (1, 6, 5), 
-    ]
-    eq3_list = [
-        (1, 1, 0), (0, 0, 0), (0, 1, 5), (2, 0, 0), (0, 2, 5), (0, 1, 0), (0, 1, 2), (0, 2, 2), (1, 0, 0), 
-    ]
-    eq4_list = [
-        (3, 5, 0), (0, 6, 4), (5, 7, 2), (3, 3, 4), (2, 6, 0), (6, 7, 3), (1, 5, 4), (2, 7, 1), (0, 6, 1), (3, 7, 5), (4, 7, 5), (3, 3, 1), (0, 6, 3), (2, 7, 5), (3, 3, 3), (1, 5, 1), (4, 7, 2), (2, 4, 4), (6, 7, 4), (1, 7, 5), (2, 7, 2), (0, 4, 5), (4, 2, 1), (1, 5, 3), (3, 7, 2), (5, 7, 5), (2, 4, 1), (1, 7, 2), (2, 4, 3), (0, 4, 2), 
-    ]
-    eq5_list = [
-        (1, 3, 0), (2, 4, 5), (1, 3, 2), (2, 2, 0), (3, 1, 0), (2, 4, 2), (4, 6, 1), (1, 3, 5), (0, 4, 0), (3, 3, 0), 
-    ]
-    equation_conf = [
+    # +5 equation, cover 80 transistors
+    [
         {
             'equation': '(~A4 & ~A7) | (~A2 & ~A3 & ~A7)',
-            'transistor_list': eq1_list,
+            'transistor_list': eq5_1_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A5 & ~B1) | (B0 & ~A7 & ~B1) | (B1 & ~A7 & ~B0)',
-            'transistor_list': eq2_list,
+            'transistor_list': eq5_2_list,
             'alpha': None
         },
         {
             'equation': '(A1 & A6 & ~A2) | (A0 & ~A1 & ~A2) | (A2 & A6 & ~A0 & ~A1)',
-            'transistor_list': eq3_list,
+            'transistor_list': eq5_3_list,
             'alpha': None
         },
         {
             'equation': '(~A4 & ~A7) | (~A5 & ~A7)',
-            'transistor_list': eq4_list,
+            'transistor_list': eq5_4_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A5) | (B0 & ~B1) | (A6 & B1 & ~B0)',
-            'transistor_list': eq5_list,
+            'transistor_list': eq5_5_list,
             'alpha': None
         },
         {
             'equation': '(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)',
-            'transistor_list': [t for t in full_list if t not in eq1_list+eq2_list+eq3_list+eq4_list+eq5_list],
+            'transistor_list': [t for t in full_list if t not in eq5_1_list + eq5_2_list + eq5_3_list + eq5_4_list + eq5_5_list],
             'alpha': None
         }
-    ]
+    ],
+]
 
 
-def preload_alpha():
+def preload_alpha(index):
     # loading alpha cache
     try:
         alpha_cache = CACHE.load_cache(f"{__file__}.alpha.cache")
@@ -343,12 +343,12 @@ def preload_alpha():
         alpha_cache.add_cache('0', base_alpha)
 
     # preload equations alpha
-    for conf in equation_conf:
+    for conf in selector_conf[index]:
         equation = conf["equation"]
         if not alpha_cache.hit_cache(equation):
             optimizer_equation[0] = equation
             conf['alpha'] = MultiplierStressTest(bit_len, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
-            alpha_cache.add_cache(equation, alpha)
+            alpha_cache.add_cache(equation, conf['alpha'])
         else:
             conf['alpha'] = alpha_cache.get_cache(equation)
 
@@ -359,6 +359,7 @@ def preload_alpha():
 ### ideal computations
 ##############################
 
+#old
 if False:
     log = Log(f"{__file__}.log", terminal=True)
     DETAIL_LOG = False
@@ -418,7 +419,7 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
     current_fail = current_base * (1 - 0.5)
     vb_fail = get_pb_from_current(current_fail)
 
-    for t_week in range(200):
+    for t_week in range(1000):
         t_sec = t_week * 7 * 24 * 60 * 60
         body_voltage = generate_body_voltage_from_base(
             alpha, t_sec, bit_len, vth_matrix
@@ -434,8 +435,10 @@ def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
                             "t_index": t_index,
                             "t_week": t_week,
                         }
+    raise ValueError("max lifetime is low")
 
 
+#old
 if False:
     log = Log(f"{__file__}.log", terminal=True)
     SAMPLE = 2
@@ -508,11 +511,17 @@ if False:
 if True:
 
     PROCESS_POOL = 30
+    log = Log(f"{__file__}.log", terminal=True)
+    SAMPLE =  336 * 1  # len(transistors) * samples
+    DETAIL_LOG = False
 
+    def seed_generator(i):
+        return 10*i + 1
 
     def process_sample(sample_index, base_alpha, equation_conf, bit_len):
         """Function to process a single sample in parallel"""
-        random_vth_matrix = generate_random_vth_base()
+        # random_vth_matrix = generate_random_vth_base()
+        random_vth_matrix = generate_guassian_vth_base(seed=seed_generator(sample_index))
         base_fail_transistor = get_monte_carlo_life_expect(base_alpha, random_vth_matrix, bit_len)
         base_lifetime = base_fail_transistor["t_week"]
 
@@ -537,30 +546,27 @@ if True:
         return base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor
 
 
-    log = Log(f"{__file__}.log", terminal=True)
-    SAMPLE = 100_000
-    DETAIL_LOG = False
+    for conf_index, conf_eq in enumerate(selector_conf):
+        alpha_cache = preload_alpha(conf_index)
+        base_alpha = alpha_cache.get_cache("0")
+        log.println(f"preload_alpha DONE + equations alphas")
 
-    alpha_cache = preload_alpha()
-    log.println(f"preload_alpha DONE + equations alphas")
 
-    base_alpha = alpha_cache.get_cache("0")
+        base_sum_lifetime = multiprocessing.Value('d', 0.0)
+        optimize_sum_lifetime = multiprocessing.Value('d', 0.0)
+        lock = multiprocessing.Lock()
 
-    base_sum_lifetime = multiprocessing.Value('d', 0.0)
-    optimize_sum_lifetime = multiprocessing.Value('d', 0.0)
-    lock = multiprocessing.Lock()
+        with multiprocessing.Pool(processes=PROCESS_POOL) as pool:
+            results = pool.starmap(process_sample, [(i, base_alpha, conf_eq, bit_len) for i in range(SAMPLE)])
 
-    with multiprocessing.Pool(processes=PROCESS_POOL) as pool:
-        results = pool.starmap(process_sample, [(i, base_alpha, equation_conf, bit_len) for i in range(SAMPLE)])
+        for base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor in results:
+            with lock:
+                base_sum_lifetime.value += base_lifetime
+                optimize_sum_lifetime.value += optimized_lifetime
 
-    for base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor in results:
-        with lock:
-            base_sum_lifetime.value += base_lifetime
-            optimize_sum_lifetime.value += optimized_lifetime
+            if DETAIL_LOG:
+                log.println(f"[{base_lifetime:3d}] -> [{optimized_lifetime:3d}] \t|| {base_fail_transistor} => {optimize_equation} => {optimized_fail_transistor}")
 
-        if DETAIL_LOG:
-            log.println(f"[{base_lifetime:3d}] -> [{optimized_lifetime:3d}] \t|| {base_fail_transistor} => {optimize_equation} => {optimized_fail_transistor}")
-
-    # final result
-    log.println(f"conf:\n{equation_conf}\n")
-    log.println(f"final result [{SAMPLE}] samples: \t {base_sum_lifetime.value / SAMPLE} => {optimize_sum_lifetime.value / SAMPLE}")
+        # final result
+        log.println(f"conf index: {conf_index}")
+        log.println(f"final result [{SAMPLE}] samples: \t {base_sum_lifetime.value / SAMPLE} => {optimize_sum_lifetime.value / SAMPLE} \n")
