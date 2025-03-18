@@ -510,13 +510,13 @@ if False:
 # multi process monte carlo real simulation
 if True:
 
-    PROCESS_POOL = 30
+    PROCESS_POOL = 25
     log = Log(f"{__file__}.log", terminal=True)
-    SAMPLE =  336 * 1  # len(transistors) * samples
+    SAMPLE =  336 * 1000  # len(transistors) * samples
     DETAIL_LOG = False
 
     def seed_generator(i):
-        return 10*i + 1
+        return 7*i + 1
 
     def process_sample(sample_index, base_alpha, equation_conf, bit_len):
         """Function to process a single sample in parallel"""
