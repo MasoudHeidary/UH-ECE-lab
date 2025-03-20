@@ -510,7 +510,7 @@ if False:
 # multi process monte carlo real simulation
 if True:
 
-    PROCESS_POOL = 25
+    PROCESS_POOL = 35
     log = Log(f"{__file__}.log", terminal=True)
     SAMPLE =  336 * 1000  # len(transistors) * samples
     DETAIL_LOG = False
@@ -522,11 +522,11 @@ if True:
         """Function to process a single sample in parallel"""
         # random_vth_matrix = generate_random_vth_base()
         random_vth_matrix = generate_guassian_vth_base(seed=seed_generator(sample_index))
-        base_fail_transistor = get_monte_carlo_life_expect(base_alpha, random_vth_matrix, bit_len)
-        base_lifetime = base_fail_transistor["t_week"]
+        
+        # base_fail_transistor = get_monte_carlo_life_expect(base_alpha, random_vth_matrix, bit_len)
+        # base_lifetime = base_fail_transistor["t_week"]
 
         optimize_equation = None
-        optimize_alpha = None
         max_optimizer_lifetime = 0
         max_failed_transistor = None
 
@@ -538,12 +538,11 @@ if True:
                 max_optimizer_lifetime = lifetime
                 max_failed_transistor = fail_transistor
                 optimize_equation = conf["equation"]
-                optimize_alpha = alpha
 
         optimized_fail_transistor = max_failed_transistor
         optimized_lifetime = max_optimizer_lifetime
 
-        return base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor
+        return optimized_lifetime, optimize_equation, optimized_fail_transistor
 
 
     for conf_index, conf_eq in enumerate(selector_conf):
@@ -552,21 +551,19 @@ if True:
         log.println(f"preload_alpha DONE + equations alphas")
 
 
-        base_sum_lifetime = multiprocessing.Value('d', 0.0)
         optimize_sum_lifetime = multiprocessing.Value('d', 0.0)
         lock = multiprocessing.Lock()
 
         with multiprocessing.Pool(processes=PROCESS_POOL) as pool:
             results = pool.starmap(process_sample, [(i, base_alpha, conf_eq, bit_len) for i in range(SAMPLE)])
 
-        for base_lifetime, optimized_lifetime, base_fail_transistor, optimize_equation, optimized_fail_transistor in results:
+        for optimized_lifetime, optimize_equation, optimized_fail_transistor in results:
             with lock:
-                base_sum_lifetime.value += base_lifetime
                 optimize_sum_lifetime.value += optimized_lifetime
 
             if DETAIL_LOG:
-                log.println(f"[{base_lifetime:3d}] -> [{optimized_lifetime:3d}] \t|| {base_fail_transistor} => {optimize_equation} => {optimized_fail_transistor}")
+                log.println(f"[{optimized_lifetime:3d}] \t||{optimize_equation} => {optimized_fail_transistor}")
 
         # final result
         log.println(f"conf index: {conf_index}")
-        log.println(f"final result [{SAMPLE}] samples: \t {base_sum_lifetime.value / SAMPLE} => {optimize_sum_lifetime.value / SAMPLE} \n")
+        log.println(f"final result [{SAMPLE}] samples: \t {optimize_sum_lifetime.value / SAMPLE} \n")
