@@ -50,6 +50,36 @@ class Not:
         return f"{self.input} -> {self.output}"
 
 
+class eNot:
+    def __init__(self):
+        self.__input = N
+        self.__output = N
+    
+        self.__change_flag = True
+
+    @property
+    def change_flag(self):
+        return self.__change_flag
+    
+    @property
+    def input(self):
+        return self.__input
+    
+    @input.setter
+    def input(self, value):
+        if(self.__input != value):
+            self.__change_flag = True
+            self.__input = value
+            
+    def __netlist(self):
+        self.__output = H if self.__input==L else L
+    
+    @property
+    def output(self):
+        self.__change_flag = False
+        self.__netlist()
+        return self.__output
+    
 class And:
 
     def __init__(self) -> None:
@@ -95,6 +125,48 @@ class And:
             self.netlist()
         return self.__output
 
+class eAnd:
+    def __init__(self):
+        self.__A = N
+        self.__B = N
+        
+        self.__change_flag = True
+        self.__output = N
+    
+    @property
+    def change_flag(self):
+        return self.__change_flag
+    
+    @property
+    def A(self):
+        return self.__A
+    
+    @A.setter
+    def A(self, value):
+        if(self.__A != value):
+            self.__change_flag = True
+            self.__A = value
+    
+    @property
+    def B(self):
+        return self.__B
+    
+    @B.setter
+    def B(self, value):
+        if(self.__B != value):
+            self.__change_flag = True
+            self.__B = value
+    
+    def __netlist(self):
+        self.__output = self.A and self.B
+    
+    @property
+    def output(self):
+        self.__change_flag = False
+        self.__netlist()
+        return self.__output
+    
+    
 
 def __test__and():
     g_and = And()

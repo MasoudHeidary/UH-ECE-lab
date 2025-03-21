@@ -1,5 +1,6 @@
 from .sim import *
 from .logic import *
+import time
 
 class Trans():
 
@@ -88,19 +89,7 @@ class FA:
         self.ngate[3].input = self.tgate[0].output
         nxx = self.ngate[3].output
 
-        # # generate dxx
-        # self.ngate[4].input = self.tgate[0].output
-        # self.ngate[5].input = self.ngate[4].output
-
-
         # generate sum
-        # self.ngate[6].input = self.ngate[2].output
-        # self.ngate[7].input = self.ngate[6].output
-        # self.ngate[8].input = self.ngate[7].output
-
-        # self.ngate[9].input = self.ngate[2].output
-        # self.ngate[10].input = self.ngate[9].output
-
         self.tgate[1].ctop = xx
         self.tgate[1].cmid = nxx
         self.tgate[1].itop = self.C
@@ -109,10 +98,6 @@ class FA:
 
 
         # generate carry 
-        # self.ngate[11].input = self.A
-        # self.ngate[12].input = self.ngate[11].output
-        # self.ngate[13].input = self.ngate[12].output
-        # self.ngate[14].input = self.ngate[13].output
         self.tgate[2].ctop = nxx
         self.tgate[2].cmid = xx
         self.tgate[2].itop = self.C
@@ -155,6 +140,92 @@ def test_FA():
                     print(f"{i}, {j}, {k} \t= \t{(i+j+k)//2} \t{(i+j+k)%2} \t[TRUE]")
                 else:
                     print("[FALSE]")
+
+
+class eFA():
+    def __init__(self):
+        self.__A = N
+        self.__B = N
+        self.__C = N
+
+        self.__change_flag = True
+        self.__sum = N
+        self.__carry = N
+
+        self.p = [N for _ in range(6)]
+
+    @property
+    def change_flag(self):
+        return self.__change_flag
+    
+    @property
+    def A(self):
+        return self.__A
+    
+    @property
+    def B(self):
+        return self.__B
+    
+    @property
+    def C(self):
+        return self.__C
+    
+    @A.setter
+    def A(self, value):
+        if self.__A != value:
+            self.__change_flag = True
+            self.__A = value
+
+    @B.setter
+    def B(self, value):
+        if self.__B != value:
+            self.__change_flag = True
+            self.__B = value
+
+    @C.setter
+    def C(self, value):
+        if self.__C != value:
+            self.__change_flag = True
+            self.__C = value
+
+    def __netlist(self):
+        if (self.A == N) or (self.B == N) or (self.C == N):
+            self.__sum = N
+            self.__carry = N
+        elif (self.A == X) or (self.B == X) or (self.C == X):
+            self.__sum = X
+            self.__carry = X
+        else:
+            self.__sum = (self.A + self.B + self.C) % 2
+            self.__carry = (self.A + self.B + self.C) // 2
+
+            #PMOS transistors state
+            x = self.A if self.B==0 else (not self.A)
+            self.p = [
+                self.B,
+                not self.B,
+                x,
+                not x,
+                not x,
+                x
+            ]
+            
+
+    @property
+    def sum(self):
+        if self.__change_flag:
+            self.__change_flag = False
+            self.__netlist()
+        return self.__sum
+
+    @property
+    def carry(self):
+        if self.__change_flag:
+            self.__change_flag = False
+            self.__netlist()
+        return self.__carry
+            
+
 
 
 # Multiplier 4 bit
@@ -512,6 +583,147 @@ class MPn_v3:
         return self.__output
 
 
+
+class Wallace_comp:
+    def __init__(self, A: list[int], B: list[int], in_len=4) -> None:
+        self.in_len = in_len
+        self.A = A.copy()
+        self.B = B.copy()
+        self.__output = [N for _ in range(in_len*2)]
+
+        self.gand = [[eAnd() for _ in range(in_len)] for _ in range(in_len)]
+        self.gfa = [[eFA() for _ in range(self.in_len)] for _ in range(self.in_len-1)]
+        self.gfa_co = eFA()
+
+        self.elements = []
+        for i in self.gfa:
+            self.elements += i
+        for i in self.gand:
+            self.elements += i
+        self.elements += [self.gfa_co]
+
+    
+    def netlist(self):
+        
+        # AND input map (partial product)
+        P = [[N for _ in range(self.in_len)] for _ in range(self.in_len)]
+        for i in range(self.in_len):
+            for j in range(self.in_len):
+                self.gand[i][j].A = self.A[i]
+                self.gand[i][j].B = self.B[j]
+
+                P[i][j] = self.gand[i][j].output
+                if (i == self.in_len - 1):
+                    P[i][j] = L if P[i][j] == H else H
+                if (j == self.in_len - 1):
+                    P[i][j] = L if P[i][j] == H else H
+
+                    
+
+        # FA input map
+        # first row
+        # self.gfa[0][0].A = P[1][0]
+        # self.gfa[0][0].B = P[0][1]
+        # self.gfa[0][0].C = L
+
+        # self.gfa[0][1].A = P[2][0]
+        # self.gfa[0][1].B = P[1][1]
+        # self.gfa[0][1].C = P[0][2]
+
+        # self.gfa[0][2].A = P[3][0]
+        # self.gfa[0][2].B = P[2][1]
+        # self.gfa[0][2].C = P[1][2]
+
+        # self.gfa[0][3].A = H
+        # self.gfa[0][3].B = P[3][1]
+        # self.gfa[0][3].C = P[2][2]
+
+        #first row
+        for index in range(self.in_len):
+            self.gfa[0][index].A = P[index+1][0] if index!=self.in_len-1 else H
+            self.gfa[0][index].B = P[index][1]
+            self.gfa[0][index].C = L if index==0 else P[index-1][2]
+
+        #middle rows
+        for row in range(1, self.in_len-2):
+            for index in range(self.in_len):
+                self.gfa[row][index].A = L if index==0 else P[index-1][row+2]
+                self.gfa[row][index].B = self.gfa[row-1][index+1].sum if index!=self.in_len-1 else P[index][row+1]
+                self.gfa[row][index].C = self.gfa[row-1][index].carry
+
+        # second row
+        # self.gfa[1][0].A = self.gfa[0][0].carry
+        # self.gfa[1][0].B = self.gfa[0][1].sum
+        # self.gfa[1][0].C = L
+
+        # self.gfa[1][1].A = self.gfa[0][1].carry
+        # self.gfa[1][1].B = self.gfa[0][2].sum
+        # self.gfa[1][1].C = P[0][3]
+
+        # self.gfa[1][2].A = self.gfa[0][2].carry
+        # self.gfa[1][2].B = self.gfa[0][3].sum
+        # self.gfa[1][2].C = P[1][3]
+
+        # self.gfa[1][3].A = self.gfa[0][3].carry
+        # self.gfa[1][3].B = P[3][2]
+        # self.gfa[1][3].C = P[2][3]
+
+        #last row
+        lr = self.in_len - 2
+        for index in range(self.in_len):
+            self.gfa[lr][index].A = self.gfa[lr-1][index].carry
+            self.gfa[lr][index].B = self.gfa[lr-1][index+1].sum if index!=self.in_len-1 else P[self.in_len-1][self.in_len-1]
+            self.gfa[lr][index].C = L if index==0 else self.gfa[lr][index-1].carry
+
+        #third row
+        # self.gfa[2][0].A = self.gfa[1][0].carry
+        # self.gfa[2][0].B = self.gfa[1][1].sum
+        # self.gfa[2][0].C = L
+
+        # self.gfa[2][1].A = self.gfa[1][1].carry
+        # self.gfa[2][1].B = self.gfa[1][2].sum
+        # self.gfa[2][1].C = self.gfa[2][0].carry
+
+        # self.gfa[2][2].A = self.gfa[1][2].carry
+        # self.gfa[2][2].B = self.gfa[1][3].sum
+        # self.gfa[2][2].C = self.gfa[2][1].carry
+
+        # self.gfa[2][3].A = self.gfa[1][3].carry
+        # self.gfa[2][3].B = P[3][3]
+        # self.gfa[2][3].C = self.gfa[2][2].carry
+
+
+        # OUT map
+        self.__output[0] = P[0][0]
+        # self.__output[1] = self.gfa[0][0].sum
+        # self.__output[2] = self.gfa[1][0].sum
+        # self.__output[3] = self.gfa[2][0].sum
+        # self.__output[4] = self.gfa[2][1].sum
+        # self.__output[5] = self.gfa[2][2].sum
+        # self.__output[6] = self.gfa[2][3].sum
+        # self.__output[7] = self.gfa[2][3].carry
+        for index in range(1, self.in_len - 1):
+            self.__output[index] = self.gfa[index-1][0].sum
+        for index in range(0, self.in_len):
+            self.__output[self.in_len - 1 + index] = self.gfa[self.in_len - 2][index].sum
+        
+        self.gfa_co.A = self.gfa[self.in_len-2][self.in_len-1].carry
+        self.gfa_co.B = H
+        self.gfa_co.C = L
+        self.__output[self.in_len*2 - 1] = self.gfa_co.sum
+        self.gfa_co.carry
+
+    @property
+    def change_flag(self):
+        return any([i.change_flag for i in self.elements])
+    
+    @property
+    def output(self):
+        self.netlist()
+        while self.change_flag:
+            self.netlist()
+        return self.__output
+
 # from log import Log
 # log = Log("Multiplier.txt", terminal=True)
 
@@ -576,6 +788,54 @@ def __test_MPn_v3():
                 # log.println("[FAILED] (return False)")
                 return False 
     return True
+
+
+# __test__ >> wallace >> True [1427.755479335785s]  //solid
+# __test__ >> wallace >> True [1145.6836287975311s]     // using eAND
+# __test__ >> wallace >> True [545.8007431030273s]      // using eNOT
+def __test_wallace():
+    def signed_b(num: int, bit_len: int):
+        num_cpy = num
+        if num < 0:
+            # num = 2**bit_len - abs(num)
+            num_cpy = 2**bit_len + num
+        bit_num = list(map(int, reversed(format(num_cpy, f'0{bit_len}b'))))
+
+        if (num>0) and (bit_num[-1] != 0):
+            raise OverflowError(f"number {num} cant fit in signed #{bit_len} bits")
+        if (num<0) and (bit_num[-1] != 1):
+            raise OverflowError(f"number {num} cant fit in signed #{bit_len} bits")
+        return bit_num
+    def reverse_signed_b(binary_list):
+        binary_str = ''.join(map(str, reversed(binary_list)))
+        num = int(binary_str, 2)
+
+        #number is negative
+        if binary_list[-1] == 1:
+            num = num - (2**len(binary_list))
+        return num
+
+    st = time.time()
+    
+    bit_len = 8
+    limit = 2**(bit_len-1)
+    for a in range(-limit, limit):
+        for b in range(-limit, limit):
+            A = signed_b(a, bit_len)
+            B = signed_b(b, bit_len)
+            mp = Wallace_comp(A, B, in_len=bit_len)
+
+            print(f"({a}) * ({b}): \t{a*b} [output: {reverse_signed_b(mp.output)}] [{mp.output == signed_b(a*b, bit_len*2)}]")
+            if mp.output != signed_b(a*b, bit_len*2):
+                raise RuntimeError("TEST FAILED")
+    
+    et = time.time()
+    print(f"__test__ >> wallace >> True [{et-st}s]")
+    return True
+
+
+__test_wallace()
+            
 
 if __name__ == "__main__":
 
