@@ -1,5 +1,6 @@
 from .sim import *
 from .logic import *
+from .bin_func import *
 import time
 
 class Trans():
@@ -621,23 +622,6 @@ class Wallace_comp:
                     
 
         # FA input map
-        # first row
-        # self.gfa[0][0].A = P[1][0]
-        # self.gfa[0][0].B = P[0][1]
-        # self.gfa[0][0].C = L
-
-        # self.gfa[0][1].A = P[2][0]
-        # self.gfa[0][1].B = P[1][1]
-        # self.gfa[0][1].C = P[0][2]
-
-        # self.gfa[0][2].A = P[3][0]
-        # self.gfa[0][2].B = P[2][1]
-        # self.gfa[0][2].C = P[1][2]
-
-        # self.gfa[0][3].A = H
-        # self.gfa[0][3].B = P[3][1]
-        # self.gfa[0][3].C = P[2][2]
-
         #first row
         for index in range(self.in_len):
             self.gfa[0][index].A = P[index+1][0] if index!=self.in_len-1 else H
@@ -651,23 +635,6 @@ class Wallace_comp:
                 self.gfa[row][index].B = self.gfa[row-1][index+1].sum if index!=self.in_len-1 else P[index][row+1]
                 self.gfa[row][index].C = self.gfa[row-1][index].carry
 
-        # second row
-        # self.gfa[1][0].A = self.gfa[0][0].carry
-        # self.gfa[1][0].B = self.gfa[0][1].sum
-        # self.gfa[1][0].C = L
-
-        # self.gfa[1][1].A = self.gfa[0][1].carry
-        # self.gfa[1][1].B = self.gfa[0][2].sum
-        # self.gfa[1][1].C = P[0][3]
-
-        # self.gfa[1][2].A = self.gfa[0][2].carry
-        # self.gfa[1][2].B = self.gfa[0][3].sum
-        # self.gfa[1][2].C = P[1][3]
-
-        # self.gfa[1][3].A = self.gfa[0][3].carry
-        # self.gfa[1][3].B = P[3][2]
-        # self.gfa[1][3].C = P[2][3]
-
         #last row
         lr = self.in_len - 2
         for index in range(self.in_len):
@@ -675,33 +642,8 @@ class Wallace_comp:
             self.gfa[lr][index].B = self.gfa[lr-1][index+1].sum if index!=self.in_len-1 else P[self.in_len-1][self.in_len-1]
             self.gfa[lr][index].C = L if index==0 else self.gfa[lr][index-1].carry
 
-        #third row
-        # self.gfa[2][0].A = self.gfa[1][0].carry
-        # self.gfa[2][0].B = self.gfa[1][1].sum
-        # self.gfa[2][0].C = L
-
-        # self.gfa[2][1].A = self.gfa[1][1].carry
-        # self.gfa[2][1].B = self.gfa[1][2].sum
-        # self.gfa[2][1].C = self.gfa[2][0].carry
-
-        # self.gfa[2][2].A = self.gfa[1][2].carry
-        # self.gfa[2][2].B = self.gfa[1][3].sum
-        # self.gfa[2][2].C = self.gfa[2][1].carry
-
-        # self.gfa[2][3].A = self.gfa[1][3].carry
-        # self.gfa[2][3].B = P[3][3]
-        # self.gfa[2][3].C = self.gfa[2][2].carry
-
-
         # OUT map
         self.__output[0] = P[0][0]
-        # self.__output[1] = self.gfa[0][0].sum
-        # self.__output[2] = self.gfa[1][0].sum
-        # self.__output[3] = self.gfa[2][0].sum
-        # self.__output[4] = self.gfa[2][1].sum
-        # self.__output[5] = self.gfa[2][2].sum
-        # self.__output[6] = self.gfa[2][3].sum
-        # self.__output[7] = self.gfa[2][3].carry
         for index in range(1, self.in_len - 1):
             self.__output[index] = self.gfa[index-1][0].sum
         for index in range(0, self.in_len):
@@ -793,28 +735,8 @@ def __test_MPn_v3():
 # __test__ >> wallace >> True [1427.755479335785s]  //solid
 # __test__ >> wallace >> True [1145.6836287975311s]     // using eAND
 # __test__ >> wallace >> True [545.8007431030273s]      // using eNOT
+# __test__ >> wallace >> True [21.9300754070282s]       // using eFA
 def __test_wallace():
-    def signed_b(num: int, bit_len: int):
-        num_cpy = num
-        if num < 0:
-            # num = 2**bit_len - abs(num)
-            num_cpy = 2**bit_len + num
-        bit_num = list(map(int, reversed(format(num_cpy, f'0{bit_len}b'))))
-
-        if (num>0) and (bit_num[-1] != 0):
-            raise OverflowError(f"number {num} cant fit in signed #{bit_len} bits")
-        if (num<0) and (bit_num[-1] != 1):
-            raise OverflowError(f"number {num} cant fit in signed #{bit_len} bits")
-        return bit_num
-    def reverse_signed_b(binary_list):
-        binary_str = ''.join(map(str, reversed(binary_list)))
-        num = int(binary_str, 2)
-
-        #number is negative
-        if binary_list[-1] == 1:
-            num = num - (2**len(binary_list))
-        return num
-
     st = time.time()
     
     bit_len = 8
