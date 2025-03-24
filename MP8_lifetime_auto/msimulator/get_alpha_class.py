@@ -76,12 +76,20 @@ class MultiplierStressTest:
 
             for lay in range(self.bit_len - 1):
                 for index in range(self.bit_len):
-                    T0 = mp.gfa[lay][index].tgate[0].p0.gate
-                    T0p = mp.gfa[lay][index].tgate[0].p1.gate
-                    T1 = mp.gfa[lay][index].tgate[1].p0.gate
-                    T1p = mp.gfa[lay][index].tgate[1].p1.gate
-                    T2 = mp.gfa[lay][index].tgate[2].p0.gate
-                    T2p = mp.gfa[lay][index].tgate[2].p1.gate
+                    # T0 = mp.gfa[lay][index].tgate[0].p0.gate
+                    # T0p = mp.gfa[lay][index].tgate[0].p1.gate
+                    # T1 = mp.gfa[lay][index].tgate[1].p0.gate
+                    # T1p = mp.gfa[lay][index].tgate[1].p1.gate
+                    # T2 = mp.gfa[lay][index].tgate[2].p0.gate
+                    # T2p = mp.gfa[lay][index].tgate[2].p1.gate
+
+                    # if eFA
+                    T0 = mp.gfa[lay][index].p[0]
+                    T0p = mp.gfa[lay][index].p[1]
+                    T1 = mp.gfa[lay][index].p[2]
+                    T1p = mp.gfa[lay][index].p[3]
+                    T2 = mp.gfa[lay][index].p[4]
+                    T2p = mp.gfa[lay][index].p[5]
 
                     stress_counter[lay][index]['T0'] += (not T0)
                     stress_counter[lay][index]['T0p'] += (not T0p)

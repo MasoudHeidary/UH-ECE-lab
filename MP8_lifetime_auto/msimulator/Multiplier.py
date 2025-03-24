@@ -514,9 +514,12 @@ class MPn_v3:
         self.B = B.copy()
         self.__output = [N for _ in range(in_len*2)]
 
-        self.gfa = [[FA() for _ in range(in_len)] for _ in range(in_len-1)]
-        self.gfa_carry_out = FA()
-        self.gand = [[And() for _ in range(in_len)] for _ in range(in_len)]
+        # self.gfa = [[FA() for _ in range(in_len)] for _ in range(in_len-1)]
+        # self.gfa_carry_out = FA()
+        self.gfa = [[eFA() for _ in range(in_len)] for _ in range(in_len-1)]
+        self.gfa_carry_out = eFA()
+        # self.gand = [[And() for _ in range(in_len)] for _ in range(in_len)]
+        self.gand = [[eAnd() for _ in range(in_len)] for _ in range(in_len)]
 
         self.elements = []
         for i in self.gfa:
@@ -756,7 +759,7 @@ def __test_wallace():
     return True
 
 
-__test_wallace()
+# __test_wallace()
             
 
 if __name__ == "__main__":
