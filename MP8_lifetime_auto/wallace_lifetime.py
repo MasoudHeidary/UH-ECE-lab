@@ -102,30 +102,36 @@ if True:
         critical transistors in order
         failed transistor: {'fa_i': 6, 'fa_j': 7, 't_index': 3, 't_week': 83}
         failed transistor: {'fa_i': 0, 'fa_j': 6, 't_index': 0, 't_week': 132}
-        failed transistor: {'fa_i': 6, 'fa_j': 7, 't_index': 3, 't_week': 132}  //END
+        failed transistor: {'fa_i': 6, 'fa_j': 7, 't_index': 3, 't_week': 132}  
+        // DONE
 
         4-bit wallace multiplier
         {'fa_i': 2, 'fa_j': 3, 't_index': 3, 't_week': 105}
         {'fa_i': 0, 'fa_j': 2, 't_index': 0, 't_week': 141}
         {'fa_i': 2, 'fa_j': 3, 't_index': 3, 't_week': 145}
-        {'fa_i': 2, 'fa_j': 3, 't_index': 3, 't_week': 145} // END
+        {'fa_i': 2, 'fa_j': 3, 't_index': 3, 't_week': 145}
+        // DONE
 
         12-bit wallace multiplier
         {'fa_i': 10, 'fa_j': 11, 't_index': 3, 't_week': 82}
-        
-
-        16-bit wallace multiplier
-        
-        32-bit wallace multiplier
+        {'fa_i': 0, 'fa_j': 10, 't_index': 0, 't_week': 131}
+        {'fa_i': 10, 'fa_j': 11, 't_index': 3, 't_week': 131}
+        // DONE
         
     """
 
     BIT_LEN = 8
     log.println(f"RUN >> [{BIT_LEN}] bit")
 
-    # critical_transistor_lst = [{'fa_i': 10, 'fa_j': 11, 't_index': 3, 't_week': 82}]
     # critical_transistor_lst = []
+    critical_transistor_lst = [
+        {'fa_i': 6, 'fa_j': 7, 't_index': 3, 't_week': 83},
+        {'fa_i': 0, 'fa_j': 6, 't_index': 0, 't_week': 132},
+        {'fa_i': 6, 'fa_j': 7, 't_index': 3, 't_week': 132},
+    ]
 
+    # pattern_file = Log("pattern-wallace8.txt")
+    
     alpha = wallace_alpha(Wallace_comp, BIT_LEN, op_trigger, op_accept, op_enable=True, log_obj=False)
     fail_transistor = get_life_expect(alpha, BIT_LEN, faulty_transistor=False)
     
