@@ -41,7 +41,8 @@ class Progress:
         self.char_ln = char_ln
 
         self.per_lst = [0 for _ in range(self.bars)]
-        self.__print_all_bars()
+        self.keep = False
+        # self.__print_all_bars()
 
     @staticmethod
     def move_cursor_up(n):
@@ -65,7 +66,7 @@ class Progress:
         try:
             label = f"{self.labels[index]}\t"
         except:
-            label = "#N"
+            label = "unname"
 
         bar_fill = int(self.per_lst[index] * self.char_ln)
         bar = "█" * bar_fill + "-" * (self.char_ln-bar_fill)
@@ -86,13 +87,18 @@ class Progress:
                 return index
         raise LookupError("label not found")
 
-    def update(self, index_label, value, outof):
+    def keep_line(self):
+        if not self.keep:
+            print('PROGRESS BAR TMP')
+            self.keep = True
+    
+    def update(self, index_label, per):
         if isinstance(index_label, str):
             index = self.label_to_index(index_label)
         else:
             index = index_label
 
-        per = (value + 1) / outof
+        per = per
         if (per < 0) or (per > 1):
             raise ValueError(f"invalid value: percentage should be in range of 0-1")
         self.per_lst[index] = per
