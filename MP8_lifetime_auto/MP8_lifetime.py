@@ -119,15 +119,15 @@ if True:
     {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 97}
     {'fa_i': 0, 'fa_j': 9, 't_index': 0, 't_week': 150}
     {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 169}
-
+    // DONE
     """
-    BIT_LEN = 12
+    BIT_LEN = 8
 
     # lst_transistor_optimize = []
     lst_transistor_optimize = [
-        {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 97},
-        {'fa_i': 0, 'fa_j': 9, 't_index': 0, 't_week': 150},
-        {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 169},
+        {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98},
+        {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150},
+        {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169},
     ]
 
     alpha_lst = MultiplierStressTest(BIT_LEN, optimizer_trigger, optimizer_accept).run(log_obj=False)
@@ -139,7 +139,16 @@ if True:
 
 
     # process variation result in using lookup table
+    if True:
+        unoptimized_alpha = MultiplierStressTest(BIT_LEN, None, None, optimizer_enable=False).run()
+        for fa_i in range(BIT_LEN - 1):
+            for fa_j in range(BIT_LEN):
+                for t_index in range(6):
+                    faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+                    unoptimized_lifetime = get_life_expect(unoptimized_alpha, BIT_LEN, faulty_transistor)["t_week"]
+                    lookup_table_lifetime = get_life_expect(alpha_lst, BIT_LEN, faulty_transistor)["t_week"]
 
+                    log.println(f"faulty transistor: {faulty_transistor} >>> using normal lookup table >>> {unoptimized_lifetime:03} -> {lookup_table_lifetime:03}")
 
 # DONE
 
