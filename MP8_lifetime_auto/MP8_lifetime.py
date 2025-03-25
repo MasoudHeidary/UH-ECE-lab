@@ -1,5 +1,6 @@
 import inspect
 import random
+import re
 
 from msimulator.get_alpha_class import MultiplierStressTest
 from msimulator.Multiplier import *
@@ -24,17 +25,20 @@ def optimizer_trigger(mp: MPn_v3, _a, _b):
         fa_j:int = transistor['fa_j']
 
         t_index:int = transistor['t_index']
-        _tgate = t_index // 2
-        _p = t_index % 2
+        # _tgate = t_index // 2
+        # _p = t_index % 2
 
-        fa:FA = mp.gfa[fa_i][fa_j]
+        # fa:FA = mp.gfa[fa_i][fa_j]
 
-        if _p == 0:
-            if fa.tgate[_tgate].p0.gate == L:
-                return True
-        else:
-            if fa.tgate[_tgate].p1.gate == L:
-                return True
+        # if _p == 0:
+        #     if fa.tgate[_tgate].p0.gate == L:
+        #         return True
+        # else:
+        #     if fa.tgate[_tgate].p1.gate == L:
+        #         return True
+            
+        if mp.gfa[fa_i][fa_j].p[t_index] == L:
+            return True
 
     return False
 
@@ -45,35 +49,97 @@ def optimizer_accept(neg_mp: MPn_v3, _a, _b):
         fa_j:int = transistor['fa_j']
 
         t_index:int = transistor['t_index']
-        _tgate = t_index // 2
-        _p = t_index % 2
+        # _tgate = t_index // 2
+        # _p = t_index % 2
 
-        fa:FA = neg_mp.gfa[fa_i][fa_j]
+        # fa:FA = neg_mp.gfa[fa_i][fa_j]
         
-        ### OR
-        if _p == 0:
-            if fa.tgate[_tgate].p0.gate == H:
-                return True
-        else:
-            if fa.tgate[_tgate].p1.gate == H:
-                return True
+        # ### OR
+        # if _p == 0:
+        #     if fa.tgate[_tgate].p0.gate == H:
+        #         return True
+        # else:
+        #     if fa.tgate[_tgate].p1.gate == H:
+        #         return True
+        if neg_mp.gfa[fa_i][fa_j].p[t_index] == H:
+            return True
     return False
 
 
+##################################
+def parse_pattern_line(line):
+        pattern = r"\[\w+ \w+ \d+ \d+:\d+:\d+ \d+\] >> \[(.*?)\], \[(.*?)\], \[compliment: (True|False)\]"
+        match = re.search(pattern, line)
+        
+        if match:
+            A = list(map(int, match.group(1).split(", ")))
+            B = list(map(int, match.group(2).split(", ")))
+            # result = True if match.group(3) == "True" else False
+            result = None
+            if match.group(3) == 'True':
+                result = True
+            elif match.group(3) == 'False':
+                result = False
+            else:
+                raise RuntimeError("invalid output in log file")
+            
+            return A, B, result
+        return None
 
+def load_pattern_file(filepath):
+    input_data = []
+    
+    with open(filepath, 'r') as file:
+        for line in file:
+            parsed_data = parse_pattern_line(line)
+            if parsed_data:
+                input_data.append(parsed_data)
+    
+    return input_data
+########################
 
 # specific optimization
 if True:
-    # lst_transistor_optimize = []
-    # lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}]
-    lst_transistor_optimize = [{'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}, {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}]
+    """
+    note: critical transistors in order
 
-    alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run(log_obj=False)
+    8-bit array multiplier
+    {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 98}
+    {'fa_i': 0, 'fa_j': 5, 't_index': 0, 't_week': 150}
+    {'fa_i': 1, 'fa_j': 7, 't_index': 1, 't_week': 169}     
+    //DONE
+
+    4-bit array multiplier
+    {'fa_i': 1, 'fa_j': 3, 't_index': 1, 't_week': 105}
+    {'fa_i': 0, 'fa_j': 1, 't_index': 0, 't_week': 159}
+    {'fa_i': 1, 'fa_j': 3, 't_index': 1, 't_week': 174}     
+    //DONE
+
+    12-bit array multiplier
+    {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 97}
+    {'fa_i': 0, 'fa_j': 9, 't_index': 0, 't_week': 150}
+    {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 169}
+
+    """
+    BIT_LEN = 12
+
+    # lst_transistor_optimize = []
+    lst_transistor_optimize = [
+        {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 97},
+        {'fa_i': 0, 'fa_j': 9, 't_index': 0, 't_week': 150},
+        {'fa_i': 1, 'fa_j': 11, 't_index': 1, 't_week': 169},
+    ]
+
+    alpha_lst = MultiplierStressTest(BIT_LEN, optimizer_trigger, optimizer_accept).run(log_obj=False)
     print(f"alpha lst: \n{alpha_lst}")
-    fail_transistor = get_life_expect(alpha_lst, bit_len, False)
+    fail_transistor = get_life_expect(alpha_lst, BIT_LEN, False)
 
     # log.println("fault age of circuit")
     log.println(f"failed transistor: {fail_transistor}")
+
+
+    # process variation result in using lookup table
+
 
 # DONE
 
