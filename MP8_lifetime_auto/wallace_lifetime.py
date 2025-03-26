@@ -94,7 +94,7 @@ def op_accept(neg_mp: Wallace_comp):
 
 
 
-if True:
+if False:
     """
         NOTE:
 
@@ -139,6 +139,18 @@ if True:
     log.println(f"RES: [{BIT_LEN}] >> {critical_transistor_lst}")
     log.println(f"failed transistor: {fail_transistor}")
 
+
+
+    if True:
+        unoptimized_alpha = wallace_alpha(Wallace_comp, BIT_LEN, None, None, op_enable=False)
+        for fa_i in range(BIT_LEN - 1):
+            for fa_j in range(BIT_LEN):
+                for t_index in range(6):
+                    faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+                    unoptimized_lifetime = get_life_expect(unoptimized_alpha, BIT_LEN, faulty_transistor)["t_week"]
+                    lookup_table_lifetime = get_life_expect(alpha, BIT_LEN, faulty_transistor)["t_week"]
+
+                    log.println(f"faulty transistor: {faulty_transistor} >>> using normal lookup table >>> {unoptimized_lifetime:03} -> {lookup_table_lifetime:03}")
 
 
 
