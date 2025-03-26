@@ -536,7 +536,7 @@ def eq_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 # =========================================================================================================
 # =========================================================================================================
 
-if True:
+if False:
     # healthy optimizer, find the best bit pattern with showing accuracy and TP params
     log = Log(f"{__file__}.log")
     PROCESS_COUNT = 40
@@ -609,6 +609,26 @@ if False:
     r = generate_optimized_equation_with_and(TT)
     log.println(f"{r}")
 
+
+if True:
+    """normal equation process variation lifetime"""
+    BIT_LEN = 8
+    log = Log(f"{__file__}.log")
+
+
+    optimizer_equation[0] = "(B0 & ~A6) | (B0 & ~A7 & ~B1) | (A6 & B1 & ~A7 & ~B0)"
+
+    unoptimized_alpha = MultiplierStressTest(8, None, None, optimizer_enable=False).run(log_obj=False)
+    optimized_alpha = MultiplierStressTest(8, eq_optimizer_trigger, eq_optimizer_accept).run(log_obj=False)
+
+    for fa_i in range(BIT_LEN-1):
+        for fa_j in range(BIT_LEN):
+            for t_index in range(6):
+                faulty_transistor = {'fa_i': fa_i, 'fa_j': fa_j, 't_index': t_index, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
+                unoptimized_lifetime = get_life_expect(unoptimized_alpha, BIT_LEN, faulty_transistor)["t_week"]
+                eq_lifetime = get_life_expect(optimized_alpha, BIT_LEN, faulty_transistor)["t_week"]
+
+                log.println(f"{unoptimized_lifetime:03} -> {eq_lifetime:03}")
 
 
 if False:
