@@ -510,10 +510,11 @@ if False:
 # multi process monte carlo real simulation
 if True:
 
-    PROCESS_POOL = 35
+    PROCESS_POOL = 15
     log = Log(f"{__file__}.log", terminal=True)
     SAMPLE =  336 * 1000  # len(transistors) * samples
     DETAIL_LOG = False
+    CHART = True
 
     def seed_generator(i):
         return 7*i + 1
@@ -541,29 +542,52 @@ if True:
 
         optimized_fail_transistor = max_failed_transistor
         optimized_lifetime = max_optimizer_lifetime
+        
+        if DETAIL_LOG:
+            log.println(f"{optimized_lifetime:03}")
 
         return optimized_lifetime, optimize_equation, optimized_fail_transistor
 
 
-    for conf_index, conf_eq in enumerate(selector_conf):
+    # for conf_index, conf_eq in enumerate(selector_conf):
+    for conf_index, conf_eq in [(6, selector_conf[-1])]:
         alpha_cache = preload_alpha(conf_index)
         base_alpha = alpha_cache.get_cache("0")
         log.println(f"preload_alpha DONE + equations alphas")
 
 
-        optimize_sum_lifetime = multiprocessing.Value('d', 0.0)
+        # optimize_sum_lifetime = multiprocessing.Value('d', 0.0)
+        optimize_sum_lifetime = 0
         lock = multiprocessing.Lock()
 
         with multiprocessing.Pool(processes=PROCESS_POOL) as pool:
             results = pool.starmap(process_sample, [(i, base_alpha, conf_eq, bit_len) for i in range(SAMPLE)])
 
         for optimized_lifetime, optimize_equation, optimized_fail_transistor in results:
-            with lock:
-                optimize_sum_lifetime.value += optimized_lifetime
+            # with lock:
+                # optimize_sum_lifetime.value += optimized_lifetime
+            optimize_sum_lifetime += optimized_lifetime
 
-            if DETAIL_LOG:
-                log.println(f"[{optimized_lifetime:3d}] \t||{optimize_equation} => {optimized_fail_transistor}")
 
+        if CHART:
+            _sample_per_lifetime = [0 for _ in range(1000)]
+            _min = 1000
+            _max = 0
+
+            for lifetime, _, _ in results:
+                _sample_per_lifetime[lifetime] += 1
+
+                if lifetime < _min:
+                    _min = lifetime
+                elif lifetime > _max:
+                    _max = lifetime
+            
+            log.println(f"{_sample_per_lifetime}")
+            log.println(f"min {_min}, max {_max}")
+
+
+
+          
         # final result
         log.println(f"conf index: {conf_index}")
-        log.println(f"final result [{SAMPLE}] samples: \t {optimize_sum_lifetime.value / SAMPLE} \n")
+        log.println(f"final result [{SAMPLE}] samples: \t {optimize_sum_lifetime / SAMPLE} \n")
