@@ -63,9 +63,7 @@ from tool.log import Log
 
 from msimulator.get_alpha_class import MultiplierStressTest
 from msimulator.Multiplier import MPn_v3
-from get_life_expect import get_life_expect, generate_random_vth_base, generate_body_voltage_from_base
-from sympy import symbols, Or, And, Not, simplify_logic
-from pyeda.inter import expr
+from get_life_expect import *
 
 import tool.NBTI_formula as NBTI
 import tool.vth_body_map as VTH
@@ -86,12 +84,11 @@ transistor_full_list = list(itertools.product(range(bit_len-1), range(bit_len), 
 
 
 def random_optimizer_trigger(mp: MPn_v3, A, B):
-    # return (A > 0) or (B > 0)
     return (A > 0)
 
 
 
-optimizer_random_bias = [0.1]
+optimizer_random_bias = [0]
 def random_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
     global optimizer_random_bias
     bias = optimizer_random_bias[0]
@@ -106,6 +103,9 @@ def random_optimizer_accept(neg_mp: MPn_v3, bin_A, bin_B):
 ### monte carlo sampling computations
 ##############################
 
+def seed_generator(i):
+    return 7*i + 1
+    
 def get_monte_carlo_life_expect(alpha, vth_matrix, bit_len=bit_len):
     initial_v_base = VTH.get_body_voltage(vth=abs(NBTI.Vth))
     current_base = get_current_from_pb(initial_v_base)
@@ -146,7 +146,8 @@ def monte_carlo_lifetime(
             if log_obj:
                 log_obj.println("Generating new alpha")
 
-        random_vth_matrix = generate_random_vth_base()
+        # random_vth_matrix = generate_random_vth_base()
+        random_vth_matrix = generate_guassian_vth_base()
         fail_transistor = get_monte_carlo_life_expect(alpha, random_vth_matrix, bit_len)
         lifetime = fail_transistor["t_week"]
         sum_lifetime += lifetime
@@ -183,10 +184,10 @@ if True:
     """
         Auto run for a range of bias using individual processes
     """
-    BIAS_MULTITHREAD = 1  #less cpu overhead to keep system operational
-    SAMPLE = 5_000
-    NEW_ALPHA_STEP = 200
-    DETAIL_LOG = True
+    BIAS_MULTITHREAD = 2  # computing multi BIAS on different processes
+    SAMPLE = 20 * 50
+    NEW_ALPHA_STEP = 20
+    DETAIL_LOG = False
     log = Log(f"{__file__}.log", terminal=True)
 
 
@@ -195,8 +196,7 @@ if True:
             bias,
             SAMPLE,
             NEW_ALPHA_STEP,
-            # log_obj=log,
-            log_obj=False,
+            log_obj=log if DETAIL_LOG else False,
         )
         log.println(f"final result [{SAMPLE}] samples, bias {bias}: \t {lifetime} weeks")
         log.println(f"\n")
@@ -204,7 +204,9 @@ if True:
 
 
     processes = []
-    for bias in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
+    # for bias in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
+    for bias in range(0, 100+1, 5):
+        bias = bias / 100
         p = multiprocessing.Process(target=run_simulation, args=(bias,))
         processes.append(p)
         p.start()

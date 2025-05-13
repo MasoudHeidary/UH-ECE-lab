@@ -4,7 +4,7 @@ import os
 import random
 from .Multiplier import MPn_v3, L, H
 
-MAX_PROCESSES = 20 #multiprocessing.cpu_count()
+MAX_PROCESSES = 10 #multiprocessing.cpu_count()
 
 class MultiplierStressTest:
     def __init__(self, bit_len, optimizer_trigger, optimizer_accept, optimizer_enable=True, queue_size=100_000_000):
@@ -155,7 +155,8 @@ class MultiplierStressTest:
 
         end_time = time.time()  # Record end time
         execution_time = end_time - start_time  # Calculate total time taken
-        print(f"Execution time: {execution_time:.4f} seconds") 
+        if log_obj:
+            log_obj.println(f"Execution time: {execution_time:.4f} seconds") 
 
         for i in range(self.bit_len - 1):
             for j in range(self.bit_len):
