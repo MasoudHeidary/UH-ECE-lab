@@ -342,7 +342,6 @@ ocnPrint(?output reportFile "power" vddpower)
 close(reportFile)
 
 exit
-    
     """
     
     with open(filename, "w") as f:
@@ -383,15 +382,17 @@ if __name__ == "__main__":
     if True:
         bit_len = 8
         input_stack = []
+        max_result = {'delay': 0, 'power': 0}
         
-        while len(input_stack) < 5000:
+        while len(input_stack) < 3000:
                 A = random.randint(0, 2**bit_len-1)
                 B = random.randint(0, 2**bit_len-1)
 
                 A_bin = b(A, bit_len)
                 B_bin = b(B, bit_len)
 
-                if (b(A*B, 2*bit_len)[14:] != [0,0]) and ((A,B) not in input_stack):
+                ## as experiminted, maximum delay will show up when only M14 output has values and M15 stays zero
+                if (b(A*B, 2*bit_len)[14:] == [1,0]) and ((A,B) not in input_stack):
                     input_stack += [(A,B)]
                     update_netlist(NETLIST, A_bin, B_bin)
 
@@ -403,6 +404,15 @@ if __name__ == "__main__":
                         open(log_name, 'r').read()
                     )
                     log.println(f"MP8_simp\t: {A} {B} =>\t {result}")
+
+                    _ = result['delays'].get('14', '0.0p')
+                    M14_delay = float(_[:-1]) * (1E-9 if _[-1]=='n' else 1E-12)
+                    _ = result['delays'].get('15', '0.0p')
+                    M15_delay = float(_[:-1]) * (1E-9 if _[-1]=='n' else 1E-12)
+                    if max_result['delay'] < max(M14_delay, M15_delay):
+                        log.println(f"$$$ MAX: {max_result} => {result}")
+                        max_result['delay'] = max(M14_delay, M15_delay)
+                        max_result['power'] = result['power']
 
 
                 # else:
