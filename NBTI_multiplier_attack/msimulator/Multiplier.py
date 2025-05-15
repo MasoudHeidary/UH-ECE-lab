@@ -588,6 +588,99 @@ class MPn_v3:
 
 
 
+class MPn_rew:
+    def __init__(self, A: list[int], B: list[int], in_len=8, rew_lst=[]) -> None:
+        self.in_len = in_len
+        self.A = A.copy()
+        self.B = B.copy()
+        self.rew_lst = rew_lst
+        self.__output = [N for _ in range(in_len*2)]
+
+        # self.gfa = [[FA() for _ in range(in_len)] for _ in range(in_len-1)]
+        # self.gfa_carry_out = FA()
+        self.gfa = [[eFA() for _ in range(in_len)] for _ in range(in_len-1)]
+        self.gfa_carry_out = eFA()
+        # self.gand = [[And() for _ in range(in_len)] for _ in range(in_len)]
+        self.gand = [[eAnd() for _ in range(in_len)] for _ in range(in_len)]
+
+        self.elements = []
+        for i in self.gfa:
+            self.elements += i
+        for i in self.gand:
+            self.elements += i
+        self.elements += [self.gfa_carry_out]
+
+    
+    def netlist(self):
+        
+        # AND input map
+        for lay in range(self.in_len):
+            for i in range(self.in_len):
+                self.gand[lay][i].A = self.A[i]
+                self.gand[lay][i].B = self.B[lay]
+
+        # FA input map
+        for lay in range(self.in_len-1):
+            for i in range(self.in_len):
+                
+                __A = self.gand[lay+1][i].output
+                if (lay != self.in_len -1 -1) and (i == self.in_len -1):
+                    __A = H if __A==L else L
+                elif (lay == self.in_len -1 -1) and (i != self.in_len -1):
+                    __A = H if __A==L else L
+
+                if lay == 0:
+                    __B = self.gand[0][i+1].output if (i!=self.in_len-1) else H
+                    if (i == self.in_len -1 -1):
+                        __B = H if __B==L else L
+                else:
+                    __B = self.gfa[lay-1][i+1].sum if (i!=self.in_len-1) else self.gfa[lay-1][i].carry
+                __C = self.gfa[lay][i-1].carry if (i!=0) else L
+
+                # default wiring
+                self.gfa[lay][i].A = __A
+                self.gfa[lay][i].B = __B
+                self.gfa[lay][i].C = __C
+                
+                # rewrite default
+                for rew in self.rew_lst:
+                    if (lay == rew[0]) and (i == rew[1]):
+                        self.gfa[lay][i].A = __A if rew[2]=='A' else __B if rew[2]=='B' else __C
+                        self.gfa[lay][i].B = __A if rew[3]=='A' else __B if rew[3]=='B' else __C
+                        self.gfa[lay][i].C = __A if rew[4]=='A' else __B if rew[4]=='B' else __C
+                        break;
+
+
+                
+        
+        self.gfa_carry_out.A = L
+        self.gfa_carry_out.B = H
+        self.gfa_carry_out.C = self.gfa[self.in_len -1 -1][self.in_len -1].carry
+
+        # OUT map
+        self.__output[0] = self.gand[0][0].output
+        for lay in range(self.in_len -1):
+            self.__output[lay + 1] = self.gfa[lay][0].sum
+
+            # last layer
+            if lay == self.in_len - 2:
+                for i in range(self.in_len + 1):
+                    # self.__output[lay + i + 1] = self.gfa[lay][i].sum if (i!=self.in_len) else self.gfa[lay][i-1].carry
+                    self.__output[lay + i + 1] = self.gfa[lay][i].sum if (i!=self.in_len) else self.gfa_carry_out.sum
+
+
+    @property
+    def change_flag(self):
+        return any([i.change_flag for i in self.elements])
+    
+    @property
+    def output(self):
+        self.netlist()
+        while self.change_flag:
+            self.netlist()
+        return self.__output
+
+
 class Wallace_comp:
     def __init__(self, A: list[int], B: list[int], in_len=4) -> None:
         self.in_len = in_len
