@@ -65,7 +65,7 @@ Tclk = 1/(1E9) #4GHz
 alpha = 0.5 
 
 # temperature
-T = 300 
+T = 273.15 + 75
 
 # time
 t = 30 * 24 * 60 * 60
