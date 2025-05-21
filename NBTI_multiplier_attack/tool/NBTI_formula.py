@@ -41,6 +41,8 @@ def Bt(T, alpha, Tclk, t):
 def delta_vth(Vdef, T, alpha, Tclk, t):
     if not (0 <= alpha < 1):
         alpha = 0.5
+    if t < 1:
+        t = 1
         # print("WARNING: replace alpha 1.0 to 0.5")
         # raise ValueError("alpha should be 0 <= alpha < 1")
 

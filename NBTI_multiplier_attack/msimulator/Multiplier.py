@@ -648,10 +648,6 @@ class MPn_rew:
                         self.gfa[lay][i].A = __A if rew[2]=='A' else __B if rew[2]=='B' else __C
                         self.gfa[lay][i].B = __A if rew[3]=='A' else __B if rew[3]=='B' else __C
                         self.gfa[lay][i].C = __A if rew[4]=='A' else __B if rew[4]=='B' else __C
-                        break;
-
-
-                
         
         self.gfa_carry_out.A = L
         self.gfa_carry_out.B = H
@@ -725,14 +721,14 @@ class Wallace_comp:
             self.gfa[0][index].C = L if index==0 else P[index-1][2]
 
         #middle rows
-        for row in range(1, self.in_len-2):
+        lr = self.in_len - 2
+        for row in range(1, lr):
             for index in range(self.in_len):
                 self.gfa[row][index].A = L if index==0 else P[index-1][row+2]
                 self.gfa[row][index].B = self.gfa[row-1][index+1].sum if index!=self.in_len-1 else P[index][row+1]
                 self.gfa[row][index].C = self.gfa[row-1][index].carry
 
         #last row
-        lr = self.in_len - 2
         for index in range(self.in_len):
             self.gfa[lr][index].A = self.gfa[lr-1][index].carry
             self.gfa[lr][index].B = self.gfa[lr-1][index+1].sum if index!=self.in_len-1 else P[self.in_len-1][self.in_len-1]
