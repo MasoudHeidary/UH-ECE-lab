@@ -80,22 +80,22 @@ def get_alpha(raw_mp, bit_len, log=False, rew_lst=[]):
 #     return abs(alp[0] - alp[1]) + abs(alp[2] - alp[3])
 
 
-def get_FA_delay(fa_alpha, sec):
+def get_FA_delay(fa_alpha, temp, sec):
     tg1_alpha = max(fa_alpha[0], fa_alpha[1])
-    tg1_vth = abs(BTI.Vth) + BTI.delta_vth(BTI.Vdef, TEMP, tg1_alpha, BTI.Tclk, sec)
+    tg1_vth = abs(BTI.Vth) + BTI.delta_vth(BTI.Vdef, temp, tg1_alpha, BTI.Tclk, sec)
     tg1_pb = pmos_vth_to_body(tg1_vth)
 
     tg2_alpha = max(fa_alpha[2], fa_alpha[3])
-    tg2_vth = abs(BTI.Vth) + BTI.delta_vth(BTI.Vdef, TEMP, tg2_alpha, BTI.Tclk, sec)
+    tg2_vth = abs(BTI.Vth) + BTI.delta_vth(BTI.Vdef, temp, tg2_alpha, BTI.Tclk, sec)
     tg2_pb = pmos_vth_to_body(tg2_vth)
 
     return tgate_pb_to_delay(tg1_pb) + tgate_pb_to_delay(tg2_pb)
 
 
-def get_MP_delay(critical_fa_lst, alpha, sec):
+def get_MP_delay(critical_fa_lst, alpha, temp, sec):
     ps = 0
     for fa_lay, fa_i in critical_fa_lst:
-        ps += get_FA_delay(alpha[fa_lay][fa_i], sec)
+        ps += get_FA_delay(alpha[fa_lay][fa_i], temp, sec)
     return ps
 
 """
@@ -122,10 +122,10 @@ if False:
             ('C', 'B', 'A'),
         ]
         lay, i = fa
-        FA_zero_delay = get_FA_delay(default_alpha[lay][i], 0)
+        FA_zero_delay = get_FA_delay(default_alpha[lay][i], TEMP, 0)
 
         aging_period = 12*30 *24*60*60
-        fa_default_delay = get_FA_delay(default_alpha[lay][i], aging_period)
+        fa_default_delay = get_FA_delay(default_alpha[lay][i], TEMP, aging_period)
         fa_default_aging_rate = (fa_default_delay - FA_zero_delay) / FA_zero_delay
         log.println(f"default wiring, delay rate: {fa_default_aging_rate * 100 :.2f}% [t:{aging_period}s]")
         
@@ -135,7 +135,7 @@ if False:
             rewire = fa + comb
             rewire_alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=[rewire])
 
-            fa_delay = get_FA_delay(rewire_alpha[lay][i], aging_period)
+            fa_delay = get_FA_delay(rewire_alpha[lay][i], TEMP, aging_period)
             fa_aging_rate = (fa_delay - FA_zero_delay) / FA_zero_delay
             log.println(f"{rewire}, delay rate: {fa_aging_rate * 100 :.2f}% [t:{aging_period}s]")
 
@@ -173,10 +173,10 @@ if True:
     log.println(f"aging log for following wire comb \n{wire_comb}")
     
     alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=wire_comb)
-    MP_zero_delay = get_MP_delay(CRITICAL_FA_lst, alpha, 0)
+    MP_zero_delay = get_MP_delay(CRITICAL_FA_lst, alpha, TEMP, 0)
     
     for week in range(0, 200):
-        delay = get_MP_delay(CRITICAL_FA_lst, alpha, week * 7 *24*60*60)
+        delay = get_MP_delay(CRITICAL_FA_lst, alpha, TEMP, week * 7 *24*60*60)
         aging_rate = (delay - MP_zero_delay) / MP_zero_delay
         log.println(f"week {week:03}: {delay: 8.2f} [{aging_rate * 100 :4.2f}%]")
         
