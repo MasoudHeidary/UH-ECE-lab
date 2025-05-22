@@ -21,10 +21,9 @@ for vb in vb_list:
     for rev in reversed(num):
         if(rev[1][1] == 'u'):
             if(float(rev[1][0]) > 10):
-                vth = round(float(rev[0][0]) / 1000 - 0.8, 3)
+                vth = round(float(rev[0][0]) / 1000 - 0.8, 5)
                 vth_list += [vth]
-                # print(vb, "\t===\t", vth)
-                print(f"{vth*-1}, ")
+                # print(f"{vth*-1}, ")
                 break
 
     file.close()

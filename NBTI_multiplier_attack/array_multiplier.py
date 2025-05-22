@@ -73,13 +73,6 @@ def get_alpha(raw_mp, bit_len, log=False, rew_lst=[]):
     return alpha
 
 
-# examine how unbalance the alpha in FA (Tgate0, Tgate1) is
-# def get_unbalance_score(alpha, lay, i):
-#     alp = alpha[lay][i]
-    
-#     return abs(alp[0] - alp[1]) + abs(alp[2] - alp[3])
-
-
 def get_FA_delay(fa_alpha, temp, sec):
     tg1_alpha = max(fa_alpha[0], fa_alpha[1])
     tg1_vth = abs(BTI.Vth) + BTI.delta_vth(BTI.Vdef, temp, tg1_alpha, BTI.Tclk, sec)
@@ -97,6 +90,8 @@ def get_MP_delay(critical_fa_lst, alpha, temp, sec):
     for fa_lay, fa_i in critical_fa_lst:
         ps += get_FA_delay(alpha[fa_lay][fa_i], temp, sec)
     return ps
+
+
 
 """
 extracting best and worst wiring combination for the provided multiplier
@@ -166,7 +161,7 @@ wire combination notation:
 - difference of aging_rate and default_aging_rate
 """
 
-if True:    
+if True:
     wire_comb = []
         
     

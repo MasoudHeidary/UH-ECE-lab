@@ -110,7 +110,7 @@ def get_MP_delay(critical_fa_lst, alpha, temp, sec):
 """
 extracting best and worst wiring combination for the provided multiplier
 """
-if False:
+if True:
     # default wiring in multiplier
     best_wiring = [fa + ('A', 'B', 'C', 0) for fa in CRITICAL_FA_lst]
     worst_wiring = [fa + ('A', 'B', 'C', 0) for fa in CRITICAL_FA_lst]
@@ -133,7 +133,7 @@ if False:
         lay, i = fa
         FA_zero_delay = get_FA_delay(default_alpha[lay][i], TEMP, 0)
 
-        aging_period = 1*30 *24*60*60
+        aging_period = 12*30 *24*60*60
         fa_default_delay = get_FA_delay(default_alpha[lay][i], TEMP, aging_period)
         fa_default_aging_rate = (fa_default_delay - FA_zero_delay) / FA_zero_delay
         log.println(f"{(lay, i)} default wiring <{default_alpha[lay][i]}>, delay rate: {fa_default_aging_rate * 100 :.2f}% [t:{aging_period}s]")
@@ -174,7 +174,7 @@ wire combination notation:
 - FA wiring combination
 - difference of aging_rate and default_aging_rate
 """
-if True:    
+if False:    
     wire_comb = []
     log.println(f"aging log for following wire comb \n{wire_comb}")
     

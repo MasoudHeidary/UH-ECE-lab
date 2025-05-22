@@ -648,6 +648,7 @@ class MPn_rew:
                         self.gfa[lay][i].A = __A if rew[2]=='A' else __B if rew[2]=='B' else __C
                         self.gfa[lay][i].B = __A if rew[3]=='A' else __B if rew[3]=='B' else __C
                         self.gfa[lay][i].C = __A if rew[4]=='A' else __B if rew[4]=='B' else __C
+                        break;
         
         self.gfa_carry_out.A = L
         self.gfa_carry_out.B = H
@@ -757,6 +758,123 @@ class Wallace_comp:
         while self.change_flag:
             self.netlist()
         return self.__output
+
+# TODO: rewiring configuration
+class Wallace_rew:
+    def __init__(self, A: list[int], B: list[int], in_len=4, rew_lst=[]) -> None:
+        self.in_len = in_len
+        self.rew_lst = rew_lst
+        self.A = A.copy()
+        self.B = B.copy()
+        self.__output = [N for _ in range(in_len*2)]
+
+        self.gand = [[eAnd() for _ in range(in_len)] for _ in range(in_len)]
+        self.gfa = [[eFA() for _ in range(self.in_len)] for _ in range(self.in_len-1)]
+        self.gfa_co = eFA()
+
+        self.elements = []
+        for i in self.gfa:
+            self.elements += i
+        for i in self.gand:
+            self.elements += i
+        self.elements += [self.gfa_co]
+
+    
+    def netlist(self):
+        
+        # AND input map (partial product)
+        P = [[N for _ in range(self.in_len)] for _ in range(self.in_len)]
+        for i in range(self.in_len):
+            for j in range(self.in_len):
+                self.gand[i][j].A = self.A[i]
+                self.gand[i][j].B = self.B[j]
+
+                P[i][j] = self.gand[i][j].output
+                if (i == self.in_len - 1):
+                    P[i][j] = L if P[i][j] == H else H
+                if (j == self.in_len - 1):
+                    P[i][j] = L if P[i][j] == H else H
+
+                    
+
+        # FA input map
+        #first row
+        for index in range(self.in_len):
+            __A = P[index+1][0] if index!=self.in_len-1 else H
+            __B = P[index][1]
+            __C = L if index==0 else P[index-1][2]
+            
+            self.gfa[0][index].A = __A
+            self.gfa[0][index].B = __B
+            self.gfa[0][index].C = __C
+            
+            for rew in self.rew_lst:
+                if (0 == rew[0]) and (index == rew[1]):
+                    self.gfa[0][index].A = __A if rew[2]=='A' else __B if rew[2]=='B' else __C
+                    self.gfa[0][index].B = __A if rew[3]=='A' else __B if rew[3]=='B' else __C
+                    self.gfa[0][index].C = __A if rew[4]=='A' else __B if rew[4]=='B' else __C
+                    break;
+
+        #middle rows
+        lr = self.in_len - 2
+        for row in range(1, lr):
+            for index in range(self.in_len):
+                __A = L if index==0 else P[index-1][row+2]
+                __B = self.gfa[row-1][index+1].sum if index!=self.in_len-1 else P[index][row+1]
+                __C = self.gfa[row-1][index].carry
+                
+                self.gfa[row][index].A = __A
+                self.gfa[row][index].B = __B
+                self.gfa[row][index].C = __C
+                
+                for rew in self.rew_lst:
+                    if (row == rew[0]) and (index == rew[1]):
+                        self.gfa[row][index].A = __A if rew[2]=='A' else __B if rew[2]=='B' else __C
+                        self.gfa[row][index].B = __A if rew[3]=='A' else __B if rew[3]=='B' else __C
+                        self.gfa[row][index].C = __A if rew[4]=='A' else __B if rew[4]=='B' else __C
+                        break;
+
+        #last row
+        for index in range(self.in_len):
+            __A = self.gfa[lr-1][index].carry
+            __B = self.gfa[lr-1][index+1].sum if index!=self.in_len-1 else P[self.in_len-1][self.in_len-1]
+            __C = L if index==0 else self.gfa[lr][index-1].carry
+            
+            self.gfa[lr][index].A = __A
+            self.gfa[lr][index].B = __B
+            self.gfa[lr][index].C = __C
+            
+            for rew in self.rew_lst:
+                if (lr == rew[0]) and (index == rew[1]):
+                    self.gfa[lr][index].A = __A if rew[2]=='A' else __B if rew[2]=='B' else __C
+                    self.gfa[lr][index].B = __A if rew[3]=='A' else __B if rew[3]=='B' else __C
+                    self.gfa[lr][index].C = __A if rew[4]=='A' else __B if rew[4]=='B' else __C
+                    break;
+
+        # OUT map
+        self.__output[0] = P[0][0]
+        for index in range(1, self.in_len - 1):
+            self.__output[index] = self.gfa[index-1][0].sum
+        for index in range(0, self.in_len):
+            self.__output[self.in_len - 1 + index] = self.gfa[self.in_len - 2][index].sum
+        
+        self.gfa_co.A = self.gfa[self.in_len-2][self.in_len-1].carry
+        self.gfa_co.B = H
+        self.gfa_co.C = L
+        self.__output[self.in_len*2 - 1] = self.gfa_co.sum
+        self.gfa_co.carry
+
+    @property
+    def change_flag(self):
+        return any([i.change_flag for i in self.elements])
+    
+    @property
+    def output(self):
+        self.netlist()
+        while self.change_flag:
+            self.netlist()
+        return self.__output
+
 
 # from log import Log
 # log = Log("Multiplier.txt", terminal=True)

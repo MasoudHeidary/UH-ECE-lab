@@ -21,6 +21,22 @@ tox = 4E-9 #oxide thickness
 epsox = 3.9 * eps0 #change from 3.9 to 200
 
 
+def alpha_t_limiter(alpha, t):
+    if not (0 <= alpha <= 1):
+        raise ValueError("out of range alpha")
+    if not (t >= 0):
+        raise ValueError("negative t(ime)")
+    
+    if 0.9 < alpha < 1:
+        alpha = 0.9
+    elif alpha == 1:
+        alpha = 0.5
+    
+    if 0 <= t < 10:
+        t = 10
+    
+    return (alpha, t)
+
 def C(T):
     _value = 1/T0 * exp(-Ea / (k * T))
     return _value
@@ -39,13 +55,8 @@ def Bt(T, alpha, Tclk, t):
     return 1 - (_numerator / _denominator)
 
 def delta_vth(Vdef, T, alpha, Tclk, t):
-    if not (0 <= alpha < 1):
-        alpha = 0.5
-    if t < 1:
-        t = 1
-        # print("WARNING: replace alpha 1.0 to 0.5")
-        # raise ValueError("alpha should be 0 <= alpha < 1")
-
+    alpha, t = alpha_t_limiter(alpha, t)
+    
     _Kv = Kv(Vdef, T)
     _Bt = Bt(T, alpha, Tclk, t)
     _numerator =  sqrt(_Kv**2 * alpha * Tclk)
