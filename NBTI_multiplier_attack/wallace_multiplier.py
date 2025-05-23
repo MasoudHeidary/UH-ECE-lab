@@ -13,7 +13,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 6
+BIT_LEN = 8
 TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -128,7 +128,7 @@ wire combination notation:
 - difference of aging_rate and default_aging_rate
 """
 def examine_wire_comb(
-        wire_comb,              ###
+        wire_comb,
         bit_len = BIT_LEN, 
         temp = TEMP, 
         log = log, 
@@ -159,13 +159,13 @@ def examine_wire_comb(
 
     
     if plot:
-        timestamp = datetime.now().strftime('%m/%d-%H:%M:%S.%f')
-        fig_name = f"fig-{timestamp}.jpg"
+        timestamp = datetime.now().strftime('%m|%d-%H:%M:%S.%f')
         plt.plot(res_week, res_delay, label=plot_label)
         plt.title(f"WallceTree-bitlen-{bit_len}-TEMP-{temp}")
 
         if plot_save_clear:
             plt.legend()
+            fig_name = f"fig-{timestamp}.jpg"
             plt.savefig(fig_name)
             plt.clf()
             if log:
@@ -271,37 +271,6 @@ if True:
         log=False,
         plot=True
     )
-    
-    # examine wiring combinations
-    # best_fig_name = examine_wire_comb(
-    #     wire_comb=best_wiring, 
-    #     bit_len=BIT_LEN, 
-    #     temp=TEMP, 
-    #     log=False, 
-    #     plot=True, 
-    #     alpha_verification=ALPHA_VERIFICATION,
-    #     critical_fa_lst=CRITICAL_FA_lst
-    #     )
-
-    # best_fig_name = examine_wire_comb(
-    #     wire_comb=[], 
-    #     bit_len=BIT_LEN, 
-    #     temp=TEMP, 
-    #     log=False, 
-    #     plot=True, 
-    #     alpha_verification=ALPHA_VERIFICATION,
-    #     critical_fa_lst=CRITICAL_FA_lst
-    #     )
-
-    # best_fig_name = examine_wire_comb(
-    #     wire_comb=best_wiring, 
-    #     bit_len=BIT_LEN, 
-    #     temp=TEMP, 
-    #     log=False, 
-    #     plot=True, 
-    #     alpha_verification=ALPHA_VERIFICATION,
-    #     critical_fa_lst=CRITICAL_FA_lst
-    #     )
 
 
 
