@@ -13,8 +13,8 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 6
-TEMP = 273.15 + 30
+BIT_LEN = 8
+TEMP = 273.15 + 25
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
 
@@ -26,16 +26,16 @@ log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 CRITICAL_FA_lst = []
 
 """all FA in first row + last 2 FA in each row """
-# CRITICAL_FA_lst += [(0, i) for i in range(BIT_LEN)]
-# for lay in range(1, BIT_LEN-1):
-#     CRITICAL_FA_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
-# log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
+CRITICAL_FA_lst += [(0, i) for i in range(BIT_LEN)]
+for lay in range(1, BIT_LEN-1):
+    CRITICAL_FA_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
+log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
 
 """first 2 FA in each row + all FA in last row"""
-for lay in range(0, BIT_LEN-2):
-    CRITICAL_FA_lst += [(lay, 0), (lay, 1)]
-CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
+# for lay in range(0, BIT_LEN-2):
+#     CRITICAL_FA_lst += [(lay, 0), (lay, 1)]
+# CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
+# log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
 
 
 ########################################################################################
@@ -110,6 +110,74 @@ def get_MP_delay(critical_fa_lst, alpha, temp, sec):
         ps += get_FA_delay(alpha[fa_lay][fa_i], temp, sec)
     return ps
 
+
+
+def get_best_worst_wire_comb(
+        log = log,
+        bitlen = BIT_LEN,
+        temp = TEMP,
+        mp = MPn_rew,
+        critical_fa_lst = CRITICAL_FA_lst,
+):
+    # default wiring in multiplier
+    best_wiring = [fa + ('A', 'B', 'C', 0) for fa in critical_fa_lst]
+    worst_wiring = [fa + ('A', 'B', 'C', 0) for fa in critical_fa_lst]
+
+    default_alpha = get_alpha(mp, bitlen, log=False, rew_lst=[])
+    # log.println(f"{default_alpha}")
+    if log:
+        log.println(f"default alpha done")
+
+
+    # iterate in Critical FA list, and log the worst wiring for each
+    for fa_index, fa in enumerate(critical_fa_lst):
+        wire_combination = [
+            ('A', 'B', 'C'),
+            ('A', 'C', 'B'),
+            ('B', 'A', 'C'),
+            ('B', 'C', 'A'),
+            ('C', 'A', 'B'),
+            ('C', 'B', 'A'),
+        ]
+        lay, i = fa
+        FA_zero_delay = get_FA_delay(default_alpha[lay][i], temp, 0)
+
+        aging_period = 12*30 *24*60*60
+        fa_default_delay = get_FA_delay(default_alpha[lay][i], temp, aging_period)
+        fa_default_aging_rate = (fa_default_delay - FA_zero_delay) / FA_zero_delay
+        if log:
+            log.println(f"default wiring, delay rate: {fa_default_aging_rate * 100 :.2f}% [t:{aging_period}s]")
+        
+        _worst_rate = fa_default_aging_rate
+        _best_rate = fa_default_aging_rate
+        for comb in wire_combination[1:]:
+            rewire = fa + comb
+            rewire_alpha = get_alpha(mp, bitlen, log=False, rew_lst=[rewire])
+
+            fa_delay = get_FA_delay(rewire_alpha[lay][i], temp, aging_period)
+            fa_aging_rate = (fa_delay - FA_zero_delay) / FA_zero_delay
+            if log:
+                log.println(f"{rewire}, delay rate: {fa_aging_rate * 100 :.2f}% [t:{aging_period}s]")
+
+            if fa_aging_rate > _worst_rate:
+                _worst_rate = fa_aging_rate
+                worst_wiring[fa_index] = fa + comb + (fa_aging_rate - fa_default_aging_rate, )
+                if log:
+                    log.println(f"-new worst")
+            if fa_aging_rate < _best_rate:
+                _best_rate = fa_aging_rate
+                best_wiring[fa_index] = fa + comb + (fa_aging_rate - fa_default_aging_rate, )
+                if log:
+                    log.println(f"-new best")
+            
+        if log:
+            log.println()
+    
+    if log:
+        log.println(f"best wiring combination: \n{best_wiring}")
+        log.println(f"worst wiring combination: \n{worst_wiring}")
+
+    return (best_wiring, worst_wiring)
 
 
 """
@@ -187,6 +255,32 @@ def examine_multi_wire_comb(
 ################## MAIN
 ########################################################################################
 
+"""comparing different critical path configuration"""
+if True:
+
+    # Critical path 1
+    critical_fa_lst = []
+    critical_fa_lst += [(0, i) for i in range(BIT_LEN)]
+    for lay in range(1, BIT_LEN-1):
+        critical_fa_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
+    examine_wire_comb([], plot_save_clear=False, plot_label=f"crit 1 no-mitigation {TEMP}C", critical_fa_lst=critical_fa_lst)
+
+    _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(worst_wire_comb, plot_save_clear=False, plot_label="Crit 1 attack", critical_fa_lst=critical_fa_lst)
+
+
+    # Critical path 2
+    critical_fa_lst = []
+    for lay in range(0, BIT_LEN-2):
+        critical_fa_lst += [(lay, 0), (lay, 1)]
+    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
+    examine_wire_comb([], plot_save_clear=False, plot_label=f"Crit 2 no-mitigation {TEMP}C", critical_fa_lst=critical_fa_lst)
+
+    _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(worst_wire_comb, plot_save_clear=True, plot_label="Crit 1 attack", critical_fa_lst=critical_fa_lst)
+
+
+
 """specific wire combination aging"""
 if False:
     # normal aging without mitigation
@@ -204,58 +298,8 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier
 """
-if True:
-    # default wiring in multiplier
-    best_wiring = [fa + ('A', 'B', 'C', 0) for fa in CRITICAL_FA_lst]
-    worst_wiring = [fa + ('A', 'B', 'C', 0) for fa in CRITICAL_FA_lst]
-
-    default_alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=[])
-    # log.println(f"{default_alpha}")
-    log.println(f"default alpha done")
-
-
-    # iterate in Critical FA list, and log the worst wiring for each
-    for fa_index, fa in enumerate(CRITICAL_FA_lst):
-        wire_combination = [
-            ('A', 'B', 'C'),
-            ('A', 'C', 'B'),
-            ('B', 'A', 'C'),
-            ('B', 'C', 'A'),
-            ('C', 'A', 'B'),
-            ('C', 'B', 'A'),
-        ]
-        lay, i = fa
-        FA_zero_delay = get_FA_delay(default_alpha[lay][i], TEMP, 0)
-
-        aging_period = 12*30 *24*60*60
-        fa_default_delay = get_FA_delay(default_alpha[lay][i], TEMP, aging_period)
-        fa_default_aging_rate = (fa_default_delay - FA_zero_delay) / FA_zero_delay
-        log.println(f"default wiring, delay rate: {fa_default_aging_rate * 100 :.2f}% [t:{aging_period}s]")
-        
-        _worst_rate = fa_default_aging_rate
-        _best_rate = fa_default_aging_rate
-        for comb in wire_combination[1:]:
-            rewire = fa + comb
-            rewire_alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=[rewire])
-
-            fa_delay = get_FA_delay(rewire_alpha[lay][i], TEMP, aging_period)
-            fa_aging_rate = (fa_delay - FA_zero_delay) / FA_zero_delay
-            log.println(f"{rewire}, delay rate: {fa_aging_rate * 100 :.2f}% [t:{aging_period}s]")
-
-            if fa_aging_rate > _worst_rate:
-                _worst_rate = fa_aging_rate
-                worst_wiring[fa_index] = fa + comb + (fa_aging_rate - fa_default_aging_rate, )
-                log.println(f"-new worst")
-            if fa_aging_rate < _best_rate:
-                _best_rate = fa_aging_rate
-                best_wiring[fa_index] = fa + comb + (fa_aging_rate - fa_default_aging_rate, )
-                log.println(f"-new best")
-            
-        log.println()
-        
-    log.println(f"best wiring combination: \n{best_wiring}")
-    log.println(f"worst wiring combination: \n{worst_wiring}")
-    
+if False:
+    best_wiring, worst_wiring = get_best_worst_wire_comb()
     
     examine_multi_wire_comb(
         [worst_wiring, [], best_wiring],
