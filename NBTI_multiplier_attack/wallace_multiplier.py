@@ -13,7 +13,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 8
+BIT_LEN = 6
 TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -159,13 +159,13 @@ def examine_wire_comb(
 
     
     if plot:
-        timestamp = datetime.now().strftime('%m|%d-%H:%M:%S.%f')
         plt.plot(res_week, res_delay, label=plot_label)
-        plt.title(f"WallceTree-bitlen-{bit_len}-TEMP-{temp}")
+        plt.title(f"WallceTree-BIT-{bit_len}-TEMP-{temp}")
 
         if plot_save_clear:
-            plt.legend()
+            timestamp = datetime.now().strftime('%m,%d-%H:%M:%S.%f')
             fig_name = f"fig-{timestamp}.jpg"
+            plt.legend()
             plt.savefig(fig_name)
             plt.clf()
             if log:
@@ -175,8 +175,8 @@ def examine_wire_comb(
 def examine_multi_wire_comb(
         multi_wire_comb,
         plot_labels,
-        log , 
-        plot,
+        log = log, 
+        plot = True,
     ): 
 
     for i_sub_wc, sub_wc in enumerate(multi_wire_comb):
@@ -272,9 +272,4 @@ if True:
         plot=True
     )
 
-
-
-
-
-        
 

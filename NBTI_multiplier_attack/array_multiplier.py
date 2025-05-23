@@ -2,15 +2,25 @@
 
 from tool.log import Log, Progress
 from tool import NBTI_formula as BTI
-from msimulator.bin_func import signed_b
+from msimulator.bin_func import signed_b,reverse_signed_b
 from msimulator.Multiplier import MPn_rew
 
 from mapping_tgate_pb_delay import tgate_pb_to_delay
 from mapping_pmos_vth_body import pmos_vth_to_body
 
-BIT_LEN = 8
-TEMP = 273.15 + 80
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+ALPHA_VERIFICATION = False
+
+BIT_LEN = 6
+TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
+
+
+########################################################################################
+################## Critical Path
+########################################################################################
 
 """for multiplier propagation delay and optimization"""
 CRITICAL_FA_lst = []
@@ -28,7 +38,11 @@ CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
 log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
 
 
-def get_alpha(raw_mp, bit_len, log=False, rew_lst=[]):
+########################################################################################
+################## Functions
+########################################################################################
+
+def get_alpha(raw_mp, bit_len, log=False, rew_lst=[], verify=False):
     bar = Progress(bars=1)
 
     alpha_row = bit_len-1
@@ -54,6 +68,11 @@ def get_alpha(raw_mp, bit_len, log=False, rew_lst=[]):
             mp: MPn_rew
             mp = raw_mp(a_bin, b_bin, bit_len, rew_lst)
             mp.output
+
+            if verify:
+                out = reverse_signed_b(mp.output)
+                if a * b != out:
+                    raise ValueError(f"output verification failed, {a} * {b} != {out}")
 
             for row in range(alpha_row):
                 for index in range(alpha_index):
@@ -94,9 +113,98 @@ def get_MP_delay(critical_fa_lst, alpha, temp, sec):
 
 
 """
+wire combination notation:
+
+(0, 0, 'C', 'B', 'A', 0.50)
+- FA index
+- FA wiring combination
+- difference of aging_rate and default_aging_rate
+"""
+def examine_wire_comb(
+        wire_comb,
+        bit_len = BIT_LEN, 
+        temp = TEMP, 
+        log = log, 
+        plot = True, 
+        plot_save_clear = True,
+        plot_label = "",
+        alpha_verification = ALPHA_VERIFICATION, 
+        critical_fa_lst = CRITICAL_FA_lst, 
+        mp = MPn_rew,
+    ): 
+    if log:   
+        log.println(f"aging log for following wire comb \n{wire_comb}")
+    
+    alpha = get_alpha(mp, bit_len, log=False, rew_lst=wire_comb, verify=alpha_verification)
+    _mp_zero_delay = get_MP_delay(critical_fa_lst, alpha, temp, 0)
+    
+    res_week = []
+    res_delay = []
+
+    for week in range(0, 200):
+        delay = get_MP_delay(critical_fa_lst, alpha, temp, week * 7 *24*60*60)
+        aging_rate = (delay - _mp_zero_delay) / _mp_zero_delay
+        if log:
+            log.println(f"week {week:03}: {delay: 8.2f} [{aging_rate * 100 :4.2f}%]")
+
+        res_week.append(week)
+        res_delay.append(aging_rate)
+
+    
+    if plot:
+        plt.plot(res_week, res_delay, label=plot_label)
+        plt.title(f"ArrayMultiplier-BIT-{bit_len}-TEMP-{temp}")
+
+        if plot_save_clear:
+            timestamp = datetime.now().strftime('%m,%d-%H:%M:%S.%f')
+            fig_name = f"fig-{timestamp}.jpg"
+            plt.legend()
+            plt.savefig(fig_name)
+            plt.clf()
+            if log:
+                log.println(f"plot saved in {fig_name}")
+
+
+
+def examine_multi_wire_comb(
+        multi_wire_comb,
+        plot_labels,
+        log = log, 
+        plot = True,
+    ): 
+
+    for i_sub_wc, sub_wc in enumerate(multi_wire_comb):
+        examine_wire_comb(
+            sub_wc,
+            log = log, 
+            plot = plot, 
+            plot_save_clear = True if i_sub_wc==len(multi_wire_comb)-1 else False,
+            plot_label = plot_labels[i_sub_wc],
+        )
+
+
+########################################################################################
+################## MAIN
+########################################################################################
+
+"""specific wire combination aging"""
+if False:
+    # normal aging without mitigation
+    examine_wire_comb(
+        wire_comb=[], 
+        bit_len=BIT_LEN, 
+        temp=TEMP, 
+        log=log, 
+        plot=True, 
+        alpha_verification=ALPHA_VERIFICATION,
+        critical_fa_lst=CRITICAL_FA_lst
+        )
+    
+
+"""
 extracting best and worst wiring combination for the provided multiplier
 """
-if False:
+if True:
     # default wiring in multiplier
     best_wiring = [fa + ('A', 'B', 'C', 0) for fa in CRITICAL_FA_lst]
     worst_wiring = [fa + ('A', 'B', 'C', 0) for fa in CRITICAL_FA_lst]
@@ -149,29 +257,9 @@ if False:
     log.println(f"worst wiring combination: \n{worst_wiring}")
     
     
-
-            
-
-"""
-wire combination notation:
-
-(0, 0, 'C', 'B', 'A', 0.50)
-- FA index
-- FA wiring combination
-- difference of aging_rate and default_aging_rate
-"""
-
-if True:
-    wire_comb = []
-        
-    
-    log.println(f"aging log for following wire comb \n{wire_comb}")
-    
-    alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=wire_comb)
-    MP_zero_delay = get_MP_delay(CRITICAL_FA_lst, alpha, TEMP, 0)
-    
-    for week in range(0, 200):
-        delay = get_MP_delay(CRITICAL_FA_lst, alpha, TEMP, week * 7 *24*60*60)
-        aging_rate = (delay - MP_zero_delay) / MP_zero_delay
-        log.println(f"week {week:03}: {delay: 8.2f} [{aging_rate * 100 :4.2f}%]")
-        
+    examine_multi_wire_comb(
+        [worst_wiring, [], best_wiring],
+        ["attack", "no-mitigation", "optimization"],
+        log=False,
+        plot=True
+    )
