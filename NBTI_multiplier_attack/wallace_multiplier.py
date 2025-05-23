@@ -13,7 +13,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 4
+BIT_LEN = 6
 TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -127,7 +127,18 @@ wire combination notation:
 - FA wiring combination
 - difference of aging_rate and default_aging_rate
 """
-def examine_wire_comb(wire_comb, bit_len, temp, log, plot, alpha_verification, critical_fa_lst, mp=Wallace_rew): 
+def examine_wire_comb(
+        wire_comb,              ###
+        bit_len = BIT_LEN, 
+        temp = TEMP, 
+        log = True, 
+        plot = True, 
+        plot_save_clear = True,
+        plot_label = "",
+        alpha_verification = ALPHA_VERIFICATION, 
+        critical_fa_lst = CRITICAL_FA_lst, 
+        mp = Wallace_rew,
+    ): 
     if log:   
         log.println(f"aging log for following wire comb \n{wire_comb}")
     
@@ -148,13 +159,34 @@ def examine_wire_comb(wire_comb, bit_len, temp, log, plot, alpha_verification, c
 
     
     if plot:
-        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        timestamp = datetime.now().strftime('%m/%d-%H:%M:%S.%f')
         fig_name = f"fig-{timestamp}.jpg"
-        plt.plot(res_week, res_delay)
+        plt.plot(res_week, res_delay, label=plot_label)
         plt.title(f"WallceTree-bitlen-{bit_len}-TEMP-{temp}")
-        plt.savefig(fig_name)
-        if log:
-            log.println(f"plot saved in {fig_name}")
+
+        if plot_save_clear:
+            plt.legend()
+            plt.savefig(fig_name)
+            plt.clf()
+            if log:
+                log.println(f"plot saved in {fig_name}")
+    
+
+def examine_multi_wire_comb(
+        multi_wire_comb,
+        plot_labels,
+        log , 
+        plot,
+    ): 
+
+    for i_sub_wc, sub_wc in enumerate(multi_wire_comb):
+        examine_wire_comb(
+            sub_wc,
+            log = log, 
+            plot = plot, 
+            plot_save_clear = True if i_sub_wc==len(multi_wire_comb)-1 else False,
+            plot_label = plot_labels[i_sub_wc],
+        )
 
 
 ########################################################################################
@@ -231,8 +263,46 @@ if True:
         
     log.println(f"best wiring combination: \n{best_wiring}")
     log.println(f"worst wiring combination: \n{worst_wiring}")
- 
- 
+    
+
+    examine_multi_wire_comb(
+        [worst_wiring, [], best_wiring],
+        ["attack", "no-mitigation", "optimization"],
+        log=False,
+        plot=True
+    )
+    
+    # examine wiring combinations
+    # best_fig_name = examine_wire_comb(
+    #     wire_comb=best_wiring, 
+    #     bit_len=BIT_LEN, 
+    #     temp=TEMP, 
+    #     log=False, 
+    #     plot=True, 
+    #     alpha_verification=ALPHA_VERIFICATION,
+    #     critical_fa_lst=CRITICAL_FA_lst
+    #     )
+
+    # best_fig_name = examine_wire_comb(
+    #     wire_comb=[], 
+    #     bit_len=BIT_LEN, 
+    #     temp=TEMP, 
+    #     log=False, 
+    #     plot=True, 
+    #     alpha_verification=ALPHA_VERIFICATION,
+    #     critical_fa_lst=CRITICAL_FA_lst
+    #     )
+
+    # best_fig_name = examine_wire_comb(
+    #     wire_comb=best_wiring, 
+    #     bit_len=BIT_LEN, 
+    #     temp=TEMP, 
+    #     log=False, 
+    #     plot=True, 
+    #     alpha_verification=ALPHA_VERIFICATION,
+    #     critical_fa_lst=CRITICAL_FA_lst
+    #     )
+
 
 
 
