@@ -131,7 +131,7 @@ def examine_wire_comb(
         wire_comb,              ###
         bit_len = BIT_LEN, 
         temp = TEMP, 
-        log = True, 
+        log = log, 
         plot = True, 
         plot_save_clear = True,
         plot_label = "",
