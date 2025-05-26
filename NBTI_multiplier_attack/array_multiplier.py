@@ -1,9 +1,10 @@
 
 
-from tool.log import Log, Progress
+from tool.log import Log
 from tool import NBTI_formula as BTI
 from msimulator.bin_func import signed_b,reverse_signed_b
 from msimulator.Multiplier import MPn_rew
+from alpha import AlphaMultiprocess
 
 from mapping_tgate_pb_delay import tgate_pb_to_delay
 from mapping_pmos_vth_body import pmos_vth_to_body
@@ -13,8 +14,8 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 8
-TEMP = 273.15 + 25
+BIT_LEN = 12
+TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
 
@@ -42,55 +43,8 @@ log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
 ################## Functions
 ########################################################################################
 
-def get_alpha(raw_mp, bit_len, log=False, rew_lst=[], verify=False):
-    bar = Progress(bars=1)
-
-    alpha_row = bit_len-1
-    alpha_index = bit_len
-    alpha = [
-        [
-            [0 for _ in range(6)] 
-            for _ in range(alpha_index)
-        ]
-        for _ in range(alpha_row)
-    ]
-
-    limit = 2 ** (bit_len - 1)
-    for a in range(-limit, limit):
-        bar.keep_line()
-        bar.update(0, (a +limit)/(2*limit-1))
-
-        for b in range(-limit, limit):
-
-            a_bin = signed_b(a, bit_len)
-            b_bin = signed_b(b, bit_len)
-
-            mp: MPn_rew
-            mp = raw_mp(a_bin, b_bin, bit_len, rew_lst)
-            mp.output
-
-            if verify:
-                out = reverse_signed_b(mp.output)
-                if a * b != out:
-                    raise ValueError(f"output verification failed, {a} * {b} != {out}")
-
-            for row in range(alpha_row):
-                for index in range(alpha_index):
-                    for t in range(6):
-                        alpha[row][index][t] += (not mp.gfa[row][index].p[t])
-
-    # alpha couter -> alpha probability
-    for row in range(alpha_row):
-        for index in range(alpha_index):
-            for t in range(6):
-                alpha[row][index][t] /= ((2*limit)**2)
-
-                # intercorrection, alpha 0 OR 1 -> 0.5
-                if alpha[row][index][t] in [0, 1]:
-                    alpha[row][index][t] = 0.5
-
-    return alpha
-
+def get_alpha(raw_mp, bit_len, log=log, rew_lst=[], verify=False):
+    return AlphaMultiprocess(raw_mp, bit_len, log=log, rew_lst=rew_lst).run()
 
 def get_FA_delay(fa_alpha, temp, sec):
     tg1_alpha = max(fa_alpha[0], fa_alpha[1])
@@ -109,7 +63,6 @@ def get_MP_delay(critical_fa_lst, alpha, temp, sec):
     for fa_lay, fa_i in critical_fa_lst:
         ps += get_FA_delay(alpha[fa_lay][fa_i], temp, sec)
     return ps
-
 
 
 def get_best_worst_wire_comb(
@@ -256,14 +209,14 @@ def examine_multi_wire_comb(
 ########################################################################################
 
 """comparing different critical path configuration"""
-if True:
+if False:
 
     # Critical path 1
     critical_fa_lst = []
     critical_fa_lst += [(0, i) for i in range(BIT_LEN)]
     for lay in range(1, BIT_LEN-1):
         critical_fa_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
-    examine_wire_comb([], plot_save_clear=False, plot_label=f"crit 1 no-mitigation {TEMP}C", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb([], plot_save_clear=False, plot_label=f"crit 1 no-mitigation", critical_fa_lst=critical_fa_lst)
 
     _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
     examine_wire_comb(worst_wire_comb, plot_save_clear=False, plot_label="Crit 1 attack", critical_fa_lst=critical_fa_lst)
@@ -274,10 +227,10 @@ if True:
     for lay in range(0, BIT_LEN-2):
         critical_fa_lst += [(lay, 0), (lay, 1)]
     critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-    examine_wire_comb([], plot_save_clear=False, plot_label=f"Crit 2 no-mitigation {TEMP}C", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb([], plot_save_clear=False, plot_label=f"Crit 2 no-mitigation", critical_fa_lst=critical_fa_lst)
 
     _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    examine_wire_comb(worst_wire_comb, plot_save_clear=True, plot_label="Crit 1 attack", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(worst_wire_comb, plot_save_clear=True, plot_label="Crit 2 attack", critical_fa_lst=critical_fa_lst)
 
 
 
@@ -298,8 +251,8 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier
 """
-if False:
-    best_wiring, worst_wiring = get_best_worst_wire_comb()
+if True:
+    best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
     
     examine_multi_wire_comb(
         [worst_wiring, [], best_wiring],
