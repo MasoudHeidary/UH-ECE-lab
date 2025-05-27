@@ -14,7 +14,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 12
+BIT_LEN = 8
 TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -146,7 +146,7 @@ def examine_wire_comb(
         bit_len = BIT_LEN, 
         temp = TEMP, 
         log = log, 
-        plot = True, 
+        plot = "RATE" or "DELAY", 
         plot_save_clear = True,
         plot_label = "",
         alpha_verification = ALPHA_VERIFICATION, 
@@ -167,9 +167,14 @@ def examine_wire_comb(
         aging_rate = (delay - _mp_zero_delay) / _mp_zero_delay
         if log:
             log.println(f"week {week:03}: {delay: 8.2f} [{aging_rate * 100 :4.2f}%]")
+        
+        if plot:
+            res_week.append(week)
 
-        res_week.append(week)
-        res_delay.append(aging_rate)
+            if plot == "DELAY":
+                res_delay.append(delay)
+            elif plot == "RATE" or True:
+                res_delay.append(aging_rate)
 
     
     if plot:
@@ -209,17 +214,30 @@ def examine_multi_wire_comb(
 ########################################################################################
 
 """comparing different critical path configuration"""
-if False:
+if True:
+    PLOT_TYPE = "DELAY"
 
     # Critical path 1
     critical_fa_lst = []
     critical_fa_lst += [(0, i) for i in range(BIT_LEN)]
     for lay in range(1, BIT_LEN-1):
         critical_fa_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
-    examine_wire_comb([], plot_save_clear=False, plot_label=f"crit 1 no-mitigation", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(
+        [], 
+        plot=PLOT_TYPE, 
+        plot_save_clear=False, 
+        plot_label=f"crit 1 no-mitigation", 
+        critical_fa_lst=critical_fa_lst
+    )
 
     _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    examine_wire_comb(worst_wire_comb, plot_save_clear=False, plot_label="Crit 1 attack", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(
+        worst_wire_comb, 
+        plot=PLOT_TYPE, 
+        plot_save_clear=False, 
+        plot_label="Crit 1 attack", 
+        critical_fa_lst=critical_fa_lst
+    )
 
 
     # Critical path 2
@@ -227,10 +245,22 @@ if False:
     for lay in range(0, BIT_LEN-2):
         critical_fa_lst += [(lay, 0), (lay, 1)]
     critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-    examine_wire_comb([], plot_save_clear=False, plot_label=f"Crit 2 no-mitigation", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(
+        [], 
+        plot=PLOT_TYPE, 
+        plot_save_clear=False, 
+        plot_label=f"Crit 2 no-mitigation", 
+        critical_fa_lst=critical_fa_lst
+    )
 
     _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    examine_wire_comb(worst_wire_comb, plot_save_clear=True, plot_label="Crit 2 attack", critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(
+        worst_wire_comb, 
+        plot=PLOT_TYPE, 
+        plot_save_clear=True, 
+        plot_label="Crit 2 attack", 
+        critical_fa_lst=critical_fa_lst
+    )
 
 
 
@@ -251,7 +281,7 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier
 """
-if True:
+if False:
     best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
     
     examine_multi_wire_comb(
