@@ -15,7 +15,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 8
+BIT_LEN = 6
 TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -222,7 +222,7 @@ def examine_multi_wire_comb(
 ########################################################################################
 ########################################################################################
 
-if True:
+if False:
     PLOT_TYPE = "DELAY"
 
     # Critical path 1
@@ -313,14 +313,14 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier
 """
-if False:
+if True:
     best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
     
     examine_multi_wire_comb(
         [worst_wiring, [], best_wiring],
         ["attack", "no-mitigation", "optimization"],
         log=False,
-        plot=True
+        plot="DELAY",
     )
 
 

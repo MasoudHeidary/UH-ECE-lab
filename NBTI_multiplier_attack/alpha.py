@@ -3,7 +3,7 @@ import multiprocessing
 
 from msimulator.bin_func import signed_b, reverse_signed_b
 
-MAX_PROCESSES = 20 #multiprocessing.cpu_count()
+MAX_PROCESSES = 15 #multiprocessing.cpu_count()
 
 class AlphaMultiprocess:
     def __init__(self, raw_mp, bit_len, log=False, rew_lst=[], queue_size=100_000_000):
@@ -98,7 +98,7 @@ class AlphaMultiprocess:
 
         return total_stress_counter
 
-    def run(self, batch_size=2**11):
+    def run(self, batch_size=2**12):
         start_time = time.time()  # Record end time
 
         alpha_lst = self.process_inputs_in_batches(batch_size, log_obj=self.log_obj)
