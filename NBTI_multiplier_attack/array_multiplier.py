@@ -14,7 +14,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 6
+BIT_LEN = 8
 TEMP = 273.15 + 30
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -282,11 +282,33 @@ if False:
 extracting best and worst wiring combination for the provided multiplier (6, 8, 10 bits)
 """
 if True:
-    best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
+    best_wiring, worst_wiring = get_best_worst_wire_comb(log=False)
+    log.println(f"{worst_wiring}")
     
     examine_multi_wire_comb(
         [worst_wiring, [], best_wiring],
         ["attack", "no-mitigation", "optimization"],
         log=False,
         plot="DELAY",
+    )
+
+
+"""
+partial rewiring
+"""
+if False:
+    _, worst_wiring = get_best_worst_wire_comb(log=False)
+    worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
+
+    full_combo = []
+    full_combo_label = []
+    for combo in range(0, len(worst_wiring)+1, 4):
+        full_combo.append(worst_wiring[0:combo])
+        full_combo_label.append(f"{combo} / {len(worst_wiring)}")
+    
+    examine_multi_wire_comb(
+        multi_wire_comb = full_combo,
+        plot_labels = full_combo_label,
+        log = False,
+        plot = "RATE"
     )
