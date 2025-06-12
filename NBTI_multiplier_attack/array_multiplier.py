@@ -214,14 +214,17 @@ def examine_multi_wire_comb(
 ########################################################################################
 
 """comparing different critical path configuration"""
-if False:
+if True:
     PLOT_TYPE = "DELAY"
+    BIT_LEN = 8     ### GLOBAL OVERRIDE 
 
     # Critical path 1
     critical_fa_lst = []
     critical_fa_lst += [(0, i) for i in range(BIT_LEN)]
     for lay in range(1, BIT_LEN-1):
         critical_fa_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
+    log.println(f"critical path 1: \n{critical_fa_lst}")
+    
     examine_wire_comb(
         [], 
         plot=PLOT_TYPE, 
@@ -245,6 +248,7 @@ if False:
     for lay in range(0, BIT_LEN-2):
         critical_fa_lst += [(lay, 0), (lay, 1)]
     critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
+    log.println(f"critical path 2: \n{critical_fa_lst}")
     examine_wire_comb(
         [], 
         plot=PLOT_TYPE, 
@@ -257,8 +261,33 @@ if False:
     examine_wire_comb(
         worst_wire_comb, 
         plot=PLOT_TYPE, 
-        plot_save_clear=True, 
+        plot_save_clear=False, 
         plot_label="Crit 2 attack", 
+        critical_fa_lst=critical_fa_lst
+    )
+
+    # Critical path 3
+    critical_fa_lst = []
+    for lay in range(1, BIT_LEN-2):
+        critical_fa_lst += [(lay, 3), (lay, 4)]
+    critical_fa_lst += [(0, i) for i in range(0, BIT_LEN//2 + 1)]
+    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN//2 - 1, BIT_LEN)]
+    log.println(f"critical path 3: \n{critical_fa_lst}")
+
+    examine_wire_comb(
+        [], 
+        plot=PLOT_TYPE, 
+        plot_save_clear=False, 
+        plot_label=f"Crit 3 no-mitigation", 
+        critical_fa_lst=critical_fa_lst
+    )
+
+    _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
+    examine_wire_comb(
+        worst_wire_comb, 
+        plot=PLOT_TYPE, 
+        plot_save_clear=True, 
+        plot_label="Crit 3 attack", 
         critical_fa_lst=critical_fa_lst
     )
 
@@ -268,6 +297,7 @@ if False:
 if False:
     # normal aging without mitigation
     examine_wire_comb(
+        # wire_comb=[(0, 1, 'A', 'C', 'B')], 
         wire_comb=[], 
         bit_len=BIT_LEN, 
         temp=TEMP, 
@@ -281,8 +311,8 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier (6, 8, 10 bits)
 """
-if True:
-    best_wiring, worst_wiring = get_best_worst_wire_comb(log=False)
+if False:
+    best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
     log.println(f"{worst_wiring}")
     
     examine_multi_wire_comb(
