@@ -1,4 +1,8 @@
 
+"""
+deisgned for 15bit data
+"""
+
 import itertools
 from tool.log import Log
 import re
@@ -96,27 +100,27 @@ def truth_table(input_data, A_bit_pattern, log_obj=False):
 
     return ML_table
 
-def generate_equation(truth_table):
-    terms = []
-    variables = [
-        'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7',
-        'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15',
-        ]
-    for row in truth_table:
-        inputs, output = row['A'], row['out']
-        if output == 1:
-            term = []
-            for var, val in zip(variables, inputs):
-                if val != 'x':  # Ignore 'x' bits
-                    term.append(f"{var}" if val == 1 else f"~{var}")
-            terms.append(" & ".join(term))
+# def generate_equation(truth_table):
+#     terms = []
+#     variables = [
+#         'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7',
+#         'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14'
+#         ]
+#     for row in truth_table:
+#         inputs, output = row['A'], row['out']
+#         if output == 1:
+#             term = []
+#             for var, val in zip(variables, inputs):
+#                 if val != 'x':  # Ignore 'x' bits
+#                     term.append(f"{var}" if val == 1 else f"~{var}")
+#             terms.append(" & ".join(term))
 
-    equation = " | ".join(f"({term})" for term in terms)
-    return equation if equation else "0"
+#     equation = " | ".join(f"({term})" for term in terms)
+#     return equation if equation else "0"
 
 
 def generate_optimized_equation_with_or(truth_table):
-    variables = symbols('A0 A1 A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 A12 A13 A14 A15')
+    variables = symbols('A0 A1 A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 A12 A13 A14')
     minterms = []
     for row in truth_table:
         inputs, output = row['A'], row['out']
@@ -230,7 +234,7 @@ def multi_process_best_pattern_finder(
     processes_count = 0
     result = multiprocessing.Manager().list()
 
-    A_pattern = list(itertools.product(['b', 'x'], repeat=16))
+    A_pattern = list(itertools.product(['b', 'x'], repeat=15))
     A_pattern = [list(lst) for lst in A_pattern]
 
     for a_pattern in A_pattern:
@@ -290,7 +294,7 @@ if __name__ == "__main__":
     TT_data = load_pattern_file(TT_filepath)
     log.println("TT input data loaded")
 
-    for pattern_len in range(0, 16):
+    for pattern_len in range(10, 15):
         log.println(f"bit equation length {pattern_len} RUNNING")
 
         r = multi_process_best_pattern_finder(
