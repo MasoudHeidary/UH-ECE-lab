@@ -43,7 +43,7 @@ log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
 ################## Functions
 ########################################################################################
 
-def get_alpha(raw_mp, bit_len, log=log, rew_lst=[], verify=False):
+def get_alpha(raw_mp, bit_len, log=False, rew_lst=[], verify=False):
     return AlphaMultiprocess(raw_mp, bit_len, log=log, rew_lst=rew_lst).run()
 
 def get_FA_delay(fa_alpha, temp, sec):
@@ -214,9 +214,9 @@ def examine_multi_wire_comb(
 ########################################################################################
 
 """comparing different critical path configuration"""
-if True:
+if False:
     PLOT_TYPE = "DELAY"
-    BIT_LEN = 8     ### GLOBAL OVERRIDE 
+    # BIT_LEN = 8     ### GLOBAL OVERRIDE 
 
     # Critical path 1
     critical_fa_lst = []
@@ -311,14 +311,14 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier (6, 8, 10 bits)
 """
-if False:
-    best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
+if True:
+    best_wiring, worst_wiring = get_best_worst_wire_comb(log=False)
     log.println(f"{worst_wiring}")
     
     examine_multi_wire_comb(
         [worst_wiring, [], best_wiring],
         ["attack", "no-mitigation", "optimization"],
-        log=False,
+        log=log,
         plot="DELAY",
     )
 
