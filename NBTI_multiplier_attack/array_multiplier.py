@@ -77,8 +77,8 @@ def get_best_worst_wire_comb(
     worst_wiring = [fa + ('A', 'B', 'C', 0) for fa in critical_fa_lst]
 
     default_alpha = get_alpha(mp, bitlen, log=False, rew_lst=[])
-    # log.println(f"{default_alpha}")
     if log:
+        log.println(f"\n{default_alpha}")
         log.println(f"default alpha done")
 
 
@@ -157,6 +157,8 @@ def examine_wire_comb(
         log.println(f"aging log for following wire comb \n{wire_comb}")
     
     alpha = get_alpha(mp, bit_len, log=False, rew_lst=wire_comb, verify=alpha_verification)
+    if log:
+        log.println(f"alpha: \n{alpha}")
     _mp_zero_delay = get_MP_delay(critical_fa_lst, alpha, temp, 0)
     
     res_week = []
