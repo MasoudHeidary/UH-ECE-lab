@@ -3,6 +3,7 @@ import multiprocessing
 
 from msimulator.bin_func import signed_b, reverse_signed_b
 
+INPUT_PIN_ALPHA = True
 MAX_PROCESSES = 15 #multiprocessing.cpu_count()
 
 class AlphaMultiprocess:
@@ -16,10 +17,16 @@ class AlphaMultiprocess:
         self.queue = multiprocessing.Queue(maxsize=queue_size)
 
     def process_batch(self, batch, log_obj=False):
-        stress_counter = [
-            [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
-            for _ in range(self.bit_len - 1)
-        ]
+        if INPUT_PIN_ALPHA:
+            stress_counter = [
+                [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0, 'A':0, 'B':0, 'C':0, 'sum':0, 'carry':0} for _ in range(self.bit_len)] 
+                for _ in range(self.bit_len - 1)
+            ]
+        else:
+            stress_counter = [
+                [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
+                for _ in range(self.bit_len - 1)
+            ]
 
         for A, B in batch:
             A_b = signed_b(A, self.bit_len)
@@ -40,13 +47,27 @@ class AlphaMultiprocess:
                     T1p = mp.gfa[lay][index].p[3]
                     T2 = mp.gfa[lay][index].p[4]
                     T2p = mp.gfa[lay][index].p[5]
-
+                    
                     stress_counter[lay][index]['T0'] += (not T0)
                     stress_counter[lay][index]['T0p'] += (not T0p)
                     stress_counter[lay][index]['T1'] += (not T1)
                     stress_counter[lay][index]['T1p'] += (not T1p)
                     stress_counter[lay][index]['T2'] += (not T2)
                     stress_counter[lay][index]['T2p'] += (not T2p)
+                    
+                    if INPUT_PIN_ALPHA:
+                        A_st = mp.gfa[lay][index].A
+                        B_st = mp.gfa[lay][index].B
+                        C_st = mp.gfa[lay][index].C
+                        sum_st = mp.gfa[lay][index].sum
+                        carry_st = mp.gfa[lay][index].carry
+
+                        
+                        stress_counter[lay][index]['A'] += (not A_st)
+                        stress_counter[lay][index]['B'] += (not B_st)
+                        stress_counter[lay][index]['C'] += (not C_st)
+                        stress_counter[lay][index]['sum'] += (not sum_st)
+                        stress_counter[lay][index]['carry'] += (not carry_st)
 
         self.queue.put(stress_counter)
 
@@ -64,10 +85,16 @@ class AlphaMultiprocess:
             yield batch
 
     def process_inputs_in_batches(self, batch_size, log_obj=False):
-        total_stress_counter = [
-            [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
-            for _ in range(self.bit_len - 1)
-        ]
+        if INPUT_PIN_ALPHA:
+            total_stress_counter = [
+                [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0, 'A':0, 'B':0, 'C':0, 'sum':0, 'carry':0} for _ in range(self.bit_len)] 
+                for _ in range(self.bit_len - 1)
+            ]
+        else:
+            total_stress_counter = [
+                [{'T0': 0, 'T0p': 0, 'T1': 0, 'T1p': 0, 'T2': 0, 'T2p': 0} for _ in range(self.bit_len)] 
+                for _ in range(self.bit_len - 1)
+            ]
 
         processes = []
         batch_generator = self.generate_batches(self.bit_len, batch_size)
