@@ -15,7 +15,7 @@ from datetime import datetime
 ALPHA_VERIFICATION = False
 
 BIT_LEN = 8
-TEMP = 273.15 + 30
+TEMP = 273.15 + 80
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
 
@@ -341,6 +341,6 @@ if False:
     examine_multi_wire_comb(
         multi_wire_comb = full_combo,
         plot_labels = full_combo_label,
-        log = False,
-        plot = "RATE"
+        log = log,
+        plot = "DELAY"
     )
