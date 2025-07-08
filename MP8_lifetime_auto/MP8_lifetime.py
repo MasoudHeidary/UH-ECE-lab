@@ -3,6 +3,7 @@ import random
 import re
 
 from msimulator.get_alpha_class import MultiplierStressTest
+from msimulator.get_alpha_class_shrinked import AlphaShrinked
 from msimulator.Multiplier import *
 from get_life_expect import get_life_expect
 
@@ -10,7 +11,7 @@ from tool.log import Log
 log = Log(f"{__file__}.log", terminal=True)
 # log.println("START...")
 
-bit_len = 8
+bit_len = 16
 # faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
 # faulty_transistor = {'fa_i': random.randint(0, bit_len-1-1), 'fa_j': random.randint(0, bit_len-1), 't_index': random.randint(0, 5), 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
 # faulty_transistor = False
@@ -99,7 +100,7 @@ def load_pattern_file(filepath):
 ########################
 
 # specific optimization
-if True:
+if False:
     """
     note: critical transistors in order
 
@@ -153,6 +154,7 @@ if True:
 # DONE
 
 if False:
+    """optimization for the first 5 transistors to find the maximum lifetime"""
     log.println(f"faulty transistor: {faulty_transistor}")
     for _ in range(5):
         alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
@@ -163,6 +165,28 @@ if False:
 
         lst_transistor_optimize += [fail_transistor]
         log.println(f"optimization list: {lst_transistor_optimize}")
+
+
+if True:
+    """same experiment but with shrinked alpha for faster computations [no lookup table]"""
+
+    SAMPLE_COUNT = 100_000_000
+    RND_SEED = 7
+
+    log.println(f"faulty transistor: {faulty_transistor}")
+    for _ in range(3):
+        # alpha_lst = AlphaShrinked(bit_len, optimizer_trigger, optimizer_accept).run(sample_count=SAMPLE_COUNT, rnd_seed=RND_SEED, log_obj=log)
+        alpha_lst = AlphaShrinked(bit_len, optimizer_trigger, optimizer_accept).run_multi(sample_count=SAMPLE_COUNT, rnd_seed=RND_SEED, log_obj=log)
+        # log.println(f"alpha list: {alpha_lst}")
+
+        fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
+        log.println(f"[{bit_len}] failed transistor: {fail_transistor}")
+
+        lst_transistor_optimize += [fail_transistor]
+        log.println(f"optimization list: {lst_transistor_optimize}")
+
+        del alpha_lst
+
 
 
 
