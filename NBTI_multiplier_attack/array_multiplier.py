@@ -27,16 +27,26 @@ log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 CRITICAL_FA_lst = []
 
 """all FA in first row + last 2 FA in each row """
+CRITICAL_FA_lst = []
 CRITICAL_FA_lst += [(0, i) for i in range(BIT_LEN)]
 for lay in range(1, BIT_LEN-1):
     CRITICAL_FA_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
 log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
 
 """first 2 FA in each row + all FA in last row"""
+# CRITICAL_FA_lst = []
 # for lay in range(0, BIT_LEN-2):
 #     CRITICAL_FA_lst += [(lay, 0), (lay, 1)]
 # CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
 # log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
+
+"""Critical path 3"""
+# CRITICAL_FA_lst = []
+# for lay in range(1, BIT_LEN-2):
+#     CRITICAL_FA_lst += [(lay, 3), (lay, 4)]
+# CRITICAL_FA_lst += [(0, i) for i in range(0, BIT_LEN//2 + 1)]
+# CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN//2 - 1, BIT_LEN)]
+# log.println(f"critical path 3: \n{CRITICAL_FA_lst}")
 
 
 ########################################################################################
@@ -313,34 +323,36 @@ if False:
 """
 extracting best and worst wiring combination for the provided multiplier (6, 8, 10 bits)
 """
-if True:
+if False:
     best_wiring, worst_wiring = get_best_worst_wire_comb(log=False)
-    log.println(f"{worst_wiring}")
+    log.println(f"worst wiring:\n{worst_wiring}")
     
-    examine_multi_wire_comb(
-        [worst_wiring, [], best_wiring],
-        ["attack", "no-mitigation", "optimization"],
-        log=log,
-        plot="DELAY",
-    )
+    # examine_multi_wire_comb(
+    #     [worst_wiring, [], best_wiring],
+    #     ["attack", "no-mitigation", "optimization"],
+    #     log=log,
+    #     plot="DELAY",
+    # )
 
 
 """
 partial rewiring
 """
-if False:
+if True:
     _, worst_wiring = get_best_worst_wire_comb(log=False)
     worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
 
     full_combo = []
     full_combo_label = []
-    for combo in range(0, len(worst_wiring)+1, 4):
+    # for combo in range(0, len(worst_wiring)+1, 4):
+    for combo in [0, len(worst_wiring)//2, len(worst_wiring)]:
         full_combo.append(worst_wiring[0:combo])
         full_combo_label.append(f"{combo} / {len(worst_wiring)}")
+    log.println(f"wire combo:\n{full_combo}")
     
-    examine_multi_wire_comb(
-        multi_wire_comb = full_combo,
-        plot_labels = full_combo_label,
-        log = log,
-        plot = "DELAY"
-    )
+    # examine_multi_wire_comb(
+    #     multi_wire_comb = full_combo,
+    #     plot_labels = full_combo_label,
+    #     log = log,
+    #     plot = "DELAY"
+    # )
