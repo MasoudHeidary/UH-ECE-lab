@@ -338,7 +338,7 @@ if False:
 """
 partial rewiring
 """
-if True:
+if False:
     _, worst_wiring = get_best_worst_wire_comb(log=False)
     worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
 
@@ -356,3 +356,19 @@ if True:
     #     log = log,
     #     plot = "DELAY"
     # )
+
+
+
+"""
+rewiring list for all the FAs (sorted)
+"""
+if False:
+    lst = []
+    for fa_i in range(BIT_LEN - 1):
+        for fa_j in range(BIT_LEN):
+            lst += [(fa_i, fa_j)]
+
+    best_wiring, worst_wiring = get_best_worst_wire_comb(critical_fa_lst=lst, log=False)
+    log.println(f"worst complete wiring:\n{worst_wiring}")
+    worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
+    log.println(f"worst complete wiring (sorted):\n{worst_wiring}")
