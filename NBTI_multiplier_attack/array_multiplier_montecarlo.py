@@ -11,12 +11,12 @@ from mapping_pmos_vth_body import pmos_vth_to_body
 import random
 
 BIT_LEN = 8
-SAMPLE = 100_000
-IN_ALPHA_SAMPLE = 1000
+SAMPLE = 5_000
+IN_ALPHA_SAMPLE = 5_000
 TEMP = 273.15 + 80
-# AGE_TIME = (200-1) * 7 *24*60*60
-AGE_TIME = (50) * 7 *24*60*60
-# AGE_TIME = 100
+# AGE_TIME = (200-1) * 7 *24*60*60      # 4 year
+AGE_TIME = (50) * 7 *24*60*60           # 1 year
+# AGE_TIME = 100                        # t=0 basically
 
 
 
@@ -174,7 +174,7 @@ def get_monte_MP_delay(sample_id, path_lst, alpha, temp, sec):
 ########################################################################################
 
 
-if True and (__name__ == "__main__"):
+if False and (__name__ == "__main__"):
     res = []
 
     alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=REW_LST)
@@ -198,7 +198,7 @@ if True and (__name__ == "__main__"):
 
 
 
-if False and (__name__ == "__main__"):
+if True and (__name__ == "__main__"):
     MIN_ALPHA = 0.1
     MAX_ALPHA = 0.9
     res = []
@@ -214,7 +214,7 @@ if False and (__name__ == "__main__"):
         for sample_id in range(SAMPLE):
             delay = get_monte_MP_delay(sample_id, path_lst, alpha, TEMP, AGE_TIME)
             res.append(delay)
-        log.println(f"[{BIT_LEN}] ALPHA[{in_alpha_i}] DONE")
+        log.println(f"- ALPHA[rew_len:{len(REW_LST)}][{in_alpha_i}] DONE")
 
     _sample_per_delay = [0 for _ in range(1000)]
     for delay in res:
