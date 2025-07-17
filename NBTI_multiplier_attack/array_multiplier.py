@@ -42,7 +42,7 @@ from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 8
+BIT_LEN = 10
 TEMP = 273.15 + 80
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -387,17 +387,17 @@ if False:
     full_combo = []
     full_combo_label = []
     # for combo in range(0, len(worst_wiring)+1, 4):
-    for combo in [0, len(worst_wiring)//2, len(worst_wiring)]:
+    for combo in [0, len(worst_wiring)//4, len(worst_wiring)//2, len(worst_wiring)*3//2, len(worst_wiring)]:
         full_combo.append(worst_wiring[0:combo])
         full_combo_label.append(f"{combo} / {len(worst_wiring)}")
     log.println(f"wire combo:\n{full_combo}")
     
-    # examine_multi_wire_comb(
-    #     multi_wire_comb = full_combo,
-    #     plot_labels = full_combo_label,
-    #     log = log,
-    #     plot = "DELAY"
-    # )
+    examine_multi_wire_comb(
+        multi_wire_comb = full_combo,
+        plot_labels = full_combo_label,
+        log = log,
+        plot = "DELAY"
+    )
 
 
 
