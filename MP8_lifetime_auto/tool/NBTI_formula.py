@@ -43,6 +43,8 @@ def delta_vth(Vdef, T, alpha, Tclk, t):
         alpha = 0.5
         # print("WARNING: replace alpha 1.0 to 0.5")
         # raise ValueError("alpha should be 0 <= alpha < 1")
+    if t <= 10:
+        t = 10
 
     _Kv = Kv(Vdef, T)
     _Bt = Bt(T, alpha, Tclk, t)
