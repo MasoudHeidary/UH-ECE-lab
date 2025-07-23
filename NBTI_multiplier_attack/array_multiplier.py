@@ -37,12 +37,14 @@ from alpha import AlphaMultiprocess
 from mapping_tgate_pb_delay import tgate_pb_to_delay
 from mapping_pmos_vth_body import pmos_vth_to_body
 
+from propagation_delay import array_multiplier_error_rate
+
 import matplotlib.pyplot as plt
 from datetime import datetime
 
 ALPHA_VERIFICATION = False
 
-BIT_LEN = 10
+BIT_LEN = 8
 TEMP = 273.15 + 80
 log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
 
@@ -246,86 +248,9 @@ def sort_rewiring(wiring):
 ################## MAIN
 ########################################################################################
 
-"""comparing different critical path configuration"""
-if False:
-    PLOT_TYPE = "DELAY"
-    # BIT_LEN = 8     ### GLOBAL OVERRIDE 
-
-    # Critical path 1
-    critical_fa_lst = []
-    critical_fa_lst += [(0, i) for i in range(BIT_LEN)]
-    for lay in range(1, BIT_LEN-1):
-        critical_fa_lst += [(lay, BIT_LEN-2), (lay, BIT_LEN-1)]
-    log.println(f"critical path 1: \n{critical_fa_lst}")
-    
-    examine_wire_comb(
-        [], 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label=f"crit 1 no-mitigation", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-    _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    examine_wire_comb(
-        worst_wire_comb, 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label="Crit 1 attack", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-
-    # Critical path 2
-    critical_fa_lst = []
-    for lay in range(0, BIT_LEN-2):
-        critical_fa_lst += [(lay, 0), (lay, 1)]
-    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-    log.println(f"critical path 2: \n{critical_fa_lst}")
-    examine_wire_comb(
-        [], 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label=f"Crit 2 no-mitigation", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-    _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    examine_wire_comb(
-        worst_wire_comb, 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label="Crit 2 attack", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-    # Critical path 3
-    critical_fa_lst = []
-    for lay in range(1, BIT_LEN-2):
-        critical_fa_lst += [(lay, 3), (lay, 4)]
-    critical_fa_lst += [(0, i) for i in range(0, BIT_LEN//2 + 1)]
-    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN//2 - 1, BIT_LEN)]
-    log.println(f"critical path 3: \n{critical_fa_lst}")
-
-    examine_wire_comb(
-        [], 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label=f"Crit 3 no-mitigation", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-    _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    examine_wire_comb(
-        worst_wire_comb, 
-        plot=PLOT_TYPE, 
-        plot_save_clear=True, 
-        plot_label="Crit 3 attack", 
-        critical_fa_lst=critical_fa_lst
-    )
 
 """get critical path priorities"""
-if True:
+if False:
     """each path gets full rewiring -> aging(1 year) -> route with higher aging higher priority"""
     log.println("RUNNING: critical path priorities")
     for i in range(BIT_LEN - 1):
@@ -348,11 +273,21 @@ if True:
 
 
 """specific wire combination aging"""
-if False:
+if False and (__name__ == "__main__"):
     # normal aging without mitigation
+
+    # REW_LST = [(1, 4, 'A', 'C', 'B', 0.09658243544414136), (1, 5, 'A', 'B', 'C', 0), (2, 4, 'A', 'C', 'B', 0.1496285059359429), (2, 5, 'A', 'C', 'B', 0.06917656718668863), (3, 4, 'A', 'C', 'B', 0.18241572138802975), (3, 5, 'A', 'C', 'B', 0.12469209243091955), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (0, 1, 'A', 'C', 'B', 0.28976406320693054), (0, 2, 'A', 'C', 'B', 0.26259279119258666), (0, 3, 'A', 'C', 'B', 0.25481341220235604), (0, 4, 'A', 'C', 'B', 0.2315129781993061), (0, 5, 'B', 'C', 'A', 0.103645377172287), (4, 4, 'C', 'A', 'B', 0.10590474274168515), (4, 5, 'B', 'A', 'C', 0.07976750715539899)]
+    REW_LST = []
+
+    circuit_size = (BIT_LEN - 1) * (BIT_LEN)
+
+    #rewire top-20% of circuit
+    wire_comb = REW_LST[:(circuit_size//5)]
+
     examine_wire_comb(
         # wire_comb=[(0, 1, 'A', 'C', 'B')], 
-        wire_comb=[], 
+        # wire_comb=[], 
+        wire_comb = wire_comb,
         bit_len=BIT_LEN, 
         temp=TEMP, 
         log=log, 
@@ -369,12 +304,12 @@ if False:
     best_wiring, worst_wiring = get_best_worst_wire_comb(log=False)
     log.println(f"worst wiring:\n{worst_wiring}")
     
-    # examine_multi_wire_comb(
-    #     [worst_wiring, [], best_wiring],
-    #     ["attack", "no-mitigation", "optimization"],
-    #     log=log,
-    #     plot="DELAY",
-    # )
+    examine_multi_wire_comb(
+        [worst_wiring, [], best_wiring],
+        ["attack", "no-mitigation", "optimization"],
+        log=log,
+        plot="DELAY",
+    )
 
 
 """
@@ -414,3 +349,34 @@ if False:
     log.println(f"worst complete wiring:\n{worst_wiring}")
     worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
     log.println(f"worst complete wiring (sorted):\n{worst_wiring}")
+
+
+"""
+error rate of wire combination
+"""
+if True and __name__ == "__main__":
+    # REW_LST = []
+
+    """8-bit critical-path"""
+    # REW_LST = [(0, 0, 'C', 'A', 'B', 0.06047137087990345), (0, 1, 'A', 'C', 'B', 0.28976406320693054), (0, 2, 'A', 'C', 'B', 0.26259279119258666), (0, 3, 'A', 'C', 'B', 0.25481341220235604), (0, 4, 'A', 'C', 'B', 0.2315129781993061), (0, 5, 'A', 'C', 'B', 0.22822863079578365), (0, 6, 'A', 'C', 'B', 0.22620104898034382), (0, 7, 'B', 'A', 'C', 0.10020910946188893), (1, 6, 'A', 'C', 'B', 0.08965346783517958), (1, 7, 'A', 'B', 'C', 0), (2, 6, 'A', 'C', 'B', 0.1469926371678449), (2, 7, 'A', 'C', 'B', 0.06554451463712985), (3, 6, 'A', 'C', 'B', 0.17180177234504546), (3, 7, 'A', 'C', 'B', 0.11787204450625888), (4, 6, 'A', 'C', 'B', 0.18361880328982083), (4, 7, 'A', 'C', 'B', 0.14765893785803158), (5, 6, 'A', 'C', 'B', 0.19532684423652524), (5, 7, 'A', 'C', 'B', 0.16337776734791393), (6, 6, 'C', 'A', 'B', 0.1222909697594673), (6, 7, 'B', 'A', 'C', 0.09435069207269803)]
+
+    """8-bit half-critical path"""
+    REW_LST = [(0, 1, 'A', 'C', 'B', 0.28976406320693054), (0, 2, 'A', 'C', 'B', 0.26259279119258666), (0, 3, 'A', 'C', 'B', 0.25481341220235604), (0, 4, 'A', 'C', 'B', 0.2315129781993061), (0, 5, 'A', 'C', 'B', 0.22822863079578365), (0, 6, 'A', 'C', 'B', 0.22620104898034382), (5, 6, 'A', 'C', 'B', 0.19532684423652524), (4, 6, 'A', 'C', 'B', 0.18361880328982083), (3, 6, 'A', 'C', 'B', 0.17180177234504546), (5, 7, 'A', 'C', 'B', 0.16337776734791393)]
+
+
+    log.println(f"RUNNING: error rate bitlen [{BIT_LEN}], REW_LST [{len(REW_LST)}]: \n{REW_LST}")
+
+    alpha_notamper = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=[], verify=False)
+    alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=REW_LST, verify=False)
+
+    res = []
+    for t_week in range(200):
+        t_sec = t_week *7 *25*60*60
+        
+        max_ps_delay = get_MP_delay(CRITICAL_FA_lst, alpha_notamper, TEMP, t_sec) * 1.10    #10% margin
+        err_rate = array_multiplier_error_rate(BIT_LEN, alpha, TEMP, t_sec, max_ps_delay)
+        res.append(err_rate)
+        
+        log.println(f"REW [{len(REW_LST)}] week [{t_week:03}], error rate: {err_rate:.3f}")
+    log.println(f"REW [{len(REW_LST)}], error rate: \n{res}")
+
