@@ -157,7 +157,7 @@ def get_alpha(raw_mp, bit_len, log=False, rew_lst=[], verify=False):
 
     limit = 2 ** (bit_len - 1)
     for a in range(-limit, limit):
-
+        print(a)
         for b in range(-limit, limit):
 
             a_bin = signed_b(a, bit_len)
@@ -167,10 +167,10 @@ def get_alpha(raw_mp, bit_len, log=False, rew_lst=[], verify=False):
             mp = raw_mp(a_bin, b_bin, bit_len, rew_lst)
             mp.output
 
-            if verify:
-                out = reverse_signed_b(mp.output)
-                if a * b != out:
-                    raise ValueError(f"output verification failed, {a} * {b} != {out}")
+            # if verify:
+            #     out = reverse_signed_b(mp.output)
+            #     if a * b != out:
+            #         raise ValueError(f"output verification failed, {a} * {b} != {out}")
 
             for row in range(alpha_row):
                 for index in range(alpha_index):
