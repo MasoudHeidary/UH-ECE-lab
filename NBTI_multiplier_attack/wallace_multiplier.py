@@ -1,6 +1,41 @@
 
 
-from tool.log import Log, Progress
+"""
+BIT_LEN = 8 critical path priority:
+path [0] -> delay(30240000s): 467.8 -> 565.5
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844)]
+path [1] -> delay(30240000s): 467.8 -> 564.0
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 1, 'A', 'B', 'C', 0)]
+path [2] -> delay(30240000s): 467.6 -> 557.0
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 1, 'A', 'C', 'B', 0.23806349924964598), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 2, 'A', 'B', 'C', 0)]
+path [3] -> delay(30240000s): 467.5 -> 549.5
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 2, 'A', 'C', 'B', 0.23806349924964598), (2, 1, 'A', 'C', 'B', 0.22623808445886484), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 3, 'A', 'B', 'C', 0)]
+path [4] -> delay(30240000s): 467.4 -> 541.5
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 3, 'A', 'C', 'B', 0.23806349924964598), (2, 2, 'A', 'C', 'B', 0.22623808445886484), (3, 1, 'A', 'C', 'B', 0.21645413617042697), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 4, 'A', 'B', 'C', 0)]
+path [5] -> delay(30240000s): 467.4 -> 533.3
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 4, 'A', 'C', 'B', 0.23806349924964598), (2, 3, 'A', 'C', 'B', 0.22623808445886484), (3, 2, 'A', 'C', 'B', 0.21645413617042697), (4, 1, 'A', 'C', 'B', 0.20805352247289927), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 5, 'A', 'B', 'C', 0)]
+path [6] -> delay(30240000s): 467.4 -> 525.0
+[(6, 0, 'C', 'A', 'B', 0.559487579332143), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 5, 'A', 'C', 'B', 0.23806349924964598), (2, 4, 'A', 'C', 'B', 0.22623808445886484), (3, 3, 'A', 'C', 'B', 0.21645413617042697), (4, 2, 'A', 'C', 'B', 0.20805352247289927), (5, 1, 'A', 'C', 'B', 0.20508564098694648), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 6, 'A', 'B', 'C', 0)]
+
+BIT_LEN = 6 critical path priority:
+path [0] -> delay(30240000s): 338.2819 -> 404.0916
+[(4, 0, 'C', 'A', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621)]
+path [1] -> delay(30240000s): 338.2819 -> 402.6629
+[(4, 0, 'C', 'A', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621), (0, 1, 'A', 'B', 'C', 0)]
+path [2] -> delay(30240000s): 338.0523 -> 395.6529
+[(4, 0, 'C', 'A', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (1, 1, 'A', 'C', 'B', 0.23806349924964598), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621), (0, 2, 'A', 'B', 'C', 0)]
+path [3] -> delay(30240000s): 337.9679 -> 388.0931
+[(4, 0, 'C', 'A', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (1, 2, 'A', 'C', 'B', 0.23806349924964598), (2, 1, 'A', 'C', 'B', 0.22623808445886484), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621), (0, 3, 'A', 'B', 'C', 0)]
+path [4] -> delay(30240000s): 337.8843 -> 380.0885
+[(4, 0, 'C', 'A', 'B', 0.5548261609530758), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (1, 3, 'A', 'C', 'B', 0.23806349924964598), (2, 2, 'A', 'C', 'B', 0.22623808445886484), (3, 1, 'A', 'C', 'B', 0.21645413617042697), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621), (0, 4, 'A', 'B', 'C', 0)]
+
+
+BIT_LEN = 10 critical path priority:
+
+
+"""
+
+from tool.log import Log
 from tool import NBTI_formula as BTI
 from msimulator.bin_func import signed_b, reverse_signed_b
 from msimulator.Multiplier import Wallace_rew
@@ -10,41 +45,36 @@ from alpha import AlphaMultiprocess
 from mapping_tgate_pb_delay import tgate_pb_to_delay
 from mapping_pmos_vth_body import pmos_vth_to_body
 
+from propagation_delay import wallace_multiplier_error_rate
+
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-ALPHA_VERIFICATION = False
 
-BIT_LEN = 8
+BIT_LEN = 10
 TEMP = 273.15 + 80
-log = Log(f"{__file__}.{BIT_LEN}.{TEMP}.log", terminal=True)
+ALPHA_VERIFICATION = False
+log = Log(f"{__file__}.{BIT_LEN}.log", terminal=True)
 
 
 ########################################################################################
 ################## Critical Path
 ########################################################################################
 
+"""range(bit_len - 1)"""
+def create_crit(i_th):
+    crit = []
+    for lay in range(0, BIT_LEN-2):
+        crit += [
+            (lay, max(i_th - lay, 0))
+        ]
+    crit += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
+    return crit
+
 """for multiplier propagation delay and optimization"""
-CRITICAL_FA_lst = []
+CRITICAL_FA_lst = create_crit(0)
 
-"""first FA in each row + all FA in last row"""
-for lay in range(0, BIT_LEN-2):
-    CRITICAL_FA_lst += [(lay, 0)]
-CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
 log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
-
-"""second FA in each row + all FA in last row"""
-# for lay in range(0, BIT_LEN-2):
-#     CRITICAL_FA_lst += [(lay, 1)]
-# CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-# log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
-
-"""straight line"""
-# for lay in range(0, BIT_LEN-2):
-#     CRITICAL_FA_lst += [(lay, BIT_LEN - (lay + 2))]
-# CRITICAL_FA_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-# log.println(f"Critical eFA list: {CRITICAL_FA_lst}")
-
 
 ########################################################################################
 ##################### Functions
@@ -217,96 +247,63 @@ def examine_multi_wire_comb(
             plot_label = plot_labels[i_sub_wc],
         )
 
+def sort_rewiring(wiring):
+    return sorted(wiring, key=lambda x: x[-1], reverse=True)
 
 ########################################################################################
+################## MAIN
 ########################################################################################
-########################################################################################
-
-if False:
-    PLOT_TYPE = "DELAY"
-    BIT_LEN = 8     ### GLOBAL OVERRIDE
-
-    # Critical path 1
-    critical_fa_lst = []
-    for lay in range(0, BIT_LEN-2):
-        critical_fa_lst += [(lay, 0)]
-    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-    log.println(f"critical path 1: \n {critical_fa_lst}")
-    
-    examine_wire_comb(
-        [], 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label=f"crit 1 no-mitigation", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-    # _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    # examine_wire_comb(
-    #     worst_wire_comb, 
-    #     plot=PLOT_TYPE, 
-    #     plot_save_clear=False, 
-    #     plot_label="crit 1 attack", 
-    #     critical_fa_lst=critical_fa_lst
-    # )
 
 
-    # Critical path 2
-    critical_fa_lst = []
-    for lay in range(0, BIT_LEN-2):
-        critical_fa_lst += [(lay, max(BIT_LEN - (lay + 5), 0))]
-    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-    log.println(f"critical path 2: \n {critical_fa_lst}")
-    
-    examine_wire_comb(
-        [], 
-        plot=PLOT_TYPE, 
-        plot_save_clear=False, 
-        plot_label=f"crit 2 no-mitigation", 
-        critical_fa_lst=critical_fa_lst
-    )
+if False and (__name__ == "__main__"):
+    """each path gets full rewiring -> aging(1 year) -> route with higher aging higher priority"""
+    log.println(f"RUNNING: critical path priorities, bit len [{BIT_LEN}]")
+    for i in range(BIT_LEN - 1):
+        critical_path = create_crit(i)
+        _, worst_wiring = get_best_worst_wire_comb(
+            log=False,
+            bitlen=BIT_LEN,
+            temp=TEMP,
+            mp=Wallace_rew,
+            critical_fa_lst=critical_path
+        )
 
-    # _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    # examine_wire_comb(
-    #     worst_wire_comb, 
-    #     plot=PLOT_TYPE, 
-    #     plot_save_clear=False, 
-    #     plot_label="crit 2 attack", 
-    #     critical_fa_lst=critical_fa_lst
-    # )
+        ts_1year = 50 *7 *24*60*60
 
+        alpha_nomitigation = get_alpha(Wallace_rew, BIT_LEN, log=False, rew_lst=[])
+        alpha_rewired = get_alpha(Wallace_rew, BIT_LEN, log=False, rew_lst=worst_wiring)
+        delay_nomitigation = get_MP_delay(critical_path, alpha_nomitigation, TEMP, ts_1year)
+        delay_rewired = get_MP_delay(critical_path, alpha_rewired, TEMP, ts_1year)
 
-    # Critical path 3
-    critical_fa_lst = []
-    for lay in range(0, BIT_LEN-2):
-        critical_fa_lst += [(lay, BIT_LEN - (lay + 2))]
-    critical_fa_lst += [(BIT_LEN-2, i) for i in range(BIT_LEN)]
-    log.println(f"critical path 3: \n {critical_fa_lst}")
-    
-    examine_wire_comb(
-        [], 
-        plot=PLOT_TYPE, 
-        plot_save_clear=True, 
-        plot_label=f"crit 3 no-mitigation", 
-        critical_fa_lst=critical_fa_lst
-    )
-
-    # _, worst_wire_comb = get_best_worst_wire_comb(log=False, critical_fa_lst=critical_fa_lst)
-    # examine_wire_comb(
-    #     worst_wire_comb, 
-    #     plot=PLOT_TYPE, 
-    #     plot_save_clear=True, 
-    #     plot_label="crit 3 attack", 
-    #     critical_fa_lst=critical_fa_lst
-    # )
-
+        log.println(f"path [{i}] -> delay({ts_1year}s): {delay_nomitigation:.4f} -> {delay_rewired:.4f}")
+        log.println(f"{sort_rewiring(worst_wiring)}")
 
 
 """specific wire combination aging"""
-if False:
+if True and (__name__ == "__main__"):
     # normal aging without mitigation
+
+    # REW_LST = []
+
+    """8-bit critical-path"""
+    # REW_LST = \
+    #     [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844)]
+    
+    """6-bit critical-path"""
+    # REW_LST = \
+    #     [(0, 0, 'C', 'A', 'B', 0.06047137087990345), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (4, 0, 'C', 'A', 'B', 0.5548261609530758), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621)]
+    
+    """10-bit critical-path"""
+    REW_LST = \
+        [(0, 0, 'C', 'A', 'B', 0.06047137087990345), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (6, 0, 'A', 'C', 'B', 0.559487579332143), (7, 0, 'A', 'C', 'B', 0.559487579332143), (8, 0, 'C', 'A', 'B', 0.559487579332143), (8, 1, 'A', 'C', 'B', 0.27974378966607144), (8, 2, 'A', 'C', 'B', 0.16752601088223223), (8, 3, 'A', 'C', 'B', 0.1318820895897786), (8, 4, 'A', 'C', 'B', 0.11401192182901981), (8, 5, 'A', 'C', 'B', 0.10202721396413394), (8, 6, 'C', 'A', 'B', 0.08961912187596943), (8, 7, 'C', 'A', 'B', 0.07844764707361834), (8, 8, 'C', 'A', 'B', 0.05196725706721206), (8, 9, 'A', 'B', 'C', 0)]
+        
+
+    #rewire top-20% of circuit
+    # circuit_size = BIT_LEN * (BIT_LEN - 1)
+    # REW_LST = REW_LST[:(circuit_size//5)]
+    
     examine_wire_comb(
-        wire_comb=[], 
+        wire_comb=REW_LST, 
         bit_len=BIT_LEN, 
         temp=TEMP, 
         log=log, 
@@ -315,13 +312,12 @@ if False:
         critical_fa_lst=CRITICAL_FA_lst
         )
 
-
-
 """
 extracting best and worst wiring combination for the provided multiplier
 """
-if True:
-    best_wiring, worst_wiring = get_best_worst_wire_comb(log=False)
+if False and (__name__ == "__main__"):
+    best_wiring, worst_wiring = get_best_worst_wire_comb(log=log)
+    log.println(f"worst wiring:\n{worst_wiring}")
     
     # examine_multi_wire_comb(
     #     [worst_wiring, [], best_wiring],
@@ -331,20 +327,20 @@ if True:
     # )
 
 
-
-
 """
 partial rewiring
 """
-if False:
+if False and (__name__ == "__main__"):
     _, worst_wiring = get_best_worst_wire_comb(log=False)
     worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
 
     full_combo = []
     full_combo_label = []
-    for combo in [0, 4, 8, 12, 14]:
+    for combo in [0, len(worst_wiring)//4, len(worst_wiring)//2, len(worst_wiring)*3//4, len(worst_wiring)]:
         full_combo.append(worst_wiring[0:combo])
         full_combo_label.append(f"{combo} / {len(worst_wiring)}")
+    log.println(f"wire combo:\n{full_combo}")
+
     
     examine_multi_wire_comb(
         multi_wire_comb = full_combo,
@@ -352,3 +348,55 @@ if False:
         log = log,
         plot = "DELAY"
     )
+
+
+"""
+rewiring list for all the FAs (sorted)
+"""
+if False:
+    lst = []
+    for fa_i in range(BIT_LEN - 1):
+        for fa_j in range(BIT_LEN):
+            lst += [(fa_i, fa_j)]
+
+    best_wiring, worst_wiring = get_best_worst_wire_comb(critical_fa_lst=lst, log=False)
+    log.println(f"worst complete wiring:\n{worst_wiring}")
+    worst_wiring = sorted(worst_wiring, key=lambda x: x[-1], reverse=True)
+    log.println(f"worst complete wiring (sorted):\n{worst_wiring}")
+
+
+
+"""
+error rate of wire combination
+"""
+if False and __name__ == "__main__":
+    # REW_LST = []
+
+    """8-bit critical-path"""
+    # REW_LST = \
+    #     [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844)]
+    
+    """6-bit critical-path"""
+    # REW_LST = \
+    #     [(0, 0, 'C', 'A', 'B', 0.06047137087990345), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (4, 0, 'C', 'A', 'B', 0.5548261609530758), (4, 1, 'B', 'C', 'A', 0.27623934203576533), (4, 2, 'A', 'C', 'B', 0.13976290483496429), (4, 3, 'A', 'C', 'B', 0.08558649194731616), (4, 4, 'C', 'A', 'B', 0.04410409370444246), (4, 5, 'B', 'A', 'C', 0.01562820271485621)]
+    
+    """10-bit critical-path"""
+    REW_LST = \
+        [(0, 0, 'C', 'A', 'B', 0.06047137087990345), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (6, 0, 'A', 'C', 'B', 0.559487579332143), (7, 0, 'A', 'C', 'B', 0.559487579332143), (8, 0, 'C', 'A', 'B', 0.559487579332143), (8, 1, 'A', 'C', 'B', 0.27974378966607144), (8, 2, 'A', 'C', 'B', 0.16752601088223223), (8, 3, 'A', 'C', 'B', 0.1318820895897786), (8, 4, 'A', 'C', 'B', 0.11401192182901981), (8, 5, 'A', 'C', 'B', 0.10202721396413394), (8, 6, 'C', 'A', 'B', 0.08961912187596943), (8, 7, 'C', 'A', 'B', 0.07844764707361834), (8, 8, 'C', 'A', 'B', 0.05196725706721206), (8, 9, 'A', 'B', 'C', 0)]
+        
+    log.println(f"RUNNING: error rate bitlen [{BIT_LEN}], REW_LST [{len(REW_LST)}]: \n{REW_LST}")
+
+    alpha_notamper = get_alpha(Wallace_rew, BIT_LEN, log=False, rew_lst=[], verify=False)
+    alpha = get_alpha(Wallace_rew, BIT_LEN, log=False, rew_lst=REW_LST, verify=False)
+
+    res = []
+    for t_week in range(200):
+        t_sec = t_week *7 *25*60*60
+        
+        max_ps_delay = get_MP_delay(CRITICAL_FA_lst, alpha_notamper, TEMP, t_sec) * 1.10    #10% margin
+        err_rate, max_seen_delay = wallace_multiplier_error_rate(BIT_LEN, alpha, TEMP, t_sec, max_ps_delay)
+        res.append(err_rate)
+        
+        log.println(f"REW [{len(REW_LST)}] week [{t_week:03}], error rate: {err_rate:.3f}, max seen delay: {max_seen_delay:.3f}, max_allowed_delay: {max_ps_delay:.3f}")
+    log.println(f"REW [{len(REW_LST)}], error rate: \n{res}")
+
