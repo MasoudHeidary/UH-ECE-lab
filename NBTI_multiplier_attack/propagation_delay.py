@@ -61,7 +61,7 @@ def array_multiplier_pd(A, B, bitlen, fa_delay):
 
 def array_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
     limit = 2 ** (bitlen - 1)
-    length = 2*limit
+    length = (2 * limit) ** 2
     fa_delay_matrix = get_FA_delay_matrix(bitlen, alpha, temp, sec)
 
     max_seen_delay = 0
@@ -115,7 +115,7 @@ def wallace_multiplier_pd(A, B, bitlen, fa_delay):
 
 def wallace_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
     limit = 2 ** (bitlen - 1)
-    length = 2*limit
+    length = (2*limit) ** 2
     fa_delay_matrix = get_FA_delay_matrix(bitlen, alpha, temp, sec)
     
     max_seen_delay = 0
