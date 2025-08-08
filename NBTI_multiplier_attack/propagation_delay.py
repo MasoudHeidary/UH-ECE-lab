@@ -53,10 +53,17 @@ def array_multiplier_pd(A, B, bitlen, fa_delay):
                     d = ps_matrix[i][j]
                     previous_block = max(previous_block, d)
 
+                # gate at top-right (last gate in row)
+                i, j = fa_i-1, fa_j
+                if (fa_j == bitlen-1) and (mp.gfa[i][j].carry):
+                    d = ps_matrix[i][j]
+                    previous_block = max(previous_block, d)
+
                 ps_matrix[fa_i][fa_j] = fa_delay[fa_i][fa_j] + previous_block
                 # print(f"[{fa_i}][{fa_j}]: {previous_block} -> {ps_matrix[fa_i][fa_j]}")
-    
-    return max(ps_matrix[-1])
+    # if mp.gfa[5][bitlen-1].sum and mp.gfa[5][bitlen-1].carry:
+    #     print("x")
+    return max(value for row in ps_matrix for value in row)
 
 
 def array_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
@@ -72,7 +79,6 @@ def array_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
             if pd > max_ps_delay:
                 error_counter += 1
             max_seen_delay = max(max_seen_delay, pd)
-
     return error_counter / length, max_seen_delay
 
 
@@ -103,19 +109,20 @@ def wallace_multiplier_pd(A, B, bitlen, fa_delay):
                     d = ps_matrix[i][j]
                     previous_block = max(d, previous_block)
 
-                # gate at right (for last row)
+                # gate at right (last row only)
                 i, j = fa_i, fa_j-1
                 if (i == bitlen-2) and j >= 0 and mp.gfa[i][j].carry:
                     d = ps_matrix[i][j]
                     previous_block = max(d, previous_block)
                 
                 ps_matrix[fa_i][fa_j] = fa_delay[fa_i][fa_j] + previous_block
-    return max(ps_matrix[-1])
+        
+    return max(value for row in ps_matrix for value in row)
 
 
 def wallace_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
     limit = 2 ** (bitlen - 1)
-    length = (2*limit) ** 2
+    length = (2 * limit) ** 2
     fa_delay_matrix = get_FA_delay_matrix(bitlen, alpha, temp, sec)
     
     max_seen_delay = 0
