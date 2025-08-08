@@ -5,7 +5,9 @@ import torch.nn.functional as F
 
 from tool import manipulate
 
-
+#########################################
+################ CIFAR 10 ###############
+#########################################
 
 class squeezenetCifar10(nn.Module):
     def __init__(self):
@@ -532,6 +534,7 @@ class squeezenetManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
+# same as CIFAR10
 class squeezenetSVHN(squeezenetCifar10):
     pass
 class squeezenetManiSVHN(squeezenetManiCifar10):

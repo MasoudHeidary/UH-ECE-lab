@@ -5,6 +5,14 @@ import torch.nn.functional as F
 
 from tool import *
 
+#########################################
+################ CIFAR 10 ###############
+#########################################
+
+"""
+we have 2 type of class, original one and manipulated one which has lower accuracy
+"""
+
 #TODO: fix the output size to 10
 class vgg11Cifar10(nn.Module):
     def __init__(self):
@@ -224,6 +232,7 @@ class vgg11ManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
+#same as CIFAR10
 class vgg11SVHN(vgg11Cifar10):
     pass
 class vgg11ManiSVHN(vgg11ManiCifar10):

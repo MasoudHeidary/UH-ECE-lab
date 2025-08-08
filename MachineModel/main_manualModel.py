@@ -5,9 +5,9 @@ import torchvision.transforms as transforms
 from copy import deepcopy
 
 from globalVariable import *
-from log import Log
+from tool_d.log import Log
 
-l = Log("log.txt", terminal=True)
+l = Log(LOG_FILE_NAME, terminal=True)
 
 ##################################################### data set
 torch.set_printoptions(linewidth=100)
@@ -151,6 +151,7 @@ def infer(network):
         correct_test += get_num_correct(preds_test, labels_test)
     #print("time: ", time.time() - start)
     l.println(f"testing accuracy: {correct_test / len(test_set) :.4f}")
+    return correct_test / len(test_set)
 #####################################################
 
 ##################################################### MAIN
@@ -244,10 +245,24 @@ def main_inference():
         network.load_state_dict(torch.load(i['path']))
 
         for i in default_manipulate_range:
-            manipualte_percentage.set(i/default_manipulate_divider/100)
-            l.println(f"set manipulate percentage: {i/default_manipulate_divider}/100%")
+            manipualte_percentage.set(i/100)
+            l.println(f"set manipulate percentage: {i}/100%")
             infer(network)
             # l.println()
+        
+        if error_in_time:
+            prev_erate, prev_accu = -1, -1
+            for t_week, error_rate in enumerate(error_in_time):
+                if prev_erate == error_rate:
+                    # l.println(f"week [{t_week:3}], set error_rate [{error_rate:8.4f}] --skip")
+                    l.println(f"testing accuracy: {prev_accu :.4f}")
+                    continue
+                    
+                manipualte_percentage.set(error_rate)
+                # l.println(f"week [{t_week:3}], set error_rate [{error_rate:8.4f}]")
+                
+                prev_erate = error_rate
+                prev_accu = infer(network)
         
         l.println()
 
@@ -257,6 +272,8 @@ if __name__ == "__main__":
     l.println("PROGRAM START")
     l.println(f"TRAIN FLAG: {TRAIN_FLAG}")
     l.println(f"DATA SET: {DATA_SET}")
+    l.println(f"default_manipulate_range: \n{default_manipulate_range}")
+    l.println(f"error_in_time: \n{error_in_time}")
 
     if TRAIN_FLAG:
         if CONFIRM_TO_TRAIN:

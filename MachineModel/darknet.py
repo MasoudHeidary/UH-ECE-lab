@@ -5,6 +5,10 @@ import torch.nn.functional as F
 
 from tool import manipulate
 
+#########################################
+################ CIFAR 10 ###############
+#########################################
+
 class darknetCifar10(nn.Module):
     def __init__(self):
         super(darknetCifar10,self).__init__()
@@ -391,6 +395,7 @@ class darknetManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
+# same as CIFAR10
 class darknetSVHN(darknetCifar10):
     pass
 class darknetManiSVHN(darknetManiCifar10):

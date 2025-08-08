@@ -9,9 +9,9 @@ import torchvision.transforms as transforms
 from copy import deepcopy
 
 from globalVariable import *
-from log import Log
+from tool_d.log import Log
 
-l = Log("log.txt", terminal=True)
+l = Log(LOG_FILE_NAME, terminal=True)
 
 ##################################################### data set
 torch.set_printoptions(linewidth=100)

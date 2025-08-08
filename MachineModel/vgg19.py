@@ -5,6 +5,9 @@ import torch.nn.functional as F
 
 from tool import manipulate
 
+#########################################
+################ CIFAR 10 ###############
+#########################################
 
 class vgg19Cifar10(nn.Module):
     def __init__(self):
@@ -328,6 +331,7 @@ class vgg19ManiCifar100(nn.Module):
 #########################################
 ################ SVHN ###################
 #########################################
+#same as CIFAR10
 class vgg19SVHN(vgg19Cifar10):
     pass
 class vgg19ManiSVHN(vgg19ManiCifar10):
