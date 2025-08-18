@@ -28,6 +28,8 @@ import math
 
 log = Log(LOG_FILE_NAME, terminal=True)
 Manipulate = False
+if DATA_SET != "SST-2":
+    raise RuntimeError(f"invalid dataset [{DATA_SET}] on transformer.")
 
 ##############################################################################
 
