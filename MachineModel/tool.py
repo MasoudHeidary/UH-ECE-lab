@@ -21,7 +21,8 @@ manipualte_percentage = ManipulatePercentage()
 
 def map_bit_to_mantissa(bit_len):
     if bit_len == 16:
-        raise RuntimeError("INVALID bitlen")
+        # raise RuntimeError("INVALID bitlen")
+        mantissa = 23       # float32 full accuracy
     elif bit_len == 10:
         mantissa = 5
     elif bit_len == 8:

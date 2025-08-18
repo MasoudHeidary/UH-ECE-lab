@@ -175,10 +175,10 @@ if DATA_SET == 'Cifar10':
     ]
     inference_lst =  [
         {'network': darknetManiCifar10(), 'path': './modeloutput/darknetCifar10.pt', },
-        {'network': squeezenetManiCifar10(), 'path': './modeloutput/squeezenetCifar10.pt', },
-        {'network': resnet18ManiCifar10(), 'path': './modeloutput/resnet18Cifar10.pt', },
+        # {'network': squeezenetManiCifar10(), 'path': './modeloutput/squeezenetCifar10.pt', },
+        # {'network': resnet18ManiCifar10(), 'path': './modeloutput/resnet18Cifar10.pt', },
         {'network': vgg11ManiCifar10(), 'path': './modeloutput/vgg11Cifar10.pt', },
-        {'network': vgg19ManiCifar10(), 'path': './modeloutput/vgg19Cifar10.pt', },
+        # {'network': vgg19ManiCifar10(), 'path': './modeloutput/vgg19Cifar10.pt', },
     ]
 
 elif DATA_SET == 'Cifar100':
