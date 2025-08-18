@@ -21,7 +21,7 @@ from datetime import datetime
 import random
 
 
-vth_shift = 0.05
+vth_shift = 0.10
 
 BIT_LEN = 8
 TEMP = 273.15 + 80
