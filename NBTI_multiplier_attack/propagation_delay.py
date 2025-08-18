@@ -1,5 +1,7 @@
 
 
+import random
+
 from msimulator.Multiplier import MPn_rew, Wallace_rew
 from msimulator.bin_func import signed_b
 from tool import NBTI_formula as BTI
@@ -82,6 +84,23 @@ def array_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
     return error_counter / length, max_seen_delay
 
 
+def array_multiplier_error_rate_sample(bitlen, alpha, temp, sec, max_ps_delay, samples, rnd_seed):
+    random.seed(rnd_seed)
+    limit = 2 ** (bitlen - 1)
+    fa_delay_matrix = get_FA_delay_matrix(bitlen, alpha, temp, sec)
+
+    max_seen_delay = 0
+    error_counter = 0
+    for sample_i in range(samples):
+        A = random.randint(-limit, limit-1)
+        B = random.randint(-limit, limit-1)
+        pd = array_multiplier_pd(A, B, bitlen, fa_delay_matrix)
+        if pd > max_ps_delay:
+            error_counter += 1
+        max_seen_delay = max(max_seen_delay, pd)
+    return error_counter / samples, max_seen_delay
+
+
 def wallace_multiplier_pd(A, B, bitlen, fa_delay):
     mp = Wallace_rew(signed_b(A, bitlen), signed_b(B, bitlen), bitlen, rew_lst=[])
     mp.output
@@ -134,3 +153,20 @@ def wallace_multiplier_error_rate(bitlen, alpha, temp, sec, max_ps_delay):
                 error_counter += 1
             max_seen_delay = max(max_seen_delay, pd)
     return error_counter/length, max_seen_delay
+
+
+def wallace_multiplier_error_rate_sample(bitlen, alpha, temp, sec, max_ps_delay, samples, rnd_seed):
+    random.seed(rnd_seed)
+    limit = 2 ** (bitlen - 1)
+    fa_delay_matrix = get_FA_delay_matrix(bitlen, alpha, temp, sec)
+    
+    max_seen_delay = 0
+    error_counter = 0
+    for sample_i in range(samples):
+        A = random.randint(-limit, limit-1)
+        B = random.randint(-limit, limit-1)
+        pd = wallace_multiplier_pd(A, B, bitlen, fa_delay_matrix)
+        if pd > max_ps_delay:
+            error_counter += 1
+        max_seen_delay = max(max_seen_delay, pd)
+    return error_counter/samples, max_seen_delay

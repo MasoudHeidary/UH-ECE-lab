@@ -51,7 +51,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 
-BIT_LEN = 6
+BIT_LEN = 8
 TEMP = 273.15 + 80
 ALPHA_VERIFICATION = False
 log = Log(f"{__file__}.{BIT_LEN}.log", terminal=True)
@@ -357,7 +357,7 @@ if False and (__name__ == "__main__"):
 """
 rewiring list for all the FAs (sorted)
 """
-if False:
+if True:
     lst = []
     for fa_i in range(BIT_LEN - 1):
         for fa_j in range(BIT_LEN):

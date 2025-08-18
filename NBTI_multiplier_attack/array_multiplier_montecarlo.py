@@ -272,9 +272,6 @@ def get_monte_error_rate(bitlen, vth, alpha, temp, sec, max_ps_delay):
             pd = get_monte_pd(A, B, bitlen, fa_delay)
             if pd > max_ps_delay:
                 error_counter += 1
-    
-    
-
     return error_counter / length
 
 ########################################################################################
@@ -350,7 +347,7 @@ if False and (__name__ == "__main__"):
 
 
 """error rate of the samples"""
-if True and (__name__ == "__main__"):
+if False and (__name__ == "__main__"):
 
     log.println(f"RUNNING: monte carlo bit {BIT_LEN} for error rate")
     log.println(f"config/ALPHA_COUTING_SAMPLE: {ALPHA_COUNTING_SAMPLE}")
