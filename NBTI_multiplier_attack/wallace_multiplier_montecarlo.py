@@ -12,12 +12,13 @@ from mapping_pmos_vth_body import pmos_vth_to_body
 
 import random
 
-BIT_LEN = 16
+BIT_LEN = 8
 # SAMPLE = 300_000
-SAMPLE = 1
+SAMPLE = 50_000
+# SAMPLE = 1
 
-# IN_ALPHA_SAMPLE = 1000
-# SAMPLE = SAMPLE // IN_ALPHA_SAMPLE
+IN_ALPHA_SAMPLE = 200
+SAMPLE = SAMPLE // IN_ALPHA_SAMPLE
 
 TEMP = 273.15 + 80
 # AGE_TIME = (200-1) * 7 *24*60*60      # 4 year
@@ -38,9 +39,11 @@ if BIT_LEN == 8:
     # REW_LST = []
 
     """half critical-path"""
-    # REW_LST =\
-    # [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715)]
-
+    REW_LST =\
+    [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715)]
+    # new half-critical-path config
+    # REW_LST = \
+    #     [(6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784)]
 
     """one critical-path"""
     # REW_LST =\
@@ -51,6 +54,9 @@ if BIT_LEN == 8:
     #     [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844)]      +\
     #     [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (0, 1, 'A', 'B', 'C', 0)]
     # ))
+    #new two-critical-path config
+    # REW_LST = \
+    #     [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 1, 'A', 'C', 'B', 0.23806349924964598), (1, 2, 'A', 'C', 'B', 0.23806349924964598), (1, 3, 'A', 'C', 'B', 0.23806349924964598), (1, 4, 'A', 'C', 'B', 0.23806349924964598), (1, 5, 'A', 'C', 'B', 0.23806349924964598), (2, 1, 'A', 'C', 'B', 0.22623808445886484), (2, 2, 'A', 'C', 'B', 0.22623808445886484), (2, 3, 'A', 'C', 'B', 0.22623808445886484), (2, 4, 'A', 'C', 'B', 0.22623808445886484), (3, 1, 'A', 'C', 'B', 0.21645413617042697), (3, 2, 'A', 'C', 'B', 0.21645413617042697), (3, 3, 'A', 'C', 'B', 0.21645413617042697), (4, 1, 'A', 'C', 'B', 0.20805352247289927), (4, 2, 'A', 'C', 'B', 0.20805352247289927), (5, 1, 'A', 'C', 'B', 0.20508564098694648), (5, 2, 'A', 'C', 'B', 0.20101528375126826), (4, 3, 'A', 'C', 'B', 0.20044518222289298), (5, 3, 'A', 'C', 'B', 0.20040745491586842), (3, 4, 'A', 'C', 'B', 0.1969030072855622), (5, 4, 'A', 'C', 'B', 0.19681078497950177), (4, 4, 'A', 'C', 'B', 0.19510048039437622)]
 
     """full circuit tampering"""
     # REW_LST = list(set(
@@ -64,8 +70,8 @@ if BIT_LEN == 8:
     # ))
     
     """full circuit considering all the gates"""
-    REW_LST =\
-        [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 1, 'A', 'C', 'B', 0.23806349924964598), (1, 2, 'A', 'C', 'B', 0.23806349924964598), (1, 3, 'A', 'C', 'B', 0.23806349924964598), (1, 4, 'A', 'C', 'B', 0.23806349924964598), (1, 5, 'A', 'C', 'B', 0.23806349924964598), (2, 1, 'A', 'C', 'B', 0.22623808445886484), (2, 2, 'A', 'C', 'B', 0.22623808445886484), (2, 3, 'A', 'C', 'B', 0.22623808445886484), (2, 4, 'A', 'C', 'B', 0.22623808445886484), (3, 1, 'A', 'C', 'B', 0.21645413617042697), (3, 2, 'A', 'C', 'B', 0.21645413617042697), (3, 3, 'A', 'C', 'B', 0.21645413617042697), (4, 1, 'A', 'C', 'B', 0.20805352247289927), (4, 2, 'A', 'C', 'B', 0.20805352247289927), (5, 1, 'A', 'C', 'B', 0.20508564098694648), (5, 2, 'A', 'C', 'B', 0.20101528375126826), (4, 3, 'A', 'C', 'B', 0.20044518222289298), (5, 3, 'A', 'C', 'B', 0.20040745491586842), (3, 4, 'A', 'C', 'B', 0.1969030072855622), (5, 4, 'A', 'C', 'B', 0.19681078497950177), (4, 4, 'A', 'C', 'B', 0.19510048039437622), (5, 5, 'A', 'C', 'B', 0.194203408871786), (4, 5, 'A', 'C', 'B', 0.19249310428666044), (3, 5, 'A', 'C', 'B', 0.1907827997015351), (2, 5, 'A', 'C', 'B', 0.18584052248128324), (5, 6, 'A', 'C', 'B', 0.17836743759193058), (4, 6, 'A', 'C', 'B', 0.16769824540818262), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (3, 6, 'A', 'C', 'B', 0.1437575168356166), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (2, 6, 'C', 'A', 'B', 0.11587346153684991), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (1, 6, 'C', 'A', 'B', 0.09518042500764795), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (1, 7, 'B', 'C', 'A', 0.07595053370645316), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (2, 7, 'C', 'B', 'A', 0.012848333528830136), (3, 7, 'C', 'B', 'A', 0.005668012802252154), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (4, 7, 'C', 'B', 'A', 0.0028235333545586494), (5, 7, 'C', 'B', 'A', 0.0028235333545586494), (0, 1, 'A', 'B', 'C', 0), (0, 2, 'A', 'B', 'C', 0), (0, 3, 'A', 'B', 'C', 0), (0, 4, 'A', 'B', 'C', 0), (0, 5, 'A', 'B', 'C', 0), (0, 6, 'A', 'B', 'C', 0), (0, 7, 'A', 'B', 'C', 0)]
+    # REW_LST =\
+    #     [(6, 0, 'C', 'A', 'B', 0.559487579332143), (4, 0, 'A', 'C', 'B', 0.5548261609530758), (5, 0, 'A', 'C', 'B', 0.5548261609530758), (3, 0, 'A', 'C', 'B', 0.5501312071899864), (2, 0, 'A', 'C', 'B', 0.5406406935117418), (1, 0, 'A', 'C', 'B', 0.5237137084266037), (6, 1, 'B', 'C', 'A', 0.2797437896660715), (1, 1, 'A', 'C', 'B', 0.23806349924964598), (1, 2, 'A', 'C', 'B', 0.23806349924964598), (1, 3, 'A', 'C', 'B', 0.23806349924964598), (1, 4, 'A', 'C', 'B', 0.23806349924964598), (1, 5, 'A', 'C', 'B', 0.23806349924964598), (2, 1, 'A', 'C', 'B', 0.22623808445886484), (2, 2, 'A', 'C', 'B', 0.22623808445886484), (2, 3, 'A', 'C', 'B', 0.22623808445886484), (2, 4, 'A', 'C', 'B', 0.22623808445886484), (3, 1, 'A', 'C', 'B', 0.21645413617042697), (3, 2, 'A', 'C', 'B', 0.21645413617042697), (3, 3, 'A', 'C', 'B', 0.21645413617042697), (4, 1, 'A', 'C', 'B', 0.20805352247289927), (4, 2, 'A', 'C', 'B', 0.20805352247289927), (5, 1, 'A', 'C', 'B', 0.20508564098694648), (5, 2, 'A', 'C', 'B', 0.20101528375126826), (4, 3, 'A', 'C', 'B', 0.20044518222289298), (5, 3, 'A', 'C', 'B', 0.20040745491586842), (3, 4, 'A', 'C', 'B', 0.1969030072855622), (5, 4, 'A', 'C', 'B', 0.19681078497950177), (4, 4, 'A', 'C', 'B', 0.19510048039437622), (5, 5, 'A', 'C', 'B', 0.194203408871786), (4, 5, 'A', 'C', 'B', 0.19249310428666044), (3, 5, 'A', 'C', 'B', 0.1907827997015351), (2, 5, 'A', 'C', 'B', 0.18584052248128324), (5, 6, 'A', 'C', 'B', 0.17836743759193058), (4, 6, 'A', 'C', 'B', 0.16769824540818262), (6, 2, 'A', 'C', 'B', 0.1596535794830523), (3, 6, 'A', 'C', 'B', 0.1437575168356166), (6, 3, 'A', 'C', 'B', 0.12236642437351741), (2, 6, 'C', 'A', 'B', 0.11587346153684991), (6, 4, 'A', 'C', 'B', 0.09636392598740745), (1, 6, 'C', 'A', 'B', 0.09518042500764795), (6, 5, 'C', 'A', 'B', 0.07807456592637296), (1, 7, 'B', 'C', 'A', 0.07595053370645316), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (6, 6, 'C', 'A', 'B', 0.050249677430165784), (2, 7, 'C', 'B', 'A', 0.012848333528830136), (3, 7, 'C', 'B', 'A', 0.005668012802252154), (6, 7, 'B', 'A', 'C', 0.0034385392482901844), (4, 7, 'C', 'B', 'A', 0.0028235333545586494), (5, 7, 'C', 'B', 'A', 0.0028235333545586494), (0, 1, 'A', 'B', 'C', 0), (0, 2, 'A', 'B', 'C', 0), (0, 3, 'A', 'B', 'C', 0), (0, 4, 'A', 'B', 'C', 0), (0, 5, 'A', 'B', 'C', 0), (0, 6, 'A', 'B', 'C', 0), (0, 7, 'A', 'B', 'C', 0)]
         
 
 elif BIT_LEN == 6:
@@ -105,8 +111,8 @@ elif BIT_LEN == 16:
 if REW_LST == None:
     raise RuntimeError("REW_LST is NONE, the defined Bit Length does not have corresponding rewiring")
 
-log = Log(f"{__file__}.bit{BIT_LEN}.REW{len(REW_LST)}.log", terminal=True)
-DUMP_RAW = True
+log = Log(f"{__file__}.{BIT_LEN}.{len(REW_LST)}.old.log", terminal=True)
+DUMP_RAW = False
 
 ########################## potential critical path list
 
@@ -322,6 +328,19 @@ def get_monte_error_rate_sample(bitlen, vth, alpha, temp, sec, max_ps_delay, sam
 
     return error_counter/samples, max_seen_delay
 
+def get_monte_average_delay_sample(bitlen, vth, alpha, temp, sec, sample):
+    limit = 2 ** (bitlen - 1)
+    
+    sum_delay = 0
+    fa_delay_matrix = get_monte_FA_delay_matrix(bitlen, vth, alpha, temp, sec)
+    for sample_i in range(sample):
+        A = random.randint(-limit, limit-1)
+        B = random.randint(-limit, limit-1)
+        pd = get_monte_pd(A, B, bitlen, fa_delay_matrix)
+        sum_delay += pd
+
+    return sum_delay / sample
+
 ########################## main
 
 """process variation monte carlo"""
@@ -377,14 +396,12 @@ if False and (__name__ == "__main__"):
         alpha = get_monte_alpha(Wallace_rew, BIT_LEN, ALPHA_COUNTING_SAMPLE, in_alpha, in_alpha_i, rew_lst=REW_LST)
         
         for sample_id in range(SAMPLE):
-            delay = get_monte_MP_delay(sample_id, path_lst, alpha, TEMP, AGE_TIME)
+            delay = get_monte_MP_delay((in_alpha_i+1) * sample_id, path_lst, alpha, TEMP, AGE_TIME)
             res.append(delay)
         log.println(f"- [{len(REW_LST)}] ALPHA[{in_alpha_i}] DONE")
 
     log.println(f"REW LEN: {len(REW_LST)}")
     log.println(f"[{len(REW_LST)}] min {min(res)}, max {max(res)}, average {sum(res)/len(res)}")
-    if DUMP_RAW:
-        log.println(f"raw result: \n{res}")
 
     _sample_per_delay = [0 for _ in range(2000)]
     for delay in res:
@@ -392,8 +409,76 @@ if False and (__name__ == "__main__"):
     log.println(f"[{len(REW_LST)}] _sample_per_delay:\n{_sample_per_delay}")
 
 
-"""error rate of the samples using real alpha"""
+"""average delay, process variation monte carlo"""
+if False and (__name__ == "__main__"):
+    res = []
+
+    log.println("-"*20)
+    log.println(f"RUNNING: monte carlo bit {BIT_LEN} with dynamic input alpha")
+    log.println(f"config/ALPHA_COUTING_SAMPLE: {ALPHA_COUNTING_SAMPLE}")
+    log.println(f"config/SAMPLE: {SAMPLE}")
+    log.println(f"config/REW_LST: [{len(REW_LST)}] {REW_LST}")
+    log.println("-"*20)
+
+    alpha = get_alpha(Wallace_rew, BIT_LEN, log=False, rew_lst=REW_LST)
+    for sample_id in range(SAMPLE):
+        vth_matrix = generate_guassian_vth_base(BIT_LEN, seed=seed_generator(sample_id))
+        delay = get_monte_average_delay_sample(BIT_LEN, vth_matrix, alpha, TEMP, AGE_TIME, 500)
+        res.append(delay)
+
+        if sample_id % 1_000 == 0:
+            log.println(f"REW_LEN [{len(REW_LST)}]: sample [{sample_id:10,}/{SAMPLE:10,}] DONE")
+
+    log.println(f"REW LEN: {len(REW_LST)}")
+    log.println(f"min: {min(res)}, max: {max(res)}, average {sum(res)/len(res)}")
+    if DUMP_RAW:
+        log.println(f"raw result: \n{res}")
+    
+    # delay from 0-2000 as counter, each delay increase by one
+    _sample_per_delay = [0 for _ in range(2000)]
+    for delay in res:
+        _sample_per_delay[int(delay)] += 1
+    log.println(f"_sample_per_delay:\n{_sample_per_delay} \n")
+
+
+"""average delay, (process variation, dynamic input) monte carlo"""
 if True and (__name__ == "__main__"):
+    MIN_ALPHA = 0.1
+    MAX_ALPHA = 0.9
+    res = []
+
+    log.println("-"*20)
+    log.println(f"RUNNING: monte carlo bit {BIT_LEN} with dynamic input alpha")
+    log.println(f"config/ALPHA_COUTING_SAMPLE: {ALPHA_COUNTING_SAMPLE}")
+    log.println(f"config/SAMPLE: {SAMPLE}")
+    log.println(f"config/REW_LST: [{len(REW_LST)}] {REW_LST}")
+    log.println("-"*20)
+
+    for in_alpha_i in range(IN_ALPHA_SAMPLE):
+        random.seed(in_alpha_i)
+        a_alpha = [random.uniform(MIN_ALPHA, MAX_ALPHA) for _ in range(BIT_LEN)]
+        b_alpha = [random.uniform(MIN_ALPHA, MAX_ALPHA) for _ in range(BIT_LEN)]
+        in_alpha = {'A': a_alpha, 'B': b_alpha}
+        alpha = get_monte_alpha(Wallace_rew, BIT_LEN, ALPHA_COUNTING_SAMPLE, in_alpha, in_alpha_i, rew_lst=REW_LST)
+        
+        for sample_id in range(SAMPLE):
+            vth_matrix = generate_guassian_vth_base(BIT_LEN, seed=seed_generator((in_alpha_i+1)*sample_id))
+            delay = get_monte_average_delay_sample(BIT_LEN, vth_matrix, alpha, TEMP, AGE_TIME, 500)
+            res.append(delay)
+        log.println(f"alpha [{in_alpha_i:3}/{IN_ALPHA_SAMPLE}] DONE")
+
+    log.println(f"REW LEN: {len(REW_LST)}")
+    log.println(f"min: {min(res)}, max: {max(res)}, average {sum(res)/len(res)}")
+    
+    # delay from 0-2000 as counter, each delay increase by one
+    _sample_per_delay = [0 for _ in range(2000)]
+    for delay in res:
+        _sample_per_delay[int(delay)] += 1
+    log.println(f"_sample_per_delay:\n{_sample_per_delay} \n")
+
+
+"""error rate of the samples using real alpha"""
+if False and (__name__ == "__main__"):
     log.println(f"RUNNING: monte carlo bit {BIT_LEN} for error rate")
     log.println(f"config/ALPHA_COUTING_SAMPLE: {ALPHA_COUNTING_SAMPLE}")
     log.println(f"config/SAMPLES: {SAMPLE}")

@@ -31,6 +31,10 @@ def alpha_t_limiter(alpha, t):
         alpha = 0.9
     elif alpha == 1:
         alpha = 0.5
+    # if alpha == 1:
+    #     alpha = 0.5
+    # elif alpha > 0.98:
+    #     alpha = 0.5
     
     if 0 <= t < 10:
         t = 10
