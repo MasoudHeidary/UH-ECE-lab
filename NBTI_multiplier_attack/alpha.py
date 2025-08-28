@@ -3,7 +3,7 @@ import multiprocessing
 
 from msimulator.bin_func import signed_b, reverse_signed_b
 
-INPUT_PIN_ALPHA = True
+INPUT_PIN_ALPHA = False
 MAX_PROCESSES = 10 #multiprocessing.cpu_count()
 
 class AlphaMultiprocess:

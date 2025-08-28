@@ -370,7 +370,7 @@ error rate of wire combination
 """
 if True and __name__ == "__main__":
     
-    # REW_LST = []
+    REW_LST = []
     """6-bit M-1-100%"""
     # REW_LST = [(1, 4, 'A', 'C', 'B', 0.09658243544414136), (1, 5, 'A', 'B', 'C', 0), (2, 4, 'A', 'C', 'B', 0.1496285059359429), (2, 5, 'A', 'C', 'B', 0.06917656718668863), (3, 4, 'A', 'C', 'B', 0.18241572138802975), (3, 5, 'A', 'C', 'B', 0.12469209243091955), (0, 0, 'C', 'A', 'B', 0.06047137087990345), (0, 1, 'A', 'C', 'B', 0.28976406320693054), (0, 2, 'A', 'C', 'B', 0.26259279119258666), (0, 3, 'A', 'C', 'B', 0.25481341220235604), (0, 4, 'A', 'C', 'B', 0.2315129781993061), (0, 5, 'B', 'C', 'A', 0.103645377172287), (4, 4, 'C', 'A', 'B', 0.10590474274168515), (4, 5, 'B', 'A', 'C', 0.07976750715539899)]
     """8-bit M-1-100%"""
@@ -404,6 +404,8 @@ if True and __name__ == "__main__":
 
     alpha_notamper = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=[], verify=False)
     alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=REW_LST, verify=False)
+    log.println(f"{alpha}")
+    exit()
 
     res = []
     for t_week in range(200):

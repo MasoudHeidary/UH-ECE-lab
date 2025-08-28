@@ -261,7 +261,7 @@ if False and (__name__ == "__main__"):
 
 
 """specific wire combination aging"""
-if True and (__name__ == "__main__"):
+if False and (__name__ == "__main__"):
     # normal aging without mitigation
 
     # REW_LST = no_tamper
@@ -340,13 +340,16 @@ if False and (__name__ == "__main__"):
 """
 error rate of wire combination
 """
-if False and __name__ == "__main__":
-    REW_LST = tamper_full_circuit
+if True and __name__ == "__main__":
+    # REW_LST = tamper_full_circuit
+    REW_LST = tamper_critical_path
 
     log.println(f"RUNNING: error rate bitlen [{BIT_LEN}], REW_LST [{len(REW_LST)}]: \n{REW_LST}")
 
     alpha_notamper = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=[], verify=False)
     alpha = get_alpha(MPn_rew, BIT_LEN, log=False, rew_lst=REW_LST, verify=False)
+    log.println(f"no-tamper alpha: \n{alpha_notamper}")
+    log.println(f"tampered alpha: \n{alpha}")
 
     margin_t_sec = 199 *7 *24*60*60
     max_ps_delay = get_MP_delay(CRITICAL_FA_lst, alpha_notamper, TEMP, margin_t_sec)   # fixed margin
