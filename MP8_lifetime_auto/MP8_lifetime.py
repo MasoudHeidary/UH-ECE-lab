@@ -11,7 +11,7 @@ from tool.log import Log
 log = Log(f"{__file__}.log", terminal=True)
 # log.println("START...")
 
-bit_len = 16
+bit_len = 8
 # faulty_transistor = {'fa_i': 3, 'fa_j': 0, 't_index': 5, 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
 # faulty_transistor = {'fa_i': random.randint(0, bit_len-1-1), 'fa_j': random.randint(0, bit_len-1), 't_index': random.randint(0, 5), 'x_vth_base': 1.1, 'x_vth_growth': 1.1}
 # faulty_transistor = False
@@ -151,14 +151,14 @@ if False:
 
                     log.println(f"faulty transistor: {faulty_transistor} >>> using normal lookup table >>> {unoptimized_lifetime:03} -> {lookup_table_lifetime:03}")
 
-# DONE
 
-if False:
+if True:
     """optimization for the first 5 transistors to find the maximum lifetime"""
     log.println(f"faulty transistor: {faulty_transistor}")
     for _ in range(5):
         alpha_lst = MultiplierStressTest(bit_len, optimizer_trigger, optimizer_accept).run()
-        # log.println(f"alpha list: {alpha_lst}")
+        log.println(f"alpha list: {alpha_lst}")
+        exit()
 
         fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
         log.println(f"failed transistor: {fail_transistor}")
@@ -167,17 +167,20 @@ if False:
         log.println(f"optimization list: {lst_transistor_optimize}")
 
 
-if True:
+if False:
     """same experiment but with shrinked alpha for faster computations [no lookup table]"""
 
-    SAMPLE_COUNT = 100_000_000
+    # SAMPLE_COUNT = 100_000_000
+    SAMPLE_COUNT = 1_000_000
+    # SAMPLE_COUNT = 50_000
     RND_SEED = 7
 
     log.println(f"faulty transistor: {faulty_transistor}")
     for _ in range(3):
         # alpha_lst = AlphaShrinked(bit_len, optimizer_trigger, optimizer_accept).run(sample_count=SAMPLE_COUNT, rnd_seed=RND_SEED, log_obj=log)
         alpha_lst = AlphaShrinked(bit_len, optimizer_trigger, optimizer_accept).run_multi(sample_count=SAMPLE_COUNT, rnd_seed=RND_SEED, log_obj=log)
-        # log.println(f"alpha list: {alpha_lst}")
+        log.println(f"alpha list: {alpha_lst}")
+        exit()
 
         fail_transistor = get_life_expect(alpha_lst, bit_len, faulty_transistor)
         log.println(f"[{bit_len}] failed transistor: {fail_transistor}")

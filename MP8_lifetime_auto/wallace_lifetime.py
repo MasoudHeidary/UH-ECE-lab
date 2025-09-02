@@ -96,8 +96,9 @@ def op_accept(neg_mp: Wallace_comp):
 if True:
     """same experiment but with shrinked alpha for faster computations [no lookup table]"""
 
-    BIT_LEN = 64
-    SAMPLE_COUNT = 100_000_000
+    BIT_LEN = 16
+    # SAMPLE_COUNT = 100_000_000
+    SAMPLE_COUNT = 1_000_000
     RND_SEED = 7
 
     faulty_transistor = []
@@ -107,7 +108,7 @@ if True:
     for _ in range(3):
         # alpha_lst = AlphaShrinked(bit_len, optimizer_trigger, optimizer_accept).run(sample_count=SAMPLE_COUNT, rnd_seed=RND_SEED, log_obj=log)
         alpha_lst = AlphaWallaceShrinked(BIT_LEN, op_trigger, op_accept).run_multi(sample_count=SAMPLE_COUNT, rnd_seed=RND_SEED, log_obj=log)
-        # log.println(f"alpha list: {alpha_lst}")
+        log.println(f"alpha list: {alpha_lst}")
 
         fail_transistor = get_life_expect(alpha_lst, BIT_LEN, faulty_transistor)
         log.println(f"[{BIT_LEN}] failed transistor: {fail_transistor}")
