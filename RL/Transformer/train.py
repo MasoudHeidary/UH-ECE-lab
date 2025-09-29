@@ -2,7 +2,7 @@
 # File: transformer_bo/train.py
 from model_dense_enc import build_transformer
 from dataset import BilingualDataset, causal_mask
-from config import get_config, get_weights_file_path, latest_weights_file_path
+from config import *
 
 import torch
 import torch.nn as nn
@@ -28,7 +28,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from fvcore.nn import FlopCountAnalysis
 
-from log import Log
+from quantize import ftp_modify_model
 
 
 def greedy_decode(model, source, source_mask, tokenizer_src, tokenizer_tgt, max_len, device, connections_matrix):
@@ -210,28 +210,20 @@ def run_validation(model, validation_ds, tokenizer_src, tokenizer_tgt, max_len,
 
 
 def get_flops(cfg, log:Log=False):
-    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-
-    # === Load dataset & tokenizers ===
+    device = torch.device(DEVICE)
     _, val_loader, tokenizer_src, tokenizer_tgt = get_ds(cfg)
 
-    # === Build model ===
     model = get_model(cfg, tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size()).to(device)
-
-    # === Load pretrained checkpoint ===
     model_filename = latest_weights_file_path(cfg)
-    # print("Loading:", model_filename)
     state = torch.load(model_filename, map_location=device)
     model.load_state_dict(state["model_state_dict"])
 
-    # === Connections matrix (sequential encoder by default) ===
     N = cfg['num_layers']
     default_matrix = np.zeros((N + 1, N + 1), dtype=int)
     for i in range(N):
         default_matrix[i, i+1] = 1
     connections_matrix = torch.tensor(default_matrix, device=device, dtype=torch.int)
 
-    # === Run validation once (just inference mode) - one patch only ===
     model.eval()
     with torch.no_grad():
         for batch in val_loader:
@@ -252,11 +244,8 @@ def get_flops(cfg, log:Log=False):
             return batch_flops
 
 ###########################################################################################
-def train_model(config, validate=False, log:Log=False):
-    # Device selection (same logic as your earlier script)
-    #device = "cuda" if torch.cuda.is_available() else ("mps" if (hasattr(torch, "has_mps") and torch.has_mps) or torch.backends.mps.is_available() else "cpu")
-    #print("Using device:", device)
-    device = torch.device('cuda')
+def train_model(config, validate=False, log:Log=False, precision="ftp32"):
+    device = torch.device(DEVICE)
     print("Using device:", device)
 
     # Default sequential encoder graph if not provided
@@ -274,8 +263,10 @@ def train_model(config, validate=False, log:Log=False):
     # Data / model
     train_loader, val_loader, tokenizer_src, tokenizer_tgt = get_ds(config)
     model = get_model(config, tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size()).to(device)
+    if precision != "ftp32":
+        raise ("ivalid precision, only ftp32 in training is supported")
+    
     writer = SummaryWriter(config['experiment_name'])
-
     optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'], eps=1e-9)
 
     # Preload OFF for NAS (old way keeps None)
@@ -306,6 +297,7 @@ def train_model(config, validate=False, log:Log=False):
         writer_csv = csv.writer(file)
         writer_csv.writerow(['Epoch', 'Validation Perplexity'])
 
+        train_loss = 0
         for epoch in range(initial_epoch, config['num_epochs']):
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
@@ -326,6 +318,7 @@ def train_model(config, validate=False, log:Log=False):
 
                 loss = loss_fn(proj.view(-1, tokenizer_tgt.get_vocab_size()), label.view(-1))
                 batch_iterator.set_postfix({"loss": f"{loss.item():6.3f}"})
+                train_loss = loss.item()
 
                 writer.add_scalar('train loss', loss.item(), global_step)
                 writer.add_scalar('train perplexity', calculate_perplexity(loss.item()), global_step)
@@ -336,17 +329,10 @@ def train_model(config, validate=False, log:Log=False):
                 optimizer.zero_grad(set_to_none=True)
                 global_step += 1
 
-            if validate and validate(epoch):
-                avg_loss = run_validation(
-                    model, val_loader, tokenizer_src, tokenizer_tgt, config['seq_len'],
-                    device, lambda msg: batch_iterator.write(msg), global_step, writer, connections_matrix
-                )
-            else:
-                avg_loss = 1
-            avg_perplexity = calculate_perplexity(avg_loss)
-            writer_csv.writerow([epoch, avg_perplexity])
+            train_perplexity = calculate_perplexity(train_loss)
+            writer_csv.writerow([epoch, train_perplexity])
             file.flush()
-            print(f'Epoch {epoch:02d}, Validation Perplexity: {avg_perplexity:.4f}')
+            
 
             # save every epoch
             save_path = get_weights_file_path(config, f"{epoch:02d}")
@@ -357,30 +343,40 @@ def train_model(config, validate=False, log:Log=False):
                 'global_step': global_step
             }, save_path)
             if log:
-                log.println(f"epoch [{epoch:2}] saved in [{save_path}]")
+                log.println(f"epoch [{epoch:2}] saved in [{save_path}], train loss [{train_loss:.4f}]")
+                
+            if validate and epoch >= validate:
+                v_loss = run_validation(
+                    model, val_loader, tokenizer_src, tokenizer_tgt, config['seq_len'],
+                    device, print, 0, None, connections_matrix
+                )
+                if log:
+                    log.println(f"validate loss: {v_loss}")
+                else:
+                    print(f"validate loss: {v_loss}")
 
-    final_avg_loss = avg_loss
-    final_perplexity = calculate_perplexity(final_avg_loss)
-    print(f'final validation perplexity: {final_perplexity}')
-
-    return float(final_perplexity)
+    return (train_loss, calculate_perplexity(train_loss))
 
 
 ###########################################################################################
-def inference_model(cfg, log:Log=False):
-    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-
-    # === Load dataset & tokenizers ===
+def inference_model(cfg, log:Log=False, precision="ftp32"):
+    device = torch.device(DEVICE)
     _, val_loader, tokenizer_src, tokenizer_tgt = get_ds(cfg)
-
-    # === Build model ===
     model = get_model(cfg, tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size()).to(device)
 
-    # === Load pretrained checkpoint ===
     model_filename = latest_weights_file_path(cfg)
     print("Loading:", model_filename)
     state = torch.load(model_filename, map_location=device)
     model.load_state_dict(state["model_state_dict"])
+
+    if precision == "ftp64":
+        raise ValueError("no bigger than ftp32 supported")
+    elif precision == "ftp32":
+        pass
+    else:
+        log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
+        model = ftp_modify_model(model, precision)
+        log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
 
     # === Connections matrix (sequential encoder by default) ===
     N = cfg['num_layers']
@@ -398,15 +394,14 @@ def inference_model(cfg, log:Log=False):
     pex = calculate_perplexity(avg_loss)
     if log:
         log.println(f"loss [{avg_loss:.5}], perplexity: [{pex}]")
-    return pex
+    return (avg_loss, pex)
 
 
 if __name__ == '__main__':
+    log.println(f"train: ")
     warnings.filterwarnings("ignore")
     cfg = get_config()
 
-    log = Log(f"{__file__}.log", terminal=True)
-    train_model(cfg, validate=False, log=log)
-
-    inference_model(cfg, log=log)
-    get_flops(cfg, log=log)
+    train_model(cfg, validate=False, log=log, precision=PRECISION)
+    # get_flops(cfg, log=log)
+    log.println("\n\n")

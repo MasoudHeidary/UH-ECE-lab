@@ -4,7 +4,9 @@
 import torch
 import torch.nn as nn
 import math
-from config import get_config
+from config import get_config, PRECISION
+
+from quantize import ftp_modify_tensor
 
 class LayerNormalization(nn.Module):
     def __init__(self, features: int, eps: float = 1e-6) -> None:
@@ -14,9 +16,17 @@ class LayerNormalization(nn.Module):
         self.bias = nn.Parameter(torch.zeros(features))
 
     def forward(self, x):
+        # return x
         mean = x.mean(dim=-1, keepdim=True)
+        mean = ftp_modify_tensor(mean, PRECISION)
         std = x.std(dim=-1, keepdim=True)
-        return self.alpha * (x - mean) / (std + self.eps) + self.bias
+        std = ftp_modify_tensor(std, PRECISION)
+        # r = self.alpha * (x - mean) / (std + self.eps) + self.bias
+        r = ftp_modify_tensor(self.alpha, PRECISION) * ftp_modify_tensor((x - mean), PRECISION)
+        r /= ftp_modify_tensor((std + self.eps), PRECISION)
+        r += self.bias
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class FeedForwardBlock(nn.Module):
@@ -27,7 +37,11 @@ class FeedForwardBlock(nn.Module):
         self.linear_2 = nn.Linear(d_ff, d_model)
 
     def forward(self, x):
-        return self.linear_2(self.dropout(torch.relu(self.linear_1(x))))
+        x2 = self.linear_1(x)
+        x2 = ftp_modify_tensor(x2, PRECISION)
+        r = self.linear_2(self.dropout(torch.relu(x2)))
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class InputEmbeddings(nn.Module):
@@ -37,7 +51,11 @@ class InputEmbeddings(nn.Module):
         self.embedding = nn.Embedding(vocab_size, d_model)
 
     def forward(self, x):
-        return self.embedding(x) * math.sqrt(self.d_model)
+        x2 = self.embedding(x)
+        x2 = ftp_modify_tensor(x2, PRECISION)
+        r = x2 * math.sqrt(self.d_model)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class PositionalEncoding(nn.Module):
@@ -53,7 +71,10 @@ class PositionalEncoding(nn.Module):
 
     def forward(self, x):
         x = x + self.pe[:, : x.shape[1], :].requires_grad_(False)
-        return self.dropout(x)
+        x = ftp_modify_tensor(x, PRECISION)
+        r = self.dropout(x)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class ResidualConnection(nn.Module):
@@ -63,7 +84,12 @@ class ResidualConnection(nn.Module):
         self.norm = LayerNormalization(features)
 
     def forward(self, x, sublayer):
-        return x + self.dropout(sublayer(self.norm(x)))
+        x = ftp_modify_tensor(x, PRECISION)
+        d = self.dropout(sublayer(self.norm(x)))
+        d = ftp_modify_tensor(d, PRECISION)
+        r = x + d
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class MultiHeadAttentionBlock(nn.Module):
@@ -84,9 +110,12 @@ class MultiHeadAttentionBlock(nn.Module):
     def attention(query, key, value, mask, dropout: nn.Dropout):
         d_k = query.shape[-1]
         scores = (query @ key.transpose(-2, -1)) / math.sqrt(d_k)
+        scores = ftp_modify_tensor(scores, PRECISION)
         if mask is not None:
             scores = scores.masked_fill(mask == 0, -1e9)
+        scores = ftp_modify_tensor(scores, PRECISION)
         scores = scores.softmax(dim=-1)
+        scores = ftp_modify_tensor(scores, PRECISION)
         if dropout is not None:
             scores = dropout(scores)
         return (scores @ value), scores
@@ -95,6 +124,9 @@ class MultiHeadAttentionBlock(nn.Module):
         q = self.w_q(q)
         k = self.w_k(k)
         v = self.w_v(v)
+        q = ftp_modify_tensor(q, PRECISION)
+        k = ftp_modify_tensor(k, PRECISION)
+        v = ftp_modify_tensor(v, PRECISION)
 
         # (B, T, D) -> (B, h, T, d_k)
         def to_heads(x):
@@ -105,10 +137,14 @@ class MultiHeadAttentionBlock(nn.Module):
         q = to_heads(q)
         k = to_heads(k)
         v = to_heads(v)
+        q = ftp_modify_tensor(q, PRECISION)
+        k = ftp_modify_tensor(k, PRECISION)
+        v = ftp_modify_tensor(v, PRECISION)
 
         x, _ = MultiHeadAttentionBlock.attention(q, k, v, mask, self.dropout)
+        x = ftp_modify_tensor(x, PRECISION)
         x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.h * self.d_k)  # (B, T, D)
-        return self.w_o(x)
+        return ftp_modify_tensor(self.w_o(x), PRECISION)
 
 
 class EncoderBlock(nn.Module):
@@ -121,14 +157,19 @@ class EncoderBlock(nn.Module):
 
     def forward(self, x, src_mask):
         x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, src_mask))
+        x = ftp_modify_tensor(x, PRECISION)
         x = self.residual_connections[1](x, self.feed_forward_block)
+        x = ftp_modify_tensor(x, PRECISION)
         return x
 
     # allow dense skip sums
     def forward_dense(self, x_list, src_mask):
         x = sum(x_list)
+        x = ftp_modify_tensor(x, PRECISION)
         x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, src_mask))
+        x = ftp_modify_tensor(x, PRECISION)
         x = self.residual_connections[1](x, self.feed_forward_block)
+        x = ftp_modify_tensor(x, PRECISION)
         return x
 
 
@@ -169,7 +210,10 @@ class Encoder(nn.Module):
         final_output = outputs.get(num_layers)
         if final_output is None:
             raise RuntimeError("Encoder graph is disconnected: final node has no input path.")
-        return self.norm(final_output)
+        final_output = ftp_modify_tensor(final_output, PRECISION)
+        r = self.norm(final_output)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class DecoderBlock(nn.Module):
@@ -184,8 +228,11 @@ class DecoderBlock(nn.Module):
 
     def forward(self, x, encoder_output, src_mask, tgt_mask):
         x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, tgt_mask))
+        x = ftp_modify_tensor(x, PRECISION)
         x = self.residual_connections[1](x, lambda x: self.cross_attention_block(x, encoder_output, encoder_output, src_mask))
+        x = ftp_modify_tensor(x, PRECISION)
         x = self.residual_connections[2](x, self.feed_forward_block)
+        x = ftp_modify_tensor(x, PRECISION)
         return x
 
 
@@ -198,7 +245,10 @@ class Decoder(nn.Module):
     def forward(self, x, encoder_output, src_mask, tgt_mask):
         for layer in self.layers:
             x = layer(x, encoder_output, src_mask, tgt_mask)
-        return self.norm(x)
+        x = ftp_modify_tensor(x, PRECISION)
+        r = self.norm(x)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class ProjectionLayer(nn.Module):
@@ -207,7 +257,9 @@ class ProjectionLayer(nn.Module):
         self.proj = nn.Linear(d_model, vocab_size)
 
     def forward(self, x):
-        return self.proj(x)
+        r = self.proj(x)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 class Transformer(nn.Module):
@@ -226,21 +278,35 @@ class Transformer(nn.Module):
 
     def encode(self, src, src_mask, connections_matrix):
         src = self.src_embed(src)
+        src = ftp_modify_tensor(src, PRECISION)
         src = self.src_pos(src)
-        return self.encoder(src, src_mask, connections_matrix)
+        src = ftp_modify_tensor(src, PRECISION)
+        r = self.encoder(src, src_mask, connections_matrix)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
     def decode(self, encoder_output: torch.Tensor, src_mask: torch.Tensor, tgt: torch.Tensor, tgt_mask: torch.Tensor):
+        encoder_output = ftp_modify_tensor(encoder_output, PRECISION) 
         tgt = self.tgt_embed(tgt)
+        tgt = ftp_modify_tensor(tgt, PRECISION)
         tgt = self.tgt_pos(tgt)
-        return self.decoder(tgt, encoder_output, src_mask, tgt_mask)
+        tgt = ftp_modify_tensor(tgt, PRECISION)
+        r = self.decoder(tgt, encoder_output, src_mask, tgt_mask)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
     def project(self, x):
-        return self.projection_layer(x)
+        x = ftp_modify_tensor(x, PRECISION)
+        r = self.projection_layer(x)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
     
     def forward(self, src, tgt, src_mask, tgt_mask, connections_matrix):
         enc_out = self.encode(src, src_mask, connections_matrix)
         dec_out = self.decode(enc_out, src_mask, tgt, tgt_mask)
-        return self.project(dec_out)
+        r = self.project(dec_out)
+        r = ftp_modify_tensor(r, PRECISION)
+        return r
 
 
 def build_transformer(src_vocab_size: int, tgt_vocab_size: int,
