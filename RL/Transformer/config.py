@@ -1,15 +1,49 @@
 # -*- coding: utf-8 -*-
 
 from pathlib import Path
+from log import Log
+import sys
 
-D_MODEL = 512
-NUM_HEADS = 2
-NUM_LAYERS = 2
-SEQ_LEN = 350
-LANG_SRC = 'en'
-LANG_TGT = 'it'
-NET_NAME = 'model_dense_enc'
-NUM_EPOCHS = 1
+log = Log("output.log", terminal=True)
+
+
+if (len(sys.argv) == 1):
+    D_MODEL = 512
+    NUM_HEADS = 2
+    NUM_LAYERS = 6
+    SEQ_LEN = 350
+    LANG_SRC = 'en'
+    LANG_TGT = 'it'
+    NET_NAME = 'model_dense_enc'
+    NUM_EPOCHS = 10
+    # PRECISION = "ftp32"
+    PRECISION = "int8"
+    DEVICE = "cuda:0"
+    log.println("running with default values")
+else:
+    D_MODEL =       int(sys.argv[1])
+    NUM_HEADS =     2
+    NUM_LAYERS =    int(sys.argv[2])
+    SEQ_LEN =       int(sys.argv[3])
+    # LANG_SRC =      'en'
+    # LANG_TGT =      'it'
+    LANG_SRC =      'el'
+    LANG_TGT =      'en'
+    NET_NAME =      'model_dense_enc'
+    NUM_EPOCHS =    10
+    PRECISION =     sys.argv[4]
+    DEVICE =   sys.argv[5]
+
+
+p = {
+    'D_MODEL': D_MODEL, 'NUM_LAYERS': NUM_LAYERS, 
+    'SEQ_LEN': SEQ_LEN, 'NUM_EPOCHS': NUM_EPOCHS,
+    'PRECISION': PRECISION
+}
+log.println(f"{'@'*80}")
+log.println(f"{'@'*80}")
+log.println(f"{p}")
+
 
 def get_config():
     return {
