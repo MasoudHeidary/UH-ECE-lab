@@ -70,8 +70,8 @@ if __name__ == "__main__":
             freqs.append(env.current_frequency)
             latencies.append(env.latency)
             powers.append(env.power)
-            backlogs.append(env.backlog_size)
-            instr_rates.append(info["insert_rate"])
+            backlogs.append(env.backlog_running)
+            instr_rates.append(env.backlog_crashed)
 
             reward_lst.append(reward)
             power_penalty.append(0)
@@ -104,14 +104,14 @@ if __name__ == "__main__":
         plt.grid(True)
 
         plt.subplot(5,1,4)
-        plt.plot(backlogs, label='Backlog needed steps')
+        plt.plot(backlogs, label='running inst')
         plt.ylabel("...")
         plt.xlabel("Step")
         plt.legend()
         plt.grid(True)
 
         plt.subplot(5,1,5)
-        plt.plot(instr_rates, label='backlog running count')
+        plt.plot(instr_rates, label='crashed inst')
         # plt.plot(reward_lst, label='reward')
         # plt.plot(power_penalty, label='power penalty')
         # plt.plot(backlog_penalty, label='backlog penalty')

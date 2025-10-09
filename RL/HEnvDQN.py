@@ -15,16 +15,21 @@ log = Log(f"{__file__}.log", terminal=True)
 
 
 class Instruction():
-    def __init__(self, start_step):
-        self.start_step = start_step
-        self.needed_FLOPS = 0
-        self.running = False
+    def __init__(self, start_step, exe_step):
+        self.start_step = start_step                # timestep that instruction enters backlog
+        self.end_step = start_step + exe_step       # timestep that instruction execution should finish
+        self.needed_FLOPS = 0                       # remaining FLOPs to finish instruction
+        self.running = False                        # is instruction executing/waiting for execution
         
     def __repr__(self):
         return f"{(self.start_step, self.running, self.needed_FLOPS)}"
     
     def is_running(self):
         return self.running
+    
+    def is_crashed(self, current_step):
+        """is current_step is more than end_step that means instruction has been waiting over-period"""
+        return current_step > self.end_step
     
     def set(self, needed_FLOPS):
         """based on the model loaded, FLOPS will be different"""
@@ -68,6 +73,12 @@ class Backlog():
         for inst in self.inst_lst:
             count += int(inst.is_running())
         return count
+    
+    def count_crashed(self, current_step: int) -> int:
+        counter = 0
+        for inst in self.inst_lst:
+            counter += int(inst.is_crashed(current_step))
+        return counter
             
     def get_propagation(self, current_step, FLOPs_rate):
         if FLOPs_rate == 0:
@@ -110,7 +121,8 @@ class Backlog():
 def random_backlog(inst_length):
     inst_lst = []
     for i in range(inst_length):
-        inst = Instruction(random.randrange(0, MAX_STEP-100))  
+        start_step = random.randrange(0, MAX_STEP-100)
+        inst = Instruction(start_step, 5)  
         inst_lst.append(inst)
     inst_lst.sort(key = lambda inst: inst.start_step)
     return Backlog(inst_lst)
@@ -140,13 +152,13 @@ class SystolicArrayEnv(gym.Env):
         self.action_space = spaces.Discrete(self.Nv * self.Nf)
 
         # observation: volt_norm, freq_norm, latency_norm, power_norm, backlog_norm, processed_norm, insert_rate_norm
-        low = np.array([0.]*5, dtype=np.float32)
-        high = np.array([1.]*5, dtype=np.float32)
+        low = np.array([0.]*6, dtype=np.float32)
+        high = np.array([1.]*6, dtype=np.float32)
         self.observation_space = spaces.Box(low=low, high=high, dtype=np.float32)
 
         # parameters
         # self.max_backlog = MAX_BACKLOG_SIZE
-        self.max_backlog = 100
+        self.max_backlog = 10
         self.max_step = MAX_STEP
         self.max_processed = 25
 
@@ -159,11 +171,13 @@ class SystolicArrayEnv(gym.Env):
         # internal state
         self.current_voltage = 0.0
         self.current_frequency = 0.0
+
         self.latency = 0.0
         self.power = 0.0
 
         self.backlog = 0
-        self.backlog_size = 0
+        self.backlog_running = 0
+        self.backlog_crashed = 0
         # self.processed = 0
         # self.insert_rate = 0
 
@@ -186,7 +200,8 @@ class SystolicArrayEnv(gym.Env):
 
         # backlog random start small to encourage learning
         self.backlog = deepcopy(backlog)
-        self.backlog_size = self.backlog.get_propagation(0, 0) #random.randint(0, max(1, self.max_backlog // 10))
+        self.backlog_running = self.backlog.count_running() #random.randint(0, max(1, self.max_backlog // 10))
+        self.backlog_crashed = self.backlog.count_crashed(0)
         # self.processed = 0
 
         # choose fixed insert_rate for the whole episode (so agent can learn to adapt)
@@ -233,7 +248,9 @@ class SystolicArrayEnv(gym.Env):
         # self.backlog_size = max(0, self.backlog_size - self.processed)
 
         self.backlog.render(self.current_step, self.current_frequency, 2000)
-        self.backlog_size = self.backlog.get_propagation(self.current_step, self.current_frequency)
+        # self.backlog_size = self.backlog.get_propagation(self.current_step, self.current_frequency)
+        self.backlog_running = self.backlog.count_running()
+        self.backlog_crashed = self.backlog.count_crashed(self.current_step)
 
         # self.insert_rate = arrived
 
@@ -244,8 +261,9 @@ class SystolicArrayEnv(gym.Env):
         # diff_term = (self.processed - arrived) / max(1.0, self.max_processed)
         diff_term = 0
         # diff_term = -0.01 * (self.backlog_size / self.max_backlog)**2
-        if self.backlog_size > 5:
-            diff_term -= 2 * self.backlog.count_running()
+        # if self.backlog_size > 5:
+        #     diff_term -= 2 * self.backlog.count_running()
+        diff_term += -2 * self.backlog_crashed
         
         # self.backlog_size = int(min(self.max_backlog, self.backlog_size + arrived))
 
@@ -264,7 +282,12 @@ class SystolicArrayEnv(gym.Env):
 
         # update prev frequency for next step
         if inference:
-            print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog_size}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
+            # print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog_crashed}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
+            log.println(
+                f"[{self.current_step}]({reward:6.3f}), " +\
+                f"[f:{self.current_frequency:4}], [running:{self.backlog_running:3}, crashed:{self.backlog_crashed}]] " +\
+                f""
+            )
 
         # bookkeeping
 
@@ -275,8 +298,8 @@ class SystolicArrayEnv(gym.Env):
             "arrived": 0,
             "f_applied": float(self.current_frequency),
             "power": float(self.power),
-            "backlog": int(self.backlog_size),
-            "insert_rate": self.backlog.count_running(),
+            "backlog": int(self.backlog_running),
+            "insert_rate": self.backlog_crashed,
         }
         
         self.current_step += 1
@@ -302,7 +325,7 @@ class SystolicArrayEnv(gym.Env):
         # simple approximate power model, scale to keep numbers reasonable
         frac = float(f) / max(1.0, self.max_frequency)
         # P ~ V^2 * f but we keep V independently from freq here
-        return (v**2) * (f) * 1000
+        return (v**2) * (f**2) * 1000
 
     def _update_derived(self):
         # update latency & power for normalization / observation
@@ -318,7 +341,8 @@ class SystolicArrayEnv(gym.Env):
             float(self.latency) / (self.max_latency + 1e-9),
             float(self.power) / (self.max_power + 1e-9),
             
-            float(self.backlog_size) / (self.max_backlog + 1e-9),
+            float(self.backlog_running) / (self.max_backlog + 1e-9),
+            float(self.backlog_crashed) / (self.max_backlog + 1e-9),
             # float(self.processed) / (self.max_processed + 1e-9),
             # float(self.insert_rate) / (max(1, self.max_backlog // 40) + 1e-9),
         ], dtype=np.float32)
