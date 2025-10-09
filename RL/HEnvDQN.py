@@ -78,9 +78,14 @@ class Backlog():
         return sum_needed_flops / FLOPs_rate
     
     def activate_tasks(self, current_step, task_FLOPS):
+        """return number of activated tasks"""
+        counter = 0
         for inst in self.inst_lst:
             if (not inst.is_running()) and (inst.start_step <= current_step):
                 inst.set(task_FLOPS)
+                counter += 1
+        return counter
+                
     
     def render(self, current_step, FLOPS, task_FLOPS):
         if len(self.inst_lst) == 0:
@@ -99,7 +104,7 @@ class Backlog():
 
 
 inst_lst = []
-for i in range(100):
+for i in range(10):
     inst = Instruction(random.randrange(0, MAX_STEP-100))  
     inst_lst.append(inst)
 inst_lst.sort(key = lambda inst: inst.start_step)
@@ -120,8 +125,8 @@ class SystolicArrayEnv(gym.Env):
     def __init__(self):
         super().__init__()
 
-        self.voltage_levels = [0.60, 0.70, 0.80, 0.90]
-        self.frequency_levels = list(range(0, 1000+1, 100))
+        self.voltage_levels = [0.60,]# 0.70, 0.80, 0.90]
+        self.frequency_levels = list(range(100, 1000+1, 100))
 
         self.Nv = len(self.voltage_levels)
         self.Nf = len(self.frequency_levels)
@@ -134,7 +139,7 @@ class SystolicArrayEnv(gym.Env):
 
         # parameters
         # self.max_backlog = MAX_BACKLOG_SIZE
-        self.max_backlog = 25
+        self.max_backlog = 5
         self.max_step = MAX_STEP
         self.max_processed = 25
 
@@ -230,26 +235,25 @@ class SystolicArrayEnv(gym.Env):
         # 4) reward design
         # difference-based term normalizes by max_processed (clear credit)
         # diff_term = (self.processed - arrived) / max(1.0, self.max_processed)
-        diff_term = -0.01 * (self.backlog_size / self.max_backlog)
-        if self.backlog_size > 20:
-            diff_term -= 1
-        # if self.backlog_size > (100):
-        #     diff_term *= 10
+        diff_term = 0
+        diff_term = -1 * (self.backlog_size / self.max_backlog)**2
+        # if self.backlog_size > 5:
+        #     diff_term -= 1 * self.backlog_size
         
         # self.backlog_size = int(min(self.max_backlog, self.backlog_size + arrived))
 
-        power_penalty = 2 * (self.power / (self.max_power + 1e-9)) ** 1.5
+        power_penalty = (self.power / (self.max_power + 1e-9)) ** 1.5
         # switch_penalty = 0.2 * (abs(self.current_frequency - self.prev_frequency) / (self.max_frequency + 1e-9))
         switch_penalty = 0
         if self.current_frequency != self.prev_frequency:
-            switch_penalty += 0.1
+            switch_penalty += 0.01
+        self.prev_frequency = self.current_frequency
         
         reward = float(diff_term - power_penalty - switch_penalty)
 
         # update prev frequency for next step
-        self.prev_frequency = self.current_frequency
         if inference:
-            print(f"step [{self.current_step}]-{reward:5.3f}: {self.backlog.get_propagation(self.current_frequency)}|{diff_term:.3f} {power_penalty:.3f} {switch_penalty:.3f}")
+            print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog.get_propagation(self.current_frequency)}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
 
         # bookkeeping
 
