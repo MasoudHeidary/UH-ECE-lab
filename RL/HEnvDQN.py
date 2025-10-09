@@ -7,8 +7,11 @@ import math
 from typing import List
 from copy import deepcopy
 
+from tool.log import Log
+
 MAX_STEP = 1000
 MAX_BACKLOG_SIZE = 1000
+log = Log(f"{__file__}.log", terminal=True)
 
 
 class Instruction():
@@ -46,11 +49,11 @@ class Instruction():
         #     self.running = False
         return self.needed_FLOPS <= 0
     
-    def get_propagation(self):
+    def get_propagation(self, current_step, FLOPs_rate):
         # return max(0, current_step - self.arrival_step)
         if not self.running:
             return 0
-        return self.needed_FLOPS
+        return self.needed_FLOPS / FLOPs_rate #+ (current_step - self.start_step)
     
     
 class Backlog():
@@ -66,16 +69,17 @@ class Backlog():
             count += int(inst.is_running())
         return count
             
-    def get_propagation(self, FLOPs_rate):
+    def get_propagation(self, current_step, FLOPs_rate):
         if FLOPs_rate == 0:
             if self.count_running() == 0:
                 return 0
             FLOPs_rate = 1
         
         sum_needed_flops = 0    # needed FLOPS to empty the backlog
+        sum_steps = 0
         for inst in self.inst_lst:
-            sum_needed_flops += inst.get_propagation()
-        return sum_needed_flops / FLOPs_rate
+            sum_steps += inst.get_propagation(current_step, FLOPs_rate)
+        return sum_steps
     
     def activate_tasks(self, current_step, task_FLOPS):
         """return number of activated tasks"""
@@ -103,13 +107,16 @@ class Backlog():
         return True
 
 
-inst_lst = []
-for i in range(10):
-    inst = Instruction(random.randrange(0, MAX_STEP-100))  
-    inst_lst.append(inst)
-inst_lst.sort(key = lambda inst: inst.start_step)
-backlog = Backlog(inst_lst)
-print(backlog)
+def random_backlog(inst_length):
+    inst_lst = []
+    for i in range(inst_length):
+        inst = Instruction(random.randrange(0, MAX_STEP-100))  
+        inst_lst.append(inst)
+    inst_lst.sort(key = lambda inst: inst.start_step)
+    return Backlog(inst_lst)
+
+backlog = random_backlog(10)
+log.println(f"backlog: {backlog}")
 
 
 
@@ -139,7 +146,7 @@ class SystolicArrayEnv(gym.Env):
 
         # parameters
         # self.max_backlog = MAX_BACKLOG_SIZE
-        self.max_backlog = 5
+        self.max_backlog = 100
         self.max_step = MAX_STEP
         self.max_processed = 25
 
@@ -179,7 +186,7 @@ class SystolicArrayEnv(gym.Env):
 
         # backlog random start small to encourage learning
         self.backlog = deepcopy(backlog)
-        self.backlog_size = self.backlog.get_propagation(0) #random.randint(0, max(1, self.max_backlog // 10))
+        self.backlog_size = self.backlog.get_propagation(0, 0) #random.randint(0, max(1, self.max_backlog // 10))
         # self.processed = 0
 
         # choose fixed insert_rate for the whole episode (so agent can learn to adapt)
@@ -226,7 +233,7 @@ class SystolicArrayEnv(gym.Env):
         # self.backlog_size = max(0, self.backlog_size - self.processed)
 
         self.backlog.render(self.current_step, self.current_frequency, 2000)
-        self.backlog_size = self.backlog.get_propagation(self.current_frequency)
+        self.backlog_size = self.backlog.get_propagation(self.current_step, self.current_frequency)
 
         # self.insert_rate = arrived
 
@@ -236,24 +243,28 @@ class SystolicArrayEnv(gym.Env):
         # difference-based term normalizes by max_processed (clear credit)
         # diff_term = (self.processed - arrived) / max(1.0, self.max_processed)
         diff_term = 0
-        diff_term = -1 * (self.backlog_size / self.max_backlog)**2
-        # if self.backlog_size > 5:
-        #     diff_term -= 1 * self.backlog_size
+        # diff_term = -0.01 * (self.backlog_size / self.max_backlog)**2
+        if self.backlog_size > 5:
+            diff_term -= 2 * self.backlog.count_running()
         
         # self.backlog_size = int(min(self.max_backlog, self.backlog_size + arrived))
 
-        power_penalty = (self.power / (self.max_power + 1e-9)) ** 1.5
+        power_penalty = (self.power / (self.max_power + 1e-9))
         # switch_penalty = 0.2 * (abs(self.current_frequency - self.prev_frequency) / (self.max_frequency + 1e-9))
         switch_penalty = 0
         if self.current_frequency != self.prev_frequency:
-            switch_penalty += 0.01
+            switch_penalty += 0.1
         self.prev_frequency = self.current_frequency
         
         reward = float(diff_term - power_penalty - switch_penalty)
 
+        if self.backlog.count_running() == 0:
+            if self.current_frequency == self.frequency_levels[0]:
+                reward += 0.1
+
         # update prev frequency for next step
         if inference:
-            print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog.get_propagation(self.current_frequency)}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
+            print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog_size}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
 
         # bookkeeping
 
@@ -291,7 +302,7 @@ class SystolicArrayEnv(gym.Env):
         # simple approximate power model, scale to keep numbers reasonable
         frac = float(f) / max(1.0, self.max_frequency)
         # P ~ V^2 * f but we keep V independently from freq here
-        return (v ** 2) * float(f+1) * 1000
+        return (v**2) * (f) * 1000
 
     def _update_derived(self):
         # update latency & power for normalization / observation

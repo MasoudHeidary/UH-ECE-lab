@@ -8,7 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 
 from HEnvDQN import SystolicArrayEnv, MAX_STEP
 
-TOTAL_TRAIN_TIMESTEPS = 100_000
+TOTAL_TRAIN_TIMESTEPS = 200_000
 TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"ppo.{__file__}.model"
@@ -43,8 +43,8 @@ if __name__ == "__main__":
             gamma=0.99,
             train_freq=4,
             target_update_interval=1000,
-            exploration_fraction=0.2,
-            exploration_final_eps=0.02,
+            exploration_fraction=0.5,
+            exploration_final_eps=0.05,
             # seed=SEED,
             device=device
         )
@@ -104,7 +104,7 @@ if __name__ == "__main__":
         plt.grid(True)
 
         plt.subplot(5,1,4)
-        plt.plot(backlogs, label='Backlog')
+        plt.plot(backlogs, label='Backlog needed steps')
         plt.ylabel("...")
         plt.xlabel("Step")
         plt.legend()
@@ -115,7 +115,7 @@ if __name__ == "__main__":
         # plt.plot(reward_lst, label='reward')
         # plt.plot(power_penalty, label='power penalty')
         # plt.plot(backlog_penalty, label='backlog penalty')
-        plt.ylabel("reward")
+        plt.ylabel("...")
         plt.xlabel("Step")
         plt.legend()
         plt.grid(True)
