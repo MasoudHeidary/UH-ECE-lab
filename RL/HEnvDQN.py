@@ -127,7 +127,7 @@ def random_backlog(inst_length):
     inst_lst.sort(key = lambda inst: inst.start_step)
     return Backlog(inst_lst)
 
-backlog = random_backlog(10)
+backlog = random_backlog(100)
 log.println(f"backlog: {backlog}")
 
 
@@ -158,7 +158,7 @@ class SystolicArrayEnv(gym.Env):
 
         # parameters
         # self.max_backlog = MAX_BACKLOG_SIZE
-        self.max_backlog = 10
+        self.max_backlog = 5
         self.max_step = MAX_STEP
         self.max_processed = 25
 
@@ -199,7 +199,7 @@ class SystolicArrayEnv(gym.Env):
         self.prev_frequency = self.current_frequency
 
         # backlog random start small to encourage learning
-        self.backlog = deepcopy(backlog)
+        self.backlog = random_backlog(100)
         self.backlog_running = self.backlog.count_running() #random.randint(0, max(1, self.max_backlog // 10))
         self.backlog_crashed = self.backlog.count_crashed(0)
         # self.processed = 0
@@ -263,7 +263,7 @@ class SystolicArrayEnv(gym.Env):
         # diff_term = -0.01 * (self.backlog_size / self.max_backlog)**2
         # if self.backlog_size > 5:
         #     diff_term -= 2 * self.backlog.count_running()
-        diff_term += -2 * self.backlog_crashed
+        diff_term += -7 * self.backlog_crashed
         
         # self.backlog_size = int(min(self.max_backlog, self.backlog_size + arrived))
 
@@ -278,14 +278,14 @@ class SystolicArrayEnv(gym.Env):
 
         if self.backlog.count_running() == 0:
             if self.current_frequency == self.frequency_levels[0]:
-                reward += 0.1
+                reward += 0.01
 
         # update prev frequency for next step
         if inference:
             # print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog_crashed}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
             log.println(
                 f"[{self.current_step}]({reward:6.3f}), " +\
-                f"[f:{self.current_frequency:4}], [running:{self.backlog_running:3}, crashed:{self.backlog_crashed}]] " +\
+                f"[f:{self.current_frequency:6}], [running:{self.backlog_running:3}, crashed:{self.backlog_crashed}]] " +\
                 f""
             )
 
@@ -325,7 +325,7 @@ class SystolicArrayEnv(gym.Env):
         # simple approximate power model, scale to keep numbers reasonable
         frac = float(f) / max(1.0, self.max_frequency)
         # P ~ V^2 * f but we keep V independently from freq here
-        return (v**2) * (f**2) * 1000
+        return (v**2) * (f**1.5) * 1000
 
     def _update_derived(self):
         # update latency & power for normalization / observation
