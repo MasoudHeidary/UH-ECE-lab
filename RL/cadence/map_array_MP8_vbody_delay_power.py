@@ -845,6 +845,7 @@ MP8_vdd_map = {
 
 
 def vdd_vbody_to_delay_power(vdd, vbody, lookup_error=False):
+    """delay[ps], power[uw]"""
     if vbody < vdd:
         raise ValueError("vbody can not be less than vdd")
     
