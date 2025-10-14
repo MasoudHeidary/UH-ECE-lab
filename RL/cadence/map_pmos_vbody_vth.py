@@ -715,31 +715,6 @@ def vdd_vbody_to_vth(vdd, vbody):
 
 if __name__ == "__main__":
     # print(vdd_vth_to_vbody(0.9, 1.0505))
-    # print(vdd_vbody_to_vth(0.9, 9.81))
+    print(vdd_vbody_to_vth(0.9, 0.9))
+    print(vdd_vbody_to_vth(0.6, 0.6))
 
-    # print(vdd_vth_to_vbody(0.6, 0.3))
-
-
-    """
-    Bugfix: provided Vth had a constant 0.8 shift, but this shift should be euqal to Vdd
-    e.g. Vdd(0.8) -> provided Vth is correct as it has 0.8 shift
-    e.g. Vdd(0.85) -> incorrect, as shift should be 0.85 but it is 0.8 -> extra 0.05 shift is being applied by following function
-    """
-    def shift(lst, value):
-        print_counter = 0
-        for i, _ in enumerate(lst):
-            print(f"({lst[i][0]}, {lst[i][1] + value:.3f}), ", end='')
-            print_counter += 1
-            if print_counter == 10:
-                print_counter = 0
-                print()
-
-        print()
-        print('-' * 20, end="\n\n\n")
-
-    shift(vdd_600, 0.200)
-    shift(vdd_650, 0.150)
-    shift(vdd_700, 0.100)
-    shift(vdd_750, 0.050)
-    shift(vdd_850, -0.050)
-    shift(vdd_900, -0.100)
