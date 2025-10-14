@@ -8,7 +8,7 @@ import subprocess
 
 from tool.log import Log
 
-CADENCE_SERVER = False
+CADENCE_SERVER = True
 NETLIST_DIR = "/home/mheidary/simulation/vth/spectre/schematic/netlist/netlist" if CADENCE_SERVER else "./netlist"
 RESULT_DIR = "/home/mheidary/simulation/vth/spectre/schematic" if CADENCE_SERVER else "./result"
 OCEAN_DIR = "./tmp.ocn"
@@ -58,6 +58,9 @@ save( 'i "/R167/PLUS" )
 temp( 27 ) 
 run()
 selectResult( 'dc )
+plot(getData("/vdd") getData("/R167/PLUS") )
+hardCopyOptions(?hcOutputFile "{log_file}.png")
+hardCopy()
 
 reportFile = outfile("{log_file}")
 ocnPrint(?output reportFile getData("/R167/PLUS"))
@@ -77,7 +80,7 @@ def run_ocean_script(ocean_name):
     subprocess.call(["ocean", "-replay", ocean_name])
 
 
-def read_log_file(ocean_logname, log, force=False):
+def read_log_file(ocean_logname, vdd, log, force=False):
     with open(ocean_logname) as file:
         # skipping headers
         for _ in range(3):
@@ -93,7 +96,7 @@ def read_log_file(ocean_logname, log, force=False):
     for rev in reversed(num):
         if(rev[1][1] == 'u'):
             if(float(rev[1][0]) > 10):
-                vth = round(float(rev[0][0]) / 1000 - 0.8, 5)
+                vth = round(float(rev[0][0]) / 1000 - vdd, 5)
                 return vth
     
     msg = f"ERROR: provided log file {ocean_logname} does not have Vth data"
@@ -124,7 +127,8 @@ if __name__ == "__main__":
                 update_ocean(OCEAN_DIR, vdd, ocean_log)
                 run_ocean_script(OCEAN_DIR)
 
-                log.println(f"vdd [{vdd:.3f}] pbody [{pbody:.3f}] DONE")
+                vth = read_log_file(ocean_log, vdd, log, force=False)
+                log.println(f"vdd [{vdd:.3f}] pbody [{pbody:.3f}] => {vth:.3f} DONE")
 
     else:
         log.println(f"# RUNNING IN CLIENT MODE")
@@ -138,7 +142,7 @@ if __name__ == "__main__":
                 pbody = r_pbody / 100
                 ocean_log = log_filename(vdd, pbody)
 
-                vth = read_log_file(ocean_log, log)
+                vth = read_log_file(ocean_log, vdd, log)
                 if not vth:
                     continue
 
