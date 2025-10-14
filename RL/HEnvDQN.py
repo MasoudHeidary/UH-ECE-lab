@@ -8,6 +8,7 @@ from typing import List
 from copy import deepcopy
 
 from tool.log import Log
+import cadence
 
 MAX_STEP = 1000
 MAX_BACKLOG_SIZE = 1000
@@ -127,7 +128,7 @@ def random_backlog(inst_length):
     inst_lst.sort(key = lambda inst: inst.start_step)
     return Backlog(inst_lst)
 
-backlog = random_backlog(100)
+backlog = random_backlog(10)
 log.println(f"backlog: {backlog}")
 
 
@@ -144,7 +145,7 @@ class SystolicArrayEnv(gym.Env):
     def __init__(self):
         super().__init__()
 
-        self.voltage_levels = [0.60,]# 0.70, 0.80, 0.90]
+        self.voltage_levels = [0.60, 0.70, 0.80, 0.90]
         self.frequency_levels = list(range(100, 1000+1, 100))
 
         self.Nv = len(self.voltage_levels)
@@ -318,14 +319,14 @@ class SystolicArrayEnv(gym.Env):
     def _latency_from_freq(self, f):
         # prevent divide by zero: use large latency when f==0
         if f <= 0:
-            return 1000.0
+            return 20.0
         return 1000.0 / float(f)
 
     def _power_from_freq(self, v, f):
         # simple approximate power model, scale to keep numbers reasonable
         frac = float(f) / max(1.0, self.max_frequency)
         # P ~ V^2 * f but we keep V independently from freq here
-        return (v**2) * (f**1.5) * 1000
+        return (v) * (f**1.5) * 1000
 
     def _update_derived(self):
         # update latency & power for normalization / observation

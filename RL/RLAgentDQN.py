@@ -8,7 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 
 from HEnvDQN import SystolicArrayEnv, MAX_STEP
 
-TOTAL_TRAIN_TIMESTEPS = 500_000
+TOTAL_TRAIN_TIMESTEPS = 200_000
 TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"ppo.{__file__}.model"

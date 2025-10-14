@@ -9,7 +9,7 @@ import numpy as np, random, torch
 from HEnv import SystolicArrayEnv, MAX_STEP
 
 TOTAL_TRAIN_TIMESTEPS = 100_000
-TRAIN_CPU = 32
+TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"ppo.{__file__}.model"
 DEVICE = "cuda:1"
@@ -61,7 +61,7 @@ if __name__ == "__main__":
             latencies.append(env.latency)
             powers.append(env.power)
             backlogs.append(env.backlog_size)
-            instr_rates.append(env.instt)
+            instr_rates.append(env.insert_rate)
 
             reward_lst.append(reward)
             power_penalty.append(info['pow'])
