@@ -59,6 +59,8 @@ def Bt(T, alpha, Tclk, t):
     return 1 - (_numerator / _denominator)
 
 def delta_vth(Vdef, T, alpha, Tclk, t):
+    if t < 100:
+        return 0
     alpha, t = alpha_t_limiter(alpha, t)
     
     _Kv = Kv(Vdef, T)
