@@ -6,9 +6,10 @@ import random
 import math
 from typing import List
 from copy import deepcopy
+from collections import defaultdict
 
 from tool.log import Log
-import cadence
+from cadence.hardware import Hardware, hardware_debug
 
 MAX_STEP = 1000
 MAX_BACKLOG_SIZE = 1000
@@ -119,12 +120,29 @@ class Backlog():
         return True
 
 
-def random_backlog(inst_length):
+def random_backlog(inst_length, distance=0, max_rate=1000, force_length=False):
+    """in distance, only max_rate instruction exist concurently"""
     inst_lst = []
+    step_set = dict()
     for i in range(inst_length):
         start_step = random.randrange(0, MAX_STEP-100)
-        inst = Instruction(start_step, 5)  
-        inst_lst.append(inst)
+        inst = Instruction(start_step, 5)
+        
+        exist = False
+        counter = 0
+        for dis in range(-distance, distance+1):
+            if step_set.get(inst.start_step + dis, -1) == -1:
+                step_set[inst.start_step + dis] = 0
+            counter += step_set[inst.start_step + dis]
+            if counter == max_rate:
+                exist = True
+                break
+        
+        if not exist:
+            inst_lst.append(inst)
+            step_set[inst.start_step] += 1
+        elif force_length:
+            i -= 1
     inst_lst.sort(key = lambda inst: inst.start_step)
     return Backlog(inst_lst)
 
@@ -145,32 +163,30 @@ class SystolicArrayEnv(gym.Env):
     def __init__(self):
         super().__init__()
 
-        self.voltage_levels = [0.60, 0.70, 0.80, 0.90]
+        self.hardware = Hardware()
+
         self.frequency_levels = list(range(100, 1000+1, 100))
 
-        self.Nv = len(self.voltage_levels)
         self.Nf = len(self.frequency_levels)
-        self.action_space = spaces.Discrete(self.Nv * self.Nf)
+        self.action_space = spaces.Discrete(self.Nf)
 
         # observation: volt_norm, freq_norm, latency_norm, power_norm, backlog_norm, processed_norm, insert_rate_norm
-        low = np.array([0.]*6, dtype=np.float32)
-        high = np.array([1.]*6, dtype=np.float32)
+        low = np.array([0.]*4, dtype=np.float32)
+        high = np.array([1.]*4, dtype=np.float32)
         self.observation_space = spaces.Box(low=low, high=high, dtype=np.float32)
 
         # parameters
-        # self.max_backlog = MAX_BACKLOG_SIZE
         self.max_backlog = 5
         self.max_step = MAX_STEP
         self.max_processed = 25
 
-        self.max_voltage = float(self.voltage_levels[-1])
+        self.max_voltage = self.hardware.get_max_mapping_voltage()
         self.max_frequency = float(self.frequency_levels[-1])
-        # for normalization stable nonzero denominators
-        self.max_latency = self._latency_from_freq(max(1, int(self.max_frequency)))
-        self.max_power = self._power_from_freq(self.max_voltage, self.max_frequency)
+        self.max_latency = self.hardware.get_max_mapping_delay()
+        self.max_power = self.hardware.get_max_mapping_power() * self.max_frequency
 
         # internal state
-        self.current_voltage = 0.0
+        self.vdd = 0.0
         self.current_frequency = 0.0
 
         self.latency = 0.0
@@ -185,38 +201,26 @@ class SystolicArrayEnv(gym.Env):
         self.prev_frequency = 0.0
         self.current_step = 0
 
-        # random seed
         self.seed()
 
-    # ----------------- gym API -----------------
     def seed(self, s=None):
         random.seed(s)
         np.random.seed(s)
 
+
     def reset(self, insert_rate=None):
-        # choose start volt/freq (middle)
-        self.current_voltage = self.voltage_levels[0]
         self.current_frequency = self.frequency_levels[0]
         self.prev_frequency = self.current_frequency
+        self.vdd = self.hardware.get_vdd(self.current_frequency)
 
-        # backlog random start small to encourage learning
-        self.backlog = random_backlog(100)
+        self.backlog = random_backlog(30, distance=4, max_rate=2)
         self.backlog_running = self.backlog.count_running() #random.randint(0, max(1, self.max_backlog // 10))
         self.backlog_crashed = self.backlog.count_crashed(0)
-        # self.processed = 0
-
-        # choose fixed insert_rate for the whole episode (so agent can learn to adapt)
-        # if insert_rate is None:
-        #     # choose between 0..max_insert
-        #     max_insert = max(1, self.max_backlog // 40)
-        #     self.insert_rate = random.randint(0, max_insert)
-        # else:
-        #     self.insert_rate = int(insert_rate)
-        # self.insert_rate = 0
 
         self.current_step = 0
         self._update_derived()
         return self._get_obs()
+
 
     def step(self, action, inference=False):
         """
@@ -231,22 +235,15 @@ class SystolicArrayEnv(gym.Env):
         assert self.action_space.contains(action), "Invalid action"
 
         # map action int -> (v_idx, f_idx)
-        v_idx = action // self.Nf
-        f_idx = action % self.Nf
+        # v_idx = action // self.Nf
+        f_idx = action #% self.Nf
         # clamp indices
-        v_idx = int(np.clip(v_idx, 0, self.Nv - 1))
+        # v_idx = int(np.clip(v_idx, 0, self.Nv - 1))
         f_idx = int(np.clip(f_idx, 0, self.Nf - 1))
 
         # apply action
-        self.current_voltage = float(self.voltage_levels[v_idx])
         self.current_frequency = float(self.frequency_levels[f_idx])
         self._update_derived()
-
-        # 1) process before arrivals (causal)
-        # prev_backlog = int(self.backlog_size)
-        # self.processed = self._process_capacity(self.current_frequency)
-        # self.processed = min(self.processed, self.backlog_size)
-        # self.backlog_size = max(0, self.backlog_size - self.processed)
 
         self.backlog.render(self.current_step, self.current_frequency, 2000)
         # self.backlog_size = self.backlog.get_propagation(self.current_step, self.current_frequency)
@@ -264,15 +261,15 @@ class SystolicArrayEnv(gym.Env):
         # diff_term = -0.01 * (self.backlog_size / self.max_backlog)**2
         # if self.backlog_size > 5:
         #     diff_term -= 2 * self.backlog.count_running()
-        diff_term += -7 * self.backlog_crashed
+        diff_term += -10 * self.backlog_crashed
         
         # self.backlog_size = int(min(self.max_backlog, self.backlog_size + arrived))
 
         power_penalty = (self.power / (self.max_power + 1e-9))
         # switch_penalty = 0.2 * (abs(self.current_frequency - self.prev_frequency) / (self.max_frequency + 1e-9))
         switch_penalty = 0
-        if self.current_frequency != self.prev_frequency:
-            switch_penalty += 0.1
+        # if self.current_frequency != self.prev_frequency:
+        #     switch_penalty += 0.1
         self.prev_frequency = self.current_frequency
         
         reward = float(diff_term - power_penalty - switch_penalty)
@@ -283,14 +280,21 @@ class SystolicArrayEnv(gym.Env):
 
         # update prev frequency for next step
         if inference:
-            # print(f"step [{self.current_step}]({reward:5.3f}): {diff_term:.3f}({self.backlog_crashed}) {power_penalty:.3f} {switch_penalty:.3f} [f={self.current_frequency}]")
+            # log.println(
+            #     hardware_debug(
+            #         self.hardware, 
+            #         self.current_step, 
+            #         self.current_frequency, 
+            #         self.vdd, 
+            #         self.hardware.get_delay_power(self.vdd)
+            #     )
+            # )
             log.println(
-                f"[{self.current_step}]({reward:6.3f}), " +\
+                f"[{self.current_step}] [f:{self.current_frequency:4}] ({reward:6.3f}) (power_penalty:{power_penalty:4}, freq_change_penalty:{switch_penalty:4}), " +\
                 f"[f:{self.current_frequency:6}], [running:{self.backlog_running:3}, crashed:{self.backlog_crashed}]] " +\
                 f""
             )
 
-        # bookkeeping
 
             
         # info handy for debugging/inference
@@ -316,30 +320,20 @@ class SystolicArrayEnv(gym.Env):
         cap = int((float(freq) / max(1.0, self.max_frequency)) * float(self.max_processed))
         return max(0, cap)
 
-    def _latency_from_freq(self, f):
-        # prevent divide by zero: use large latency when f==0
-        if f <= 0:
-            return 20.0
-        return 1000.0 / float(f)
-
-    def _power_from_freq(self, v, f):
-        # simple approximate power model, scale to keep numbers reasonable
-        frac = float(f) / max(1.0, self.max_frequency)
-        # P ~ V^2 * f but we keep V independently from freq here
-        return (v) * (f**1.5) * 1000
-
     def _update_derived(self):
         # update latency & power for normalization / observation
-        self.latency = self._latency_from_freq(self.current_frequency)
-        self.power = self._power_from_freq(self.current_voltage, self.current_frequency)
+        self.vdd = self.hardware.get_vdd(self.current_frequency)
+        delay_power = self.hardware.get_delay_power(self.vdd)
+        self.latency = delay_power[0]
+        self.power = delay_power[1] * self.current_frequency
 
     def _get_obs(self):
-        # normalized observation 7-vector, clipped into [0,1]
+        # normalized observation vector, clipped into [0,1]
         obs = np.array([
-            float(self.current_voltage) / (self.max_voltage + 1e-9),
+            # float(self.current_voltage) / (self.max_voltage + 1e-9),
             float(self.current_frequency) / (self.max_frequency + 1e-9),
             
-            float(self.latency) / (self.max_latency + 1e-9),
+            # float(self.latency) / (self.max_latency + 1e-9),
             float(self.power) / (self.max_power + 1e-9),
             
             float(self.backlog_running) / (self.max_backlog + 1e-9),
@@ -349,6 +343,5 @@ class SystolicArrayEnv(gym.Env):
         ], dtype=np.float32)
         return np.clip(obs, 0.0, 1.0)
 
-    # convenient render for debug
     def render(self, mode='human'):
         print(f"step {self.current_step:4d} freq {self.current_frequency:4.0f}MHz backlog {self.backlog_size:4d} insert {self.insert_rate} proc {self.processed} power {self.power:.2f}")

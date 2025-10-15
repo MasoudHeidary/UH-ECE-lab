@@ -8,7 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 
 from HEnvDQN import SystolicArrayEnv, MAX_STEP
 
-TOTAL_TRAIN_TIMESTEPS = 200_000
+TOTAL_TRAIN_TIMESTEPS = 400_000
 TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"ppo.{__file__}.model"
@@ -66,7 +66,7 @@ if __name__ == "__main__":
             action, _ = model.predict(obs, deterministic=True)
             obs, reward, done, info = env.step(int(action), inference=True)
 
-            voltages.append(env.current_voltage)
+            voltages.append(env.vdd)
             freqs.append(env.current_frequency)
             latencies.append(env.latency)
             powers.append(env.power)
@@ -91,8 +91,8 @@ if __name__ == "__main__":
         plt.grid(True)
 
         plt.subplot(5,1,2)
-        plt.plot(latencies, label='Latency (ns)')
-        plt.plot(powers, label='Power (arb.)')
+        plt.plot(latencies, label='Latency (ps)')
+        plt.plot(powers, label='Power (uw * MHz)')
         plt.ylabel("Latency / Power")
         plt.legend()
         plt.grid(True)
