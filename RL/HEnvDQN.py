@@ -171,8 +171,8 @@ class SystolicArrayEnv(gym.Env):
         self.action_space = spaces.Discrete(self.Nf)
 
         # observation: volt_norm, freq_norm, latency_norm, power_norm, backlog_norm, processed_norm, insert_rate_norm
-        low = np.array([0.]*4, dtype=np.float32)
-        high = np.array([1.]*4, dtype=np.float32)
+        low = np.array([0.]*5, dtype=np.float32)
+        high = np.array([1.]*5, dtype=np.float32)
         self.observation_space = spaces.Box(low=low, high=high, dtype=np.float32)
 
         # parameters
@@ -197,6 +197,7 @@ class SystolicArrayEnv(gym.Env):
         self.backlog_crashed = 0
         # self.processed = 0
         # self.insert_rate = 0
+        self.prop = 0
 
         self.prev_frequency = 0.0
         self.current_step = 0
@@ -213,7 +214,7 @@ class SystolicArrayEnv(gym.Env):
         self.prev_frequency = self.current_frequency
         self.vdd = self.hardware.get_vdd(self.current_frequency)
 
-        self.backlog = random_backlog(30, distance=4, max_rate=2)
+        self.backlog = random_backlog(5, distance=5, max_rate=1)
         self.backlog_running = self.backlog.count_running() #random.randint(0, max(1, self.max_backlog // 10))
         self.backlog_crashed = self.backlog.count_crashed(0)
 
@@ -250,6 +251,7 @@ class SystolicArrayEnv(gym.Env):
         self.backlog_running = self.backlog.count_running()
         self.backlog_crashed = self.backlog.count_crashed(self.current_step)
 
+        self.prop = self.backlog.get_propagation(self.current_step, self.current_frequency) / (self.max_backlog * 2000 / 100)
         # self.insert_rate = arrived
 
         # 3) compute derived measures
@@ -290,9 +292,8 @@ class SystolicArrayEnv(gym.Env):
             #     )
             # )
             log.println(
-                f"[{self.current_step}] [f:{self.current_frequency:4}] ({reward:6.3f}) (power_penalty:{power_penalty:4}, freq_change_penalty:{switch_penalty:4}), " +\
-                f"[f:{self.current_frequency:6}], [running:{self.backlog_running:3}, crashed:{self.backlog_crashed}]] " +\
-                f""
+                f"[{self.current_step}] [f:{self.current_frequency:4}] ({reward:6.3f}) (power_penalty:{power_penalty:.4f}, freq_change_penalty:{switch_penalty:.3f}), " +\
+                f"[f:{self.current_frequency:6}], [running:{self.backlog_running:2}, crashed:{self.backlog_crashed:2}, prop:{self.prop:.3f}] "
             )
 
 
@@ -340,6 +341,7 @@ class SystolicArrayEnv(gym.Env):
             float(self.backlog_crashed) / (self.max_backlog + 1e-9),
             # float(self.processed) / (self.max_processed + 1e-9),
             # float(self.insert_rate) / (max(1, self.max_backlog // 40) + 1e-9),
+            float(self.prop),
         ], dtype=np.float32)
         return np.clip(obs, 0.0, 1.0)
 
