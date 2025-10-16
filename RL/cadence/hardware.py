@@ -1,7 +1,14 @@
 
-from map_pmos_vbody_vth import vdd_vth_to_vbody
-from map_array_MP8_vbody_delay_power import vdd_vbody_to_delay_power
-from NBTI_formula import delta_vth
+if __name__ == "__main__":
+    from map_pmos_vbody_vth import vdd_vth_to_vbody
+    import map_array_MP8_vbody_delay_power
+    from map_array_MP8_vbody_delay_power import vdd_vbody_to_delay_power
+    from NBTI_formula import delta_vth
+else:
+    from .map_pmos_vbody_vth import vdd_vth_to_vbody
+    from . import map_array_MP8_vbody_delay_power
+    from .map_array_MP8_vbody_delay_power import vdd_vbody_to_delay_power
+    from .NBTI_formula import delta_vth
 
 class Hardware:
     def __init__(self, init_vth=0.442, aging_alpha=0.1):
@@ -54,6 +61,14 @@ class Hardware:
         delay_ps = self.get_delay_power(self.vdd_levels[-1])[0]
         freq_MHz = self.to_freqMHz(delay_ps)
         return freq_MHz
+    
+    def get_max_mapping_voltage(self):
+        return self.vdd_levels[-1]
+    def get_max_mapping_delay(self):
+        # return vdd_vbody_to_delay_power(self.vdd_levels[0], 9.99)[0]                    # ps
+        return map_array_MP8_vbody_delay_power.vdd_600[-1][0]
+    def get_max_mapping_power(self):
+        return vdd_vbody_to_delay_power(self.vdd_levels[-1],self.vdd_levels[-1])[1]     # uW
 
 
 def hardware_debug(hardware, t, freq, vdd, delay_power):
