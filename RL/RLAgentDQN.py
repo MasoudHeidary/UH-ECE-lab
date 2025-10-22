@@ -11,7 +11,7 @@ from HEnvDQN import SystolicArrayEnv, MAX_STEP
 TOTAL_TRAIN_TIMESTEPS = 200_000
 TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
-MODEL_FILENAME = f"ppo.{__file__}.model"
+MODEL_FILENAME = f"{__file__}.model"
 DEVICE = "cuda:1"
 SEED = 42
 
@@ -61,6 +61,7 @@ if __name__ == "__main__":
         voltages, freqs, latencies, powers = [], [], [], []
         backlogs, instr_rates = [], []
         reward_lst, power_penalty, backlog_penalty = [], [], []
+        max_freq = []
 
         for step in range(MAX_STEP):
             action, _ = model.predict(obs, deterministic=True)
@@ -70,8 +71,10 @@ if __name__ == "__main__":
             freqs.append(env.current_frequency)
             latencies.append(env.latency)
             powers.append(env.power)
+
             backlogs.append(env.backlog_running)
             instr_rates.append(env.backlog_crashed)
+            max_freq.append(info['max_freq'])
 
             reward_lst.append(reward)
             power_penalty.append(0)
@@ -86,6 +89,7 @@ if __name__ == "__main__":
 
         plt.subplot(5,1,1)
         plt.plot(freqs, label='Frequency (MHz)')
+        plt.plot(max_freq, label='max_freq (MHz)')
         plt.ylabel("Frequency")
         plt.legend()
         plt.grid(True)

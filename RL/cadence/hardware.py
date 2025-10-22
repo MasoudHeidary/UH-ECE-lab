@@ -11,7 +11,7 @@ else:
     from .NBTI_formula import delta_vth
 
 class Hardware:
-    def __init__(self, init_vth=0.442, aging_alpha=0.1):
+    def __init__(self, init_vth=0.442, aging_alpha=0.5):
         self.initial_vth = init_vth
         self.vth = init_vth
         self.alpha = aging_alpha
@@ -45,7 +45,7 @@ class Hardware:
             if delay_power and (delay_power[0] < delay_ps):
                 return vdd
         if look_up_error:
-            raise LookupError("too high frequency")
+            raise LookupError(f"too high frequency - {freq_MHz}MHz")
         return False
     
     def apply_aging(self, vdd, t0, t1, T=348.15):
@@ -54,7 +54,7 @@ class Hardware:
         t0_vth = delta_vth(vdef, T, self.alpha, 1E-9, t0)
         t1_vth = delta_vth(vdef, T, self.alpha, 1E-9, t1)
         self.vth += (t1_vth - t0_vth)
-        print(f"{t0_vth} -> {t1_vth} == {t1_vth - t0_vth}")
+        # print(f"{t0_vth} -> {t1_vth} == {t1_vth - t0_vth}")
 
     def get_max_freq(self):
         """maximum frequency possible"""
@@ -80,41 +80,51 @@ if __name__ == "__main__":
 
 
     ### constant 1000MHz running
+    # freq = 1000 #MHz
+    # hardware = Hardware()
+
+    # t_0m = 0
+    # vdd = hardware.get_vdd(freq)
+    # delay_power = hardware.get_delay_power(vdd)
+    # print(hardware_debug(hardware, t_0m, freq, vdd, delay_power))
+
+    # t_12m = 12 * 30 * 24 * 60 * 60  # 12 months
+    # hardware.apply_aging(vdd, t_0m, t_12m)
+    # vdd = hardware.get_vdd(freq)
+    # delay_power = hardware.get_delay_power(vdd)
+    # print(hardware_debug(hardware, t_12m, freq, vdd, delay_power))
+
+
+    # print("="*30)
+
+    # ### 100MHz -> 1000MHz running
+    # freq = 100 #MHz
+    # hardware = Hardware()
+
+    # t_0m = 0
+    # vdd = hardware.get_vdd(freq)
+    # delay_power = hardware.get_delay_power(vdd)
+    # print(hardware_debug(hardware, t_0m, freq, vdd, delay_power))
+
+    # t_6m = 6 * 30 * 24 * 60 * 60  # 12 months
+    # hardware.apply_aging(vdd, t_0m, t_6m)
+    # vdd = hardware.get_vdd(freq)
+    # delay_power = hardware.get_delay_power(vdd)
+    # print(hardware_debug(hardware, t_6m, freq, vdd, delay_power))
+
+    # freq = 1000 #MHz
+    # t_12m = 12 * 30 * 24 * 60 * 60  # 12 months
+    # hardware.apply_aging(vdd, t_6m, t_12m)
+    # vdd = hardware.get_vdd(freq)
+    # delay_power = hardware.get_delay_power(vdd)
+    # print(hardware_debug(hardware, t_12m, freq, vdd, delay_power))
+
+
+
     freq = 1000 #MHz
     hardware = Hardware()
+    for sec in range(10_000):
+        vdd = hardware.get_vdd(freq)
+        hardware.apply_aging(vdd, sec, sec+1)
+        print(f"vdd[{vdd:.3f}], max_freq[{hardware.get_max_freq()}]")
 
-    t_0m = 0
-    vdd = hardware.get_vdd(freq)
-    delay_power = hardware.get_delay_power(vdd)
-    print(hardware_debug(hardware, t_0m, freq, vdd, delay_power))
-
-    t_12m = 12 * 30 * 24 * 60 * 60  # 12 months
-    hardware.apply_aging(vdd, t_0m, t_12m)
-    vdd = hardware.get_vdd(freq)
-    delay_power = hardware.get_delay_power(vdd)
-    print(hardware_debug(hardware, t_12m, freq, vdd, delay_power))
-
-
-    print("="*30)
-
-    ### 100MHz -> 1000MHz running
-    freq = 100 #MHz
-    hardware = Hardware()
-
-    t_0m = 0
-    vdd = hardware.get_vdd(freq)
-    delay_power = hardware.get_delay_power(vdd)
-    print(hardware_debug(hardware, t_0m, freq, vdd, delay_power))
-
-    t_6m = 6 * 30 * 24 * 60 * 60  # 12 months
-    hardware.apply_aging(vdd, t_0m, t_6m)
-    vdd = hardware.get_vdd(freq)
-    delay_power = hardware.get_delay_power(vdd)
-    print(hardware_debug(hardware, t_6m, freq, vdd, delay_power))
-
-    freq = 1000 #MHz
-    t_12m = 12 * 30 * 24 * 60 * 60  # 12 months
-    hardware.apply_aging(vdd, t_6m, t_12m)
-    vdd = hardware.get_vdd(freq)
-    delay_power = hardware.get_delay_power(vdd)
-    print(hardware_debug(hardware, t_12m, freq, vdd, delay_power))
