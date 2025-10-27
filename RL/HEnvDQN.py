@@ -9,219 +9,16 @@ from copy import deepcopy
 from collections import defaultdict
 
 from tool.log import Log
+from backlog import *
 from cadence.hardware import Hardware, hardware_debug
 
 MAX_STEP = 1000
-MAX_BACKLOG_SIZE = 1000
+MAX_BACKLOG_SIZE = 50
 log = Log(f"{__file__}.log", terminal=True)
 
 
-class Instruction():
-    def __init__(self, start_step, exe_step):
-        self.start_step = start_step                # timestep that instruction enters backlog
-        self.end_step = start_step + exe_step       # timestep that instruction execution should finish
-        self.needed_FLOPS = 0                       # remaining FLOPs to finish instruction
-        self.running = False                        # is instruction executing/waiting for execution
-        self.id=0
-    def __repr__(self):
-        return f"{(self.start_step, self.running, self.needed_FLOPS)}"
-    
-    def is_running(self):
-        return self.running
-    
-    def is_crashed(self, current_step):
-        """is current_step is more than end_step that means instruction has been waiting over-period"""
-        return current_step > self.end_step
-    
-    def set(self, needed_FLOPS):
-        """based on the model loaded, FLOPS will be different"""
-        if self.running:
-            raise RuntimeError("cannot re-set the task")
-        if needed_FLOPS <= 0:
-            raise ValueError("needed FLOPs should be positive")
-        
-        self.needed_FLOPS = needed_FLOPS
-        self.running = True
-    
-    def render(self, FLOPS) -> bool:
-        """return True when Instruction is done"""
-        if not self.running:
-            raise RuntimeError("can not render task which is not running")
-        
-        if self.needed_FLOPS < 0:
-            raise RuntimeError(f"this task has already been finished")
-        
-        self.needed_FLOPS -= FLOPS
-        # if self.needed_FLOPS <= 0:
-        #     self.running = False
-        return self.needed_FLOPS <= 0
-    
-    def get_propagation(self, current_step, FLOPs_rate):
-        # return max(0, current_step - self.arrival_step)
-        if not self.running:
-            return 0
-        return self.needed_FLOPS / FLOPs_rate #+ (current_step - self.start_step)
-    
-    
-class Backlog():
-    def __init__(self, instruction_lst: List[Instruction]):
-        self.inst_lst = instruction_lst
-        
-    def __repr__(self):
-        return f"{[self.inst_lst]}"
-    
-    def count_running(self):
-        count = 0
-        for inst in self.inst_lst:
-            count += int(inst.is_running())
-        return count
-    
-    def count_crashed(self, current_step: int) -> int:
-        counter = 0
-        for inst in self.inst_lst:
-            counter += int(inst.is_crashed(current_step))
-        return counter
-
-    def needed_flops(self, current_step):
-        sum_flops = 0
-        for inst in self.inst_lst:
-            sum_flops += max(inst.needed_FLOPS, 0)
-        return sum_flops
-    
-    def past_steps(self, current_step):
-        """return unfinished tasks already spended steps"""
-        steps = 0
-        for inst in self.inst_lst:
-            if inst.is_running():
-                steps += (current_step - inst.start_step + 1)
-        return steps
-    
-    def min_deadline(self, current_step):
-        if self.count_running() == 0:
-            return -1
-        step = 1000
-        for inst in self.inst_lst:
-            if inst.is_running():
-                step = min(step, inst.end_step - current_step)
-        return step
-    
-    def get_step(self, inst_id, current_step):
-        if inst_id < self.count_running():
-            return current_step - self.inst_lst[inst_id].start_step + 1
-        return 0
-    def get_flops(self, inst_id):
-        if inst_id < self.count_running():
-            return self.inst_lst[inst_id].needed_FLOPS
-        return 0
-    def get_inst_running(self, inst_id):
-        if (len(self.inst_lst) >= 1) and self.inst_lst[0].id % 2 == inst_id:
-            return int(self.inst_lst[0].is_running())
-        elif (len(self.inst_lst) >= 2) and self.inst_lst[1].id % 2 == inst_id:
-            return int(self.inst_lst[1].is_running())
-        return 0
-    def get_inst_crashed(self, inst_id, current_step):
-        if (len(self.inst_lst) >= 1) and self.inst_lst[0].id % 2 == inst_id:
-            return int(self.inst_lst[0].is_crashed(current_step))
-        elif (len(self.inst_lst) >= 2) and self.inst_lst[1].id % 2 == inst_id:
-            return int(self.inst_lst[1].is_crashed(current_step))
-        return 0
-
-    def get_propagation(self, current_step, FLOPs_rate):
-        if FLOPs_rate == 0:
-            if self.count_running() == 0:
-                return 0
-            FLOPs_rate = 1
-        
-        sum_needed_flops = 0    # needed FLOPS to empty the backlog
-        sum_steps = 0
-        for inst in self.inst_lst:
-            sum_steps += inst.get_propagation(current_step, FLOPs_rate)
-        return sum_steps
-    
-    def activate_tasks(self, current_step, task_FLOPS):
-        """return number of activated tasks"""
-        counter = 0
-        for inst in self.inst_lst:
-            if (not inst.is_running()) and (inst.start_step <= current_step):
-                inst.set(task_FLOPS)
-                counter += 1
-        return counter
-                
-    
-    def render(self, current_step, FLOPS, task_FLOPS):
-        if len(self.inst_lst) == 0:
-            return False
-        
-        self.activate_tasks(current_step, task_FLOPS)
-        
-        inst = self.inst_lst[0]
-        if not inst.is_running():
-            # inst.set(task_FLOPS)
-            return False
-        done = inst.render(FLOPS)
-        if done:
-            self.inst_lst.pop(0)
-        return True
-
-
-def random_backlog(inst_length, distance=0, max_rate=10, force_length=False):
-    """in distance, only max_rate instruction exist concurently"""
-    inst_lst = []
-    step_set = dict()
-    for i in range(inst_length):
-        start_step = random.randrange(0, MAX_STEP-100)
-        inst = Instruction(start_step, 10)
-        
-        exist = False
-        counter = 0
-        for dis in range(-distance, distance+1):
-            if step_set.get(inst.start_step + dis, -1) == -1:
-                step_set[inst.start_step + dis] = 0
-            counter += step_set[inst.start_step + dis]
-            if counter == max_rate:
-                exist = True
-                break
-        
-        if not exist:
-            inst_lst.append(inst)
-            step_set[inst.start_step] += 1
-        elif force_length:
-            i -= 1
-    inst_lst.sort(key = lambda inst: inst.start_step)
-    for id, inst in enumerate(inst_lst):
-        inst.id = id
-    return Backlog(inst_lst)
-
-# def random_backlog(inst_length, distance=5, max_rate=5, force_length=False, entrace_step=20):
-#     """in distance, only max_rate instruction exist concurently"""
-#     inst_lst = []
-#     step_set = dict()
-#     for i in range(inst_length):
-#         start_step = 0
-#         inst = Instruction(start_step, 10)
-        
-#         exist = False
-#         counter = 0
-#         for dis in range(-distance, distance+1):
-#             if step_set.get(inst.start_step + dis, -1) == -1:
-#                 step_set[inst.start_step + dis] = 0
-#             counter += step_set[inst.start_step + dis]
-#             if counter == max_rate:
-#                 exist = True
-#                 break
-        
-#         if not exist:
-#             inst_lst.append(inst)
-#             step_set[inst.start_step] += 1
-#         elif force_length:
-#             i -= 1
-#     inst_lst.sort(key = lambda inst: inst.start_step)
-#     for id, inst in enumerate(inst_lst):
-#         inst.id = id
-#     return Backlog(inst_lst)
-
-backlog = random_backlog(20)
-log.println(f"backlog: {backlog}")
+# backlog = random_backlog(20)
+# log.println(f"backlog: {backlog}")
 
 
 
@@ -244,13 +41,13 @@ class SystolicArrayEnv(gym.Env):
         self.Nf = len(self.frequency_levels)
         self.action_space = spaces.Discrete(self.Nf)
 
-        # observation: volt_norm, freq_norm, latency_norm, power_norm, backlog_norm, processed_norm, insert_rate_norm
-        low = np.array([0.]*6, dtype=np.float32)
-        high = np.array([1.]*6, dtype=np.float32)
+        # observation: ...
+        low     = np.array([0.]*8, dtype=np.float32)
+        high    = np.array([1.]*8, dtype=np.float32)
         self.observation_space = spaces.Box(low=low, high=high, dtype=np.float32)
 
         # parameters
-        self.max_backlog = 10
+        self.max_backlog = 200
         self.max_step = MAX_STEP
 
         self.max_voltage = self.hardware.get_max_mapping_voltage()
@@ -265,10 +62,12 @@ class SystolicArrayEnv(gym.Env):
         self.latency = 0.0
         self.power = 0.0
 
-        self.backlog = 0
-        self.backlog_running = 0
-        self.backlog_crashed = 0
-        self.instruction_step = 0
+        self.backlog: Backlog = None
+        self.backlog_size = 0
+        self.backlog_not_active = 0
+        self.backlog_ok         = 0
+        self.backlog_linear     = 0
+        self.backlog_crashed    = 0 
 
         self.prev_frequency = 0.0
         self.current_step = 0
@@ -281,19 +80,20 @@ class SystolicArrayEnv(gym.Env):
 
 
     def reset(self, insert_rate=None):
+        self.current_step = 0
+        
         self.hardware = Hardware()
-
         self.current_frequency = self.frequency_levels[0]
         self.prev_frequency = self.current_frequency
         self.vdd = self.hardware.get_vdd(self.current_frequency)
 
         self.backlog = random_backlog(random.randrange(0, 200))
-        self.backlog_running = self.backlog.count_running() #random.randint(0, max(1, self.max_backlog // 10))
-        self.backlog_crashed = self.backlog.count_crashed(0)
-        self.instruction_step = 0
+        self.backlog_size       = self.backlog.get_active_size(self.current_step)
+        self.backlog_not_active = self.backlog.get_status_size(self.current_step, "not_active")
+        self.backlog_ok         = self.backlog.get_status_size(self.current_step, "ok")
+        self.backlog_linear     = self.backlog.get_status_size(self.current_step, "linear")
+        self.backlog_crashed    = self.backlog.get_status_size(self.current_step, "crash")
 
-
-        self.current_step = 0
         self._update_derived()
         return self._get_obs()
 
@@ -322,33 +122,20 @@ class SystolicArrayEnv(gym.Env):
         self._update_derived()
 
         self.backlog.render(self.current_step, self.current_frequency, 2000)
-        # self.backlog_size = self.backlog.get_propagation(self.current_step, self.current_frequency)
-        self.backlog_running = self.backlog.count_running()
-        self.backlog_crashed = self.backlog.count_crashed(self.current_step)
-        
+        self.backlog_size       = self.backlog.get_active_size(self.current_step)
+        self.backlog_not_active = self.backlog.get_status_size(self.current_step, "not_active")
+        self.backlog_ok         = self.backlog.get_status_size(self.current_step, "ok")
+        self.backlog_linear     = self.backlog.get_status_size(self.current_step, "linear")
+        self.backlog_crashed    = self.backlog.get_status_size(self.current_step, "crash")
 
-        # self.insert_rate = arrived
 
-        # 3) compute derived measures
-
-        # 4) reward design
         reward = 0
-        if self.backlog_crashed != 0:
-            reward = -10
-        else:
-            # if self.backlog_running != 0:
-            #     if 10 < self.backlog.get_step(0, self.current_step):
-            #         reward += -0.01 * self.instruction_step
-            # reward = -0.001 * self.backlog_running
 
-            power_reward = -1 * self.power / (self.max_power + 1e-9)
-
-            switch_penalty = 0
-            if self.current_frequency != self.prev_frequency:
-                switch_penalty += 0.05
-            self.prev_frequency = self.current_frequency
-
-            reward = power_reward - switch_penalty
+        reward -= self.backlog_linear * 0.02
+        if self.backlog_crashed > 0:
+            reward -= 7
+        
+        reward -= 0.5 * (self.power / (self.max_power + 1e-9))
 
         if inference:
             # log.println(
@@ -362,9 +149,9 @@ class SystolicArrayEnv(gym.Env):
             # )
             log.println(
                 f"[{self.current_step}] ({reward:6.3f}), " +\
-                f"[f:{self.current_frequency:6}], [running:{self.backlog_running:1}, crashed:{self.backlog_crashed:1}, inst_step:{self.instruction_step}], "
+                f"[f:{self.current_frequency:6}] [f_max:{self.hardware.get_max_freq():.0f}], " +\
+                f"[{self.backlog_size}] [{self.backlog_not_active}, {self.backlog_ok}, {self.backlog_linear}, {self.backlog_crashed}], "
             )
-
 
             
         # info handy for debugging/inference
@@ -373,7 +160,7 @@ class SystolicArrayEnv(gym.Env):
             "arrived": 0,
             "f_applied": float(self.current_frequency),
             "power": float(self.power),
-            "backlog": int(self.backlog_running),
+            # "backlog": int(self.backlog_running),
             "insert_rate": self.backlog_crashed,
             "max_freq": self.hardware.get_max_freq()
         }
@@ -384,12 +171,6 @@ class SystolicArrayEnv(gym.Env):
         obs = self._get_obs()
         return obs, reward, done, info
 
-    # ----------------- helpers -----------------
-    def _process_capacity(self, freq):
-        # processing capacity linear with freq; tune scale so f_max can process some backlog
-        # At max freq we can process around self.max_processed tasks per step
-        cap = int((float(freq) / max(1.0, self.max_frequency)) * float(self.max_processed))
-        return max(0, cap)
 
     def _update_derived(self):
         # update latency & power for normalization / observation
@@ -402,7 +183,7 @@ class SystolicArrayEnv(gym.Env):
         t0 = self.current_step * step_time_factor #seconds
         t1 = (self.current_step + 1) * step_time_factor
         t0, t1 = 10*t0, 10*t1   #each steo as 10 seconds
-        self.hardware.apply_aging(self.vdd, t0, t1)
+        # self.hardware.apply_aging(self.vdd, t0, t1)
 
     def _get_obs(self):
         # normalized observation vector, clipped into [0,1]
@@ -413,9 +194,12 @@ class SystolicArrayEnv(gym.Env):
             float(self.latency) / (self.max_latency + 1e-9),
             float(self.power) / (self.max_power + 1e-9),
             
-            float(self.backlog_running) / (self.max_backlog + 1e-9),
-            float(self.backlog_crashed) / (self.max_backlog + 1e-9),
-            # float(self.instruction_step) / (self.max_backlog + 1e-9),
+            float(self.backlog_size)        / (self.max_backlog + 1e-9),
+            # float(self.backlog_not_active)  / (self.max_backlog + 1e-9),
+            float(self.backlog_ok)          / (self.max_backlog + 1e-9),
+            float(self.backlog_linear)      / (self.max_backlog + 1e-9),
+            float(self.backlog_crashed)     / (self.max_backlog + 1e-9),
+            
         ], dtype=np.float32)
         return np.clip(obs, 0.0, 1.0)
 

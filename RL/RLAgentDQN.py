@@ -72,7 +72,7 @@ if __name__ == "__main__":
             latencies.append(env.latency)
             powers.append(env.power)
 
-            backlogs.append(env.backlog_running)
+            backlogs.append(env.backlog_size)
             instr_rates.append(env.backlog_crashed)
             max_freq.append(info['max_freq'])
 
