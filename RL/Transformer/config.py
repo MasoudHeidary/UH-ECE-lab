@@ -1,4 +1,13 @@
 # -*- coding: utf-8 -*-
+"""
+Language list:
+'ca-de', 'ca-en', 'ca-hu', 'ca-nl', 'de-en', 'de-eo', 'de-es', 'de-fr', 'de-hu', 'de-it', 'de-nl', 
+'de-pt', 'de-ru', 'el-en', 'el-es', 'el-fr', 'el-hu', 'en-eo', 'en-es', 'en-fi', 'en-fr', 'en-hu', 
+'en-it', 'en-nl', 'en-no', 'en-pl', 'en-pt', 'en-ru', 'en-sv', 'eo-es', 'eo-fr', 'eo-hu', 'eo-it', 
+'eo-pt', 'es-fi', 'es-fr', 'es-hu', 'es-it', 'es-nl', 'es-no', 'es-pt', 'es-ru', 'fi-fr', 'fi-hu', 
+'fi-no', 'fi-pl', 'fr-hu', 'fr-it', 'fr-nl', 'fr-no', 'fr-pl', 'fr-pt', 'fr-ru', 'fr-sv', 'hu-it', 
+'hu-nl', 'hu-no', 'hu-pl', 'hu-pt', 'hu-ru', 'it-nl', 'it-pt', 'it-ru', 'it-sv'
+"""
 
 from pathlib import Path
 from log import Log
@@ -16,8 +25,7 @@ if (len(sys.argv) == 1):
     LANG_TGT = 'it'
     NET_NAME = 'model_dense_enc'
     NUM_EPOCHS = 10
-    # PRECISION = "ftp32"
-    PRECISION = "int8"
+    PRECISION = "ftp32"
     DEVICE = "cuda:0"
     log.println("running with default values")
 else:
@@ -25,10 +33,10 @@ else:
     NUM_HEADS =     2
     NUM_LAYERS =    int(sys.argv[2])
     SEQ_LEN =       int(sys.argv[3])
-    # LANG_SRC =      'en'
-    # LANG_TGT =      'it'
-    LANG_SRC =      'el'
-    LANG_TGT =      'en'
+    LANG_SRC =      'de'
+    LANG_TGT =      'fr'
+    # LANG_SRC =      'el'
+    # LANG_TGT =      'en'
     NET_NAME =      'model_dense_enc'
     NUM_EPOCHS =    10
     PRECISION =     sys.argv[4]

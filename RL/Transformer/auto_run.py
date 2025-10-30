@@ -24,15 +24,20 @@ def run_flops(d_model, num_layers, seq_len, precision, cuda_device):
 
 
 run_train(512, 6, 350, "ftp32", "cuda:1")
+
+# run_flops(512, 6, 350, "ftp32", "cuda:0")
 run_inference(512, 6, 350, "ftp32", "cuda:1")
-run_flops(512, 6, 350, "ftp32", "cuda:1")
-# run_inference(512, 6, 350, "ftp16", "cuda:0")
-# run_inference(512, 6, 350, "ftp8", "cuda:0")
-# run_inference(512, 6, 350, "int8", "cuda:0")
-# run_inference(512, 6, 350, "ftp4", "cuda:0")
-# run_inference(512, 6, 350, "int4", "cuda:0")
+run_inference(512, 6, 350, "ftp16", "cuda:1")
+run_inference(512, 6, 350, "ftp8", "cuda:1")
 
 
-run_train(512, 6, 250, "ftp32", "cuda:1")
-run_inference(512, 6, 250, "ftp32", "cuda:1")
-run_flops(512, 6, 250, "ftp32", "cuda:1")
+
+# for d_model in [128, 256, 512, 1024, 2048]:
+#     for num_layer in [1, 2, 4, 6, 12, 24]:
+#         run_train(d_model, num_layer, 350, "ftp32", "cuda:0")
+
+#         run_flops(d_model, num_layer, 350, "ftp32", "cuda:0")
+
+#         run_inference(d_model, num_layer, 350, "ftp32", "cuda:0")
+#         run_inference(d_model, num_layer, 350, "ftp16", "cuda:0")
+#         run_inference(d_model, num_layer, 350, "ftp8", "cuda:0")

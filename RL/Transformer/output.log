@@ -1,0 +1,51 @@
+[Wed Oct 29 10:51:15 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 10:51:15 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 10:51:15 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 350, 'NUM_EPOCHS': 10, 'PRECISION': 'ftp32'}
+[Wed Oct 29 10:51:19 2025] >> train: 
+[Wed Oct 29 10:58:41 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.8850]
+[Wed Oct 29 11:01:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 11:01:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 11:01:50 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 350, 'NUM_EPOCHS': 10, 'PRECISION': 'ftp32'}
+[Wed Oct 29 11:01:53 2025] >> train: 
+[Wed Oct 29 11:16:45 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 11:16:45 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 11:16:45 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 350, 'NUM_EPOCHS': 10, 'PRECISION': 'ftp32'}
+[Wed Oct 29 11:16:48 2025] >> train: 
+[Wed Oct 29 11:24:10 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.7286]
+[Wed Oct 29 11:35:00 2025] >> validate loss: 5.118453987935281
+[Wed Oct 29 11:42:21 2025] >> epoch [ 1] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.5320]
+[Wed Oct 29 11:53:34 2025] >> validate loss: 4.74242545658023
+[Wed Oct 29 12:00:54 2025] >> epoch [ 2] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.5523]
+[Wed Oct 29 12:13:22 2025] >> validate loss: 4.51513786528612
+[Wed Oct 29 12:20:43 2025] >> epoch [ 3] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.8698]
+[Wed Oct 29 12:33:41 2025] >> validate loss: 4.365118134661278
+[Wed Oct 29 12:41:01 2025] >> epoch [ 4] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.1577]
+[Wed Oct 29 12:54:44 2025] >> validate loss: 4.267106361098861
+[Wed Oct 29 13:02:05 2025] >> epoch [ 5] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [4.1035]
+[Wed Oct 29 13:15:32 2025] >> validate loss: 4.20287972077898
+[Wed Oct 29 13:22:52 2025] >> epoch [ 6] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.9673]
+[Wed Oct 29 13:34:04 2025] >> validate loss: 4.161414916325651
+[Wed Oct 29 13:45:17 2025] >> epoch [ 7] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [2.6131]
+[Wed Oct 29 13:58:14 2025] >> validate loss: 4.133651808847355
+[Wed Oct 29 14:05:34 2025] >> epoch [ 8] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.7781]
+[Wed Oct 29 14:17:12 2025] >> validate loss: 4.1357904255497955
+[Wed Oct 29 14:24:32 2025] >> epoch [ 9] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [3.3850]
+[Wed Oct 29 14:36:53 2025] >> validate loss: 4.160053554718002
+[Wed Oct 29 14:36:53 2025] >> 
+
+
+[Wed Oct 29 14:36:55 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 14:36:55 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 14:36:55 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 350, 'NUM_EPOCHS': 10, 'PRECISION': 'ftp32'}
+[Wed Oct 29 14:36:58 2025] >> inference:
+[Wed Oct 29 14:49:31 2025] >> loss [4.1601], perplexity: [64.07495402414507]
+[Wed Oct 29 14:49:34 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 14:49:34 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 14:49:34 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 350, 'NUM_EPOCHS': 10, 'PRECISION': 'ftp16'}
+[Wed Oct 29 14:49:37 2025] >> inference:
+[Wed Oct 29 15:22:52 2025] >> loss [4.2461], perplexity: [69.83046114307196]
+[Wed Oct 29 15:22:54 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 15:22:54 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Wed Oct 29 15:22:54 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 350, 'NUM_EPOCHS': 10, 'PRECISION': 'ftp8'}
+[Wed Oct 29 15:22:57 2025] >> inference:
+[Wed Oct 29 17:22:49 2025] >> loss [4.341], perplexity: [76.786750493854]

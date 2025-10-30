@@ -232,7 +232,7 @@ def get_flops(cfg, log:Log=False):
             encoder_mask = batch["encoder_mask"].to(device)
             decoder_mask = batch["decoder_mask"].to(device)
 
-            # === Count FLOPs for this batch ===
+            # === Count FLOPs for this batch(=1 for validation) ===
             flops_counter = FlopCountAnalysis(
                 model, 
                 (encoder_input, decoder_input, encoder_mask, decoder_mask, connections_matrix)
@@ -345,7 +345,7 @@ def train_model(config, validate=False, log:Log=False, precision="ftp32"):
             if log:
                 log.println(f"epoch [{epoch:2}] saved in [{save_path}], train loss [{train_loss:.4f}]")
                 
-            if validate and epoch >= validate:
+            if validate:
                 v_loss = run_validation(
                     model, val_loader, tokenizer_src, tokenizer_tgt, config['seq_len'],
                     device, print, 0, None, connections_matrix
@@ -374,9 +374,9 @@ def inference_model(cfg, log:Log=False, precision="ftp32"):
     elif precision == "ftp32":
         pass
     else:
-        log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
+        # log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
         model = ftp_modify_model(model, precision)
-        log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
+        # log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
 
     # === Connections matrix (sequential encoder by default) ===
     N = cfg['num_layers']
@@ -402,6 +402,6 @@ if __name__ == '__main__':
     warnings.filterwarnings("ignore")
     cfg = get_config()
 
-    train_model(cfg, validate=False, log=log, precision=PRECISION)
+    train_model(cfg, validate=True, log=log, precision=PRECISION)
     # get_flops(cfg, log=log)
     log.println("\n\n")
