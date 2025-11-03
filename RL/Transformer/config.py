@@ -13,7 +13,6 @@ from pathlib import Path
 from log import Log
 import sys
 
-log = Log("output.log", terminal=True)
 
 
 if (len(sys.argv) == 1):
@@ -27,20 +26,26 @@ if (len(sys.argv) == 1):
     NUM_EPOCHS = 10
     PRECISION = "ftp32"
     DEVICE = "cuda:0"
-    log.println("running with default values")
+    # log.println("running with default values")
 else:
-    D_MODEL =       int(sys.argv[1])
-    NUM_HEADS =     2
-    NUM_LAYERS =    int(sys.argv[2])
-    SEQ_LEN =       int(sys.argv[3])
-    LANG_SRC =      'de'
-    LANG_TGT =      'fr'
-    # LANG_SRC =      'el'
-    # LANG_TGT =      'en'
-    NET_NAME =      'model_dense_enc'
-    NUM_EPOCHS =    10
-    PRECISION =     sys.argv[4]
-    DEVICE =   sys.argv[5]
+    D_MODEL     = int(sys.argv[1])
+    NUM_HEADS   = 2
+    NUM_LAYERS  = int(sys.argv[2])
+    SEQ_LEN     = int(sys.argv[3])
+
+    # High accuracy
+    # LANG_SRC =      'de'
+    # LANG_TGT =      'fr'
+
+    # Fast Training
+    LANG_SRC    = 'el'
+    LANG_TGT    = 'en'
+    NET_NAME    = 'model_dense_enc'
+    NUM_EPOCHS  = 10
+    PRECISION   = sys.argv[4]
+    DEVICE      = sys.argv[5]
+
+log = Log(f"output.{DEVICE}.log", terminal=True)
 
 
 p = {
