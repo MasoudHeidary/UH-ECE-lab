@@ -108,12 +108,12 @@ class Backlog():
                     return
     
 
-def random_backlog(inst_length, t1=5, t2=10, distance=0, max_rate=10, force_length=False, MAX_STEP=1000):
+def random_backlog(inst_length, t1=5, t2=10, distance=0, max_rate=10, force_length=False, max_step=1000):
     """in distance, only max_rate instruction exist concurently"""
     inst_lst = []
     step_set = dict()
     for i in range(inst_length):
-        t0 = random.randrange(0, MAX_STEP)
+        t0 = random.randrange(0, max_step)
         inst = Instruction(t0, t0 + t1, t0 + t2)
         
         # exist = False

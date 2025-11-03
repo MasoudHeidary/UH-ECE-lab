@@ -12,7 +12,7 @@ TOTAL_TRAIN_TIMESTEPS = 200_000
 TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"{__file__}.model"
-DEVICE = "cuda:1"
+DEVICE = "cuda:0"
 SEED = 42
 
 MODEL_TRAIN = True
@@ -23,13 +23,11 @@ if __name__ == "__main__":
     def make_env():
         def _init():
             env = SystolicArrayEnv()
-            # env = Monitor(env)  # monitoring wrapper
             env.reset()
             return env
         return _init
 
     def train(timesteps, filename, v_env, device):
-        # env = SubprocVecEnv([make_env for _ in range(v_env)])
         env = DummyVecEnv([make_env() for _ in range(TRAIN_CPU)])  # single env is fine for DQN        
         model = DQN(
             "MlpPolicy",
@@ -53,73 +51,69 @@ if __name__ == "__main__":
         model.save(filename)
         env.close()
 
+
     def inference(model_filename, image_filename, device):
         env = SystolicArrayEnv()
         obs = env.reset()
         model = DQN.load(model_filename, env=env, device=device)
 
-        voltages, freqs, latencies, powers = [], [], [], []
-        backlogs, instr_rates = [], []
-        reward_lst, power_penalty, backlog_penalty = [], [], []
+        vdd, freq, latency, power = [], [], [], []
+        backlog_not_active, backlog_ok, backlog_linear, backlog_crashed = [], [], [], []
+        reward_lst = []
         max_freq = []
 
         for step in range(MAX_STEP):
             action, _ = model.predict(obs, deterministic=True)
             obs, reward, done, info = env.step(int(action), inference=True)
 
-            voltages.append(env.vdd)
-            freqs.append(env.current_frequency)
-            latencies.append(env.latency)
-            powers.append(env.power)
+            freq.append(env.freq)
 
-            backlogs.append(env.backlog_size)
-            instr_rates.append(env.backlog_crashed)
-            max_freq.append(info['max_freq'])
+            vdd.append(env.vdd)
+            latency.append(env.latency / env.max_latency)
+            power.append(env.power / env.max_power)
+
+            backlog_not_active.append(env.backlog_not_active)
+            backlog_ok.append(env.backlog_ok)
+            backlog_linear.append(env.backlog_linear)
+            backlog_crashed.append(env.backlog_crashed)
+
+            max_freq.append(env.hardware.get_max_freq())
 
             reward_lst.append(reward)
-            power_penalty.append(0)
-            backlog_penalty.append(0)
-
-            # if done:
-            #     obs = env.reset()
-
-            
 
         plt.figure(figsize=(12,8))
 
         plt.subplot(5,1,1)
-        plt.plot(freqs, label='Frequency (MHz)')
+        plt.plot(freq, label='Frequency (MHz)')
         plt.plot(max_freq, label='max_freq (MHz)')
         plt.ylabel("Frequency")
         plt.legend()
         plt.grid(True)
 
         plt.subplot(5,1,2)
-        plt.plot(latencies, label='Latency (ps)')
-        plt.plot(powers, label='Power (uw * MHz)')
-        plt.ylabel("Latency / Power")
+        plt.plot(vdd, label='vdd (v)')
+        plt.plot(latency, label='Latency (ps)')
+        plt.plot(power, label='Power (uw * MHz)')
+        plt.ylabel("derived parameter")
         plt.legend()
         plt.grid(True)
 
         plt.subplot(5,1,3)
-        plt.plot(voltages, label='Voltage (V)')
-        plt.ylabel("Voltage")
+        plt.plot(backlog_ok, label='backlog (ok)')
+        plt.ylabel("xxx")
         plt.legend()
         plt.grid(True)
 
         plt.subplot(5,1,4)
-        plt.plot(backlogs, label='running inst')
-        plt.ylabel("...")
+        plt.plot(backlog_linear, label='backlog (linear)')
+        plt.ylabel("xxx")
         plt.xlabel("Step")
         plt.legend()
         plt.grid(True)
 
         plt.subplot(5,1,5)
-        plt.plot(instr_rates, label='crashed inst')
-        # plt.plot(reward_lst, label='reward')
-        # plt.plot(power_penalty, label='power penalty')
-        # plt.plot(backlog_penalty, label='backlog penalty')
-        plt.ylabel("...")
+        plt.plot(backlog_crashed, label='backlog (crashed)')
+        plt.ylabel("xxx")
         plt.xlabel("Step")
         plt.legend()
         plt.grid(True)

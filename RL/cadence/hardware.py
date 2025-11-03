@@ -11,10 +11,11 @@ else:
     from .NBTI_formula import delta_vth
 
 class Hardware:
-    def __init__(self, init_vth=0.442, aging_alpha=0.5):
+    def __init__(self, init_vth=0.442, aging_alpha=0.5, systolic_array=256):
         self.initial_vth = init_vth
         self.vth = init_vth
         self.alpha = aging_alpha
+        self.systolic_array = systolic_array
 
         self.vdd_levels = [0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]
 
@@ -27,6 +28,8 @@ class Hardware:
     
     @staticmethod
     def to_delayps(freq_MHz):
+        if freq_MHz == 0:
+            freq_MHz = 1
         return 1_000_000 / freq_MHz
 
     def get_vbody(self, vdd):
@@ -48,6 +51,9 @@ class Hardware:
             raise LookupError(f"too high frequency - {freq_MHz}MHz")
         return False
     
+    def get_flops(self, freq_MHz):
+        return (self.systolic_array ** 2) * (freq_MHz * 1_000_000)
+    
     def apply_aging(self, vdd, t0, t1, T=348.15):
         vdef = vdd + self.initial_vth
 
@@ -65,8 +71,7 @@ class Hardware:
     def get_max_mapping_voltage(self):
         return self.vdd_levels[-1]
     def get_max_mapping_delay(self):
-        # return vdd_vbody_to_delay_power(self.vdd_levels[0], 9.99)[0]                    # ps
-        return map_array_MP8_vbody_delay_power.vdd_600[-1][0]
+        return vdd_vbody_to_delay_power(self.vdd_levels[0], 2.670)[0]
     def get_max_mapping_power(self):
         return vdd_vbody_to_delay_power(self.vdd_levels[-1],self.vdd_levels[-1])[1]     # uW
 
