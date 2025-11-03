@@ -1,6 +1,6 @@
 import os
 
-CUDA = "cuda:0"
+CUDA = "cuda:1"
 
 def clean_files():
     os.system("rm ./init_model.pth")
@@ -34,12 +34,10 @@ def run_flops(d_model, num_layers, seq_len, precision, cuda_device):
 
 
 for d_model in [128, 256, 512, 1024]:
-    for num_layer in [1, 2, 4]:
-    # for num_layer in [6, 8]:
+    for num_layer in [1, 2, 4, 6, 8]:
         run_train(d_model, num_layer, 350, "ftp32", CUDA)
         # run_flops(d_model, num_layer, 350, "ftp32", CUDA)
 
-        run_inference(d_model, num_layer, 350, "ftp32", CUDA)
+        # run_inference(d_model, num_layer, 350, "ftp32", CUDA)
         # run_inference(d_model, num_layer, 350, "ftp16", CUDA)
         # run_inference(d_model, num_layer, 350, "ftp8", CUDA)
-        exit()

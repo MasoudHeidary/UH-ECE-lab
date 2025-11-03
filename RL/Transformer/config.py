@@ -34,12 +34,12 @@ else:
     SEQ_LEN     = int(sys.argv[3])
 
     # High accuracy
-    # LANG_SRC =      'de'
-    # LANG_TGT =      'fr'
+    LANG_SRC =      'de'
+    LANG_TGT =      'fr'
 
     # Fast Training
-    LANG_SRC    = 'el'
-    LANG_TGT    = 'en'
+    # LANG_SRC    = 'el'
+    # LANG_TGT    = 'en'
     NET_NAME    = 'model_dense_enc'
     NUM_EPOCHS  = 10
     PRECISION   = sys.argv[4]
