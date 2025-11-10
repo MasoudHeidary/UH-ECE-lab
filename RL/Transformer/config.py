@@ -48,8 +48,10 @@ else:
     NET_NAME    = 'model_dense_enc'
     NUM_EPOCHS  = int(sys.argv[4]) + 1
     PRECISION   = sys.argv[5]
+
     DEVICE      = sys.argv[6]
     VALIDATE    = int(sys.argv[7])
+    LEARNING_RATE = float(sys.argv[8])
 
 log = Log(f"output.{DEVICE}.log", terminal=True)
 
@@ -70,7 +72,7 @@ def get_config():
         "net_name": f"{NET_NAME}",
         "batch_size": 8,
         "num_epochs": NUM_EPOCHS,
-        "lr": 1 * (10**-5),
+        "lr": LEARNING_RATE,
         "seq_len": SEQ_LEN,
         "d_models": [D_MODEL],
         "num_layers": NUM_LAYERS,
