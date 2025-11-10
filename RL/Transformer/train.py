@@ -345,7 +345,7 @@ def train_model(config, validate=False, log:Log=False, precision="ftp32"):
             if log:
                 log.println(f"epoch [{epoch:2}] saved in [{save_path}], train loss [{train_loss:.4f}]")
                 
-            if validate:
+            if validate and epoch >= validate:
                 v_loss = run_validation(
                     model, val_loader, tokenizer_src, tokenizer_tgt, config['seq_len'],
                     device, print, 0, None, connections_matrix
@@ -378,14 +378,14 @@ def inference_model(cfg, log:Log=False, precision="ftp32"):
         model = ftp_modify_model(model, precision)
         # log.println(f"{model.encoder.layers[0].self_attention_block.w_q.weight}")
 
-    # === Connections matrix (sequential encoder by default) ===
+    # Connections matrix (sequential encoder by default)
     N = cfg['num_layers']
     default_matrix = np.zeros((N + 1, N + 1), dtype=int)
     for i in range(N):
         default_matrix[i, i+1] = 1
     connections_matrix = torch.tensor(default_matrix, device=device, dtype=torch.int)
 
-    # === Run validation once (just inference mode) ===
+    # Run validation once (just inference mode)
     avg_loss = run_validation(
         model, val_loader, tokenizer_src, tokenizer_tgt, cfg['seq_len'],
         device, print, 0, None, connections_matrix
@@ -402,6 +402,5 @@ if __name__ == '__main__':
     warnings.filterwarnings("ignore")
     cfg = get_config()
 
-    train_model(cfg, validate=True, log=log, precision=PRECISION)
-    # get_flops(cfg, log=log)
-    log.println("\n\n")
+    train_model(cfg, validate=VALIDATE, log=log, precision=PRECISION)
+    log.println("")

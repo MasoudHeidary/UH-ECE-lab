@@ -9,6 +9,11 @@ Language list:
 'hu-nl', 'hu-no', 'hu-pl', 'hu-pt', 'hu-ru', 'it-nl', 'it-pt', 'it-ru', 'it-sv'
 """
 
+"""
+    config CLI
+    d_model, num_layers, seq_len, num_epoch, precision, device, validate
+"""
+
 from pathlib import Path
 from log import Log
 import sys
@@ -41,9 +46,10 @@ else:
     # LANG_SRC    = 'el'
     # LANG_TGT    = 'en'
     NET_NAME    = 'model_dense_enc'
-    NUM_EPOCHS  = 10
-    PRECISION   = sys.argv[4]
-    DEVICE      = sys.argv[5]
+    NUM_EPOCHS  = int(sys.argv[4]) + 1
+    PRECISION   = sys.argv[5]
+    DEVICE      = sys.argv[6]
+    VALIDATE    = int(sys.argv[7])
 
 log = Log(f"output.{DEVICE}.log", terminal=True)
 
@@ -51,7 +57,8 @@ log = Log(f"output.{DEVICE}.log", terminal=True)
 p = {
     'D_MODEL': D_MODEL, 'NUM_LAYERS': NUM_LAYERS, 
     'SEQ_LEN': SEQ_LEN, 'NUM_EPOCHS': NUM_EPOCHS,
-    'PRECISION': PRECISION
+    'PRECISION': PRECISION, 'DEVICE': DEVICE,
+    'VALIDATE': VALIDATE
 }
 log.println(f"{'@'*80}")
 log.println(f"{'@'*80}")
@@ -63,7 +70,7 @@ def get_config():
         "net_name": f"{NET_NAME}",
         "batch_size": 8,
         "num_epochs": NUM_EPOCHS,
-        "lr": 10**-4,
+        "lr": 1 * (10**-5),
         "seq_len": SEQ_LEN,
         "d_models": [D_MODEL],
         "num_layers": NUM_LAYERS,
