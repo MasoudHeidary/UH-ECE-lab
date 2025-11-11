@@ -1,0 +1,861 @@
+[Mon Nov 10 13:01:42 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:01:42 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:01:42 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:01:45 2025] >> train: 
+[Mon Nov 10 13:01:59 2025] >> epoch [ 0] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [3.4944]
+[Mon Nov 10 13:02:09 2025] >> epoch [ 1] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.5202]
+[Mon Nov 10 13:02:20 2025] >> epoch [ 2] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [6.2559]
+[Mon Nov 10 13:02:30 2025] >> epoch [ 3] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.8623]
+[Mon Nov 10 13:02:40 2025] >> epoch [ 4] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.5927]
+[Mon Nov 10 13:02:50 2025] >> epoch [ 5] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [4.4017]
+[Mon Nov 10 13:03:01 2025] >> epoch [ 6] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [4.6448]
+[Mon Nov 10 13:03:11 2025] >> epoch [ 7] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.6972]
+[Mon Nov 10 13:03:22 2025] >> epoch [ 8] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.6525]
+[Mon Nov 10 13:03:32 2025] >> epoch [ 9] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.9011]
+[Mon Nov 10 13:03:43 2025] >> epoch [10] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [5.4965]
+[Mon Nov 10 13:03:53 2025] >> epoch [11] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [4.6050]
+[Mon Nov 10 13:04:03 2025] >> epoch [12] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.4042]
+[Mon Nov 10 13:04:14 2025] >> epoch [13] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.6434]
+[Mon Nov 10 13:04:24 2025] >> epoch [14] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [4.4533]
+[Mon Nov 10 13:04:35 2025] >> epoch [15] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.3581]
+[Mon Nov 10 13:04:45 2025] >> epoch [16] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.0196]
+[Mon Nov 10 13:04:55 2025] >> epoch [17] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [3.3792]
+[Mon Nov 10 13:05:06 2025] >> epoch [18] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [3.3229]
+[Mon Nov 10 13:05:16 2025] >> epoch [19] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.7744]
+[Mon Nov 10 13:05:27 2025] >> epoch [20] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [4.2757]
+[Mon Nov 10 13:05:37 2025] >> epoch [21] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [3.1958]
+[Mon Nov 10 13:05:47 2025] >> epoch [22] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [5.4069]
+[Mon Nov 10 13:05:58 2025] >> epoch [23] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [2.5831]
+[Mon Nov 10 13:06:08 2025] >> epoch [24] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [2.1427]
+[Mon Nov 10 13:06:19 2025] >> epoch [25] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [3.2638]
+[Mon Nov 10 13:06:29 2025] >> epoch [26] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [3.7133]
+[Mon Nov 10 13:06:40 2025] >> epoch [27] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [3.1811]
+[Mon Nov 10 13:06:51 2025] >> epoch [28] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [4.2589]
+[Mon Nov 10 13:07:02 2025] >> epoch [29] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [3.0775]
+[Mon Nov 10 13:07:12 2025] >> epoch [30] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [3.0609]
+[Mon Nov 10 13:07:12 2025] >> 
+[Mon Nov 10 13:07:14 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:07:14 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:07:14 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:07:17 2025] >> inference:
+[Mon Nov 10 13:07:34 2025] >> loss [3.512], perplexity: [33.51555935685956]
+[Mon Nov 10 13:07:36 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:07:36 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:07:36 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:07:39 2025] >> inference:
+[Mon Nov 10 13:08:19 2025] >> loss [3.5452], perplexity: [34.645488165477]
+[Mon Nov 10 13:08:21 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:08:21 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:08:21 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:08:24 2025] >> inference:
+[Mon Nov 10 13:09:29 2025] >> loss [3.6009], perplexity: [36.63155447236188]
+[Mon Nov 10 13:09:32 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:09:32 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:09:32 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:09:35 2025] >> train: 
+[Mon Nov 10 13:09:55 2025] >> epoch [ 0] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.5328]
+[Mon Nov 10 13:10:11 2025] >> epoch [ 1] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.7762]
+[Mon Nov 10 13:10:28 2025] >> epoch [ 2] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.3661]
+[Mon Nov 10 13:10:44 2025] >> epoch [ 3] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.8105]
+[Mon Nov 10 13:11:01 2025] >> epoch [ 4] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.8625]
+[Mon Nov 10 13:11:17 2025] >> epoch [ 5] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.7831]
+[Mon Nov 10 13:11:34 2025] >> epoch [ 6] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [4.1190]
+[Mon Nov 10 13:11:50 2025] >> epoch [ 7] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.7996]
+[Mon Nov 10 13:12:07 2025] >> epoch [ 8] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [4.8740]
+[Mon Nov 10 13:12:23 2025] >> epoch [ 9] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.6433]
+[Mon Nov 10 13:12:40 2025] >> epoch [10] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.1209]
+[Mon Nov 10 13:12:57 2025] >> epoch [11] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.8991]
+[Mon Nov 10 13:13:14 2025] >> epoch [12] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [4.5500]
+[Mon Nov 10 13:13:30 2025] >> epoch [13] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [2.7457]
+[Mon Nov 10 13:13:47 2025] >> epoch [14] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [4.2621]
+[Mon Nov 10 13:14:04 2025] >> epoch [15] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.4982]
+[Mon Nov 10 13:14:20 2025] >> epoch [16] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [2.4301]
+[Mon Nov 10 13:14:37 2025] >> epoch [17] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [3.8034]
+[Mon Nov 10 13:14:54 2025] >> epoch [18] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [3.6472]
+[Mon Nov 10 13:15:10 2025] >> epoch [19] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [5.2444]
+[Mon Nov 10 13:15:27 2025] >> epoch [20] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [2.0056]
+[Mon Nov 10 13:15:44 2025] >> epoch [21] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [4.0237]
+[Mon Nov 10 13:16:00 2025] >> epoch [22] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [3.7362]
+[Mon Nov 10 13:16:17 2025] >> epoch [23] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [2.5604]
+[Mon Nov 10 13:16:34 2025] >> epoch [24] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [3.0668]
+[Mon Nov 10 13:16:51 2025] >> epoch [25] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [4.2666]
+[Mon Nov 10 13:17:07 2025] >> epoch [26] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [2.4909]
+[Mon Nov 10 13:17:24 2025] >> epoch [27] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [3.6316]
+[Mon Nov 10 13:17:41 2025] >> epoch [28] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [3.3095]
+[Mon Nov 10 13:17:58 2025] >> epoch [29] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [2.1784]
+[Mon Nov 10 13:18:15 2025] >> epoch [30] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [2.7931]
+[Mon Nov 10 13:18:15 2025] >> 
+[Mon Nov 10 13:18:17 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:18:17 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:18:17 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:18:20 2025] >> inference:
+[Mon Nov 10 13:18:46 2025] >> loss [3.4951], perplexity: [32.95449030820538]
+[Mon Nov 10 13:18:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:18:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:18:48 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:18:51 2025] >> inference:
+[Mon Nov 10 13:19:54 2025] >> loss [3.5262], perplexity: [33.9929778415923]
+[Mon Nov 10 13:19:57 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:19:57 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:19:57 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:20:00 2025] >> inference:
+[Mon Nov 10 13:21:49 2025] >> loss [3.5698], perplexity: [35.51031796665338]
+[Mon Nov 10 13:21:51 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:21:51 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:21:51 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:21:54 2025] >> train: 
+[Mon Nov 10 13:22:23 2025] >> epoch [ 0] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.0226]
+[Mon Nov 10 13:22:48 2025] >> epoch [ 1] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.1714]
+[Mon Nov 10 13:23:13 2025] >> epoch [ 2] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [5.5327]
+[Mon Nov 10 13:23:38 2025] >> epoch [ 3] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.3638]
+[Mon Nov 10 13:24:03 2025] >> epoch [ 4] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.1315]
+[Mon Nov 10 13:24:28 2025] >> epoch [ 5] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [5.4817]
+[Mon Nov 10 13:24:53 2025] >> epoch [ 6] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.1898]
+[Mon Nov 10 13:25:18 2025] >> epoch [ 7] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [4.6983]
+[Mon Nov 10 13:25:43 2025] >> epoch [ 8] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.7877]
+[Mon Nov 10 13:26:08 2025] >> epoch [ 9] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.0768]
+[Mon Nov 10 13:26:34 2025] >> epoch [10] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [4.9234]
+[Mon Nov 10 13:26:59 2025] >> epoch [11] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [2.9810]
+[Mon Nov 10 13:27:24 2025] >> epoch [12] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [4.2557]
+[Mon Nov 10 13:27:49 2025] >> epoch [13] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [4.7261]
+[Mon Nov 10 13:28:15 2025] >> epoch [14] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [2.7214]
+[Mon Nov 10 13:28:41 2025] >> epoch [15] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [3.9523]
+[Mon Nov 10 13:29:08 2025] >> epoch [16] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [2.5855]
+[Mon Nov 10 13:29:34 2025] >> epoch [17] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [4.4413]
+[Mon Nov 10 13:30:00 2025] >> epoch [18] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [4.7476]
+[Mon Nov 10 13:30:26 2025] >> epoch [19] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [3.4108]
+[Mon Nov 10 13:30:51 2025] >> epoch [20] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [4.2392]
+[Mon Nov 10 13:31:16 2025] >> epoch [21] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [2.0525]
+[Mon Nov 10 13:31:41 2025] >> epoch [22] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [3.4329]
+[Mon Nov 10 13:32:08 2025] >> epoch [23] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [2.6420]
+[Mon Nov 10 13:32:35 2025] >> epoch [24] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [2.0941]
+[Mon Nov 10 13:33:00 2025] >> epoch [25] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [1.9146]
+[Mon Nov 10 13:33:26 2025] >> epoch [26] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [2.8312]
+[Mon Nov 10 13:33:52 2025] >> epoch [27] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [2.1720]
+[Mon Nov 10 13:34:19 2025] >> epoch [28] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [2.2520]
+[Mon Nov 10 13:34:44 2025] >> epoch [29] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [2.3294]
+[Mon Nov 10 13:35:10 2025] >> epoch [30] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [4.2014]
+[Mon Nov 10 13:35:10 2025] >> 
+[Mon Nov 10 13:35:12 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:35:12 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:35:12 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:35:15 2025] >> inference:
+[Mon Nov 10 13:35:59 2025] >> loss [3.5058], perplexity: [33.309701900973]
+[Mon Nov 10 13:36:01 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:36:01 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:36:01 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:36:05 2025] >> inference:
+[Mon Nov 10 13:37:52 2025] >> loss [3.5311], perplexity: [34.16120661685737]
+[Mon Nov 10 13:37:55 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:37:55 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:37:55 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:37:58 2025] >> inference:
+[Mon Nov 10 13:41:13 2025] >> loss [3.5727], perplexity: [35.614275211895794]
+[Mon Nov 10 13:41:16 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:41:16 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 13:41:16 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 13:41:19 2025] >> train: 
+[Mon Nov 10 13:42:01 2025] >> epoch [ 0] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.5247]
+[Mon Nov 10 13:42:41 2025] >> epoch [ 1] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.2941]
+[Mon Nov 10 13:43:21 2025] >> epoch [ 2] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.3920]
+[Mon Nov 10 13:44:00 2025] >> epoch [ 3] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.1819]
+[Mon Nov 10 13:44:39 2025] >> epoch [ 4] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.1096]
+[Mon Nov 10 13:45:19 2025] >> epoch [ 5] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [4.4637]
+[Mon Nov 10 13:45:58 2025] >> epoch [ 6] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [4.5846]
+[Mon Nov 10 13:46:37 2025] >> epoch [ 7] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.1959]
+[Mon Nov 10 13:47:13 2025] >> epoch [ 8] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [4.7626]
+[Mon Nov 10 13:47:51 2025] >> epoch [ 9] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.2787]
+[Mon Nov 10 13:48:31 2025] >> epoch [10] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [4.9588]
+[Mon Nov 10 13:49:09 2025] >> epoch [11] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.6247]
+[Mon Nov 10 13:49:47 2025] >> epoch [12] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.7660]
+[Mon Nov 10 13:50:26 2025] >> epoch [13] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.2177]
+[Mon Nov 10 13:51:05 2025] >> epoch [14] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.8172]
+[Mon Nov 10 13:51:42 2025] >> epoch [15] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [3.4760]
+[Mon Nov 10 13:52:19 2025] >> epoch [16] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [4.4925]
+[Mon Nov 10 13:52:56 2025] >> epoch [17] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [4.2084]
+[Mon Nov 10 13:53:33 2025] >> epoch [18] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.5848]
+[Mon Nov 10 13:54:10 2025] >> epoch [19] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [3.9996]
+[Mon Nov 10 13:54:47 2025] >> epoch [20] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [3.7139]
+[Mon Nov 10 13:55:24 2025] >> epoch [21] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [2.8183]
+[Mon Nov 10 13:56:02 2025] >> epoch [22] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [2.7125]
+[Mon Nov 10 13:56:39 2025] >> epoch [23] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [2.7821]
+[Mon Nov 10 13:57:17 2025] >> epoch [24] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [2.3309]
+[Mon Nov 10 13:57:55 2025] >> epoch [25] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [2.4916]
+[Mon Nov 10 13:58:32 2025] >> epoch [26] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [2.4053]
+[Mon Nov 10 13:59:09 2025] >> epoch [27] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [4.2912]
+[Mon Nov 10 13:59:47 2025] >> epoch [28] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [3.1080]
+[Mon Nov 10 14:00:24 2025] >> epoch [29] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [3.5110]
+[Mon Nov 10 14:01:02 2025] >> epoch [30] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [2.0609]
+[Mon Nov 10 14:01:02 2025] >> 
+[Mon Nov 10 14:01:04 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:01:04 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:01:04 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:01:07 2025] >> inference:
+[Mon Nov 10 14:02:05 2025] >> loss [3.5414], perplexity: [34.51433435804932]
+[Mon Nov 10 14:02:07 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:02:07 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:02:07 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:02:11 2025] >> inference:
+[Mon Nov 10 14:04:40 2025] >> loss [3.5699], perplexity: [35.51135486159868]
+[Mon Nov 10 14:04:43 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:04:43 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:04:43 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:04:46 2025] >> inference:
+[Mon Nov 10 14:09:10 2025] >> loss [3.6086], perplexity: [36.915474513029984]
+[Mon Nov 10 14:09:13 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:09:13 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:09:13 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:09:16 2025] >> train: 
+[Mon Nov 10 14:10:09 2025] >> epoch [ 0] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [6.0530]
+[Mon Nov 10 14:10:57 2025] >> epoch [ 1] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.1440]
+[Mon Nov 10 14:11:45 2025] >> epoch [ 2] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [3.9509]
+[Mon Nov 10 14:12:34 2025] >> epoch [ 3] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.8900]
+[Mon Nov 10 14:13:22 2025] >> epoch [ 4] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [3.2950]
+[Mon Nov 10 14:14:11 2025] >> epoch [ 5] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.1826]
+[Mon Nov 10 14:14:59 2025] >> epoch [ 6] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.6282]
+[Mon Nov 10 14:15:47 2025] >> epoch [ 7] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.9515]
+[Mon Nov 10 14:16:36 2025] >> epoch [ 8] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [4.2339]
+[Mon Nov 10 14:17:27 2025] >> epoch [ 9] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.4572]
+[Mon Nov 10 14:18:15 2025] >> epoch [10] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.4146]
+[Mon Nov 10 14:19:03 2025] >> epoch [11] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [2.5193]
+[Mon Nov 10 14:19:51 2025] >> epoch [12] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.2982]
+[Mon Nov 10 14:20:40 2025] >> epoch [13] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [2.5135]
+[Mon Nov 10 14:21:31 2025] >> epoch [14] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.6235]
+[Mon Nov 10 14:22:23 2025] >> epoch [15] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [3.2888]
+[Mon Nov 10 14:23:13 2025] >> epoch [16] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [4.2522]
+[Mon Nov 10 14:24:01 2025] >> epoch [17] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.5779]
+[Mon Nov 10 14:24:50 2025] >> epoch [18] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [1.7289]
+[Mon Nov 10 14:25:42 2025] >> epoch [19] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.6835]
+[Mon Nov 10 14:26:41 2025] >> epoch [20] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [3.5420]
+[Mon Nov 10 14:27:36 2025] >> epoch [21] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [3.3592]
+[Mon Nov 10 14:28:33 2025] >> epoch [22] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [3.3784]
+[Mon Nov 10 14:29:30 2025] >> epoch [23] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [3.4194]
+[Mon Nov 10 14:30:27 2025] >> epoch [24] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [4.0327]
+[Mon Nov 10 14:31:23 2025] >> epoch [25] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [3.0666]
+[Mon Nov 10 14:32:18 2025] >> epoch [26] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [3.2884]
+[Mon Nov 10 14:33:10 2025] >> epoch [27] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [2.9354]
+[Mon Nov 10 14:34:02 2025] >> epoch [28] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [3.0787]
+[Mon Nov 10 14:34:54 2025] >> epoch [29] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [3.0403]
+[Mon Nov 10 14:35:46 2025] >> epoch [30] saved in [opus_books_emb128_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [3.0557]
+[Mon Nov 10 14:35:46 2025] >> 
+[Mon Nov 10 14:35:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:35:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:35:48 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:35:51 2025] >> inference:
+[Mon Nov 10 14:37:08 2025] >> loss [3.5288], perplexity: [34.084310646506275]
+[Mon Nov 10 14:37:10 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:37:10 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:37:10 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:37:14 2025] >> inference:
+[Mon Nov 10 14:40:36 2025] >> loss [3.5555], perplexity: [35.00455032989743]
+[Mon Nov 10 14:40:39 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:40:39 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:40:39 2025] >> {'D_MODEL': 128, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:40:42 2025] >> inference:
+[Mon Nov 10 14:46:49 2025] >> loss [3.5979], perplexity: [36.520776858235905]
+[Mon Nov 10 14:46:52 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:46:52 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:46:52 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:46:56 2025] >> train: 
+[Mon Nov 10 14:47:10 2025] >> epoch [ 0] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.7798]
+[Mon Nov 10 14:47:21 2025] >> epoch [ 1] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.4195]
+[Mon Nov 10 14:47:31 2025] >> epoch [ 2] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [5.0097]
+[Mon Nov 10 14:47:42 2025] >> epoch [ 3] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.2802]
+[Mon Nov 10 14:47:53 2025] >> epoch [ 4] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.9300]
+[Mon Nov 10 14:48:05 2025] >> epoch [ 5] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.9874]
+[Mon Nov 10 14:48:17 2025] >> epoch [ 6] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.2480]
+[Mon Nov 10 14:48:29 2025] >> epoch [ 7] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [5.1467]
+[Mon Nov 10 14:48:39 2025] >> epoch [ 8] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [4.3574]
+[Mon Nov 10 14:48:50 2025] >> epoch [ 9] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [3.4337]
+[Mon Nov 10 14:49:00 2025] >> epoch [10] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.0113]
+[Mon Nov 10 14:49:10 2025] >> epoch [11] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [2.7768]
+[Mon Nov 10 14:49:21 2025] >> epoch [12] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.3454]
+[Mon Nov 10 14:49:31 2025] >> epoch [13] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [4.2494]
+[Mon Nov 10 14:49:42 2025] >> epoch [14] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [2.7163]
+[Mon Nov 10 14:49:52 2025] >> epoch [15] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.8864]
+[Mon Nov 10 14:50:02 2025] >> epoch [16] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [2.8730]
+[Mon Nov 10 14:50:12 2025] >> epoch [17] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.5510]
+[Mon Nov 10 14:50:23 2025] >> epoch [18] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.8102]
+[Mon Nov 10 14:50:33 2025] >> epoch [19] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [3.0612]
+[Mon Nov 10 14:50:44 2025] >> epoch [20] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [2.6506]
+[Mon Nov 10 14:50:54 2025] >> epoch [21] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [2.5136]
+[Mon Nov 10 14:51:05 2025] >> epoch [22] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [3.3015]
+[Mon Nov 10 14:51:15 2025] >> epoch [23] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [1.3279]
+[Mon Nov 10 14:51:25 2025] >> epoch [24] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [1.2061]
+[Mon Nov 10 14:51:34 2025] >> epoch [25] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [1.2518]
+[Mon Nov 10 14:51:44 2025] >> epoch [26] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [3.2829]
+[Mon Nov 10 14:51:54 2025] >> epoch [27] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [2.5933]
+[Mon Nov 10 14:52:04 2025] >> epoch [28] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [2.5309]
+[Mon Nov 10 14:52:14 2025] >> epoch [29] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [3.0594]
+[Mon Nov 10 14:52:24 2025] >> epoch [30] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [2.0037]
+[Mon Nov 10 14:52:24 2025] >> 
+[Mon Nov 10 14:52:26 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:52:26 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:52:26 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:52:30 2025] >> inference:
+[Mon Nov 10 14:52:47 2025] >> loss [3.4288], perplexity: [30.839527847464538]
+[Mon Nov 10 14:52:49 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:52:49 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:52:49 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:52:52 2025] >> inference:
+[Mon Nov 10 14:53:35 2025] >> loss [3.4811], perplexity: [32.49519264834643]
+[Mon Nov 10 14:53:37 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:53:37 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:53:37 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:53:40 2025] >> inference:
+[Mon Nov 10 14:54:52 2025] >> loss [3.5537], perplexity: [34.94076932992143]
+[Mon Nov 10 14:54:55 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:54:55 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 14:54:55 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 14:54:59 2025] >> train: 
+[Mon Nov 10 14:55:18 2025] >> epoch [ 0] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.0363]
+[Mon Nov 10 14:55:34 2025] >> epoch [ 1] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [3.7170]
+[Mon Nov 10 14:55:49 2025] >> epoch [ 2] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.7675]
+[Mon Nov 10 14:56:05 2025] >> epoch [ 3] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.3410]
+[Mon Nov 10 14:56:21 2025] >> epoch [ 4] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.1216]
+[Mon Nov 10 14:56:37 2025] >> epoch [ 5] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.1516]
+[Mon Nov 10 14:56:53 2025] >> epoch [ 6] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [2.7855]
+[Mon Nov 10 14:57:09 2025] >> epoch [ 7] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [4.3439]
+[Mon Nov 10 14:57:25 2025] >> epoch [ 8] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.9679]
+[Mon Nov 10 14:57:40 2025] >> epoch [ 9] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [3.6083]
+[Mon Nov 10 14:57:55 2025] >> epoch [10] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.8499]
+[Mon Nov 10 14:58:10 2025] >> epoch [11] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [2.5908]
+[Mon Nov 10 14:58:25 2025] >> epoch [12] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [2.8487]
+[Mon Nov 10 14:58:41 2025] >> epoch [13] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.6728]
+[Mon Nov 10 14:58:57 2025] >> epoch [14] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [2.1127]
+[Mon Nov 10 14:59:13 2025] >> epoch [15] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.0119]
+[Mon Nov 10 14:59:28 2025] >> epoch [16] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.1747]
+[Mon Nov 10 14:59:44 2025] >> epoch [17] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [1.2398]
+[Mon Nov 10 15:00:00 2025] >> epoch [18] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.3920]
+[Mon Nov 10 15:00:16 2025] >> epoch [19] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.3750]
+[Mon Nov 10 15:00:33 2025] >> epoch [20] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [3.3256]
+[Mon Nov 10 15:00:49 2025] >> epoch [21] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [3.5869]
+[Mon Nov 10 15:01:05 2025] >> epoch [22] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [1.6367]
+[Mon Nov 10 15:01:20 2025] >> epoch [23] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [3.7361]
+[Mon Nov 10 15:01:37 2025] >> epoch [24] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [3.2949]
+[Mon Nov 10 15:01:53 2025] >> epoch [25] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [2.8077]
+[Mon Nov 10 15:02:10 2025] >> epoch [26] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [2.4435]
+[Mon Nov 10 15:02:25 2025] >> epoch [27] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [3.4916]
+[Mon Nov 10 15:02:42 2025] >> epoch [28] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [2.7168]
+[Mon Nov 10 15:02:58 2025] >> epoch [29] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [1.4251]
+[Mon Nov 10 15:03:14 2025] >> epoch [30] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [1.3032]
+[Mon Nov 10 15:03:14 2025] >> 
+[Mon Nov 10 15:03:16 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:03:16 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:03:16 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:03:20 2025] >> inference:
+[Mon Nov 10 15:03:47 2025] >> loss [3.4249], perplexity: [30.71830322332645]
+[Mon Nov 10 15:03:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:03:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:03:50 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:03:53 2025] >> inference:
+[Mon Nov 10 15:04:59 2025] >> loss [3.4699], perplexity: [32.133922778626086]
+[Mon Nov 10 15:05:02 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:05:02 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:05:02 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:05:05 2025] >> inference:
+[Mon Nov 10 15:06:56 2025] >> loss [3.5334], perplexity: [34.23855215238155]
+[Mon Nov 10 15:06:59 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:06:59 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:06:59 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:07:02 2025] >> train: 
+[Mon Nov 10 15:07:32 2025] >> epoch [ 0] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.4566]
+[Mon Nov 10 15:07:58 2025] >> epoch [ 1] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.1112]
+[Mon Nov 10 15:08:24 2025] >> epoch [ 2] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [3.2482]
+[Mon Nov 10 15:08:54 2025] >> epoch [ 3] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.7860]
+[Mon Nov 10 15:09:24 2025] >> epoch [ 4] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [3.9310]
+[Mon Nov 10 15:09:54 2025] >> epoch [ 5] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [4.8360]
+[Mon Nov 10 15:10:23 2025] >> epoch [ 6] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.8685]
+[Mon Nov 10 15:10:52 2025] >> epoch [ 7] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.1735]
+[Mon Nov 10 15:11:19 2025] >> epoch [ 8] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.9755]
+[Mon Nov 10 15:11:47 2025] >> epoch [ 9] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [3.6193]
+[Mon Nov 10 15:12:14 2025] >> epoch [10] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.6017]
+[Mon Nov 10 15:12:41 2025] >> epoch [11] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.5107]
+[Mon Nov 10 15:13:08 2025] >> epoch [12] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [4.3098]
+[Mon Nov 10 15:13:35 2025] >> epoch [13] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [2.6442]
+[Mon Nov 10 15:14:03 2025] >> epoch [14] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [2.4605]
+[Mon Nov 10 15:14:30 2025] >> epoch [15] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.5719]
+[Mon Nov 10 15:14:58 2025] >> epoch [16] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.4303]
+[Mon Nov 10 15:15:25 2025] >> epoch [17] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.5521]
+[Mon Nov 10 15:15:52 2025] >> epoch [18] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [3.8521]
+[Mon Nov 10 15:16:18 2025] >> epoch [19] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.6292]
+[Mon Nov 10 15:16:44 2025] >> epoch [20] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [3.7930]
+[Mon Nov 10 15:17:10 2025] >> epoch [21] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [2.9966]
+[Mon Nov 10 15:17:36 2025] >> epoch [22] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [2.2670]
+[Mon Nov 10 15:18:03 2025] >> epoch [23] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [2.7186]
+[Mon Nov 10 15:18:29 2025] >> epoch [24] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [1.6120]
+[Mon Nov 10 15:18:55 2025] >> epoch [25] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [3.2504]
+[Mon Nov 10 15:19:20 2025] >> epoch [26] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [1.8668]
+[Mon Nov 10 15:19:47 2025] >> epoch [27] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [2.2707]
+[Mon Nov 10 15:20:13 2025] >> epoch [28] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [1.9126]
+[Mon Nov 10 15:20:38 2025] >> epoch [29] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [2.1195]
+[Mon Nov 10 15:21:04 2025] >> epoch [30] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [2.9963]
+[Mon Nov 10 15:21:04 2025] >> 
+[Mon Nov 10 15:21:07 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:21:07 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:21:07 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:21:10 2025] >> inference:
+[Mon Nov 10 15:21:54 2025] >> loss [3.4722], perplexity: [32.20791118828974]
+[Mon Nov 10 15:21:56 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:21:56 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:21:56 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:22:00 2025] >> inference:
+[Mon Nov 10 15:23:48 2025] >> loss [3.5134], perplexity: [33.56115243920544]
+[Mon Nov 10 15:23:51 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:23:51 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:23:51 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:23:54 2025] >> inference:
+[Mon Nov 10 15:27:13 2025] >> loss [3.5692], perplexity: [35.488248081014966]
+[Mon Nov 10 15:27:16 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:27:16 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:27:16 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:27:19 2025] >> train: 
+[Mon Nov 10 15:28:01 2025] >> epoch [ 0] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.3488]
+[Mon Nov 10 15:28:40 2025] >> epoch [ 1] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.3142]
+[Mon Nov 10 15:29:19 2025] >> epoch [ 2] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [1.3432]
+[Mon Nov 10 15:29:58 2025] >> epoch [ 3] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.1170]
+[Mon Nov 10 15:30:37 2025] >> epoch [ 4] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [3.3283]
+[Mon Nov 10 15:31:16 2025] >> epoch [ 5] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.3632]
+[Mon Nov 10 15:31:54 2025] >> epoch [ 6] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.7742]
+[Mon Nov 10 15:32:33 2025] >> epoch [ 7] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.8336]
+[Mon Nov 10 15:33:13 2025] >> epoch [ 8] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.3889]
+[Mon Nov 10 15:33:52 2025] >> epoch [ 9] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [2.6335]
+[Mon Nov 10 15:34:31 2025] >> epoch [10] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [2.3766]
+[Mon Nov 10 15:35:09 2025] >> epoch [11] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [2.6490]
+[Mon Nov 10 15:35:49 2025] >> epoch [12] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [5.6896]
+[Mon Nov 10 15:36:28 2025] >> epoch [13] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.5816]
+[Mon Nov 10 15:37:07 2025] >> epoch [14] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.1524]
+[Mon Nov 10 15:37:46 2025] >> epoch [15] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [1.8904]
+[Mon Nov 10 15:38:25 2025] >> epoch [16] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [1.8361]
+[Mon Nov 10 15:39:04 2025] >> epoch [17] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.7067]
+[Mon Nov 10 15:39:43 2025] >> epoch [18] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [3.0052]
+[Mon Nov 10 15:40:22 2025] >> epoch [19] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [3.5869]
+[Mon Nov 10 15:41:01 2025] >> epoch [20] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [1.2746]
+[Mon Nov 10 15:41:40 2025] >> epoch [21] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [2.5639]
+[Mon Nov 10 15:42:19 2025] >> epoch [22] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [2.6365]
+[Mon Nov 10 15:42:58 2025] >> epoch [23] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [1.4096]
+[Mon Nov 10 15:43:36 2025] >> epoch [24] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [3.4881]
+[Mon Nov 10 15:44:15 2025] >> epoch [25] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [2.9438]
+[Mon Nov 10 15:44:54 2025] >> epoch [26] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [2.5662]
+[Mon Nov 10 15:45:32 2025] >> epoch [27] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [1.9416]
+[Mon Nov 10 15:46:11 2025] >> epoch [28] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [2.5187]
+[Mon Nov 10 15:46:50 2025] >> epoch [29] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [2.4459]
+[Mon Nov 10 15:47:29 2025] >> epoch [30] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [1.3877]
+[Mon Nov 10 15:47:29 2025] >> 
+[Mon Nov 10 15:47:31 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:47:31 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:47:31 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:47:35 2025] >> inference:
+[Mon Nov 10 15:48:34 2025] >> loss [3.5192], perplexity: [33.7581308567964]
+[Mon Nov 10 15:48:36 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:48:36 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:48:36 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:48:40 2025] >> inference:
+[Mon Nov 10 15:51:15 2025] >> loss [3.5646], perplexity: [35.32652977361158]
+[Mon Nov 10 15:51:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:51:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:51:18 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:51:21 2025] >> inference:
+[Mon Nov 10 15:56:09 2025] >> loss [3.6226], perplexity: [37.436553472615195]
+[Mon Nov 10 15:56:12 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:56:12 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 15:56:12 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 31, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 15:56:15 2025] >> train: 
+[Mon Nov 10 15:57:09 2025] >> epoch [ 0] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.1271]
+[Mon Nov 10 15:57:59 2025] >> epoch [ 1] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.8034]
+[Mon Nov 10 15:58:49 2025] >> epoch [ 2] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [3.7795]
+[Mon Nov 10 15:59:39 2025] >> epoch [ 3] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.2198]
+[Mon Nov 10 16:00:29 2025] >> epoch [ 4] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [3.7123]
+[Mon Nov 10 16:01:19 2025] >> epoch [ 5] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [2.8029]
+[Mon Nov 10 16:02:08 2025] >> epoch [ 6] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [1.9521]
+[Mon Nov 10 16:02:57 2025] >> epoch [ 7] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [2.3161]
+[Mon Nov 10 16:03:47 2025] >> epoch [ 8] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.9834]
+[Mon Nov 10 16:04:38 2025] >> epoch [ 9] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.1097]
+[Mon Nov 10 16:05:27 2025] >> epoch [10] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.0244]
+[Mon Nov 10 16:06:16 2025] >> epoch [11] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.6752]
+[Mon Nov 10 16:07:06 2025] >> epoch [12] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [2.1342]
+[Mon Nov 10 16:07:55 2025] >> epoch [13] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.0859]
+[Mon Nov 10 16:08:44 2025] >> epoch [14] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.0765]
+[Mon Nov 10 16:09:33 2025] >> epoch [15] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [4.0069]
+[Mon Nov 10 16:10:23 2025] >> epoch [16] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.5757]
+[Mon Nov 10 16:11:12 2025] >> epoch [17] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.7620]
+[Mon Nov 10 16:12:02 2025] >> epoch [18] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.1950]
+[Mon Nov 10 16:12:51 2025] >> epoch [19] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.4679]
+[Mon Nov 10 16:13:41 2025] >> epoch [20] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [1.4691]
+[Mon Nov 10 16:14:34 2025] >> epoch [21] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [3.4850]
+[Mon Nov 10 16:15:27 2025] >> epoch [22] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_22.pt], train loss [2.5310]
+[Mon Nov 10 16:16:21 2025] >> epoch [23] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_23.pt], train loss [1.8383]
+[Mon Nov 10 16:17:14 2025] >> epoch [24] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_24.pt], train loss [2.7084]
+[Mon Nov 10 16:18:08 2025] >> epoch [25] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_25.pt], train loss [2.1131]
+[Mon Nov 10 16:19:01 2025] >> epoch [26] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_26.pt], train loss [1.6476]
+[Mon Nov 10 16:19:54 2025] >> epoch [27] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_27.pt], train loss [2.7908]
+[Mon Nov 10 16:20:47 2025] >> epoch [28] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_28.pt], train loss [2.2035]
+[Mon Nov 10 16:21:40 2025] >> epoch [29] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_29.pt], train loss [1.4228]
+[Mon Nov 10 16:22:33 2025] >> epoch [30] saved in [opus_books_emb256_head2_de_fr_model_dense_enc/tmodel_30.pt], train loss [2.5464]
+[Mon Nov 10 16:22:33 2025] >> 
+[Mon Nov 10 16:22:35 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:22:35 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:22:35 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:22:39 2025] >> inference:
+[Mon Nov 10 16:23:56 2025] >> loss [3.5094], perplexity: [33.427177785988846]
+[Mon Nov 10 16:23:58 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:23:58 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:23:58 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:24:02 2025] >> inference:
+[Mon Nov 10 16:27:31 2025] >> loss [3.5439], perplexity: [34.60131323638113]
+[Mon Nov 10 16:27:34 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:27:34 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:27:34 2025] >> {'D_MODEL': 256, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:27:37 2025] >> inference:
+[Mon Nov 10 16:34:01 2025] >> loss [3.5995], perplexity: [36.57920099340146]
+[Mon Nov 10 16:34:04 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:34:04 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:34:04 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 20, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:34:08 2025] >> train: 
+[Mon Nov 10 16:34:21 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [6.0201]
+[Mon Nov 10 16:34:32 2025] >> epoch [ 1] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.6911]
+[Mon Nov 10 16:34:43 2025] >> epoch [ 2] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.3632]
+[Mon Nov 10 16:34:54 2025] >> epoch [ 3] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [6.1920]
+[Mon Nov 10 16:35:04 2025] >> epoch [ 4] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.2072]
+[Mon Nov 10 16:35:15 2025] >> epoch [ 5] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [4.0539]
+[Mon Nov 10 16:35:26 2025] >> epoch [ 6] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.5015]
+[Mon Nov 10 16:35:36 2025] >> epoch [ 7] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [1.7123]
+[Mon Nov 10 16:35:47 2025] >> epoch [ 8] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [4.1148]
+[Mon Nov 10 16:35:58 2025] >> epoch [ 9] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [3.3115]
+[Mon Nov 10 16:36:09 2025] >> epoch [10] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.6168]
+[Mon Nov 10 16:36:20 2025] >> epoch [11] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [2.8890]
+[Mon Nov 10 16:36:31 2025] >> epoch [12] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [2.9614]
+[Mon Nov 10 16:36:42 2025] >> epoch [13] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.8778]
+[Mon Nov 10 16:36:52 2025] >> epoch [14] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.4791]
+[Mon Nov 10 16:37:03 2025] >> epoch [15] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.5242]
+[Mon Nov 10 16:37:14 2025] >> epoch [16] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [2.7576]
+[Mon Nov 10 16:37:25 2025] >> epoch [17] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [3.2580]
+[Mon Nov 10 16:37:35 2025] >> epoch [18] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.3700]
+[Mon Nov 10 16:37:46 2025] >> epoch [19] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.4159]
+[Mon Nov 10 16:37:46 2025] >> 
+[Mon Nov 10 16:37:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:37:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:37:48 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:37:52 2025] >> inference:
+[Mon Nov 10 16:38:10 2025] >> loss [3.3915], perplexity: [29.711210623840877]
+[Mon Nov 10 16:38:13 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:38:13 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:38:13 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:38:16 2025] >> inference:
+[Mon Nov 10 16:38:57 2025] >> loss [3.4298], perplexity: [30.869793913218253]
+[Mon Nov 10 16:38:59 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:38:59 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:38:59 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:39:02 2025] >> inference:
+[Mon Nov 10 16:40:15 2025] >> loss [3.4878], perplexity: [32.715218997364246]
+[Mon Nov 10 16:40:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:40:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:40:18 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 19, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:40:21 2025] >> train: 
+[Mon Nov 10 16:40:40 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.1288]
+[Mon Nov 10 16:40:56 2025] >> epoch [ 1] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.3873]
+[Mon Nov 10 16:41:12 2025] >> epoch [ 2] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [2.3575]
+[Mon Nov 10 16:41:28 2025] >> epoch [ 3] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [2.6721]
+[Mon Nov 10 16:41:44 2025] >> epoch [ 4] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [1.9811]
+[Mon Nov 10 16:42:01 2025] >> epoch [ 5] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.8204]
+[Mon Nov 10 16:42:17 2025] >> epoch [ 6] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [2.5694]
+[Mon Nov 10 16:42:33 2025] >> epoch [ 7] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.3028]
+[Mon Nov 10 16:42:49 2025] >> epoch [ 8] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.4696]
+[Mon Nov 10 16:43:05 2025] >> epoch [ 9] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [4.1182]
+[Mon Nov 10 16:43:21 2025] >> epoch [10] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.1156]
+[Mon Nov 10 16:43:37 2025] >> epoch [11] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.6429]
+[Mon Nov 10 16:43:53 2025] >> epoch [12] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.2452]
+[Mon Nov 10 16:44:09 2025] >> epoch [13] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [1.3401]
+[Mon Nov 10 16:44:25 2025] >> epoch [14] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.0733]
+[Mon Nov 10 16:44:41 2025] >> epoch [15] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.3436]
+[Mon Nov 10 16:44:57 2025] >> epoch [16] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [2.0324]
+[Mon Nov 10 16:45:13 2025] >> epoch [17] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.9782]
+[Mon Nov 10 16:45:29 2025] >> epoch [18] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.3923]
+[Mon Nov 10 16:45:29 2025] >> 
+[Mon Nov 10 16:45:31 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:45:31 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:45:31 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:45:34 2025] >> inference:
+[Mon Nov 10 16:46:01 2025] >> loss [3.3905], perplexity: [29.680834999145574]
+[Mon Nov 10 16:46:04 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:46:04 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:46:04 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:46:07 2025] >> inference:
+[Mon Nov 10 16:47:13 2025] >> loss [3.4233], perplexity: [30.66952300355197]
+[Mon Nov 10 16:47:15 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:47:15 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:47:15 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:47:18 2025] >> inference:
+[Mon Nov 10 16:49:19 2025] >> loss [3.472], perplexity: [32.20048105175484]
+[Mon Nov 10 16:49:21 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:49:21 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:49:21 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 22, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 16:49:25 2025] >> train: 
+[Mon Nov 10 16:49:57 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [3.9283]
+[Mon Nov 10 16:50:25 2025] >> epoch [ 1] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.0036]
+[Mon Nov 10 16:50:53 2025] >> epoch [ 2] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [2.9685]
+[Mon Nov 10 16:51:22 2025] >> epoch [ 3] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [4.5731]
+[Mon Nov 10 16:51:51 2025] >> epoch [ 4] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [2.7956]
+[Mon Nov 10 16:52:19 2025] >> epoch [ 5] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [2.5438]
+[Mon Nov 10 16:52:48 2025] >> epoch [ 6] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [4.6728]
+[Mon Nov 10 16:53:16 2025] >> epoch [ 7] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [1.2710]
+[Mon Nov 10 16:53:45 2025] >> epoch [ 8] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.9803]
+[Mon Nov 10 16:54:14 2025] >> epoch [ 9] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [2.9571]
+[Mon Nov 10 16:54:42 2025] >> epoch [10] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [2.2792]
+[Mon Nov 10 16:55:11 2025] >> epoch [11] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.2688]
+[Mon Nov 10 16:55:40 2025] >> epoch [12] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.2664]
+[Mon Nov 10 16:56:08 2025] >> epoch [13] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [2.9142]
+[Mon Nov 10 16:56:37 2025] >> epoch [14] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [1.4810]
+[Mon Nov 10 16:57:05 2025] >> epoch [15] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [3.1726]
+[Mon Nov 10 16:57:34 2025] >> epoch [16] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.4956]
+[Mon Nov 10 16:58:03 2025] >> epoch [17] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.7669]
+[Mon Nov 10 16:58:31 2025] >> epoch [18] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [3.0292]
+[Mon Nov 10 16:59:00 2025] >> epoch [19] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_19.pt], train loss [2.3658]
+[Mon Nov 10 16:59:28 2025] >> epoch [20] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_20.pt], train loss [2.8587]
+[Mon Nov 10 16:59:57 2025] >> epoch [21] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_21.pt], train loss [1.5594]
+[Mon Nov 10 16:59:57 2025] >> 
+[Mon Nov 10 16:59:59 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:59:59 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 16:59:59 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:00:03 2025] >> inference:
+[Mon Nov 10 17:00:47 2025] >> loss [3.3862], perplexity: [29.553252804011212]
+[Mon Nov 10 17:00:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:00:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:00:50 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:00:53 2025] >> inference:
+[Mon Nov 10 17:02:43 2025] >> loss [3.4165], perplexity: [30.46196596664277]
+[Mon Nov 10 17:02:45 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:02:45 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:02:45 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:02:48 2025] >> inference:
+[Mon Nov 10 17:06:16 2025] >> loss [3.4448], perplexity: [31.337480561492438]
+[Mon Nov 10 17:06:20 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:06:20 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:06:20 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 19, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:06:23 2025] >> train: 
+[Mon Nov 10 17:07:08 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.6707]
+[Mon Nov 10 17:07:50 2025] >> epoch [ 1] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.7664]
+[Mon Nov 10 17:08:31 2025] >> epoch [ 2] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.0965]
+[Mon Nov 10 17:09:12 2025] >> epoch [ 3] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.4038]
+[Mon Nov 10 17:09:53 2025] >> epoch [ 4] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [4.3826]
+[Mon Nov 10 17:10:33 2025] >> epoch [ 5] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.1251]
+[Mon Nov 10 17:11:13 2025] >> epoch [ 6] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.9801]
+[Mon Nov 10 17:11:52 2025] >> epoch [ 7] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [2.6897]
+[Mon Nov 10 17:12:32 2025] >> epoch [ 8] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.1449]
+[Mon Nov 10 17:13:13 2025] >> epoch [ 9] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [2.1457]
+[Mon Nov 10 17:13:55 2025] >> epoch [10] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.5861]
+[Mon Nov 10 17:14:36 2025] >> epoch [11] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [4.0085]
+[Mon Nov 10 17:15:18 2025] >> epoch [12] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [3.0030]
+[Mon Nov 10 17:15:59 2025] >> epoch [13] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.0709]
+[Mon Nov 10 17:16:40 2025] >> epoch [14] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [2.4671]
+[Mon Nov 10 17:17:22 2025] >> epoch [15] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [3.2418]
+[Mon Nov 10 17:18:03 2025] >> epoch [16] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.2582]
+[Mon Nov 10 17:18:45 2025] >> epoch [17] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.3351]
+[Mon Nov 10 17:19:27 2025] >> epoch [18] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [2.3878]
+[Mon Nov 10 17:19:27 2025] >> 
+[Mon Nov 10 17:19:29 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:19:29 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:19:29 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:19:33 2025] >> inference:
+[Mon Nov 10 17:20:36 2025] >> loss [3.3776], perplexity: [29.29900253001085]
+[Mon Nov 10 17:20:38 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:20:38 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:20:38 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:20:42 2025] >> inference:
+[Mon Nov 10 17:23:25 2025] >> loss [3.4009], perplexity: [29.99054010431649]
+[Mon Nov 10 17:23:27 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:23:27 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:23:27 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:23:30 2025] >> inference:
+[Mon Nov 10 17:28:44 2025] >> loss [3.4485], perplexity: [31.45464551797097]
+[Mon Nov 10 17:28:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:28:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:28:48 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 19, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:28:51 2025] >> train: 
+[Mon Nov 10 17:29:50 2025] >> epoch [ 0] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [5.1527]
+[Mon Nov 10 17:30:45 2025] >> epoch [ 1] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [4.4386]
+[Mon Nov 10 17:31:40 2025] >> epoch [ 2] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.5243]
+[Mon Nov 10 17:32:36 2025] >> epoch [ 3] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.8498]
+[Mon Nov 10 17:33:31 2025] >> epoch [ 4] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [2.2084]
+[Mon Nov 10 17:34:26 2025] >> epoch [ 5] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.2841]
+[Mon Nov 10 17:35:21 2025] >> epoch [ 6] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.6736]
+[Mon Nov 10 17:36:16 2025] >> epoch [ 7] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [1.9431]
+[Mon Nov 10 17:37:11 2025] >> epoch [ 8] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.3293]
+[Mon Nov 10 17:38:07 2025] >> epoch [ 9] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [3.2071]
+[Mon Nov 10 17:39:02 2025] >> epoch [10] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [3.7602]
+[Mon Nov 10 17:39:57 2025] >> epoch [11] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [3.9121]
+[Mon Nov 10 17:40:52 2025] >> epoch [12] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_12.pt], train loss [2.3850]
+[Mon Nov 10 17:41:47 2025] >> epoch [13] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_13.pt], train loss [3.6319]
+[Mon Nov 10 17:42:42 2025] >> epoch [14] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_14.pt], train loss [3.1883]
+[Mon Nov 10 17:43:37 2025] >> epoch [15] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_15.pt], train loss [2.8052]
+[Mon Nov 10 17:44:33 2025] >> epoch [16] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_16.pt], train loss [3.2697]
+[Mon Nov 10 17:45:28 2025] >> epoch [17] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_17.pt], train loss [2.6904]
+[Mon Nov 10 17:46:23 2025] >> epoch [18] saved in [opus_books_emb512_head2_de_fr_model_dense_enc/tmodel_18.pt], train loss [1.5949]
+[Mon Nov 10 17:46:23 2025] >> 
+[Mon Nov 10 17:46:26 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:46:26 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:46:26 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:46:29 2025] >> inference:
+[Mon Nov 10 17:47:46 2025] >> loss [3.3895], perplexity: [29.651682776007203]
+[Mon Nov 10 17:47:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:47:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:47:48 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:47:51 2025] >> inference:
+[Mon Nov 10 17:51:16 2025] >> loss [3.4124], perplexity: [30.33649113687345]
+[Mon Nov 10 17:51:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:51:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:51:18 2025] >> {'D_MODEL': 512, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:51:22 2025] >> inference:
+[Mon Nov 10 17:57:50 2025] >> loss [3.4719], perplexity: [32.19900109911042]
+[Mon Nov 10 17:57:54 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:57:54 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 17:57:54 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 11, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 17:57:57 2025] >> train: 
+[Mon Nov 10 17:58:12 2025] >> epoch [ 0] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.2267]
+[Mon Nov 10 17:58:24 2025] >> epoch [ 1] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.1580]
+[Mon Nov 10 17:58:35 2025] >> epoch [ 2] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.7051]
+[Mon Nov 10 17:58:47 2025] >> epoch [ 3] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.4502]
+[Mon Nov 10 17:58:59 2025] >> epoch [ 4] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [1.3520]
+[Mon Nov 10 17:59:10 2025] >> epoch [ 5] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [2.3860]
+[Mon Nov 10 17:59:22 2025] >> epoch [ 6] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [1.4594]
+[Mon Nov 10 17:59:34 2025] >> epoch [ 7] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [2.3796]
+[Mon Nov 10 17:59:45 2025] >> epoch [ 8] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.8316]
+[Mon Nov 10 17:59:56 2025] >> epoch [ 9] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [2.6136]
+[Mon Nov 10 18:00:08 2025] >> epoch [10] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [2.6874]
+[Mon Nov 10 18:00:08 2025] >> 
+[Mon Nov 10 18:00:10 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:00:10 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:00:10 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:00:14 2025] >> inference:
+[Mon Nov 10 18:00:31 2025] >> loss [3.4103], perplexity: [30.27348227437342]
+[Mon Nov 10 18:00:34 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:00:34 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:00:34 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:00:37 2025] >> inference:
+[Mon Nov 10 18:01:18 2025] >> loss [3.4531], perplexity: [31.597591101255595]
+[Mon Nov 10 18:01:20 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:01:20 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:01:20 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 1, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:01:24 2025] >> inference:
+[Mon Nov 10 18:02:49 2025] >> loss [3.4608], perplexity: [31.843317271556725]
+[Mon Nov 10 18:02:52 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:02:52 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:02:52 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 12, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:02:56 2025] >> train: 
+[Mon Nov 10 18:03:18 2025] >> epoch [ 0] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [4.3713]
+[Mon Nov 10 18:03:37 2025] >> epoch [ 1] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [3.1062]
+[Mon Nov 10 18:03:55 2025] >> epoch [ 2] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [3.2991]
+[Mon Nov 10 18:04:13 2025] >> epoch [ 3] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.1414]
+[Mon Nov 10 18:04:31 2025] >> epoch [ 4] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [3.2900]
+[Mon Nov 10 18:04:49 2025] >> epoch [ 5] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [1.3604]
+[Mon Nov 10 18:05:07 2025] >> epoch [ 6] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [2.6638]
+[Mon Nov 10 18:05:25 2025] >> epoch [ 7] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [1.6451]
+[Mon Nov 10 18:05:43 2025] >> epoch [ 8] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [3.5486]
+[Mon Nov 10 18:06:01 2025] >> epoch [ 9] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [2.8996]
+[Mon Nov 10 18:06:19 2025] >> epoch [10] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [1.8611]
+[Mon Nov 10 18:06:37 2025] >> epoch [11] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_11.pt], train loss [1.2915]
+[Mon Nov 10 18:06:37 2025] >> 
+[Mon Nov 10 18:06:39 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:06:39 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:06:39 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:06:42 2025] >> inference:
+[Mon Nov 10 18:07:08 2025] >> loss [3.3747], perplexity: [29.215673046144303]
+[Mon Nov 10 18:07:10 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:07:10 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:07:10 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:07:13 2025] >> inference:
+[Mon Nov 10 18:08:17 2025] >> loss [3.4146], perplexity: [30.405172340187]
+[Mon Nov 10 18:08:19 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:08:19 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:08:19 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 2, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:08:23 2025] >> inference:
+[Mon Nov 10 18:10:40 2025] >> loss [3.3964], perplexity: [29.856440723021393]
+[Mon Nov 10 18:10:43 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:10:43 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:10:43 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 9, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:10:46 2025] >> train: 
+[Mon Nov 10 18:11:23 2025] >> epoch [ 0] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [3.6292]
+[Mon Nov 10 18:11:55 2025] >> epoch [ 1] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [5.0150]
+[Mon Nov 10 18:12:28 2025] >> epoch [ 2] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.8098]
+[Mon Nov 10 18:13:01 2025] >> epoch [ 3] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.4039]
+[Mon Nov 10 18:13:34 2025] >> epoch [ 4] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [2.5413]
+[Mon Nov 10 18:14:07 2025] >> epoch [ 5] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.6017]
+[Mon Nov 10 18:14:40 2025] >> epoch [ 6] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [2.7504]
+[Mon Nov 10 18:15:12 2025] >> epoch [ 7] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.2046]
+[Mon Nov 10 18:15:45 2025] >> epoch [ 8] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.4653]
+[Mon Nov 10 18:15:45 2025] >> 
+[Mon Nov 10 18:15:47 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:15:47 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:15:47 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:15:51 2025] >> inference:
+[Mon Nov 10 18:16:35 2025] >> loss [3.3498], perplexity: [28.497620739342903]
+[Mon Nov 10 18:16:37 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:16:37 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:16:37 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:16:40 2025] >> inference:
+[Mon Nov 10 18:18:30 2025] >> loss [3.3795], perplexity: [29.357199736170124]
+[Mon Nov 10 18:18:32 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:18:32 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:18:32 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 4, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:18:35 2025] >> inference:
+[Mon Nov 10 18:22:44 2025] >> loss [3.3896], perplexity: [29.65500366888006]
+[Mon Nov 10 18:22:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:22:48 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:22:48 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 9, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:22:51 2025] >> train: 
+[Mon Nov 10 18:23:44 2025] >> epoch [ 0] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [3.4926]
+[Mon Nov 10 18:24:33 2025] >> epoch [ 1] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [2.6176]
+[Mon Nov 10 18:25:22 2025] >> epoch [ 2] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [2.0910]
+[Mon Nov 10 18:26:11 2025] >> epoch [ 3] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.1390]
+[Mon Nov 10 18:27:00 2025] >> epoch [ 4] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [1.6173]
+[Mon Nov 10 18:27:49 2025] >> epoch [ 5] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [1.2659]
+[Mon Nov 10 18:28:38 2025] >> epoch [ 6] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [3.3743]
+[Mon Nov 10 18:29:27 2025] >> epoch [ 7] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [2.1088]
+[Mon Nov 10 18:30:16 2025] >> epoch [ 8] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [2.5228]
+[Mon Nov 10 18:30:16 2025] >> 
+[Mon Nov 10 18:30:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:30:18 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:30:18 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:30:22 2025] >> inference:
+[Mon Nov 10 18:31:21 2025] >> loss [3.3598], perplexity: [28.78467268332245]
+[Mon Nov 10 18:31:23 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:31:23 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:31:23 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:31:27 2025] >> inference:
+[Mon Nov 10 18:33:58 2025] >> loss [3.3931], perplexity: [29.758521702467934]
+[Mon Nov 10 18:34:00 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:34:00 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:34:00 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 6, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:34:03 2025] >> inference:
+[Mon Nov 10 18:39:52 2025] >> loss [3.404], perplexity: [30.085534889079113]
+[Mon Nov 10 18:39:56 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:39:56 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:39:56 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 11, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:39:59 2025] >> train: 
+[Mon Nov 10 18:41:09 2025] >> epoch [ 0] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_00.pt], train loss [6.1236]
+[Mon Nov 10 18:42:13 2025] >> epoch [ 1] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_01.pt], train loss [2.5840]
+[Mon Nov 10 18:43:17 2025] >> epoch [ 2] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_02.pt], train loss [4.2193]
+[Mon Nov 10 18:44:21 2025] >> epoch [ 3] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_03.pt], train loss [3.1820]
+[Mon Nov 10 18:45:25 2025] >> epoch [ 4] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_04.pt], train loss [2.1074]
+[Mon Nov 10 18:46:29 2025] >> epoch [ 5] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_05.pt], train loss [3.4697]
+[Mon Nov 10 18:47:32 2025] >> epoch [ 6] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_06.pt], train loss [2.8413]
+[Mon Nov 10 18:48:36 2025] >> epoch [ 7] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_07.pt], train loss [3.2254]
+[Mon Nov 10 18:49:40 2025] >> epoch [ 8] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_08.pt], train loss [1.9766]
+[Mon Nov 10 18:50:44 2025] >> epoch [ 9] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_09.pt], train loss [1.5769]
+[Mon Nov 10 18:51:47 2025] >> epoch [10] saved in [opus_books_emb1024_head2_de_fr_model_dense_enc/tmodel_10.pt], train loss [1.2509]
+[Mon Nov 10 18:51:47 2025] >> 
+[Mon Nov 10 18:51:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:51:50 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:51:50 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp32', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:51:53 2025] >> inference:
+[Mon Nov 10 18:53:09 2025] >> loss [3.3506], perplexity: [28.52085363377457]
+[Mon Nov 10 18:53:11 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:53:11 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:53:11 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp16', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:53:14 2025] >> inference:
+[Mon Nov 10 18:56:30 2025] >> loss [3.3846], perplexity: [29.507238608635923]
+[Mon Nov 10 18:56:33 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:56:33 2025] >> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[Mon Nov 10 18:56:33 2025] >> {'D_MODEL': 1024, 'NUM_LAYERS': 8, 'SEQ_LEN': 50, 'NUM_EPOCHS': 1, 'PRECISION': 'ftp8', 'DEVICE': 'cuda:0', 'VALIDATE': 0}
+[Mon Nov 10 18:56:36 2025] >> inference:
+[Mon Nov 10 19:04:28 2025] >> loss [3.3896], perplexity: [29.655202500161842]

@@ -88,9 +88,8 @@ run_schedule = [
 
 for run in run_schedule:
     d_model, num_layer, epoch, learning_rate = run
-    epoch = 0
     run_train(d_model, num_layer, SEQ_LEN, epoch, "ftp32", CUDA, VALIDATE, learning_rate)
     
     for precision in ["ftp32", "ftp16", "ftp8"]:
-        # run_inference(d_model, num_layer, SEQ_LEN, precision, CUDA)
-        run_flops(d_model, num_layer, SEQ_LEN, precision, CUDA)
+        run_inference(d_model, num_layer, SEQ_LEN, precision, CUDA)
+        # run_flops(d_model, num_layer, SEQ_LEN, precision, CUDA)
