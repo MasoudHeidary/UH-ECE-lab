@@ -51,8 +51,18 @@ class Hardware:
             raise LookupError(f"too high frequency - {freq_MHz}MHz")
         return False
     
-    def get_flops(self, freq_MHz):
-        return (self.systolic_array ** 2) * (freq_MHz * 1_000_000)
+    def get_flops(self, freq_MHz, precision):
+        precision_factor: int
+        if precision == "ftp32":
+            precision_factor = 1
+        elif precision == "ftp16":
+            precision_factor = 2
+        elif precision == "ftp8":
+            precision_factor = 4
+        else:
+            raise ValueError(f"{precision} - invalid precision value")
+        
+        return (self.systolic_array ** 2) * (freq_MHz * 1_000_000) * precision_factor
     
     def apply_aging(self, vdd, t0, t1, T=348.15):
         vdef = vdd + self.initial_vth

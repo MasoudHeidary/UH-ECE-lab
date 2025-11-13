@@ -8,7 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 
 from HEnvDQN import SystolicArrayEnv, MAX_STEP
 
-TOTAL_TRAIN_TIMESTEPS = 200_000
+TOTAL_TRAIN_TIMESTEPS = 500_000
 TRAIN_CPU = 1
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"{__file__}.model"
@@ -57,27 +57,30 @@ if __name__ == "__main__":
         obs = env.reset()
         model = DQN.load(model_filename, env=env, device=device)
 
-        vdd, freq, latency, power = [], [], [], []
+        freq, max_freq = [], []
+        vdd, latency, energy = [], [], []
         backlog_not_active, backlog_ok, backlog_linear, backlog_crashed = [], [], [], []
+        model_flops, computing_flops = [], []
         reward_lst = []
-        max_freq = []
 
         for step in range(MAX_STEP):
             action, _ = model.predict(obs, deterministic=True)
             obs, reward, done, info = env.step(int(action), inference=True)
 
             freq.append(env.freq)
+            max_freq.append(env.hardware.get_max_freq())
 
             vdd.append(env.vdd)
             latency.append(env.latency / env.max_latency)
-            power.append(env.power / env.max_power)
+            energy.append(env.energy / env.max_energy)
 
             backlog_not_active.append(env.backlog_not_active)
             backlog_ok.append(env.backlog_ok)
             backlog_linear.append(env.backlog_linear)
             backlog_crashed.append(env.backlog_crashed)
 
-            max_freq.append(env.hardware.get_max_freq())
+            model_flops.append(env.inference_flops)
+            computing_flops.append(env.hardware_flops)
 
             reward_lst.append(reward)
 
@@ -93,7 +96,7 @@ if __name__ == "__main__":
         plt.subplot(5,1,2)
         plt.plot(vdd, label='vdd (v)')
         plt.plot(latency, label='Latency (ps)')
-        plt.plot(power, label='Power (uw * MHz)')
+        plt.plot(energy, label='Energy (uw * MHz)')
         plt.ylabel("derived parameter")
         plt.legend()
         plt.grid(True)
@@ -106,13 +109,15 @@ if __name__ == "__main__":
 
         plt.subplot(5,1,4)
         plt.plot(backlog_linear, label='backlog (linear)')
+        plt.plot(backlog_crashed, label='backlog (crashed)')
         plt.ylabel("xxx")
         plt.xlabel("Step")
         plt.legend()
         plt.grid(True)
 
         plt.subplot(5,1,5)
-        plt.plot(backlog_crashed, label='backlog (crashed)')
+        plt.plot(model_flops, label="inference flops")
+        plt.plot(computing_flops, label="computing flops")
         plt.ylabel("xxx")
         plt.xlabel("Step")
         plt.legend()
