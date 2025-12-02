@@ -19,3 +19,20 @@ def reverse_signed_b(binary_list):
     if binary_list[-1] == 1:
         num = num - (2**len(binary_list))
     return num
+
+
+# unsigned functions
+def ubin(num: int, bit_len: int):
+    num_cpy = num
+    if (num < 0):
+        raise OverflowError("negative number can't fit in unsigned bin")
+    if (num > 2**bit_len - 1):
+        raise OverflowError(f"{num} can't fit in {bit_len} bit")
+    
+    bit_num = list(map(int, reversed(format(num_cpy, f'0{bit_len}b'))))
+    return bit_num
+
+def rev_ubin(binary_list):
+    binary_str = ''.join(map(str, reversed(binary_list)))
+    num = int(binary_str, 2)
+    return num
