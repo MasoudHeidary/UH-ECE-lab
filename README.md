@@ -1,5 +1,10 @@
 # UH-ECE-lab
 
+## Requirment
+
+- Install git lfs, it's tracking big files like model outputs and ML data.
+
+
 ## Overview
 
 Welcome to the UH-ECE-lab repository, This repository contains the code and resources related to my research in Electrical and Computer Engineering (ECE) at the University of Houston. It serves as a collection of experimental scripts, utilities, and prototypes used throughout various projects and studies.
