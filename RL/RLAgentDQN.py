@@ -58,6 +58,8 @@ if __name__ == "__main__":
         model = DQN.load(model_filename, env=env, device=device)
 
         freq, max_freq = [], []
+        d_model, num_lay, precision = [], [], []
+        perplexity = []
         vdd, latency, energy = [], [], []
         backlog_not_active, backlog_ok, backlog_linear, backlog_crashed = [], [], [], []
         model_flops, computing_flops = [], []
@@ -69,6 +71,12 @@ if __name__ == "__main__":
 
             freq.append(env.freq)
             max_freq.append(env.hardware.get_max_freq())
+
+            d_model.append(env.dmodel)
+            num_lay.append(env.numlay)
+            precision.append(env.prec)
+
+            perplexity.append(env.perplexity)
 
             vdd.append(env.vdd)
             latency.append(env.latency / env.max_latency)
@@ -86,14 +94,23 @@ if __name__ == "__main__":
 
         plt.figure(figsize=(12,8))
 
-        plt.subplot(5,1,1)
+        plt.subplot(6,1,1)
         plt.plot(freq, label='Frequency (MHz)')
         plt.plot(max_freq, label='max_freq (MHz)')
         plt.ylabel("Frequency")
         plt.legend()
         plt.grid(True)
 
-        plt.subplot(5,1,2)
+        plt.subplot(6,1,2)
+        plt.plot(d_model, label='d_model')
+        plt.plot(num_lay, label='num_lay')
+        plt.plot(precision, label='precision')
+        plt.plot(perplexity, label="perplexity")
+        plt.ylabel("Frequency")
+        plt.legend()
+        plt.grid(True)
+
+        plt.subplot(6,1,3)
         plt.plot(vdd, label='vdd (v)')
         plt.plot(latency, label='Latency (ps)')
         plt.plot(energy, label='Energy (uw * MHz)')
@@ -101,13 +118,13 @@ if __name__ == "__main__":
         plt.legend()
         plt.grid(True)
 
-        plt.subplot(5,1,3)
+        plt.subplot(6,1,4)
         plt.plot(backlog_ok, label='backlog (ok)')
         plt.ylabel("xxx")
         plt.legend()
         plt.grid(True)
 
-        plt.subplot(5,1,4)
+        plt.subplot(6,1,5)
         plt.plot(backlog_linear, label='backlog (linear)')
         plt.plot(backlog_crashed, label='backlog (crashed)')
         plt.ylabel("xxx")
@@ -115,7 +132,7 @@ if __name__ == "__main__":
         plt.legend()
         plt.grid(True)
 
-        plt.subplot(5,1,5)
+        plt.subplot(6,1,6)
         plt.plot(model_flops, label="inference flops")
         plt.plot(computing_flops, label="computing flops")
         plt.ylabel("xxx")

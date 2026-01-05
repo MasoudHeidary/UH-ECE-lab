@@ -53,11 +53,11 @@ class Hardware:
     
     def get_flops(self, freq_MHz, precision):
         precision_factor: int
-        if precision == "ftp32":
+        if precision == 32:
             precision_factor = 1
-        elif precision == "ftp16":
+        elif precision == 16:
             precision_factor = 2
-        elif precision == "ftp8":
+        elif precision == 8:
             precision_factor = 4
         else:
             raise ValueError(f"{precision} - invalid precision value")

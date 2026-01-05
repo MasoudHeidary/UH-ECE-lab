@@ -69,7 +69,7 @@ class Instruction():
     
 class Backlog():
     def __init__(self, inst_lst: List[Instruction]):
-        self.inst_lst = inst_lst.copy()
+        self.inst_lst = inst_lst
         self.inst_lst.sort(key = lambda inst: inst.t0)
         self.inst_lst: List[Instruction]
         
@@ -108,30 +108,13 @@ class Backlog():
                     return
     
 
-def random_backlog(inst_length, t1=5, t2=10, distance=0, max_rate=10, force_length=False, max_step=1000):
+def random_backlog(inst_length, t1=5, t2=10, max_step=1000):
     """in distance, only max_rate instruction exist concurently"""
-    inst_lst = []
-    step_set = dict()
-    for i in range(inst_length):
+    inst_lst = [Instruction(0, 0, 0) for _ in range(inst_length)]
+    for index in range(inst_length):
         t0 = random.randrange(0, max_step)
         inst = Instruction(t0, t0 + t1, t0 + t2)
-        
-        # exist = False
-        # counter = 0
-        # for dis in range(-distance, distance+1):
-        #     if step_set.get(inst.start_step + dis, -1) == -1:
-        #         step_set[inst.start_step + dis] = 0
-        #     counter += step_set[inst.start_step + dis]
-        #     if counter == max_rate:
-        #         exist = True
-        #         break
-        
-        # if not exist:
-        #     inst_lst.append(inst)
-        #     step_set[inst.start_step] += 1
-        # elif force_length:
-        #     i -= 1
-        inst_lst.append(inst)
+        inst_lst[index] = inst
     return Backlog(inst_lst)
  
     

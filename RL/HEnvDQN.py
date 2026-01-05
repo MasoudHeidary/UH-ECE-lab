@@ -25,6 +25,7 @@ class TransformerModel:
     def __init__(self):
         self.valid_d_model = [128, 256, 512, 1024]
         self.valid_num_layer = [1, 2, 4, 6, 8]
+        self.valid_precision = [8, 16, 32]
 
         self.model = [
             # ftp32
@@ -103,20 +104,30 @@ class TransformerModel:
             {'d_model': 1024,   'num_layer': 8, 'precision':  'ftp8',   'flops': 8635750400 * 1e4,    'loss': 3.33013},
         ]
 
-    def get_model(self, d_model, num_layer):
+    @staticmethod
+    def calculate_perplexity(loss):
+        return math.exp(loss)
+
+    def get_model(self, d_model, num_layer, precision):
+        precision = f"ftp{precision}"
         for model in self.model:
-            if (model['d_model'] == d_model) and (model['num_layer'] == num_layer):
+            if (model['d_model'] == d_model) and (model['num_layer'] == num_layer) and (model['precision'] == precision):
                 return model
         raise ValueError("model not found!")
         
-    def get_inference_flops(self, d_model, num_layer):
-        model = self.get_model(d_model, num_layer)
-        return model['flops']
+    def get_inference_flops(self, d_model, num_layer, precision):
+        model = self.get_model(d_model, num_layer, precision)
+        return model['flops'] * 10
+    
+    def get_inference_perplexity(self, d_model, num_layer, precision):
+        model = self.get_model(d_model, num_layer, precision)
+        return self.calculate_perplexity(model['loss'])
     
     def get_max_flops(self):
         d_model = self.valid_d_model[-1]
         num_layer = self.valid_num_layer[-1]
-        max_model = self.get_model(d_model, num_layer)
+        precision = self.valid_precision[-1]
+        max_model = self.get_model(d_model, num_layer, precision)
         return max_model['flops']
     
 
@@ -137,27 +148,31 @@ class SystolicArrayEnv(gym.Env):
         self.freq_levels    = list(range(0, 1000+1, 100))
         self.dmodel_levels  = self.transformer.valid_d_model.copy()
         self.numlay_levels  = self.transformer.valid_num_layer.copy()
+        self.precision_levels = self.transformer.valid_precision.copy()
 
         # action space
         self.Nf             = len(self.freq_levels)
         self.Nd             = len(self.dmodel_levels)
         self.Nl             = len(self.numlay_levels)
+        self.Np             = len(self.precision_levels)
         self.action_space   = spaces.Discrete(self.Nf * self.Nd * self.Nl)
 
         # action states
         self.freq: int
         self.dmodel: int
         self.numlay: int
+        self.prec: int
 
         # observation space
-        low                     = np.array([0.]*9, dtype=np.float32)
-        high                    = np.array([1.]*9, dtype=np.float32)
+        low                     = np.array([0.]*10, dtype=np.float32)
+        high                    = np.array([1.]*10, dtype=np.float32)
         self.observation_space  = spaces.Box(low=low, high=high, dtype=np.float32)
 
         # maximum parameters
-        self.max_freq       = float(self.freq_levels[-1])
+        self.max_freq       = int(self.freq_levels[-1])
         self.max_dmodel     = int(self.dmodel_levels[-1])
         self.max_numlay     = int(self.numlay_levels[-1])
+        self.max_prec       = int(self.precision_levels[-1])
 
         self.max_step       = MAX_STEP
         self.max_backlog    = MAX_BACKLOG_SIZE
@@ -171,6 +186,8 @@ class SystolicArrayEnv(gym.Env):
         self.vdd        :float
         self.latency    :float
         self.energy      :float
+
+        self.perplexity   :float
 
         self.backlog            :Backlog
         self.backlog_not_active :int
@@ -198,6 +215,9 @@ class SystolicArrayEnv(gym.Env):
         self.freq       = self.freq_levels[0]
         self.dmodel     = self.dmodel_levels[0]
         self.numlay     = self.numlay_levels[0]
+        self.prec       = self.precision_levels[0]
+
+        self.perplexity = self.transformer.get_inference_perplexity(self.dmodel, self.numlay, self.prec)
 
         self.prev_freq = self.freq
         self.prev_dmodel = self.dmodel
@@ -209,7 +229,7 @@ class SystolicArrayEnv(gym.Env):
         delay_power = self.hardware.get_delay_power(self.vdd)
         self.latency, self.energy = delay_power[0], delay_power[1] * self.freq
 
-        self.backlog            = random_backlog(random.randrange(0, 1500), max_rate=4, max_step = MAX_STEP - 100)
+        self.backlog            = random_backlog(random.randrange(0, 1000), max_step = MAX_STEP - 100)
         # self.backlog_size       = self.backlog.get_active_size(self.curr_step)
         self.backlog_not_active = self.backlog.get_status_size(self.curr_step, "not_active")
         self.backlog_ok         = self.backlog.get_status_size(self.curr_step, "ok")
@@ -229,26 +249,33 @@ class SystolicArrayEnv(gym.Env):
         f_idx = action % self.Nf
         d_idx = (action // self.Nf) % self.Nd
         l_idx = (action // (self.Nf * self.Nd)) % self.Nl
+        p_idx = (action // (self.Nf * self.Nd * self.Nl)) % self.Np
+
         # f_idx = int(np.clip(f_idx, 0, self.Nf - 1))
 
         # apply action
-        self.freq = float(self.freq_levels[f_idx])
+        self.freq   = int(self.freq_levels[f_idx])
         self.dmodel = int(self.dmodel_levels[d_idx])
         self.numlay = int(self.numlay_levels[l_idx])
+        self.prec   = int(self.precision_levels[p_idx])
+
 
         if (self.prev_dmodel != self.dmodel) and (self.prev_numlay != self.numlay):
             reward -= 0.1
         self.prev_dmodel = self.dmodel
         self.prev_numlay = self.numlay
 
+        self.perplexity = self.transformer.get_inference_perplexity(self.dmodel, self.numlay, self.prec)
+        if (self.perplexity > 50):
+            reward -= 5
 
         # derived parameters
         self.vdd = self.hardware.get_vdd(self.freq)
         delay_power = self.hardware.get_delay_power(self.vdd)
         self.latency, self.energy = delay_power[0], delay_power[1] * self.freq
 
-        self.inference_flops    = float(self.transformer.get_inference_flops(self.dmodel, self.numlay))
-        self.hardware_flops     = self.hardware.get_flops(self.freq, "ftp32")
+        self.inference_flops    = float(self.transformer.get_inference_flops(self.dmodel, self.numlay, self.prec))
+        self.hardware_flops     = self.hardware.get_flops(self.freq, self.prec)
 
         # update backlog observation values
         self.backlog.render(self.curr_step, self.hardware_flops, self.inference_flops)
@@ -266,10 +293,11 @@ class SystolicArrayEnv(gym.Env):
 
         if inference:
             log.println(
-                f"[{self.curr_step}] ({reward:6.3f}), " +\
-                f"[f:{self.freq:6}, f_max:{self.max_freq:.0f}], " +\
-                f"flops[infe: {self.inference_flops:.1e}, comp: {self.hardware_flops:.1e} {(self.dmodel, self.numlay)}], " +\
-                f"backlog[{self.backlog_not_active}, {self.backlog_ok}, {self.backlog_linear}, {self.backlog_crashed}], "
+                f"[t:{self.curr_step:3}] (r:{reward:6.3f}), " +\
+                f"[f:{self.freq:6}/{self.max_freq:.0f}], " +\
+                f"inf[{self.inference_flops:.1e}], comp[{self.hardware_flops:.1e}], " +\
+                f"Q{(self.backlog_not_active, self.backlog_ok, self.backlog_linear, self.backlog_crashed)}, " +\
+                f"Trans[{(self.dmodel, self.numlay, self.prec)} -> {self.perplexity}]"
             )
 
             
@@ -295,6 +323,7 @@ class SystolicArrayEnv(gym.Env):
             float(self.freq)                / (self.max_freq + 1e-9),
             float(self.dmodel)              / (self.max_dmodel + 1e-9),
             float(self.numlay)              / (self.max_numlay + 1e-9),
+            float(self.prec)                / (self.max_prec + 1e-9),
             # float(self.inference_flops)                / float(self.max_inference_flops),
 
             float(self.vdd)                 / (self.max_voltage + 1e-9),
