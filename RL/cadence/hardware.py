@@ -69,7 +69,10 @@ class Hardware:
 
         t0_vth = delta_vth(vdef, T, self.alpha, 1E-9, t0)
         t1_vth = delta_vth(vdef, T, self.alpha, 1E-9, t1)
-        self.vth += (t1_vth - t0_vth)
+        vth_change = (t1_vth - t0_vth)
+        if vth_change < 0:
+            raise ValueError("delta_Vth can not be negative!")
+        self.vth += vth_change
         # print(f"{t0_vth} -> {t1_vth} == {t1_vth - t0_vth}")
 
     def get_max_freq(self):

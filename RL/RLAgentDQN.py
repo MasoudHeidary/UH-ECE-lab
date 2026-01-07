@@ -8,8 +8,8 @@ from stable_baselines3.common.monitor import Monitor
 
 from HEnvDQN import SystolicArrayEnv, MAX_STEP
 
-TOTAL_TRAIN_TIMESTEPS = 1000_000
-TRAIN_CPU = 1
+TOTAL_TRAIN_TIMESTEPS = 1_000_000
+TRAIN_CPU = 1   # do not change - unrelated to speed
 TOTAL_INFERENCE_EPOCH = 100
 MODEL_FILENAME = f"{__file__}.model"
 DEVICE = "cuda:0"
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     def inference(model_filename, image_filename, device):
         env = SystolicArrayEnv()
-        obs = env.reset()
+        obs = env.reset(inference_seed=[47, 46])              # inference_seed (47)->360 instructions (low load), (46)->909 instructions (high load)
         model = DQN.load(model_filename, env=env, device=device)
 
         freq, max_freq = [], []

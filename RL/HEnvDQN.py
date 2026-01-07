@@ -203,7 +203,7 @@ class SystolicArrayEnv(gym.Env):
         random.seed(s)
         np.random.seed(s)
 
-    def reset(self):
+    def reset(self, inference_seed=False):
         self.curr_step = 0
         self.inference_flops = 0
         self.hardware_flops = 0
@@ -229,6 +229,8 @@ class SystolicArrayEnv(gym.Env):
         delay_power = self.hardware.get_delay_power(self.vdd)
         self.latency, self.energy = delay_power[0], delay_power[1] * self.freq
 
+        if inference_seed != False:
+            random.seed(random.choice(inference_seed))
         self.backlog            = random_backlog(random.randrange(0, 1000), max_step = MAX_STEP - 100)
         # self.backlog_size       = self.backlog.get_active_size(self.curr_step)
         self.backlog_not_active = self.backlog.get_status_size(self.curr_step, "not_active")
@@ -261,18 +263,23 @@ class SystolicArrayEnv(gym.Env):
 
 
         if (self.prev_dmodel != self.dmodel) and (self.prev_numlay != self.numlay):
-            reward -= 0.1
+            reward -= 0
         self.prev_dmodel = self.dmodel
         self.prev_numlay = self.numlay
 
         self.perplexity = self.transformer.get_inference_perplexity(self.dmodel, self.numlay, self.prec)
-        if (self.perplexity > 50):
+        if (self.perplexity > 1000):
             reward -= 5
 
         # derived parameters
         self.vdd = self.hardware.get_vdd(self.freq)
         delay_power = self.hardware.get_delay_power(self.vdd)
         self.latency, self.energy = delay_power[0], delay_power[1] * self.freq
+
+        step_time_factor = 10_000
+        t0 = self.curr_step * step_time_factor
+        t1 = (self.curr_step + 1) * step_time_factor
+        self.hardware.apply_aging(self.vdd, t0, t1)
 
         self.inference_flops    = float(self.transformer.get_inference_flops(self.dmodel, self.numlay, self.prec))
         self.hardware_flops     = self.hardware.get_flops(self.freq, self.prec)
@@ -289,7 +296,8 @@ class SystolicArrayEnv(gym.Env):
         if self.backlog_crashed > 0:
             reward -= 5
         
-        reward -= 1 * (self.energy / (self.max_energy + 1e-9))
+        # reward -= 1 * (self.energy / (self.max_energy + 1e-9))
+        reward -= 1 * (self.perplexity / 100)
 
         if inference:
             log.println(
@@ -297,7 +305,7 @@ class SystolicArrayEnv(gym.Env):
                 f"[f:{self.freq:6}/{self.max_freq:.0f}], " +\
                 f"inf[{self.inference_flops:.1e}], comp[{self.hardware_flops:.1e}], " +\
                 f"Q{(self.backlog_not_active, self.backlog_ok, self.backlog_linear, self.backlog_crashed)}, " +\
-                f"Trans[{(self.dmodel, self.numlay, self.prec)} -> {self.perplexity}]"
+                f"Trans[{(self.dmodel, self.numlay, self.prec)} -> {self.perplexity:.2f}]"
             )
 
             
